@@ -8,57 +8,62 @@ function getStoredItems(): string[] {
   if (typeof window === "undefined") return []
   try {
     const raw = sessionStorage.getItem(STORAGE_KEY)
-    if (raw) {
-      const parsed = JSON.parse(raw)
-      if (Array.isArray(parsed)) return parsed
-    }
+    if (!raw) return []
+    const parsed = JSON.parse(raw)
+    return Array.isArray(parsed) ? parsed : []
   } catch {
-    // Ignore parse errors
+    return []
   }
-  return []
+}
+
+function persistItems(items: string[]) {
+  if (typeof window === "undefined") return
+  sessionStorage.setItem(STORAGE_KEY, JSON.stringify(items))
 }
 
 export function useInquiryList() {
-  const [items, setItems] = useState<string[]>(() => getStoredItems())
+  const [items, setItems] = useState<string[]>([])
 
-  // Sync to sessionStorage whenever items change
+  // Hydrate from sessionStorage on mount
   useEffect(() => {
-    try {
-      sessionStorage.setItem(STORAGE_KEY, JSON.stringify(items))
-    } catch {
-      // Ignore storage errors
-    }
-  }, [items])
+    setItems(getStoredItems())
+  }, [])
 
-  const addItem = useCallback((id: string) => {
+  const addItem = useCallback((productId: string) => {
     setItems((prev) => {
-      if (prev.includes(id)) return prev
-      return [...prev, id]
+      if (prev.includes(productId)) return prev
+      const next = [...prev, productId]
+      persistItems(next)
+      return next
     })
   }, [])
 
-  const removeItem = useCallback((id: string) => {
-    setItems((prev) => prev.filter((item) => item !== id))
+  const removeItem = useCallback((productId: string) => {
+    setItems((prev) => {
+      const next = prev.filter((id) => id !== productId)
+      persistItems(next)
+      return next
+    })
   }, [])
 
-  const toggleItem = useCallback((id: string) => {
+  const toggleItem = useCallback((productId: string) => {
     setItems((prev) => {
-      if (prev.includes(id)) {
-        return prev.filter((item) => item !== id)
-      }
-      return [...prev, id]
+      const next = prev.includes(productId)
+        ? prev.filter((id) => id !== productId)
+        : [...prev, productId]
+      persistItems(next)
+      return next
     })
   }, [])
 
   const isInList = useCallback(
-    (id: string): boolean => {
-      return items.includes(id)
-    },
+    (productId: string) => items.includes(productId),
     [items]
   )
 
   const clearList = useCallback(() => {
     setItems([])
+    persistItems([])
   }, [])
 
   return { items, addItem, removeItem, toggleItem, isInList, clearList }
