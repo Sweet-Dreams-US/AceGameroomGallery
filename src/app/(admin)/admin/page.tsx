@@ -11,7 +11,7 @@ import {
   Plus,
   Mail,
 } from "lucide-react"
-import { getItems, seedItems, STORAGE_KEYS } from "@/lib/admin-storage"
+import { seedItems, STORAGE_KEYS } from "@/lib/admin-storage"
 import {
   ADMIN_MOCK_PRODUCTS,
   ADMIN_MOCK_INQUIRIES,
