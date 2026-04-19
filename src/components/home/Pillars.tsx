@@ -52,20 +52,20 @@ const PILLARS = [
 
 export function Pillars() {
   return (
-    <section className="bg-[#0a0a0a] py-24 lg:py-40">
+    <section className="bg-[#f4efe6] py-24 lg:py-40">
       <div className="max-w-[1600px] mx-auto px-6 lg:px-10">
         {/* Header */}
         <div className="mb-20 lg:mb-32 grid grid-cols-12 gap-6">
           <div className="col-span-12 lg:col-span-6">
             <p className="section-number mb-4">/ 002 — WHY ACE</p>
-            <h2 className="font-playfair text-4xl lg:text-6xl font-bold text-[#f5f1ea] leading-[1.05]">
+            <h2 className="font-playfair text-4xl lg:text-6xl font-bold text-[#1a1612] leading-[1.05]">
               Three things that
               <br />
               <span className="gold-gradient-text italic">set us apart.</span>
             </h2>
           </div>
           <div className="col-span-12 lg:col-span-5 lg:col-start-8 flex items-end">
-            <p className="text-lg text-[#a8a198] font-light leading-relaxed">
+            <p className="text-lg text-[#6b655e] font-light leading-relaxed">
               Fort Wayne has stores that sell pool tables. It has exactly one
               showroom that treats them like the centerpiece of a home. That&apos;s
               not marketing — that&apos;s what you&apos;ll feel the moment you walk in.
@@ -96,7 +96,7 @@ export function Pillars() {
                     className="object-cover transition-transform duration-700 group-hover:scale-105"
                     sizes="(max-width: 1024px) 100vw, 50vw"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a]/60 via-transparent to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#1a1612]/50 via-transparent to-transparent" />
 
                   {/* Floating number */}
                   <div className="absolute top-6 left-6 lg:top-8 lg:left-8">
@@ -110,19 +110,19 @@ export function Pillars() {
               {/* Content */}
               <div className="col-span-12 lg:col-span-5">
                 <p className="eyebrow mb-4">Pillar {pillar.num}</p>
-                <h3 className="font-playfair text-4xl lg:text-5xl font-bold text-[#f5f1ea] mb-3">
+                <h3 className="font-playfair text-4xl lg:text-5xl font-bold text-[#1a1612] mb-3">
                   {pillar.title}
                 </h3>
                 <p className="gold-gradient-text font-playfair italic text-2xl lg:text-3xl mb-8">
                   {pillar.tagline}
                 </p>
-                <p className="text-lg text-[#a8a198] font-light leading-relaxed mb-8">
+                <p className="text-lg text-[#6b655e] font-light leading-relaxed mb-8">
                   {pillar.body}
                 </p>
 
                 <ul className="space-y-3 mb-10">
                   {pillar.bullets.map((bullet) => (
-                    <li key={bullet} className="flex items-center gap-3 text-[#e8e2d5]">
+                    <li key={bullet} className="flex items-center gap-3 text-[#1a1612]">
                       <span className="w-1 h-1 rounded-full bg-[#d4a843]" />
                       <span className="text-sm">{bullet}</span>
                     </li>

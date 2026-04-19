@@ -52,20 +52,20 @@ const CATEGORIES = [
 
 export function Collection() {
   return (
-    <section className="bg-[#080808] py-24 lg:py-40">
+    <section className="bg-[#ebe4d6] py-24 lg:py-40">
       <div className="max-w-[1600px] mx-auto px-6 lg:px-10">
         {/* Header */}
         <div className="mb-16 lg:mb-20 grid grid-cols-12 gap-6">
           <div className="col-span-12 lg:col-span-6">
             <p className="section-number mb-4">/ THE COLLECTION</p>
-            <h2 className="font-playfair text-4xl lg:text-6xl font-bold text-[#f5f1ea] leading-[1.05]">
+            <h2 className="font-playfair text-4xl lg:text-6xl font-bold text-[#1a1612] leading-[1.05]">
               Browse by
               <br />
               <span className="gold-gradient-text italic">category.</span>
             </h2>
           </div>
           <div className="col-span-12 lg:col-span-5 lg:col-start-8 flex items-end">
-            <p className="text-lg text-[#a8a198] font-light leading-relaxed">
+            <p className="text-lg text-[#6b655e] font-light leading-relaxed">
               Six categories. Hundreds of products. One showroom.
               Find yours — then come see it in person.
             </p>
@@ -91,22 +91,22 @@ export function Collection() {
                     className="object-cover transition-transform duration-700 group-hover:scale-110"
                     sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a]/80 via-[#0a0a0a]/20 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#1a1612]/80 via-[#1a1612]/20 to-transparent" />
 
                   {/* Hover overlay */}
                   <div className="absolute inset-0 bg-[#d4a843]/0 group-hover:bg-[#d4a843]/10 transition-colors duration-500" />
 
                   {/* Category name */}
                   <div className="absolute bottom-0 left-0 right-0 p-8">
-                    <h3 className="font-playfair text-4xl lg:text-5xl font-bold text-[#f5f1ea] mb-2">
+                    <h3 className="font-playfair text-4xl lg:text-5xl font-bold text-white mb-2">
                       {cat.name}
                     </h3>
                     <p className="text-sm text-[#d4a843] mb-4 italic">{cat.tagline}</p>
                     <div className="flex items-center justify-between">
-                      <span className="text-xs font-display tracking-[0.25em] text-[#a8a198] uppercase">
+                      <span className="text-xs font-display tracking-[0.25em] text-white/80 uppercase">
                         {cat.count}
                       </span>
-                      <div className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-[#f5f1ea] group-hover:bg-[#d4a843] group-hover:border-[#d4a843] group-hover:text-[#0a0a0a] transition-all duration-500">
+                      <div className="w-10 h-10 rounded-full border border-white/60 flex items-center justify-center text-white group-hover:bg-[#d4a843] group-hover:border-[#d4a843] group-hover:text-[#1a1612] transition-all duration-500">
                         <ArrowUpRight className="w-4 h-4" />
                       </div>
                     </div>

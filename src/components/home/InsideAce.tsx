@@ -48,11 +48,11 @@ const FEATURES = [
 
 export function InsideAce() {
   return (
-    <section className="bg-[#080808] py-24 lg:py-40 relative">
+    <section className="bg-[#faf8f3] py-24 lg:py-40 relative">
       {/* Subtle vertical divider lines */}
       <div className="absolute inset-0 max-w-[1600px] mx-auto px-6 lg:px-10 hidden lg:grid grid-cols-4 pointer-events-none">
         {[1, 2, 3].map((i) => (
-          <div key={i} className="col-start-2 border-l border-white/[0.02]" style={{ gridColumnStart: i + 1 }} />
+          <div key={i} className="col-start-2 border-l border-[#1a1612]/[0.06]" style={{ gridColumnStart: i + 1 }} />
         ))}
       </div>
 
@@ -61,14 +61,14 @@ export function InsideAce() {
         <div className="mb-16 lg:mb-24 grid grid-cols-12 gap-6">
           <div className="col-span-12 lg:col-span-7">
             <p className="section-number mb-4">/ 003 — INSIDE ACE</p>
-            <h2 className="font-playfair text-4xl lg:text-6xl font-bold text-[#f5f1ea] leading-[1.05]">
+            <h2 className="font-playfair text-4xl lg:text-6xl font-bold text-[#1a1612] leading-[1.05]">
               What you&apos;ll find
               <br />
               <span className="gold-gradient-text italic">when you walk in.</span>
             </h2>
           </div>
           <div className="col-span-12 lg:col-span-4 lg:col-start-9 flex items-end">
-            <p className="text-[#a8a198] leading-relaxed">
+            <p className="text-[#6b655e] leading-relaxed">
               10,000 square feet of the most specific, best-in-class recreational
               goods you&apos;ll find anywhere in Indiana.
             </p>
@@ -76,7 +76,7 @@ export function InsideAce() {
         </div>
 
         {/* Feature grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-white/5">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-[#1a1612]/8">
           {FEATURES.map((feature, i) => (
             <motion.div
               key={feature.num}
@@ -84,15 +84,15 @@ export function InsideAce() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.1 }}
               transition={{ duration: 0.6, delay: i * 0.05 }}
-              className="group relative bg-[#080808] p-8 lg:p-10 hover:bg-[#0f0f0f] transition-colors duration-500 min-h-[280px] flex flex-col"
+              className="group relative bg-white p-8 lg:p-10 hover:bg-[#faf8f3] transition-colors duration-500 min-h-[280px] flex flex-col"
             >
-              <span className="text-xs font-display tracking-[0.25em] text-[#6b655e] mb-6">
+              <span className="text-xs font-display tracking-[0.25em] text-[#a8a198] mb-6">
                 / {feature.num}
               </span>
-              <h3 className="font-playfair text-2xl lg:text-3xl font-bold text-[#f5f1ea] mb-4 group-hover:text-[#d4a843] transition-colors duration-500">
+              <h3 className="font-playfair text-2xl lg:text-3xl font-bold text-[#1a1612] mb-4 group-hover:text-[#b8933a] transition-colors duration-500">
                 {feature.title}
               </h3>
-              <p className="text-sm text-[#a8a198] leading-relaxed flex-1">
+              <p className="text-sm text-[#6b655e] leading-relaxed flex-1">
                 {feature.desc}
               </p>
 

@@ -44,14 +44,14 @@ export function Testimonials() {
   const current = TESTIMONIALS[idx]
 
   return (
-    <section className="bg-[#0a0a0a] py-24 lg:py-40 relative overflow-hidden">
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#d4a843]/20 to-transparent" />
+    <section className="bg-[#faf8f3] py-24 lg:py-40 relative overflow-hidden">
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#d4a843]/30 to-transparent" />
 
       <div className="max-w-[1600px] mx-auto px-6 lg:px-10">
         <div className="mb-16 lg:mb-20 flex items-end justify-between gap-6">
           <div>
             <p className="section-number mb-4">/ 004 — THE PEOPLE</p>
-            <h2 className="font-playfair text-4xl lg:text-6xl font-bold text-[#f5f1ea] leading-[1.05]">
+            <h2 className="font-playfair text-4xl lg:text-6xl font-bold text-[#1a1612] leading-[1.05]">
               What Fort Wayne
               <br />
               <span className="gold-gradient-text italic">families say.</span>
@@ -60,14 +60,14 @@ export function Testimonials() {
           <div className="hidden lg:flex items-center gap-4">
             <button
               onClick={() => setIdx((i) => (i - 1 + TESTIMONIALS.length) % TESTIMONIALS.length)}
-              className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center text-[#e8e2d5] hover:border-[#d4a843] hover:text-[#d4a843] transition-all"
+              className="w-12 h-12 rounded-full border border-[#1a1612]/12 flex items-center justify-center text-[#1a1612] hover:border-[#d4a843] hover:text-[#b8933a] transition-all"
               aria-label="Previous testimonial"
             >
               <ChevronLeft className="w-5 h-5" />
             </button>
             <button
               onClick={() => setIdx((i) => (i + 1) % TESTIMONIALS.length)}
-              className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center text-[#e8e2d5] hover:border-[#d4a843] hover:text-[#d4a843] transition-all"
+              className="w-12 h-12 rounded-full border border-[#1a1612]/12 flex items-center justify-center text-[#1a1612] hover:border-[#d4a843] hover:text-[#b8933a] transition-all"
               aria-label="Next testimonial"
             >
               <ChevronRight className="w-5 h-5" />
@@ -91,20 +91,20 @@ export function Testimonials() {
           </div>
 
           <div className="col-span-12 lg:col-span-10 relative">
-            <span className="gold-gradient-text absolute -top-8 -left-2 font-playfair text-8xl leading-none opacity-30">
+            <span className="gold-gradient-text absolute -top-8 -left-2 font-playfair text-8xl leading-none opacity-40">
               &ldquo;
             </span>
-            <blockquote className="font-playfair italic text-2xl lg:text-4xl text-[#f5f1ea] leading-[1.3] mb-10 relative">
+            <blockquote className="font-playfair italic text-2xl lg:text-4xl text-[#1a1612] leading-[1.3] mb-10 relative">
               {current.quote}
             </blockquote>
 
             <div className="flex items-center gap-4">
-              <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#d4a843] to-[#c0392b] flex items-center justify-center font-playfair text-xl font-black text-[#0a0a0a]">
+              <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#d4a843] to-[#c0392b] flex items-center justify-center font-playfair text-xl font-black text-white">
                 {current.name.charAt(0)}
               </div>
               <div>
-                <div className="font-medium text-[#f5f1ea]">{current.name}</div>
-                <div className="text-sm text-[#a8a198]">
+                <div className="font-medium text-[#1a1612]">{current.name}</div>
+                <div className="text-sm text-[#6b655e]">
                   {current.role} · {current.city}
                 </div>
               </div>
@@ -118,7 +118,7 @@ export function Testimonials() {
               key={i}
               onClick={() => setIdx(i)}
               className={`transition-all duration-500 h-0.5 ${
-                i === idx ? "w-12 bg-[#d4a843]" : "w-6 bg-white/10 hover:bg-white/30"
+                i === idx ? "w-12 bg-[#d4a843]" : "w-6 bg-[#1a1612]/12 hover:bg-[#1a1612]/30"
               }`}
               aria-label={`Go to testimonial ${i + 1}`}
             />
@@ -128,14 +128,14 @@ export function Testimonials() {
         <div className="flex lg:hidden items-center gap-4 mt-8 justify-center">
           <button
             onClick={() => setIdx((i) => (i - 1 + TESTIMONIALS.length) % TESTIMONIALS.length)}
-            className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center text-[#e8e2d5]"
+            className="w-12 h-12 rounded-full border border-[#1a1612]/12 flex items-center justify-center text-[#1a1612]"
             aria-label="Previous testimonial"
           >
             <ChevronLeft className="w-5 h-5" />
           </button>
           <button
             onClick={() => setIdx((i) => (i + 1) % TESTIMONIALS.length)}
-            className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center text-[#e8e2d5]"
+            className="w-12 h-12 rounded-full border border-[#1a1612]/12 flex items-center justify-center text-[#1a1612]"
             aria-label="Next testimonial"
           >
             <ChevronRight className="w-5 h-5" />

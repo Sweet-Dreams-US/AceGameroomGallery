@@ -15,16 +15,16 @@ export function Mantra() {
   const x = useTransform(scrollYProgress, [0, 1], ["-10%", "-60%"])
 
   return (
-    <section ref={ref} className="py-24 lg:py-40 bg-[#0a0a0a] overflow-hidden">
+    <section ref={ref} className="py-24 lg:py-40 bg-[#faf8f3] overflow-hidden">
       <div className="max-w-[1600px] mx-auto px-6 lg:px-10 mb-16 lg:mb-24">
         <div className="max-w-3xl">
           <p className="section-number mb-4">/ 001 — THE PHILOSOPHY</p>
-          <h2 className="font-playfair text-4xl lg:text-6xl font-bold text-[#f5f1ea] leading-[1.05] mb-8">
+          <h2 className="font-playfair text-4xl lg:text-6xl font-bold text-[#1a1612] leading-[1.05] mb-8">
             We don&apos;t sell pool tables.
             <br />
             <span className="gold-gradient-text italic">We sell the reason you&apos;ll be home on Friday night.</span>
           </h2>
-          <p className="text-lg text-[#a8a198] font-light leading-relaxed max-w-2xl">
+          <p className="text-lg text-[#6b655e] font-light leading-relaxed max-w-2xl">
             Every piece in our showroom was chosen for one reason: because it&apos;s the
             kind of thing you only buy once — and we want yours to be the one that
             lasts through decades, through moves, through generations.
@@ -43,7 +43,7 @@ export function Mantra() {
               <div key={`${setIdx}-${i}`} className="flex items-center gap-16 lg:gap-24">
                 <span
                   className={`font-playfair italic text-[20vw] lg:text-[16vw] font-black leading-none ${
-                    i % 2 === 0 ? "text-[#f5f1ea]" : "gold-gradient-text"
+                    i % 2 === 0 ? "text-[#1a1612]" : "gold-gradient-text"
                   }`}
                 >
                   {word}

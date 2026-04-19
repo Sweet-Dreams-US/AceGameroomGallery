@@ -6,10 +6,10 @@ import { ArrowUpRight } from "lucide-react"
 
 export function FinalCta() {
   return (
-    <section className="bg-[#050505] py-32 lg:py-48 relative overflow-hidden">
+    <section className="dark-section py-32 lg:py-48 relative overflow-hidden">
       {/* Background texture */}
       <div
-        className="absolute inset-0 opacity-[0.03]"
+        className="absolute inset-0 opacity-[0.08]"
         style={{
           backgroundImage:
             "url('https://images.unsplash.com/photo-1615722440048-da4fd9202194?w=2400&h=1600&fit=crop&q=85')",
@@ -17,11 +17,11 @@ export function FinalCta() {
           backgroundPosition: "center",
         }}
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0a] via-[#050505] to-[#0a0a0a]" />
+      <div className="absolute inset-0 bg-gradient-to-b from-[#121212] via-[#0d0d0d] to-[#121212]" />
 
       {/* Decorative gold frame lines */}
-      <div className="absolute top-10 left-10 right-10 h-px bg-gradient-to-r from-transparent via-[#d4a843]/30 to-transparent" />
-      <div className="absolute bottom-10 left-10 right-10 h-px bg-gradient-to-r from-transparent via-[#d4a843]/30 to-transparent" />
+      <div className="absolute top-10 left-10 right-10 h-px bg-gradient-to-r from-transparent via-[#d4a843]/40 to-transparent" />
+      <div className="absolute bottom-10 left-10 right-10 h-px bg-gradient-to-r from-transparent via-[#d4a843]/40 to-transparent" />
 
       <div className="relative max-w-[1400px] mx-auto px-6 lg:px-10 text-center">
         <motion.div
@@ -49,13 +49,16 @@ export function FinalCta() {
               Request a Quote
               <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </Link>
-            <Link href="/experience" className="btn-secondary">
+            <Link
+              href="/experience"
+              className="inline-flex items-center justify-center gap-2.5 px-8 py-4 bg-transparent text-[#f5f1ea] font-semibold text-sm tracking-[0.1em] uppercase border border-[#f5f1ea]/60 hover:bg-[#f5f1ea] hover:text-[#121212] transition-all duration-[400ms]"
+            >
               Visit the Showroom
             </Link>
           </div>
 
           {/* Trust markers */}
-          <div className="flex flex-wrap items-center justify-center gap-6 lg:gap-10 pt-12 border-t border-white/5 max-w-3xl mx-auto">
+          <div className="flex flex-wrap items-center justify-center gap-6 lg:gap-10 pt-12 border-t border-white/10 max-w-3xl mx-auto">
             <TrustMark label="Free delivery & install" />
             <TrustMark label="Wells Fargo financing" />
             <TrustMark label="Lifetime warranties" />
