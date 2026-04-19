@@ -90,10 +90,10 @@ export default function AdminBannersPage() {
       {/* Header */}
       <div className="mb-8">
         <p className="eyebrow mb-3">/ Marketing</p>
-        <h1 className="font-playfair text-3xl lg:text-4xl text-[#f5f1ea]">
+        <h1 className="font-playfair text-3xl lg:text-4xl text-[#1a1612]">
           Hero Banners
         </h1>
-        <p className="text-[#a8a198] mt-2">
+        <p className="text-[#6b655e] mt-2">
           {loaded ? `${banners.length} banners` : "Loading…"}
         </p>
       </div>
@@ -101,11 +101,11 @@ export default function AdminBannersPage() {
       {/* Add form */}
       <form
         onSubmit={handleAdd}
-        className="bg-[#111] border border-white/5 p-7 mb-8"
+        className="bg-white border border-[#1a1612]/8 p-7 mb-8"
       >
         <div className="flex items-center gap-2 mb-5">
-          <Plus className="w-4 h-4 text-[#d4a843]" strokeWidth={1.5} />
-          <h2 className="font-playfair text-lg text-[#f5f1ea]">
+          <Plus className="w-4 h-4 text-[#b8933a]" strokeWidth={1.5} />
+          <h2 className="font-playfair text-lg text-[#1a1612]">
             Add New Banner
           </h2>
         </div>
@@ -156,7 +156,7 @@ export default function AdminBannersPage() {
                 active={draft.is_active}
                 onChange={(v) => setDraft({ ...draft, is_active: v })}
               />
-              <span className="text-sm text-[#f5f1ea]">Active</span>
+              <span className="text-sm text-[#1a1612]">Active</span>
             </label>
           </div>
         </div>
@@ -172,12 +172,12 @@ export default function AdminBannersPage() {
       {/* List */}
       <div className="space-y-3">
         {banners.length === 0 ? (
-          <div className="bg-[#111] border border-white/5 p-16 text-center">
+          <div className="bg-white border border-[#1a1612]/8 p-16 text-center">
             <ImageIcon
-              className="w-8 h-8 text-[#6b655e] mx-auto mb-3"
+              className="w-8 h-8 text-[#a8a198] mx-auto mb-3"
               strokeWidth={1.5}
             />
-            <p className="text-[#a8a198] text-sm">
+            <p className="text-[#6b655e] text-sm">
               No banners yet. Add your first one above.
             </p>
           </div>
@@ -197,9 +197,9 @@ export default function AdminBannersPage() {
             return (
               <div
                 key={banner.id}
-                className="bg-[#111] border border-white/5 p-5 flex items-center gap-5"
+                className="bg-white border border-[#1a1612]/8 p-5 flex items-center gap-5"
               >
-                <div className="relative w-24 h-16 bg-[#0a0a0a] border border-white/10 overflow-hidden flex-shrink-0">
+                <div className="relative w-24 h-16 bg-[#faf8f3] border border-[#1a1612]/8 overflow-hidden flex-shrink-0">
                   {banner.image_url && (
                     <Image
                       src={banner.image_url}
@@ -212,27 +212,27 @@ export default function AdminBannersPage() {
                 </div>
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-3 flex-wrap">
-                    <div className="text-sm text-[#f5f1ea] font-medium">
+                    <div className="text-sm text-[#1a1612] font-medium">
                       {banner.title || "Untitled Banner"}
                     </div>
                     <span
                       className={`inline-flex items-center gap-1 text-[10px] tracking-[0.2em] uppercase px-2 py-0.5 border ${
                         banner.is_active
-                          ? "text-[#d4a843] border-[#d4a843]/30 bg-[#d4a843]/5"
-                          : "text-[#6b655e] border-white/10"
+                          ? "text-[#1a6b3c] border-[#1a6b3c]/30 bg-[#1a6b3c]/10"
+                          : "text-[#a8a198] border-[#1a1612]/10 bg-[#faf8f3]"
                       }`}
                     >
                       <span
                         className={`w-1.5 h-1.5 rounded-full ${
                           banner.is_active
-                            ? "bg-[#d4a843]"
-                            : "bg-[#6b655e]"
+                            ? "bg-[#1a6b3c]"
+                            : "bg-[#a8a198]"
                         }`}
                       />
                       {banner.is_active ? "Active" : "Inactive"}
                     </span>
                   </div>
-                  <div className="text-xs text-[#a8a198] mt-1 truncate">
+                  <div className="text-xs text-[#6b655e] mt-1 truncate">
                     {banner.subtitle || "—"} &middot; Order:{" "}
                     {banner.sort_order}
                   </div>
@@ -240,20 +240,20 @@ export default function AdminBannersPage() {
                 <div className="flex items-center gap-1">
                   <button
                     onClick={() => toggleActive(banner)}
-                    className="p-2 text-xs text-[#a8a198] hover:text-[#d4a843] transition-colors tracking-[0.15em] uppercase"
+                    className="p-2 text-xs text-[#6b655e] hover:text-[#b8933a] transition-colors tracking-[0.15em] uppercase"
                   >
                     Toggle
                   </button>
                   <button
                     onClick={() => setEditingId(banner.id)}
-                    className="p-2 text-[#a8a198] hover:text-[#d4a843] hover:bg-white/[0.03] transition-all"
+                    className="p-2 text-[#6b655e] hover:text-[#b8933a] hover:bg-[#faf8f3] transition-all"
                     aria-label="Edit"
                   >
                     <Pencil className="w-3.5 h-3.5" strokeWidth={1.5} />
                   </button>
                   <button
                     onClick={() => handleDelete(banner.id)}
-                    className="p-2 text-[#a8a198] hover:text-[#c0392b] hover:bg-white/[0.03] transition-all"
+                    className="p-2 text-[#6b655e] hover:text-[#c0392b] hover:bg-[#faf8f3] transition-all"
                     aria-label="Delete"
                   >
                     <Trash2 className="w-3.5 h-3.5" strokeWidth={1.5} />
@@ -288,7 +288,7 @@ function EditRow({
         e.preventDefault()
         onSave(draft)
       }}
-      className="bg-[#111] border border-[#d4a843]/30 p-6"
+      className="bg-white border border-[#d4a843]/40 p-6 shadow-sm"
     >
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
         <FieldInput
@@ -330,7 +330,7 @@ function EditRow({
               active={draft.is_active}
               onChange={(v) => setDraft({ ...draft, is_active: v })}
             />
-            <span className="text-sm text-[#f5f1ea]">Active</span>
+            <span className="text-sm text-[#1a1612]">Active</span>
           </label>
         </div>
       </div>
@@ -367,7 +367,7 @@ function FieldInput({
 }) {
   return (
     <div className={className}>
-      <label className="block text-[10px] tracking-[0.25em] uppercase text-[#a8a198] mb-2">
+      <label className="block text-[10px] tracking-[0.25em] uppercase text-[#6b655e] mb-2">
         {label}
       </label>
       <input
@@ -376,7 +376,7 @@ function FieldInput({
         onChange={(e) => onChange(e.target.value)}
         placeholder={placeholder}
         required={required}
-        className="w-full px-4 py-2.5 bg-[#0a0a0a] border border-white/10 text-[#f5f1ea] placeholder-[#6b655e] focus:border-[#d4a843] focus:outline-none transition-colors text-sm"
+        className="w-full px-4 py-2.5 bg-white border border-[#1a1612]/15 text-[#1a1612] placeholder-[#a8a198] focus:border-[#d4a843] focus:ring-1 focus:ring-[#d4a843] focus:outline-none transition-colors text-sm"
       />
     </div>
   )
@@ -392,7 +392,7 @@ function Toggle({
   return (
     <span
       className={`relative w-10 h-5 rounded-full transition-colors ${
-        active ? "bg-[#d4a843]" : "bg-white/10"
+        active ? "bg-[#d4a843]" : "bg-[#1a1612]/15"
       }`}
     >
       <input
@@ -402,7 +402,7 @@ function Toggle({
         className="sr-only"
       />
       <span
-        className={`absolute top-0.5 w-4 h-4 rounded-full bg-[#0a0a0a] transition-transform ${
+        className={`absolute top-0.5 w-4 h-4 rounded-full bg-white transition-transform shadow-sm ${
           active ? "translate-x-5" : "translate-x-0.5"
         }`}
       />

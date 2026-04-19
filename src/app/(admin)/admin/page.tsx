@@ -106,10 +106,10 @@ export default function AdminDashboardPage() {
       {/* Welcome */}
       <div className="mb-10">
         <p className="eyebrow mb-3">/ Overview</p>
-        <h1 className="font-playfair text-3xl lg:text-4xl text-[#f5f1ea]">
+        <h1 className="font-playfair text-3xl lg:text-4xl text-[#1a1612]">
           Welcome back.
         </h1>
-        <p className="text-[#a8a198] mt-2">
+        <p className="text-[#6b655e] mt-2">
           Here&apos;s what&apos;s happening.
         </p>
       </div>
@@ -122,24 +122,24 @@ export default function AdminDashboardPage() {
             <Link
               key={card.label}
               href={card.href}
-              className="group bg-[#111] border border-white/5 p-6 transition-all hover:border-[#d4a843]/30 hover:-translate-y-0.5"
+              className="group bg-white border border-[#1a1612]/8 p-6 transition-all hover:border-[#d4a843]/40 hover:shadow-md hover:-translate-y-0.5"
             >
               <div className="flex items-start justify-between mb-5">
                 <div className="w-10 h-10 bg-[#d4a843]/10 border border-[#d4a843]/20 flex items-center justify-center">
                   <Icon
-                    className="w-4 h-4 text-[#d4a843]"
+                    className="w-4 h-4 text-[#b8933a]"
                     strokeWidth={1.5}
                   />
                 </div>
                 <ArrowRight
-                  className="w-4 h-4 text-[#6b655e] group-hover:text-[#d4a843] transition-colors"
+                  className="w-4 h-4 text-[#a8a198] group-hover:text-[#b8933a] transition-colors"
                   strokeWidth={1.5}
                 />
               </div>
-              <div className="font-playfair text-4xl text-[#f5f1ea] leading-none">
+              <div className="font-playfair text-4xl text-[#1a1612] leading-none">
                 {loaded ? card.value : "—"}
               </div>
-              <div className="mt-2 text-[10px] tracking-[0.25em] uppercase text-[#a8a198]">
+              <div className="mt-2 text-[10px] tracking-[0.25em] uppercase text-[#6b655e]">
                 {card.label}
               </div>
             </Link>
@@ -150,17 +150,17 @@ export default function AdminDashboardPage() {
       {/* Two column */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Recent inquiries */}
-        <div className="lg:col-span-2 bg-[#111] border border-white/5">
-          <div className="flex items-center justify-between px-6 py-5 border-b border-white/5">
+        <div className="lg:col-span-2 bg-white border border-[#1a1612]/8">
+          <div className="flex items-center justify-between px-6 py-5 border-b border-[#1a1612]/8">
             <div>
               <p className="eyebrow mb-1">/ Activity</p>
-              <h2 className="font-playfair text-xl text-[#f5f1ea]">
+              <h2 className="font-playfair text-xl text-[#1a1612]">
                 Recent Inquiries
               </h2>
             </div>
             <Link
               href="/admin/inquiries"
-              className="text-xs tracking-[0.15em] uppercase text-[#a8a198] hover:text-[#d4a843] transition-colors flex items-center gap-1"
+              className="text-xs tracking-[0.15em] uppercase text-[#6b655e] hover:text-[#b8933a] transition-colors flex items-center gap-1"
             >
               View All
               <ArrowRight className="w-3 h-3" strokeWidth={1.5} />
@@ -168,7 +168,7 @@ export default function AdminDashboardPage() {
           </div>
 
           {recentInquiries.length === 0 ? (
-            <div className="p-10 text-center text-[#a8a198] text-sm">
+            <div className="p-10 text-center text-[#6b655e] text-sm">
               No inquiries yet.
             </div>
           ) : (
@@ -176,27 +176,27 @@ export default function AdminDashboardPage() {
               {recentInquiries.map((inq) => (
                 <li
                   key={inq.id}
-                  className="flex items-start gap-4 px-6 py-4 border-b border-white/5 last:border-0 hover:bg-white/[0.02] transition-colors"
+                  className="flex items-start gap-4 px-6 py-4 border-b border-[#1a1612]/8 last:border-0 hover:bg-[#faf8f3] transition-colors"
                 >
-                  <div className="w-9 h-9 bg-[#0a0a0a] border border-white/10 flex items-center justify-center flex-shrink-0">
+                  <div className="w-9 h-9 bg-[#faf8f3] border border-[#1a1612]/8 flex items-center justify-center flex-shrink-0">
                     <Mail
-                      className="w-4 h-4 text-[#d4a843]"
+                      className="w-4 h-4 text-[#b8933a]"
                       strokeWidth={1.5}
                     />
                   </div>
                   <div className="min-w-0 flex-1">
                     <div className="flex items-baseline justify-between gap-4">
-                      <div className="text-sm text-[#f5f1ea] font-medium truncate">
+                      <div className="text-sm text-[#1a1612] font-medium truncate">
                         {inq.name}
                       </div>
-                      <div className="text-[10px] tracking-[0.2em] uppercase text-[#6b655e] flex-shrink-0">
+                      <div className="text-[10px] tracking-[0.2em] uppercase text-[#a8a198] flex-shrink-0">
                         {new Date(inq.created_at).toLocaleDateString()}
                       </div>
                     </div>
-                    <div className="text-xs text-[#a8a198] truncate mt-0.5">
+                    <div className="text-xs text-[#6b655e] truncate mt-0.5">
                       {inq.email}
                     </div>
-                    <p className="text-xs text-[#a8a198] mt-1.5 line-clamp-1">
+                    <p className="text-xs text-[#6b655e] mt-1.5 line-clamp-1">
                       {inq.message}
                     </p>
                   </div>
@@ -207,10 +207,10 @@ export default function AdminDashboardPage() {
         </div>
 
         {/* Quick actions */}
-        <div className="bg-[#111] border border-white/5">
-          <div className="px-6 py-5 border-b border-white/5">
+        <div className="bg-white border border-[#1a1612]/8">
+          <div className="px-6 py-5 border-b border-[#1a1612]/8">
             <p className="eyebrow mb-1">/ Shortcuts</p>
-            <h2 className="font-playfair text-xl text-[#f5f1ea]">
+            <h2 className="font-playfair text-xl text-[#1a1612]">
               Quick Actions
             </h2>
           </div>

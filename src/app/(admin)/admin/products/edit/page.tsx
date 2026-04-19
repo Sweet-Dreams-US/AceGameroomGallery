@@ -36,11 +36,11 @@ function EditProductInner() {
   if (notFound) {
     return (
       <div className="max-w-[720px]">
-        <div className="bg-[#111] border border-white/5 p-10 text-center">
-          <h1 className="font-playfair text-2xl text-[#f5f1ea] mb-2">
+        <div className="bg-white border border-[#1a1612]/8 p-10 text-center">
+          <h1 className="font-playfair text-2xl text-[#1a1612] mb-2">
             Product not found.
           </h1>
-          <p className="text-sm text-[#a8a198] mb-6">
+          <p className="text-sm text-[#6b655e] mb-6">
             The product you&apos;re looking for has been removed or never
             existed.
           </p>
@@ -54,7 +54,7 @@ function EditProductInner() {
 
   if (!product) {
     return (
-      <div className="text-[#a8a198] text-sm tracking-[0.25em] uppercase">
+      <div className="text-[#6b655e] text-sm tracking-[0.25em] uppercase">
         Loading product…
       </div>
     )
@@ -67,7 +67,7 @@ export default function AdminEditProductPage() {
   return (
     <Suspense
       fallback={
-        <div className="text-[#a8a198] text-sm tracking-[0.25em] uppercase">
+        <div className="text-[#6b655e] text-sm tracking-[0.25em] uppercase">
           Loading product…
         </div>
       }

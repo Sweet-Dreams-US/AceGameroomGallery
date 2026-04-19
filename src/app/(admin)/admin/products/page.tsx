@@ -67,10 +67,10 @@ export default function AdminProductsPage() {
       <div className="flex items-start justify-between mb-8 gap-4 flex-wrap">
         <div>
           <p className="eyebrow mb-3">/ Catalog</p>
-          <h1 className="font-playfair text-3xl lg:text-4xl text-[#f5f1ea]">
+          <h1 className="font-playfair text-3xl lg:text-4xl text-[#1a1612]">
             Products
           </h1>
-          <p className="text-[#a8a198] mt-2">
+          <p className="text-[#6b655e] mt-2">
             {loaded ? `${products.length} total products` : "Loading…"}
           </p>
         </div>
@@ -81,10 +81,10 @@ export default function AdminProductsPage() {
       </div>
 
       {/* Filters */}
-      <div className="bg-[#111] border border-white/5 p-5 mb-6 flex flex-col sm:flex-row gap-3">
+      <div className="bg-white border border-[#1a1612]/8 p-5 mb-6 flex flex-col sm:flex-row gap-3">
         <div className="relative flex-1">
           <Search
-            className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#6b655e]"
+            className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#a8a198]"
             strokeWidth={1.5}
           />
           <input
@@ -92,13 +92,13 @@ export default function AdminProductsPage() {
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Search by name or slug…"
-            className="w-full pl-10 pr-4 py-2.5 bg-[#0a0a0a] border border-white/10 text-[#f5f1ea] placeholder-[#6b655e] focus:border-[#d4a843] focus:outline-none transition-colors text-sm"
+            className="w-full pl-10 pr-4 py-2.5 bg-white border border-[#1a1612]/15 text-[#1a1612] placeholder-[#a8a198] focus:border-[#d4a843] focus:ring-1 focus:ring-[#d4a843] focus:outline-none transition-colors text-sm"
           />
         </div>
         <select
           value={categoryFilter}
           onChange={(e) => setCategoryFilter(e.target.value)}
-          className="px-4 py-2.5 bg-[#0a0a0a] border border-white/10 text-[#f5f1ea] focus:border-[#d4a843] focus:outline-none transition-colors text-sm min-w-[200px]"
+          className="px-4 py-2.5 bg-white border border-[#1a1612]/15 text-[#1a1612] focus:border-[#d4a843] focus:ring-1 focus:ring-[#d4a843] focus:outline-none transition-colors text-sm min-w-[200px]"
         >
           <option value="">All Categories</option>
           {ADMIN_MOCK_CATEGORIES.map((c) => (
@@ -110,14 +110,14 @@ export default function AdminProductsPage() {
       </div>
 
       {/* Table */}
-      <div className="bg-[#111] border border-white/5">
+      <div className="bg-white border border-[#1a1612]/8">
         {filtered.length === 0 ? (
           <div className="p-16 text-center">
             <Package
-              className="w-8 h-8 text-[#6b655e] mx-auto mb-3"
+              className="w-8 h-8 text-[#a8a198] mx-auto mb-3"
               strokeWidth={1.5}
             />
-            <p className="text-[#a8a198] text-sm">
+            <p className="text-[#6b655e] text-sm">
               {loaded ? "No products match your filters." : "Loading…"}
             </p>
           </div>
@@ -125,23 +125,23 @@ export default function AdminProductsPage() {
           <div className="overflow-x-auto">
             <table className="w-full">
               <thead>
-                <tr className="border-b border-white/5">
-                  <th className="text-left px-6 py-4 text-[10px] tracking-[0.25em] uppercase text-[#a8a198] font-normal">
+                <tr className="border-b border-[#1a1612]/8 bg-[#faf8f3]">
+                  <th className="text-left px-6 py-4 text-[10px] tracking-[0.25em] uppercase text-[#6b655e] font-normal">
                     Image
                   </th>
-                  <th className="text-left px-6 py-4 text-[10px] tracking-[0.25em] uppercase text-[#a8a198] font-normal">
+                  <th className="text-left px-6 py-4 text-[10px] tracking-[0.25em] uppercase text-[#6b655e] font-normal">
                     Name
                   </th>
-                  <th className="text-left px-6 py-4 text-[10px] tracking-[0.25em] uppercase text-[#a8a198] font-normal">
+                  <th className="text-left px-6 py-4 text-[10px] tracking-[0.25em] uppercase text-[#6b655e] font-normal">
                     Category
                   </th>
-                  <th className="text-left px-6 py-4 text-[10px] tracking-[0.25em] uppercase text-[#a8a198] font-normal">
+                  <th className="text-left px-6 py-4 text-[10px] tracking-[0.25em] uppercase text-[#6b655e] font-normal">
                     Brand
                   </th>
-                  <th className="text-left px-6 py-4 text-[10px] tracking-[0.25em] uppercase text-[#a8a198] font-normal">
+                  <th className="text-left px-6 py-4 text-[10px] tracking-[0.25em] uppercase text-[#6b655e] font-normal">
                     Status
                   </th>
-                  <th className="text-right px-6 py-4 text-[10px] tracking-[0.25em] uppercase text-[#a8a198] font-normal">
+                  <th className="text-right px-6 py-4 text-[10px] tracking-[0.25em] uppercase text-[#6b655e] font-normal">
                     Actions
                   </th>
                 </tr>
@@ -154,10 +154,10 @@ export default function AdminProductsPage() {
                   return (
                     <tr
                       key={p.id}
-                      className="border-b border-white/5 last:border-0 hover:bg-white/[0.02] transition-colors"
+                      className="border-b border-[#1a1612]/8 last:border-0 hover:bg-[#faf8f3] transition-colors"
                     >
                       <td className="px-6 py-3">
-                        <div className="relative w-12 h-12 bg-[#0a0a0a] border border-white/5 overflow-hidden">
+                        <div className="relative w-12 h-12 bg-[#faf8f3] border border-[#1a1612]/8 overflow-hidden">
                           <Image
                             src={imageUrl}
                             alt={p.name}
@@ -170,33 +170,33 @@ export default function AdminProductsPage() {
                       <td className="px-6 py-3">
                         <Link
                           href={`/admin/products/edit?id=${p.id}`}
-                          className="text-sm text-[#f5f1ea] hover:text-[#d4a843] transition-colors"
+                          className="text-sm text-[#1a1612] hover:text-[#b8933a] transition-colors"
                         >
                           {p.name}
                         </Link>
-                        <div className="text-xs text-[#6b655e] mt-0.5">
+                        <div className="text-xs text-[#a8a198] mt-0.5">
                           {p.slug}
                         </div>
                       </td>
-                      <td className="px-6 py-3 text-sm text-[#a8a198]">
+                      <td className="px-6 py-3 text-sm text-[#6b655e]">
                         {categoryName(p.category_id)}
                       </td>
-                      <td className="px-6 py-3 text-sm text-[#a8a198]">
+                      <td className="px-6 py-3 text-sm text-[#6b655e]">
                         {p.brand?.name || "—"}
                       </td>
                       <td className="px-6 py-3">
                         <span
                           className={`inline-flex items-center gap-1.5 text-[10px] tracking-[0.2em] uppercase px-2 py-1 border ${
                             p.status === "active"
-                              ? "text-[#d4a843] border-[#d4a843]/30 bg-[#d4a843]/5"
-                              : "text-[#a8a198] border-white/10 bg-white/[0.02]"
+                              ? "text-[#1a6b3c] border-[#1a6b3c]/30 bg-[#1a6b3c]/10"
+                              : "text-[#b8933a] border-[#d4a843]/30 bg-[#d4a843]/10"
                           }`}
                         >
                           <span
                             className={`w-1.5 h-1.5 rounded-full ${
                               p.status === "active"
-                                ? "bg-[#d4a843]"
-                                : "bg-[#6b655e]"
+                                ? "bg-[#1a6b3c]"
+                                : "bg-[#d4a843]"
                             }`}
                           />
                           {p.status}
@@ -206,14 +206,14 @@ export default function AdminProductsPage() {
                         <div className="flex items-center justify-end gap-1">
                           <Link
                             href={`/admin/products/edit?id=${p.id}`}
-                            className="p-2 text-[#a8a198] hover:text-[#d4a843] hover:bg-white/[0.03] transition-all"
+                            className="p-2 text-[#6b655e] hover:text-[#b8933a] hover:bg-[#faf8f3] transition-all"
                             aria-label="Edit"
                           >
                             <Pencil className="w-3.5 h-3.5" strokeWidth={1.5} />
                           </Link>
                           <button
                             onClick={() => setConfirmId(p.id)}
-                            className="p-2 text-[#a8a198] hover:text-[#c0392b] hover:bg-white/[0.03] transition-all"
+                            className="p-2 text-[#6b655e] hover:text-[#c0392b] hover:bg-[#faf8f3] transition-all"
                             aria-label="Delete"
                           >
                             <Trash2 className="w-3.5 h-3.5" strokeWidth={1.5} />
@@ -232,17 +232,17 @@ export default function AdminProductsPage() {
       {/* Confirm modal */}
       {confirmId && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 px-6"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-[#1a1612]/40 backdrop-blur-sm px-6"
           onClick={() => setConfirmId(null)}
         >
           <div
-            className="bg-[#111] border border-white/10 p-8 max-w-sm w-full"
+            className="bg-white border border-[#1a1612]/8 p-8 max-w-sm w-full shadow-2xl"
             onClick={(e) => e.stopPropagation()}
           >
-            <h3 className="font-playfair text-xl text-[#f5f1ea] mb-2">
+            <h3 className="font-playfair text-xl text-[#1a1612] mb-2">
               Delete Product?
             </h3>
-            <p className="text-sm text-[#a8a198] mb-6">
+            <p className="text-sm text-[#6b655e] mb-6">
               This cannot be undone.
             </p>
             <div className="flex gap-3 justify-end">
@@ -254,7 +254,7 @@ export default function AdminProductsPage() {
               </button>
               <button
                 onClick={() => handleDelete(confirmId)}
-                className="inline-flex items-center gap-2 px-4 py-2 bg-[#c0392b] hover:bg-[#c0392b]/80 text-white text-xs tracking-[0.1em] uppercase font-medium transition-colors"
+                className="inline-flex items-center gap-2 px-4 py-2 bg-[#c0392b] hover:bg-[#a53122] text-white text-xs tracking-[0.1em] uppercase font-medium transition-colors"
               >
                 <Trash2 className="w-3.5 h-3.5" strokeWidth={1.5} />
                 Delete

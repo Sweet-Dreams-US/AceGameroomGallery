@@ -14,7 +14,7 @@ import { ADMIN_MOCK_FAQ } from "@/lib/mock-data"
 import type { FaqEntry } from "@/lib/types"
 
 const INPUT_CLASS =
-  "w-full px-4 py-2.5 bg-[#0a0a0a] border border-white/10 text-[#f5f1ea] placeholder-[#6b655e] focus:border-[#d4a843] focus:outline-none transition-colors text-sm"
+  "w-full px-4 py-2.5 bg-white border border-[#1a1612]/15 text-[#1a1612] placeholder-[#a8a198] focus:border-[#d4a843] focus:ring-1 focus:ring-[#d4a843] focus:outline-none transition-colors text-sm"
 
 const EMPTY = (): FaqEntry => ({
   id: "",
@@ -74,10 +74,10 @@ export default function AdminFaqPage() {
     <div className="max-w-[1100px]">
       <div className="mb-8">
         <p className="eyebrow mb-3">/ Support</p>
-        <h1 className="font-playfair text-3xl lg:text-4xl text-[#f5f1ea]">
+        <h1 className="font-playfair text-3xl lg:text-4xl text-[#1a1612]">
           Frequently Asked Questions
         </h1>
-        <p className="text-[#a8a198] mt-2">
+        <p className="text-[#6b655e] mt-2">
           {loaded ? `${items.length} entries` : "Loading…"}
         </p>
       </div>
@@ -85,11 +85,11 @@ export default function AdminFaqPage() {
       {/* Add form */}
       <form
         onSubmit={handleAdd}
-        className="bg-[#111] border border-white/5 p-7 mb-8"
+        className="bg-white border border-[#1a1612]/8 p-7 mb-8"
       >
         <div className="flex items-center gap-2 mb-5">
-          <Plus className="w-4 h-4 text-[#d4a843]" strokeWidth={1.5} />
-          <h2 className="font-playfair text-lg text-[#f5f1ea]">
+          <Plus className="w-4 h-4 text-[#b8933a]" strokeWidth={1.5} />
+          <h2 className="font-playfair text-lg text-[#1a1612]">
             Add FAQ Entry
           </h2>
         </div>
@@ -105,12 +105,12 @@ export default function AdminFaqPage() {
       {/* List */}
       <div className="space-y-3">
         {items.length === 0 ? (
-          <div className="bg-[#111] border border-white/5 p-16 text-center">
+          <div className="bg-white border border-[#1a1612]/8 p-16 text-center">
             <HelpCircle
-              className="w-8 h-8 text-[#6b655e] mx-auto mb-3"
+              className="w-8 h-8 text-[#a8a198] mx-auto mb-3"
               strokeWidth={1.5}
             />
-            <p className="text-[#a8a198] text-sm">No FAQ entries yet.</p>
+            <p className="text-[#6b655e] text-sm">No FAQ entries yet.</p>
           </div>
         ) : (
           items.map((item) =>
@@ -124,47 +124,47 @@ export default function AdminFaqPage() {
             ) : (
               <div
                 key={item.id}
-                className="bg-[#111] border border-white/5 p-6"
+                className="bg-white border border-[#1a1612]/8 p-6"
               >
                 <div className="flex items-start justify-between gap-4">
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-3 flex-wrap mb-2">
-                      <span className="text-[10px] tracking-[0.25em] uppercase text-[#d4a843]">
+                      <span className="text-[10px] tracking-[0.25em] uppercase text-[#b8933a]">
                         #{item.sort_order}
                       </span>
                       {item.category && (
-                        <span className="text-[10px] tracking-[0.2em] uppercase text-[#a8a198] px-2 py-0.5 bg-white/[0.03] border border-white/10">
+                        <span className="text-[10px] tracking-[0.2em] uppercase text-[#6b655e] px-2 py-0.5 bg-[#faf8f3] border border-[#1a1612]/8">
                           {item.category}
                         </span>
                       )}
                       <span
                         className={`inline-flex items-center gap-1 text-[10px] tracking-[0.2em] uppercase px-2 py-0.5 border ${
                           item.is_active
-                            ? "text-[#d4a843] border-[#d4a843]/30 bg-[#d4a843]/5"
-                            : "text-[#6b655e] border-white/10"
+                            ? "text-[#1a6b3c] border-[#1a6b3c]/30 bg-[#1a6b3c]/10"
+                            : "text-[#a8a198] border-[#1a1612]/10 bg-[#faf8f3]"
                         }`}
                       >
                         {item.is_active ? "Active" : "Inactive"}
                       </span>
                     </div>
-                    <h3 className="font-playfair text-lg text-[#f5f1ea] mb-2">
+                    <h3 className="font-playfair text-lg text-[#1a1612] mb-2">
                       {item.question}
                     </h3>
-                    <p className="text-sm text-[#a8a198] leading-relaxed">
+                    <p className="text-sm text-[#6b655e] leading-relaxed">
                       {item.answer}
                     </p>
                   </div>
                   <div className="flex items-center gap-1 flex-shrink-0">
                     <button
                       onClick={() => setEditingId(item.id)}
-                      className="p-2 text-[#a8a198] hover:text-[#d4a843] hover:bg-white/[0.03] transition-all"
+                      className="p-2 text-[#6b655e] hover:text-[#b8933a] hover:bg-[#faf8f3] transition-all"
                       aria-label="Edit"
                     >
                       <Pencil className="w-3.5 h-3.5" strokeWidth={1.5} />
                     </button>
                     <button
                       onClick={() => handleDelete(item.id)}
-                      className="p-2 text-[#a8a198] hover:text-[#c0392b] hover:bg-white/[0.03] transition-all"
+                      className="p-2 text-[#6b655e] hover:text-[#c0392b] hover:bg-[#faf8f3] transition-all"
                       aria-label="Delete"
                     >
                       <Trash2 className="w-3.5 h-3.5" strokeWidth={1.5} />
@@ -197,7 +197,7 @@ function EditFaqRow({
         e.preventDefault()
         onSave(draft)
       }}
-      className="bg-[#111] border border-[#d4a843]/30 p-6"
+      className="bg-white border border-[#d4a843]/40 p-6 shadow-sm"
     >
       <FaqFields value={draft} onChange={setDraft} />
       <div className="flex justify-end gap-2 mt-5">
@@ -224,7 +224,7 @@ function FaqFields({
   return (
     <div className="grid grid-cols-1 gap-4">
       <div>
-        <label className="block text-[10px] tracking-[0.25em] uppercase text-[#a8a198] mb-2">
+        <label className="block text-[10px] tracking-[0.25em] uppercase text-[#6b655e] mb-2">
           Question <span className="text-[#d4a843]">*</span>
         </label>
         <input
@@ -237,7 +237,7 @@ function FaqFields({
         />
       </div>
       <div>
-        <label className="block text-[10px] tracking-[0.25em] uppercase text-[#a8a198] mb-2">
+        <label className="block text-[10px] tracking-[0.25em] uppercase text-[#6b655e] mb-2">
           Answer <span className="text-[#d4a843]">*</span>
         </label>
         <textarea
@@ -251,7 +251,7 @@ function FaqFields({
       </div>
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
         <div>
-          <label className="block text-[10px] tracking-[0.25em] uppercase text-[#a8a198] mb-2">
+          <label className="block text-[10px] tracking-[0.25em] uppercase text-[#6b655e] mb-2">
             Category (optional)
           </label>
           <input
@@ -265,7 +265,7 @@ function FaqFields({
           />
         </div>
         <div>
-          <label className="block text-[10px] tracking-[0.25em] uppercase text-[#a8a198] mb-2">
+          <label className="block text-[10px] tracking-[0.25em] uppercase text-[#6b655e] mb-2">
             Sort Order
           </label>
           <input
@@ -281,7 +281,7 @@ function FaqFields({
           <label className="inline-flex items-center gap-3 cursor-pointer select-none">
             <span
               className={`relative w-10 h-5 rounded-full transition-colors ${
-                value.is_active ? "bg-[#d4a843]" : "bg-white/10"
+                value.is_active ? "bg-[#d4a843]" : "bg-[#1a1612]/15"
               }`}
             >
               <input
@@ -293,12 +293,12 @@ function FaqFields({
                 className="sr-only"
               />
               <span
-                className={`absolute top-0.5 w-4 h-4 rounded-full bg-[#0a0a0a] transition-transform ${
+                className={`absolute top-0.5 w-4 h-4 rounded-full bg-white transition-transform shadow-sm ${
                   value.is_active ? "translate-x-5" : "translate-x-0.5"
                 }`}
               />
             </span>
-            <span className="text-sm text-[#f5f1ea]">Active</span>
+            <span className="text-sm text-[#1a1612]">Active</span>
           </label>
         </div>
       </div>

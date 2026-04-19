@@ -86,10 +86,10 @@ export default function AdminInquiriesPage() {
       <div className="flex items-start justify-between mb-8 gap-4 flex-wrap">
         <div>
           <p className="eyebrow mb-3">/ Inbox</p>
-          <h1 className="font-playfair text-3xl lg:text-4xl text-[#f5f1ea]">
+          <h1 className="font-playfair text-3xl lg:text-4xl text-[#1a1612]">
             Inquiries
           </h1>
-          <p className="text-[#a8a198] mt-2">
+          <p className="text-[#6b655e] mt-2">
             {loaded ? `${inquiries.length} total inquiries` : "Loading…"}
           </p>
         </div>
@@ -104,17 +104,17 @@ export default function AdminInquiriesPage() {
         </button>
       </div>
 
-      <div className="bg-[#111] border border-white/5">
+      <div className="bg-white border border-[#1a1612]/8">
         {inquiries.length === 0 ? (
           <div className="p-16 text-center">
             <Inbox
-              className="w-8 h-8 text-[#6b655e] mx-auto mb-4"
+              className="w-8 h-8 text-[#a8a198] mx-auto mb-4"
               strokeWidth={1.5}
             />
-            <h3 className="font-playfair text-lg text-[#f5f1ea] mb-1">
+            <h3 className="font-playfair text-lg text-[#1a1612] mb-1">
               No inquiries yet.
             </h3>
-            <p className="text-sm text-[#a8a198]">
+            <p className="text-sm text-[#6b655e]">
               They&apos;ll appear here when someone submits the contact form.
             </p>
           </div>
@@ -122,26 +122,26 @@ export default function AdminInquiriesPage() {
           <div className="overflow-x-auto">
             <table className="w-full">
               <thead>
-                <tr className="border-b border-white/5">
-                  <th className="text-left px-6 py-4 text-[10px] tracking-[0.25em] uppercase text-[#a8a198] font-normal w-32">
+                <tr className="border-b border-[#1a1612]/8 bg-[#faf8f3]">
+                  <th className="text-left px-6 py-4 text-[10px] tracking-[0.25em] uppercase text-[#6b655e] font-normal w-32">
                     Date
                   </th>
-                  <th className="text-left px-6 py-4 text-[10px] tracking-[0.25em] uppercase text-[#a8a198] font-normal">
+                  <th className="text-left px-6 py-4 text-[10px] tracking-[0.25em] uppercase text-[#6b655e] font-normal">
                     Name
                   </th>
-                  <th className="text-left px-6 py-4 text-[10px] tracking-[0.25em] uppercase text-[#a8a198] font-normal">
+                  <th className="text-left px-6 py-4 text-[10px] tracking-[0.25em] uppercase text-[#6b655e] font-normal">
                     Email
                   </th>
-                  <th className="text-left px-6 py-4 text-[10px] tracking-[0.25em] uppercase text-[#a8a198] font-normal">
+                  <th className="text-left px-6 py-4 text-[10px] tracking-[0.25em] uppercase text-[#6b655e] font-normal">
                     Phone
                   </th>
-                  <th className="text-left px-6 py-4 text-[10px] tracking-[0.25em] uppercase text-[#a8a198] font-normal">
+                  <th className="text-left px-6 py-4 text-[10px] tracking-[0.25em] uppercase text-[#6b655e] font-normal">
                     Interested In
                   </th>
-                  <th className="text-left px-6 py-4 text-[10px] tracking-[0.25em] uppercase text-[#a8a198] font-normal">
+                  <th className="text-left px-6 py-4 text-[10px] tracking-[0.25em] uppercase text-[#6b655e] font-normal">
                     Message
                   </th>
-                  <th className="text-right px-6 py-4 text-[10px] tracking-[0.25em] uppercase text-[#a8a198] font-normal w-10" />
+                  <th className="text-right px-6 py-4 text-[10px] tracking-[0.25em] uppercase text-[#6b655e] font-normal w-10" />
                 </tr>
               </thead>
               <tbody>
@@ -151,38 +151,38 @@ export default function AdminInquiriesPage() {
                     <Fragment key={inq.id}>
                       <tr
                         onClick={() => setExpanded(isOpen ? null : inq.id)}
-                        className="border-b border-white/5 last:border-0 hover:bg-white/[0.02] transition-colors cursor-pointer"
+                        className="border-b border-[#1a1612]/8 last:border-0 hover:bg-[#faf8f3] transition-colors cursor-pointer"
                       >
-                        <td className="px-6 py-4 text-xs text-[#a8a198] whitespace-nowrap">
+                        <td className="px-6 py-4 text-xs text-[#6b655e] whitespace-nowrap">
                           {new Date(inq.created_at).toLocaleDateString()}
                         </td>
-                        <td className="px-6 py-4 text-sm text-[#f5f1ea]">
+                        <td className="px-6 py-4 text-sm text-[#1a1612]">
                           {inq.name}
                         </td>
-                        <td className="px-6 py-4 text-sm text-[#a8a198]">
+                        <td className="px-6 py-4 text-sm text-[#6b655e]">
                           <a
                             href={`mailto:${inq.email}`}
                             onClick={(e) => e.stopPropagation()}
-                            className="hover:text-[#d4a843] transition-colors"
+                            className="hover:text-[#b8933a] transition-colors"
                           >
                             {inq.email}
                           </a>
                         </td>
-                        <td className="px-6 py-4 text-sm text-[#a8a198]">
+                        <td className="px-6 py-4 text-sm text-[#6b655e]">
                           {inq.phone ?? "—"}
                         </td>
-                        <td className="px-6 py-4 text-sm text-[#a8a198] max-w-[200px] truncate">
+                        <td className="px-6 py-4 text-sm text-[#6b655e] max-w-[200px] truncate">
                           {inq.product_ids.length > 0
                             ? getProductNames(inq.product_ids)
                             : "—"}
                         </td>
-                        <td className="px-6 py-4 text-sm text-[#a8a198] max-w-[300px] truncate">
+                        <td className="px-6 py-4 text-sm text-[#6b655e] max-w-[300px] truncate">
                           {inq.message}
                         </td>
                         <td className="px-6 py-4 text-right">
                           <ChevronDown
-                            className={`w-4 h-4 text-[#6b655e] transition-transform ${
-                              isOpen ? "rotate-180 text-[#d4a843]" : ""
+                            className={`w-4 h-4 text-[#a8a198] transition-transform ${
+                              isOpen ? "rotate-180 text-[#b8933a]" : ""
                             }`}
                             strokeWidth={1.5}
                           />
@@ -196,11 +196,11 @@ export default function AdminInquiriesPage() {
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 0 }}
                             transition={{ duration: 0.15 }}
-                            className="border-b border-white/5"
+                            className="border-b border-[#1a1612]/8"
                           >
                             <td
                               colSpan={7}
-                              className="px-6 py-0 bg-[#0a0a0a]/60"
+                              className="px-6 py-0 bg-[#faf8f3]"
                             >
                               <motion.div
                                 initial={{ height: 0 }}
@@ -215,22 +215,22 @@ export default function AdminInquiriesPage() {
                                 <div className="py-6">
                                   <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-6 items-start">
                                     <div>
-                                      <p className="text-[10px] tracking-[0.25em] uppercase text-[#d4a843] mb-3">
+                                      <p className="text-[10px] tracking-[0.25em] uppercase text-[#b8933a] mb-3">
                                         Full message
                                       </p>
-                                      <p className="text-[#f5f1ea] text-sm leading-relaxed whitespace-pre-wrap">
+                                      <p className="text-[#1a1612] text-sm leading-relaxed whitespace-pre-wrap">
                                         {inq.message}
                                       </p>
                                       {inq.product_ids.length > 0 && (
                                         <div className="mt-5">
-                                          <p className="text-[10px] tracking-[0.25em] uppercase text-[#a8a198] mb-2">
+                                          <p className="text-[10px] tracking-[0.25em] uppercase text-[#6b655e] mb-2">
                                             Products referenced
                                           </p>
                                           <div className="flex flex-wrap gap-2">
                                             {inq.product_ids.map((pid) => (
                                               <span
                                                 key={pid}
-                                                className="text-xs px-2.5 py-1 bg-[#111] border border-white/10 text-[#a8a198]"
+                                                className="text-xs px-2.5 py-1 bg-white border border-[#1a1612]/8 text-[#6b655e]"
                                               >
                                                 {productLookup.get(pid) || pid}
                                               </span>

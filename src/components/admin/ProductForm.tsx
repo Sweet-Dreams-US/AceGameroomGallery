@@ -189,7 +189,7 @@ export function ProductForm({ mode, initial }: Props) {
         <div>
           <Link
             href="/admin/products"
-            className="inline-flex items-center gap-2 text-xs tracking-[0.2em] uppercase text-[#a8a198] hover:text-[#d4a843] transition-colors mb-4"
+            className="inline-flex items-center gap-2 text-xs tracking-[0.2em] uppercase text-[#6b655e] hover:text-[#b8933a] transition-colors mb-4"
           >
             <ArrowLeft className="w-3.5 h-3.5" strokeWidth={1.5} />
             Back to products
@@ -197,7 +197,7 @@ export function ProductForm({ mode, initial }: Props) {
           <p className="eyebrow mb-2">
             {mode === "new" ? "/ New" : "/ Edit"}
           </p>
-          <h1 className="font-playfair text-3xl lg:text-4xl text-[#f5f1ea]">
+          <h1 className="font-playfair text-3xl lg:text-4xl text-[#1a1612]">
             {mode === "new" ? "Add Product" : "Edit Product"}
           </h1>
         </div>
@@ -215,13 +215,13 @@ export function ProductForm({ mode, initial }: Props) {
 
       <form onSubmit={handleSave} className="space-y-6">
         {/* Details */}
-        <section className="bg-[#111] border border-white/5 p-7">
-          <h2 className="font-playfair text-lg text-[#f5f1ea] mb-6">
+        <section className="bg-white border border-[#1a1612]/8 p-7">
+          <h2 className="font-playfair text-lg text-[#1a1612] mb-6">
             Details
           </h2>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
             <div>
-              <label className="block text-[10px] tracking-[0.25em] uppercase text-[#a8a198] mb-2">
+              <label className="block text-[10px] tracking-[0.25em] uppercase text-[#6b655e] mb-2">
                 Name
               </label>
               <input
@@ -230,11 +230,11 @@ export function ProductForm({ mode, initial }: Props) {
                 onChange={(e) => setName(e.target.value)}
                 required
                 placeholder="Product name"
-                className="w-full px-4 py-3 bg-[#0a0a0a] border border-white/10 text-[#f5f1ea] placeholder-[#6b655e] focus:border-[#d4a843] focus:outline-none transition-colors"
+                className="w-full px-4 py-3 bg-white border border-[#1a1612]/15 text-[#1a1612] placeholder-[#a8a198] focus:border-[#d4a843] focus:ring-1 focus:ring-[#d4a843] focus:outline-none transition-colors"
               />
             </div>
             <div>
-              <label className="block text-[10px] tracking-[0.25em] uppercase text-[#a8a198] mb-2">
+              <label className="block text-[10px] tracking-[0.25em] uppercase text-[#6b655e] mb-2">
                 Slug
               </label>
               <input
@@ -245,19 +245,19 @@ export function ProductForm({ mode, initial }: Props) {
                   setSlugDirty(true)
                 }}
                 placeholder="product-slug"
-                className="w-full px-4 py-3 bg-[#0a0a0a] border border-white/10 text-[#f5f1ea] placeholder-[#6b655e] focus:border-[#d4a843] focus:outline-none transition-colors"
+                className="w-full px-4 py-3 bg-white border border-[#1a1612]/15 text-[#1a1612] placeholder-[#a8a198] focus:border-[#d4a843] focus:ring-1 focus:ring-[#d4a843] focus:outline-none transition-colors"
               />
             </div>
 
             <div>
-              <label className="block text-[10px] tracking-[0.25em] uppercase text-[#a8a198] mb-2">
+              <label className="block text-[10px] tracking-[0.25em] uppercase text-[#6b655e] mb-2">
                 Category
               </label>
               <select
                 value={categoryId}
                 onChange={(e) => setCategoryId(e.target.value)}
                 required
-                className="w-full px-4 py-3 bg-[#0a0a0a] border border-white/10 text-[#f5f1ea] focus:border-[#d4a843] focus:outline-none transition-colors"
+                className="w-full px-4 py-3 bg-white border border-[#1a1612]/15 text-[#1a1612] focus:border-[#d4a843] focus:ring-1 focus:ring-[#d4a843] focus:outline-none transition-colors"
               >
                 {ADMIN_MOCK_CATEGORIES.map((c) => (
                   <option key={c.id} value={c.id}>
@@ -267,7 +267,7 @@ export function ProductForm({ mode, initial }: Props) {
               </select>
             </div>
             <div>
-              <label className="block text-[10px] tracking-[0.25em] uppercase text-[#a8a198] mb-2">
+              <label className="block text-[10px] tracking-[0.25em] uppercase text-[#6b655e] mb-2">
                 Brand
               </label>
               <input
@@ -276,7 +276,7 @@ export function ProductForm({ mode, initial }: Props) {
                 onChange={(e) => setBrand(e.target.value)}
                 placeholder="e.g. Olhausen"
                 list="brand-options"
-                className="w-full px-4 py-3 bg-[#0a0a0a] border border-white/10 text-[#f5f1ea] placeholder-[#6b655e] focus:border-[#d4a843] focus:outline-none transition-colors"
+                className="w-full px-4 py-3 bg-white border border-[#1a1612]/15 text-[#1a1612] placeholder-[#a8a198] focus:border-[#d4a843] focus:ring-1 focus:ring-[#d4a843] focus:outline-none transition-colors"
               />
               <datalist id="brand-options">
                 {ADMIN_MOCK_BRANDS.map((b) => (
@@ -286,7 +286,7 @@ export function ProductForm({ mode, initial }: Props) {
             </div>
 
             <div className="lg:col-span-2">
-              <label className="block text-[10px] tracking-[0.25em] uppercase text-[#a8a198] mb-2">
+              <label className="block text-[10px] tracking-[0.25em] uppercase text-[#6b655e] mb-2">
                 Description
               </label>
               <textarea
@@ -294,20 +294,20 @@ export function ProductForm({ mode, initial }: Props) {
                 onChange={(e) => setDescription(e.target.value)}
                 rows={4}
                 placeholder="Describe the product…"
-                className="w-full px-4 py-3 bg-[#0a0a0a] border border-white/10 text-[#f5f1ea] placeholder-[#6b655e] focus:border-[#d4a843] focus:outline-none transition-colors resize-y"
+                className="w-full px-4 py-3 bg-white border border-[#1a1612]/15 text-[#1a1612] placeholder-[#a8a198] focus:border-[#d4a843] focus:ring-1 focus:ring-[#d4a843] focus:outline-none transition-colors resize-y"
               />
             </div>
           </div>
         </section>
 
         {/* Image */}
-        <section className="bg-[#111] border border-white/5 p-7">
-          <h2 className="font-playfair text-lg text-[#f5f1ea] mb-6">
+        <section className="bg-white border border-[#1a1612]/8 p-7">
+          <h2 className="font-playfair text-lg text-[#1a1612] mb-6">
             Primary Image
           </h2>
           <div className="grid grid-cols-1 lg:grid-cols-[1fr_200px] gap-5 items-start">
             <div>
-              <label className="block text-[10px] tracking-[0.25em] uppercase text-[#a8a198] mb-2">
+              <label className="block text-[10px] tracking-[0.25em] uppercase text-[#6b655e] mb-2">
                 Image URL
               </label>
               <input
@@ -315,13 +315,13 @@ export function ProductForm({ mode, initial }: Props) {
                 value={imageUrl}
                 onChange={(e) => setImageUrl(e.target.value)}
                 placeholder="https://…"
-                className="w-full px-4 py-3 bg-[#0a0a0a] border border-white/10 text-[#f5f1ea] placeholder-[#6b655e] focus:border-[#d4a843] focus:outline-none transition-colors"
+                className="w-full px-4 py-3 bg-white border border-[#1a1612]/15 text-[#1a1612] placeholder-[#a8a198] focus:border-[#d4a843] focus:ring-1 focus:ring-[#d4a843] focus:outline-none transition-colors"
               />
-              <p className="text-xs text-[#6b655e] mt-2">
+              <p className="text-xs text-[#a8a198] mt-2">
                 Use a full https URL. Demo only — no upload.
               </p>
             </div>
-            <div className="relative w-full h-[150px] bg-[#0a0a0a] border border-white/10 overflow-hidden">
+            <div className="relative w-full h-[150px] bg-[#faf8f3] border border-[#1a1612]/8 overflow-hidden">
               {imageUrl ? (
                 <Image
                   src={imageUrl}
@@ -334,7 +334,7 @@ export function ProductForm({ mode, initial }: Props) {
                   }}
                 />
               ) : (
-                <div className="absolute inset-0 flex items-center justify-center text-xs text-[#6b655e] tracking-[0.2em] uppercase">
+                <div className="absolute inset-0 flex items-center justify-center text-xs text-[#a8a198] tracking-[0.2em] uppercase">
                   Preview
                 </div>
               )}
@@ -343,13 +343,13 @@ export function ProductForm({ mode, initial }: Props) {
         </section>
 
         {/* Status */}
-        <section className="bg-[#111] border border-white/5 p-7">
-          <h2 className="font-playfair text-lg text-[#f5f1ea] mb-6">
+        <section className="bg-white border border-[#1a1612]/8 p-7">
+          <h2 className="font-playfair text-lg text-[#1a1612] mb-6">
             Visibility
           </h2>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
             <div>
-              <label className="block text-[10px] tracking-[0.25em] uppercase text-[#a8a198] mb-2">
+              <label className="block text-[10px] tracking-[0.25em] uppercase text-[#6b655e] mb-2">
                 Status
               </label>
               <select
@@ -357,7 +357,7 @@ export function ProductForm({ mode, initial }: Props) {
                 onChange={(e) =>
                   setStatus(e.target.value as "active" | "draft")
                 }
-                className="w-full px-4 py-3 bg-[#0a0a0a] border border-white/10 text-[#f5f1ea] focus:border-[#d4a843] focus:outline-none transition-colors"
+                className="w-full px-4 py-3 bg-white border border-[#1a1612]/15 text-[#1a1612] focus:border-[#d4a843] focus:ring-1 focus:ring-[#d4a843] focus:outline-none transition-colors"
               >
                 <option value="active">Active</option>
                 <option value="draft">Draft</option>
@@ -367,7 +367,7 @@ export function ProductForm({ mode, initial }: Props) {
               <label className="inline-flex items-center gap-3 cursor-pointer select-none group mt-6">
                 <span
                   className={`relative w-10 h-5 rounded-full transition-colors ${
-                    isFeatured ? "bg-[#d4a843]" : "bg-white/10"
+                    isFeatured ? "bg-[#d4a843]" : "bg-[#1a1612]/15"
                   }`}
                 >
                   <input
@@ -377,12 +377,12 @@ export function ProductForm({ mode, initial }: Props) {
                     className="sr-only"
                   />
                   <span
-                    className={`absolute top-0.5 w-4 h-4 rounded-full bg-[#0a0a0a] transition-transform ${
+                    className={`absolute top-0.5 w-4 h-4 rounded-full bg-white transition-transform shadow-sm ${
                       isFeatured ? "translate-x-5" : "translate-x-0.5"
                     }`}
                   />
                 </span>
-                <span className="text-sm text-[#f5f1ea] tracking-wide">
+                <span className="text-sm text-[#1a1612] tracking-wide">
                   Featured product
                 </span>
               </label>
@@ -391,15 +391,15 @@ export function ProductForm({ mode, initial }: Props) {
         </section>
 
         {/* Specifications */}
-        <section className="bg-[#111] border border-white/5 p-7">
+        <section className="bg-white border border-[#1a1612]/8 p-7">
           <div className="flex items-center justify-between mb-6">
-            <h2 className="font-playfair text-lg text-[#f5f1ea]">
+            <h2 className="font-playfair text-lg text-[#1a1612]">
               Specifications
             </h2>
             <button
               type="button"
               onClick={addSpec}
-              className="inline-flex items-center gap-1.5 text-xs tracking-[0.15em] uppercase text-[#a8a198] hover:text-[#d4a843] transition-colors"
+              className="inline-flex items-center gap-1.5 text-xs tracking-[0.15em] uppercase text-[#6b655e] hover:text-[#b8933a] transition-colors"
             >
               <Plus className="w-3.5 h-3.5" strokeWidth={1.5} />
               Add Row
@@ -416,19 +416,19 @@ export function ProductForm({ mode, initial }: Props) {
                   value={row.key}
                   onChange={(e) => updateSpec(row.id, "key", e.target.value)}
                   placeholder="Key (e.g. Table Size)"
-                  className="px-3 py-2.5 bg-[#0a0a0a] border border-white/10 text-[#f5f1ea] placeholder-[#6b655e] focus:border-[#d4a843] focus:outline-none transition-colors text-sm"
+                  className="px-3 py-2.5 bg-white border border-[#1a1612]/15 text-[#1a1612] placeholder-[#a8a198] focus:border-[#d4a843] focus:ring-1 focus:ring-[#d4a843] focus:outline-none transition-colors text-sm"
                 />
                 <input
                   type="text"
                   value={row.value}
                   onChange={(e) => updateSpec(row.id, "value", e.target.value)}
                   placeholder="Value"
-                  className="px-3 py-2.5 bg-[#0a0a0a] border border-white/10 text-[#f5f1ea] placeholder-[#6b655e] focus:border-[#d4a843] focus:outline-none transition-colors text-sm"
+                  className="px-3 py-2.5 bg-white border border-[#1a1612]/15 text-[#1a1612] placeholder-[#a8a198] focus:border-[#d4a843] focus:ring-1 focus:ring-[#d4a843] focus:outline-none transition-colors text-sm"
                 />
                 <button
                   type="button"
                   onClick={() => removeSpec(row.id)}
-                  className="p-2.5 text-[#a8a198] hover:text-[#c0392b] hover:bg-white/[0.03] transition-all"
+                  className="p-2.5 text-[#6b655e] hover:text-[#c0392b] hover:bg-[#faf8f3] transition-all"
                   aria-label="Remove spec"
                 >
                   <X className="w-3.5 h-3.5" strokeWidth={1.5} />
@@ -453,17 +453,17 @@ export function ProductForm({ mode, initial }: Props) {
       {/* Confirm modal */}
       {confirmDelete && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 px-6"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-[#1a1612]/40 backdrop-blur-sm px-6"
           onClick={() => setConfirmDelete(false)}
         >
           <div
-            className="bg-[#111] border border-white/10 p-8 max-w-sm w-full"
+            className="bg-white border border-[#1a1612]/8 p-8 max-w-sm w-full shadow-2xl"
             onClick={(e) => e.stopPropagation()}
           >
-            <h3 className="font-playfair text-xl text-[#f5f1ea] mb-2">
+            <h3 className="font-playfair text-xl text-[#1a1612] mb-2">
               Delete Product?
             </h3>
-            <p className="text-sm text-[#a8a198] mb-6">
+            <p className="text-sm text-[#6b655e] mb-6">
               This will permanently remove &ldquo;{initial?.name}&rdquo;.
             </p>
             <div className="flex gap-3 justify-end">
@@ -477,7 +477,7 @@ export function ProductForm({ mode, initial }: Props) {
               <button
                 type="button"
                 onClick={handleDelete}
-                className="inline-flex items-center gap-2 px-4 py-2 bg-[#c0392b] hover:bg-[#c0392b]/80 text-white text-xs tracking-[0.1em] uppercase font-medium transition-colors"
+                className="inline-flex items-center gap-2 px-4 py-2 bg-[#c0392b] hover:bg-[#a53122] text-white text-xs tracking-[0.1em] uppercase font-medium transition-colors"
               >
                 <Trash2 className="w-3.5 h-3.5" strokeWidth={1.5} />
                 Delete
