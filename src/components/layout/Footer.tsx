@@ -1,419 +1,195 @@
 import Link from "next/link"
-import { Phone, MapPin } from "lucide-react"
+import { Phone, MapPin, Clock } from "lucide-react"
 
 function FacebookIcon({ className }: { className?: string }) {
   return (
-    <svg
-      className={className}
-      viewBox="0 0 24 24"
-      fill="currentColor"
-      aria-hidden="true"
-    >
-      <path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" />
+    <svg className={className} viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+      <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
     </svg>
   )
 }
 
 function InstagramIcon({ className }: { className?: string }) {
   return (
-    <svg
-      className={className}
-      viewBox="0 0 24 24"
-      fill="currentColor"
-      aria-hidden="true"
-    >
-      <path d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z" />
+    <svg className={className} viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12 2.163c3.204 0 3.584.012 4.849.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.07 1.645.07 4.849 0 3.205-.012 3.584-.07 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.849.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
     </svg>
   )
 }
 
+const FOOTER_COLS = [
+  {
+    title: "Collection",
+    links: [
+      { label: "Billiards", href: "/billiards" },
+      { label: "Games", href: "/games" },
+      { label: "Furniture", href: "/furniture" },
+      { label: "Playsets", href: "/playsets" },
+      { label: "Outdoor", href: "/outdoor" },
+    ],
+  },
+  {
+    title: "Experience",
+    links: [
+      { label: "Our Showroom", href: "/experience" },
+      { label: "Services", href: "/services" },
+      { label: "Our Story", href: "/about" },
+      { label: "FAQs", href: "/faq" },
+      { label: "Pool League", href: "/pool-league" },
+    ],
+  },
+  {
+    title: "Connect",
+    links: [
+      { label: "Contact", href: "/contact" },
+      { label: "Request a Quote", href: "/contact" },
+      { label: "Dart League", href: "/dart-league" },
+      { label: "Financing", href: "/contact" },
+    ],
+  },
+]
+
 export function Footer() {
   return (
-    <footer className="bg-ace-footer text-gray-300">
-      {/* Top Section: Logo + Tagline */}
-      <div className="border-b border-white/10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
-            <Link href="/" className="flex flex-col items-start leading-none">
-              <span
-                className="text-3xl font-bold italic font-playfair bg-clip-text text-transparent"
-                style={{
-                  backgroundImage:
-                    "linear-gradient(135deg, #c0392b, #e67e22, #f1c40f)",
-                }}
-              >
+    <footer className="bg-[#050505] border-t border-white/5">
+      {/* MANTRA MARQUEE */}
+      <div className="border-y border-white/5 py-8 lg:py-12 overflow-hidden">
+        <div className="flex whitespace-nowrap animate-marquee">
+          {Array.from({ length: 6 }).map((_, i) => (
+            <div key={i} className="flex items-center gap-10 px-6">
+              <span className="font-playfair italic text-4xl lg:text-6xl text-[#f5f1ea]">
+                Rack.
+              </span>
+              <span className="font-playfair italic text-4xl lg:text-6xl gold-gradient-text">
+                Break.
+              </span>
+              <span className="font-playfair italic text-4xl lg:text-6xl text-[#f5f1ea]">
+                Gather.
+              </span>
+              <span className="font-playfair italic text-4xl lg:text-6xl gold-gradient-text">
+                Live.
+              </span>
+              <span className="w-2 h-2 rounded-full bg-[#d4a843]" />
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* MAIN FOOTER */}
+      <div className="max-w-[1600px] mx-auto px-6 lg:px-10 py-16 lg:py-24">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
+          {/* Brand */}
+          <div className="lg:col-span-2">
+            <Link href="/" className="inline-flex flex-col items-start leading-[0.9] mb-6">
+              <span className="ace-gradient-text text-5xl font-black italic font-playfair">
                 ACE
               </span>
-              <span className="text-xs font-bebas tracking-wider text-gray-400 block">
+              <span className="text-xs font-display tracking-[0.3em] text-[#a8a198] mt-1">
                 GAME ROOM GALLERY
               </span>
             </Link>
-            <div className="hidden sm:block w-px h-8 bg-white/10" />
-            <p className="text-sm text-gray-400 font-inter">
-              Fort Wayne&apos;s #1 Game Room Showroom
+            <p className="text-[#a8a198] text-sm leading-relaxed max-w-sm mb-8">
+              Fort Wayne&apos;s most curated game room showroom. Over 25 years creating the places families gather, friends compete, and memories are made.
             </p>
-          </div>
-        </div>
-      </div>
 
-      {/* Middle Section: Sitemap Grid */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-8">
-          {/* Billiards */}
-          <div>
-            <h3 className="text-white font-semibold text-sm mb-3">
-              Billiards
-            </h3>
-            <ul className="space-y-2">
-              <li>
-                <Link
-                  href="/billiards/billiard-tables"
-                  className="text-sm text-gray-400 hover:text-white transition-colors"
-                >
-                  Billiard Tables
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/billiards/billiard-cloth"
-                  className="text-sm text-gray-400 hover:text-white transition-colors"
-                >
-                  Billiard Cloth
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/billiards/cues"
-                  className="text-sm text-gray-400 hover:text-white transition-colors"
-                >
-                  Cues
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/billiards/cases"
-                  className="text-sm text-gray-400 hover:text-white transition-colors"
-                >
-                  Cases
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/billiards/lighting"
-                  className="text-sm text-gray-400 hover:text-white transition-colors"
-                >
-                  Lighting
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/billiards/accessories"
-                  className="text-sm text-gray-400 hover:text-white transition-colors"
-                >
-                  Accessories
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Games */}
-          <div>
-            <h3 className="text-white font-semibold text-sm mb-3">Games</h3>
-            <ul className="space-y-2">
-              <li>
-                <Link
-                  href="/games/pinball"
-                  className="text-sm text-gray-400 hover:text-white transition-colors"
-                >
-                  Pinball
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/games/arcade-games"
-                  className="text-sm text-gray-400 hover:text-white transition-colors"
-                >
-                  Arcade Games
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/games/foosball"
-                  className="text-sm text-gray-400 hover:text-white transition-colors"
-                >
-                  Foosball
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/games/air-hockey"
-                  className="text-sm text-gray-400 hover:text-white transition-colors"
-                >
-                  Air Hockey
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/games/ping-pong"
-                  className="text-sm text-gray-400 hover:text-white transition-colors"
-                >
-                  Ping Pong
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/games/darts"
-                  className="text-sm text-gray-400 hover:text-white transition-colors"
-                >
-                  Darts
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/games/shuffleboard"
-                  className="text-sm text-gray-400 hover:text-white transition-colors"
-                >
-                  Shuffleboard
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/games/jukebox"
-                  className="text-sm text-gray-400 hover:text-white transition-colors"
-                >
-                  Jukebox
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Furniture */}
-          <div>
-            <h3 className="text-white font-semibold text-sm mb-3">
-              Furniture
-            </h3>
-            <ul className="space-y-2">
-              <li>
-                <Link
-                  href="/furniture/bars"
-                  className="text-sm text-gray-400 hover:text-white transition-colors"
-                >
-                  Bars
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/furniture/bar-stools"
-                  className="text-sm text-gray-400 hover:text-white transition-colors"
-                >
-                  Bar Stools
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/furniture/pub-tables"
-                  className="text-sm text-gray-400 hover:text-white transition-colors"
-                >
-                  Pub Tables
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/furniture/game-chairs"
-                  className="text-sm text-gray-400 hover:text-white transition-colors"
-                >
-                  Game Chairs
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/furniture/poker-tables"
-                  className="text-sm text-gray-400 hover:text-white transition-colors"
-                >
-                  Poker Tables
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/furniture/neons"
-                  className="text-sm text-gray-400 hover:text-white transition-colors"
-                >
-                  Neons
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Playsets / Outdoor / Services */}
-          <div>
-            <h3 className="text-white font-semibold text-sm mb-3">More</h3>
-            <ul className="space-y-2">
-              <li>
-                <Link
-                  href="/playsets"
-                  className="text-sm text-gray-400 hover:text-white transition-colors"
-                >
-                  Playsets
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/outdoor"
-                  className="text-sm text-gray-400 hover:text-white transition-colors"
-                >
-                  Outdoor
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/services"
-                  className="text-sm text-gray-400 hover:text-white transition-colors"
-                >
-                  Services
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/pool-league"
-                  className="text-sm text-gray-400 hover:text-white transition-colors"
-                >
-                  Pool League
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/dart-league"
-                  className="text-sm text-gray-400 hover:text-white transition-colors"
-                >
-                  Dart League
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Contact Us */}
-          <div>
-            <h3 className="text-white font-semibold text-sm mb-3">
-              Contact Us
-            </h3>
-            <ul className="space-y-2">
-              <li>
-                <Link
-                  href="/contact"
-                  className="text-sm text-gray-400 hover:text-white transition-colors"
-                >
-                  Contact Form
-                </Link>
-              </li>
-              <li>
-                <a
-                  href="tel:+12604323443"
-                  className="text-sm text-gray-400 hover:text-white transition-colors"
-                >
-                  (260) 432-3443
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://maps.google.com/?q=2525+W+Jefferson+Blvd+Fort+Wayne+IN+46802"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-sm text-gray-400 hover:text-white transition-colors"
-                >
-                  Get Directions
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          {/* About Us */}
-          <div>
-            <h3 className="text-white font-semibold text-sm mb-3">About Us</h3>
-            <ul className="space-y-2">
-              <li>
-                <Link
-                  href="/about"
-                  className="text-sm text-gray-400 hover:text-white transition-colors"
-                >
-                  Our Story
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/faq"
-                  className="text-sm text-gray-400 hover:text-white transition-colors"
-                >
-                  FAQ
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/admin"
-                  className="text-sm text-gray-400 hover:text-white transition-colors"
-                >
-                  Admin Login
-                </Link>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      {/* Bottom Section: Contact Details + Social + Copyright */}
-      <div className="border-t border-white/10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-          <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
-            {/* Contact + Hours */}
-            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-8 text-sm text-gray-400">
-              <div className="flex items-center gap-2">
-                <MapPin className="w-4 h-4 text-ace-cyan flex-shrink-0" />
-                <span>
-                  2525 W Jefferson Blvd, Fort Wayne, IN 46802
-                </span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Phone className="w-4 h-4 text-ace-cyan flex-shrink-0" />
-                <span>
-                  Phone: (260) 432-3443 | Fax: (260) 436-2507
-                </span>
-              </div>
-            </div>
-
-            {/* Hours */}
-            <div className="text-sm text-gray-400">
-              <span className="text-white font-medium">Hours:</span> Mon-Sat
-              10AM-6PM | Sun Closed
-            </div>
-          </div>
-
-          {/* Divider */}
-          <div className="border-t border-white/5 mt-6 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-            {/* Social Icons */}
-            <div className="flex items-center gap-3">
+            {/* Social */}
+            <div className="flex gap-3">
               <a
                 href="https://facebook.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2 rounded-full bg-white/5 hover:bg-ace-cyan/20 text-gray-400 hover:text-ace-cyan transition-all"
+                className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-[#a8a198] hover:border-[#d4a843] hover:text-[#d4a843] transition-all"
                 aria-label="Facebook"
               >
                 <FacebookIcon className="w-4 h-4" />
               </a>
               <a
-                href="https://instagram.com"
+                href="https://instagram.com/acegameroomgallery"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2 rounded-full bg-white/5 hover:bg-ace-cyan/20 text-gray-400 hover:text-ace-cyan transition-all"
+                className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-[#a8a198] hover:border-[#d4a843] hover:text-[#d4a843] transition-all"
                 aria-label="Instagram"
               >
                 <InstagramIcon className="w-4 h-4" />
               </a>
             </div>
+          </div>
 
-            {/* Copyright */}
-            <p className="text-xs text-gray-500">
-              &copy; 2026 Ace Game Room Gallery. All rights reserved.
-            </p>
+          {/* Link Columns */}
+          {FOOTER_COLS.map((col) => (
+            <div key={col.title}>
+              <h4 className="font-display text-[11px] tracking-[0.25em] text-[#d4a843] uppercase mb-5">
+                {col.title}
+              </h4>
+              <ul className="space-y-3">
+                {col.links.map((link) => (
+                  <li key={link.label}>
+                    <Link
+                      href={link.href}
+                      className="text-sm text-[#a8a198] hover:text-[#f5f1ea] transition-colors link-underline"
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+
+        {/* CONTACT BAND */}
+        <div className="mt-16 pt-10 border-t border-white/5 grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div>
+            <p className="eyebrow mb-3">Visit</p>
+            <a
+              href="https://maps.google.com/?q=2525+W+Jefferson+Blvd,+Fort+Wayne,+IN+46802"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex items-start gap-3 text-[#e8e2d5] hover:text-[#d4a843] transition-colors"
+            >
+              <MapPin className="w-5 h-5 mt-0.5 text-[#d4a843] flex-shrink-0" />
+              <div>
+                <div className="font-medium">2525 W Jefferson Blvd</div>
+                <div className="text-sm text-[#a8a198]">Fort Wayne, IN 46802</div>
+              </div>
+            </a>
+          </div>
+          <div>
+            <p className="eyebrow mb-3">Call</p>
+            <div className="flex items-start gap-3">
+              <Phone className="w-5 h-5 mt-0.5 text-[#d4a843] flex-shrink-0" />
+              <div>
+                <a href="tel:+12604323443" className="block font-medium text-[#e8e2d5] hover:text-[#d4a843] transition-colors">
+                  (260) 432-3443
+                </a>
+                <div className="text-sm text-[#a8a198]">Fax: (260) 436-2507</div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <p className="eyebrow mb-3">Hours</p>
+            <div className="flex items-start gap-3">
+              <Clock className="w-5 h-5 mt-0.5 text-[#d4a843] flex-shrink-0" />
+              <div>
+                <div className="font-medium text-[#e8e2d5]">Monday — Saturday</div>
+                <div className="text-sm text-[#a8a198]">10:00 AM — 6:00 PM</div>
+                <div className="text-xs text-[#6b655e] mt-1">Sunday — Closed</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* BOTTOM BAR */}
+      <div className="border-t border-white/5 py-6">
+        <div className="max-w-[1600px] mx-auto px-6 lg:px-10 flex flex-col md:flex-row items-center justify-between gap-3">
+          <p className="text-xs text-[#6b655e]">
+            © {new Date().getFullYear()} Ace Game Room Gallery. Family owned since 1992.
+          </p>
+          <div className="flex items-center gap-6 text-xs text-[#6b655e]">
+            <Link href="/admin" className="hover:text-[#d4a843] transition-colors">Admin</Link>
+            <Link href="/faq" className="hover:text-[#d4a843] transition-colors">FAQ</Link>
+            <Link href="/contact" className="hover:text-[#d4a843] transition-colors">Contact</Link>
           </div>
         </div>
       </div>

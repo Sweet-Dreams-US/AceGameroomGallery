@@ -1,116 +1,268 @@
 "use client"
 
-import { useRouter } from "next/navigation"
+import { useEffect, useMemo, useState } from "react"
 import Link from "next/link"
-import { Plus, Star } from "lucide-react"
-import DataTable, { type Column } from "@/components/admin/DataTable"
-import { ADMIN_MOCK_PRODUCTS } from "@/lib/mock-data"
+import Image from "next/image"
+import {
+  Plus,
+  Search,
+  Pencil,
+  Trash2,
+  Package,
+} from "lucide-react"
+import {
+  getItems,
+  seedItems,
+  deleteItem,
+  STORAGE_KEYS,
+} from "@/lib/admin-storage"
+import {
+  ADMIN_MOCK_PRODUCTS,
+  ADMIN_MOCK_CATEGORIES,
+} from "@/lib/mock-data"
 import type { Product } from "@/lib/types"
 
 export default function AdminProductsPage() {
-  const router = useRouter()
+  const [products, setProducts] = useState<Product[]>([])
+  const [search, setSearch] = useState("")
+  const [categoryFilter, setCategoryFilter] = useState("")
+  const [loaded, setLoaded] = useState(false)
+  const [confirmId, setConfirmId] = useState<string | null>(null)
 
-  const columns: Column<Product>[] = [
-    {
-      key: "images",
-      label: "Image",
-      sortable: false,
-      render: (item) => {
-        const primaryImage = item.images?.find((img) => img.is_primary) || item.images?.[0]
-        return primaryImage ? (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img
-            src={primaryImage.image_url}
-            alt={item.name}
-            className="w-10 h-10 rounded-lg object-cover"
-          />
-        ) : (
-          <div className="w-10 h-10 rounded-lg bg-gray-100 flex items-center justify-center text-gray-400 text-xs">
-            N/A
-          </div>
-        )
-      },
-    },
-    {
-      key: "name",
-      label: "Name",
-      render: (item) => (
-        <span className="font-medium text-gray-900">{item.name}</span>
-      ),
-    },
-    {
-      key: "category_id",
-      label: "Category",
-      render: (item) => (
-        <span className="text-gray-600">{item.category?.name || "—"}</span>
-      ),
-    },
-    {
-      key: "brand_id",
-      label: "Brand",
-      render: (item) => (
-        <span className="text-gray-600">{item.brand?.name || "—"}</span>
-      ),
-    },
-    {
-      key: "status",
-      label: "Status",
-      render: (item) => (
-        <span
-          className={`inline-flex px-2.5 py-0.5 rounded-full text-xs font-medium ${
-            item.status === "active"
-              ? "bg-green-50 text-green-700"
-              : "bg-gray-100 text-gray-600"
-          }`}
-        >
-          {item.status === "active" ? "Active" : "Draft"}
-        </span>
-      ),
-    },
-    {
-      key: "is_featured",
-      label: "Featured",
-      render: (item) => (
-        <Star
-          className={`w-4 h-4 ${
-            item.is_featured
-              ? "text-ace-gold fill-ace-gold"
-              : "text-gray-300"
-          }`}
-        />
-      ),
-    },
-  ]
+  const refresh = () => {
+    const items = getItems<Product>(STORAGE_KEYS.PRODUCTS, [])
+    setProducts(items)
+  }
+
+  useEffect(() => {
+    seedItems<Product>(STORAGE_KEYS.PRODUCTS, ADMIN_MOCK_PRODUCTS)
+    refresh()
+    setLoaded(true)
+  }, [])
+
+  const filtered = useMemo(() => {
+    return products.filter((p) => {
+      const matchesSearch =
+        !search ||
+        p.name.toLowerCase().includes(search.toLowerCase()) ||
+        p.slug.toLowerCase().includes(search.toLowerCase())
+      const matchesCategory =
+        !categoryFilter || p.category_id === categoryFilter
+      return matchesSearch && matchesCategory
+    })
+  }, [products, search, categoryFilter])
+
+  const handleDelete = (id: string) => {
+    deleteItem(STORAGE_KEYS.PRODUCTS, id)
+    setConfirmId(null)
+    refresh()
+  }
+
+  const categoryName = (id: string) =>
+    ADMIN_MOCK_CATEGORIES.find((c) => c.id === id)?.name || "—"
 
   return (
-    <div className="space-y-6">
+    <div className="max-w-[1400px]">
       {/* Header */}
-      <div className="flex items-center justify-between">
+      <div className="flex items-start justify-between mb-8 gap-4 flex-wrap">
         <div>
-          <h2 className="text-2xl font-bold text-gray-900 font-playfair">
+          <p className="eyebrow mb-3">/ Catalog</p>
+          <h1 className="font-playfair text-3xl lg:text-4xl text-[#f5f1ea]">
             Products
-          </h2>
-          <p className="text-sm text-gray-500 mt-1">
-            Manage your product catalog
+          </h1>
+          <p className="text-[#a8a198] mt-2">
+            {loaded ? `${products.length} total products` : "Loading…"}
           </p>
         </div>
-        <Link
-          href="/admin/products/new"
-          className="flex items-center gap-2 px-4 py-2.5 bg-ace-cyan text-white text-sm font-medium rounded-lg hover:bg-ace-cyan/90 transition-colors"
-        >
+        <Link href="/admin/products/new" className="btn-primary">
           <Plus className="w-4 h-4" />
-          Add Product
+          <span>Add Product</span>
         </Link>
       </div>
 
+      {/* Filters */}
+      <div className="bg-[#111] border border-white/5 p-5 mb-6 flex flex-col sm:flex-row gap-3">
+        <div className="relative flex-1">
+          <Search
+            className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#6b655e]"
+            strokeWidth={1.5}
+          />
+          <input
+            type="text"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            placeholder="Search by name or slug…"
+            className="w-full pl-10 pr-4 py-2.5 bg-[#0a0a0a] border border-white/10 text-[#f5f1ea] placeholder-[#6b655e] focus:border-[#d4a843] focus:outline-none transition-colors text-sm"
+          />
+        </div>
+        <select
+          value={categoryFilter}
+          onChange={(e) => setCategoryFilter(e.target.value)}
+          className="px-4 py-2.5 bg-[#0a0a0a] border border-white/10 text-[#f5f1ea] focus:border-[#d4a843] focus:outline-none transition-colors text-sm min-w-[200px]"
+        >
+          <option value="">All Categories</option>
+          {ADMIN_MOCK_CATEGORIES.map((c) => (
+            <option key={c.id} value={c.id}>
+              {c.name}
+            </option>
+          ))}
+        </select>
+      </div>
+
       {/* Table */}
-      <DataTable<Product>
-        columns={columns}
-        data={ADMIN_MOCK_PRODUCTS}
-        searchKey="name"
-        searchPlaceholder="Search products..."
-        onRowClick={(item) => router.push(`/admin/products/${item.id}/edit`)}
-      />
+      <div className="bg-[#111] border border-white/5">
+        {filtered.length === 0 ? (
+          <div className="p-16 text-center">
+            <Package
+              className="w-8 h-8 text-[#6b655e] mx-auto mb-3"
+              strokeWidth={1.5}
+            />
+            <p className="text-[#a8a198] text-sm">
+              {loaded ? "No products match your filters." : "Loading…"}
+            </p>
+          </div>
+        ) : (
+          <div className="overflow-x-auto">
+            <table className="w-full">
+              <thead>
+                <tr className="border-b border-white/5">
+                  <th className="text-left px-6 py-4 text-[10px] tracking-[0.25em] uppercase text-[#a8a198] font-normal">
+                    Image
+                  </th>
+                  <th className="text-left px-6 py-4 text-[10px] tracking-[0.25em] uppercase text-[#a8a198] font-normal">
+                    Name
+                  </th>
+                  <th className="text-left px-6 py-4 text-[10px] tracking-[0.25em] uppercase text-[#a8a198] font-normal">
+                    Category
+                  </th>
+                  <th className="text-left px-6 py-4 text-[10px] tracking-[0.25em] uppercase text-[#a8a198] font-normal">
+                    Brand
+                  </th>
+                  <th className="text-left px-6 py-4 text-[10px] tracking-[0.25em] uppercase text-[#a8a198] font-normal">
+                    Status
+                  </th>
+                  <th className="text-right px-6 py-4 text-[10px] tracking-[0.25em] uppercase text-[#a8a198] font-normal">
+                    Actions
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {filtered.map((p) => {
+                  const imageUrl =
+                    p.images?.[0]?.image_url ||
+                    "https://images.unsplash.com/photo-1611068661807-8e265276fbf4?w=100&h=100&fit=crop"
+                  return (
+                    <tr
+                      key={p.id}
+                      className="border-b border-white/5 last:border-0 hover:bg-white/[0.02] transition-colors"
+                    >
+                      <td className="px-6 py-3">
+                        <div className="relative w-12 h-12 bg-[#0a0a0a] border border-white/5 overflow-hidden">
+                          <Image
+                            src={imageUrl}
+                            alt={p.name}
+                            fill
+                            sizes="48px"
+                            className="object-cover"
+                          />
+                        </div>
+                      </td>
+                      <td className="px-6 py-3">
+                        <Link
+                          href={`/admin/products/edit?id=${p.id}`}
+                          className="text-sm text-[#f5f1ea] hover:text-[#d4a843] transition-colors"
+                        >
+                          {p.name}
+                        </Link>
+                        <div className="text-xs text-[#6b655e] mt-0.5">
+                          {p.slug}
+                        </div>
+                      </td>
+                      <td className="px-6 py-3 text-sm text-[#a8a198]">
+                        {categoryName(p.category_id)}
+                      </td>
+                      <td className="px-6 py-3 text-sm text-[#a8a198]">
+                        {p.brand?.name || "—"}
+                      </td>
+                      <td className="px-6 py-3">
+                        <span
+                          className={`inline-flex items-center gap-1.5 text-[10px] tracking-[0.2em] uppercase px-2 py-1 border ${
+                            p.status === "active"
+                              ? "text-[#d4a843] border-[#d4a843]/30 bg-[#d4a843]/5"
+                              : "text-[#a8a198] border-white/10 bg-white/[0.02]"
+                          }`}
+                        >
+                          <span
+                            className={`w-1.5 h-1.5 rounded-full ${
+                              p.status === "active"
+                                ? "bg-[#d4a843]"
+                                : "bg-[#6b655e]"
+                            }`}
+                          />
+                          {p.status}
+                        </span>
+                      </td>
+                      <td className="px-6 py-3">
+                        <div className="flex items-center justify-end gap-1">
+                          <Link
+                            href={`/admin/products/edit?id=${p.id}`}
+                            className="p-2 text-[#a8a198] hover:text-[#d4a843] hover:bg-white/[0.03] transition-all"
+                            aria-label="Edit"
+                          >
+                            <Pencil className="w-3.5 h-3.5" strokeWidth={1.5} />
+                          </Link>
+                          <button
+                            onClick={() => setConfirmId(p.id)}
+                            className="p-2 text-[#a8a198] hover:text-[#c0392b] hover:bg-white/[0.03] transition-all"
+                            aria-label="Delete"
+                          >
+                            <Trash2 className="w-3.5 h-3.5" strokeWidth={1.5} />
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                  )
+                })}
+              </tbody>
+            </table>
+          </div>
+        )}
+      </div>
+
+      {/* Confirm modal */}
+      {confirmId && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 px-6"
+          onClick={() => setConfirmId(null)}
+        >
+          <div
+            className="bg-[#111] border border-white/10 p-8 max-w-sm w-full"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <h3 className="font-playfair text-xl text-[#f5f1ea] mb-2">
+              Delete Product?
+            </h3>
+            <p className="text-sm text-[#a8a198] mb-6">
+              This cannot be undone.
+            </p>
+            <div className="flex gap-3 justify-end">
+              <button
+                onClick={() => setConfirmId(null)}
+                className="btn-secondary !py-2 !px-4 text-xs"
+              >
+                Cancel
+              </button>
+              <button
+                onClick={() => handleDelete(confirmId)}
+                className="inline-flex items-center gap-2 px-4 py-2 bg-[#c0392b] hover:bg-[#c0392b]/80 text-white text-xs tracking-[0.1em] uppercase font-medium transition-colors"
+              >
+                <Trash2 className="w-3.5 h-3.5" strokeWidth={1.5} />
+                Delete
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   )
 }

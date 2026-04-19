@@ -1,237 +1,411 @@
 "use client"
 
-import { useState } from "react"
-import { Plus, X, Pencil, Trash2, GripVertical } from "lucide-react"
+import { useEffect, useMemo, useState } from "react"
+import Image from "next/image"
+import { Plus, Pencil, Save, Trash2, X, ImageIcon } from "lucide-react"
+import {
+  addItem,
+  deleteItem,
+  getItems,
+  seedItems,
+  updateItem,
+  STORAGE_KEYS,
+} from "@/lib/admin-storage"
 import { ADMIN_MOCK_BANNERS } from "@/lib/mock-data"
 import type { HeroBanner } from "@/lib/types"
 
+const EMPTY_BANNER = (): HeroBanner => ({
+  id: "",
+  title: "",
+  subtitle: "",
+  image_url: "",
+  cta_text: "",
+  cta_link: "",
+  sort_order: 99,
+  is_active: true,
+  created_at: new Date().toISOString(),
+})
+
 export default function AdminBannersPage() {
-  const [banners, setBanners] = useState<HeroBanner[]>(ADMIN_MOCK_BANNERS)
-  const [modalOpen, setModalOpen] = useState(false)
+  const [banners, setBanners] = useState<HeroBanner[]>([])
+  const [draft, setDraft] = useState<HeroBanner>(EMPTY_BANNER())
   const [editingId, setEditingId] = useState<string | null>(null)
-  const [toast, setToast] = useState("")
+  const [loaded, setLoaded] = useState(false)
 
-  const [formTitle, setFormTitle] = useState("")
-  const [formSubtitle, setFormSubtitle] = useState("")
-  const [formImageUrl, setFormImageUrl] = useState("")
-  const [formCtaText, setFormCtaText] = useState("")
-  const [formCtaLink, setFormCtaLink] = useState("")
-  const [formSortOrder, setFormSortOrder] = useState(0)
-  const [formIsActive, setFormIsActive] = useState(true)
-
-  const showToast = (msg: string) => {
-    setToast(msg)
-    setTimeout(() => setToast(""), 3000)
-  }
-
-  const openAdd = () => {
-    setEditingId(null)
-    setFormTitle("")
-    setFormSubtitle("")
-    setFormImageUrl("")
-    setFormCtaText("")
-    setFormCtaLink("")
-    setFormSortOrder(banners.length + 1)
-    setFormIsActive(true)
-    setModalOpen(true)
-  }
-
-  const openEdit = (banner: HeroBanner) => {
-    setEditingId(banner.id)
-    setFormTitle(banner.title || "")
-    setFormSubtitle(banner.subtitle || "")
-    setFormImageUrl(banner.image_url)
-    setFormCtaText(banner.cta_text || "")
-    setFormCtaLink(banner.cta_link || "")
-    setFormSortOrder(banner.sort_order)
-    setFormIsActive(banner.is_active)
-    setModalOpen(true)
-  }
-
-  const handleSave = (e: React.FormEvent) => {
-    e.preventDefault()
-    if (editingId) {
-      setBanners((prev) =>
-        prev.map((b) =>
-          b.id === editingId
-            ? { ...b, title: formTitle || null, subtitle: formSubtitle || null, image_url: formImageUrl, cta_text: formCtaText || null, cta_link: formCtaLink || null, sort_order: formSortOrder, is_active: formIsActive }
-            : b
-        )
-      )
-      showToast("Banner updated!")
-    } else {
-      const newBanner: HeroBanner = {
-        id: `banner-new-${Date.now()}`,
-        title: formTitle || null,
-        subtitle: formSubtitle || null,
-        image_url: formImageUrl,
-        cta_text: formCtaText || null,
-        cta_link: formCtaLink || null,
-        sort_order: formSortOrder,
-        is_active: formIsActive,
-        created_at: new Date().toISOString(),
-      }
-      setBanners((prev) => [...prev, newBanner])
-      showToast("Banner created!")
-    }
-    setModalOpen(false)
-  }
-
-  const handleDelete = (id: string) => {
-    setBanners((prev) => prev.filter((b) => b.id !== id))
-    showToast("Banner deleted!")
-  }
-
-  const toggleActive = (id: string) => {
-    setBanners((prev) =>
-      prev.map((b) => (b.id === id ? { ...b, is_active: !b.is_active } : b))
+  const refresh = () => {
+    setBanners(
+      getItems<HeroBanner>(STORAGE_KEYS.BANNERS, []).sort(
+        (a, b) => a.sort_order - b.sort_order,
+      ),
     )
   }
 
-  return (
-    <div className="space-y-6">
-      {toast && (
-        <div className="fixed top-4 right-4 z-50 bg-green-600 text-white px-6 py-3 rounded-lg shadow-lg text-sm font-medium">
-          {toast}
-        </div>
-      )}
+  useEffect(() => {
+    seedItems<HeroBanner>(STORAGE_KEYS.BANNERS, ADMIN_MOCK_BANNERS)
+    refresh()
+    setLoaded(true)
+  }, [])
 
-      <div className="flex items-center justify-between">
-        <div>
-          <h2 className="text-2xl font-bold text-gray-900 font-playfair">Banners</h2>
-          <p className="text-sm text-gray-500 mt-1">Manage hero banners on the homepage</p>
-        </div>
-        <button
-          onClick={openAdd}
-          className="flex items-center gap-2 px-4 py-2.5 bg-ace-cyan text-white text-sm font-medium rounded-lg hover:bg-ace-cyan/90 transition-colors"
-        >
-          <Plus className="w-4 h-4" />
-          Add Banner
-        </button>
+  const editing = useMemo(
+    () => banners.find((b) => b.id === editingId) ?? null,
+    [banners, editingId],
+  )
+
+  const handleAdd = (e: React.FormEvent) => {
+    e.preventDefault()
+    if (!draft.image_url.trim()) return
+    const now = new Date().toISOString()
+    const banner: HeroBanner = {
+      ...draft,
+      id: `banner-${Date.now()}`,
+      created_at: now,
+    }
+    addItem(STORAGE_KEYS.BANNERS, banner)
+    setDraft(EMPTY_BANNER())
+    refresh()
+  }
+
+  const handleSaveEdit = (banner: HeroBanner) => {
+    updateItem(STORAGE_KEYS.BANNERS, banner)
+    setEditingId(null)
+    refresh()
+  }
+
+  const handleDelete = (id: string) => {
+    deleteItem(STORAGE_KEYS.BANNERS, id)
+    if (editingId === id) setEditingId(null)
+    refresh()
+  }
+
+  const toggleActive = (banner: HeroBanner) => {
+    updateItem<HeroBanner>(STORAGE_KEYS.BANNERS, {
+      ...banner,
+      is_active: !banner.is_active,
+    })
+    refresh()
+  }
+
+  return (
+    <div className="max-w-[1200px]">
+      {/* Header */}
+      <div className="mb-8">
+        <p className="eyebrow mb-3">/ Marketing</p>
+        <h1 className="font-playfair text-3xl lg:text-4xl text-[#f5f1ea]">
+          Hero Banners
+        </h1>
+        <p className="text-[#a8a198] mt-2">
+          {loaded ? `${banners.length} banners` : "Loading…"}
+        </p>
       </div>
 
-      {/* Banner list */}
+      {/* Add form */}
+      <form
+        onSubmit={handleAdd}
+        className="bg-[#111] border border-white/5 p-7 mb-8"
+      >
+        <div className="flex items-center gap-2 mb-5">
+          <Plus className="w-4 h-4 text-[#d4a843]" strokeWidth={1.5} />
+          <h2 className="font-playfair text-lg text-[#f5f1ea]">
+            Add New Banner
+          </h2>
+        </div>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+          <FieldInput
+            label="Title"
+            value={draft.title ?? ""}
+            onChange={(v) => setDraft({ ...draft, title: v })}
+            placeholder="Premium Pool Tables"
+          />
+          <FieldInput
+            label="Subtitle"
+            value={draft.subtitle ?? ""}
+            onChange={(v) => setDraft({ ...draft, subtitle: v })}
+            placeholder="Fort Wayne's #1 Selection"
+          />
+          <FieldInput
+            label="Image URL"
+            type="url"
+            required
+            value={draft.image_url}
+            onChange={(v) => setDraft({ ...draft, image_url: v })}
+            placeholder="https://…"
+            className="lg:col-span-2"
+          />
+          <FieldInput
+            label="CTA Text"
+            value={draft.cta_text ?? ""}
+            onChange={(v) => setDraft({ ...draft, cta_text: v })}
+            placeholder="Shop Billiards"
+          />
+          <FieldInput
+            label="CTA Link"
+            value={draft.cta_link ?? ""}
+            onChange={(v) => setDraft({ ...draft, cta_link: v })}
+            placeholder="/billiards"
+          />
+          <FieldInput
+            label="Sort Order"
+            type="number"
+            value={String(draft.sort_order)}
+            onChange={(v) => setDraft({ ...draft, sort_order: Number(v) || 0 })}
+            placeholder="1"
+          />
+          <div className="flex items-center mt-7">
+            <label className="inline-flex items-center gap-3 cursor-pointer select-none">
+              <Toggle
+                active={draft.is_active}
+                onChange={(v) => setDraft({ ...draft, is_active: v })}
+              />
+              <span className="text-sm text-[#f5f1ea]">Active</span>
+            </label>
+          </div>
+        </div>
+
+        <div className="flex justify-end mt-6">
+          <button type="submit" className="btn-primary">
+            <Plus className="w-4 h-4" />
+            <span>Add Banner</span>
+          </button>
+        </div>
+      </form>
+
+      {/* List */}
       <div className="space-y-3">
-        {banners
-          .sort((a, b) => a.sort_order - b.sort_order)
-          .map((banner) => (
-            <div
-              key={banner.id}
-              className="bg-white rounded-xl border border-gray-200 overflow-hidden flex"
-            >
-              {/* Image preview */}
-              <div className="w-48 h-32 flex-shrink-0 bg-gray-100">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={banner.image_url}
-                  alt={banner.title || "Banner"}
-                  className="w-full h-full object-cover"
+        {banners.length === 0 ? (
+          <div className="bg-[#111] border border-white/5 p-16 text-center">
+            <ImageIcon
+              className="w-8 h-8 text-[#6b655e] mx-auto mb-3"
+              strokeWidth={1.5}
+            />
+            <p className="text-[#a8a198] text-sm">
+              No banners yet. Add your first one above.
+            </p>
+          </div>
+        ) : (
+          banners.map((banner) => {
+            const isEditing = editingId === banner.id
+            if (isEditing && editing) {
+              return (
+                <EditRow
+                  key={banner.id}
+                  banner={editing}
+                  onCancel={() => setEditingId(null)}
+                  onSave={handleSaveEdit}
                 />
-              </div>
-              {/* Content */}
-              <div className="flex-1 p-4 flex items-center">
-                <div className="flex-1">
-                  <div className="flex items-center gap-2">
-                    <GripVertical className="w-4 h-4 text-gray-300" />
-                    <h4 className="font-medium text-gray-900">{banner.title || "Untitled"}</h4>
+              )
+            }
+            return (
+              <div
+                key={banner.id}
+                className="bg-[#111] border border-white/5 p-5 flex items-center gap-5"
+              >
+                <div className="relative w-24 h-16 bg-[#0a0a0a] border border-white/10 overflow-hidden flex-shrink-0">
+                  {banner.image_url && (
+                    <Image
+                      src={banner.image_url}
+                      alt={banner.title || "Banner"}
+                      fill
+                      sizes="96px"
+                      className="object-cover"
+                    />
+                  )}
+                </div>
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-center gap-3 flex-wrap">
+                    <div className="text-sm text-[#f5f1ea] font-medium">
+                      {banner.title || "Untitled Banner"}
+                    </div>
                     <span
-                      className={`inline-flex px-2 py-0.5 rounded-full text-xs font-medium ${
+                      className={`inline-flex items-center gap-1 text-[10px] tracking-[0.2em] uppercase px-2 py-0.5 border ${
                         banner.is_active
-                          ? "bg-green-50 text-green-700"
-                          : "bg-gray-100 text-gray-500"
+                          ? "text-[#d4a843] border-[#d4a843]/30 bg-[#d4a843]/5"
+                          : "text-[#6b655e] border-white/10"
                       }`}
                     >
+                      <span
+                        className={`w-1.5 h-1.5 rounded-full ${
+                          banner.is_active
+                            ? "bg-[#d4a843]"
+                            : "bg-[#6b655e]"
+                        }`}
+                      />
                       {banner.is_active ? "Active" : "Inactive"}
                     </span>
                   </div>
-                  {banner.subtitle && (
-                    <p className="text-sm text-gray-500 mt-0.5">{banner.subtitle}</p>
-                  )}
-                  {banner.cta_text && (
-                    <p className="text-xs text-gray-400 mt-1">
-                      CTA: {banner.cta_text} -&gt; {banner.cta_link}
-                    </p>
-                  )}
+                  <div className="text-xs text-[#a8a198] mt-1 truncate">
+                    {banner.subtitle || "—"} &middot; Order:{" "}
+                    {banner.sort_order}
+                  </div>
                 </div>
-                <div className="flex items-center gap-2 ml-4">
+                <div className="flex items-center gap-1">
                   <button
-                    onClick={() => toggleActive(banner.id)}
-                    className={`px-3 py-1.5 text-xs font-medium rounded-lg transition-colors ${
-                      banner.is_active
-                        ? "bg-gray-100 text-gray-600 hover:bg-gray-200"
-                        : "bg-green-50 text-green-700 hover:bg-green-100"
-                    }`}
+                    onClick={() => toggleActive(banner)}
+                    className="p-2 text-xs text-[#a8a198] hover:text-[#d4a843] transition-colors tracking-[0.15em] uppercase"
                   >
-                    {banner.is_active ? "Deactivate" : "Activate"}
+                    Toggle
                   </button>
-                  <button onClick={() => openEdit(banner)} className="p-1.5 text-gray-400 hover:text-ace-cyan rounded">
-                    <Pencil className="w-4 h-4" />
+                  <button
+                    onClick={() => setEditingId(banner.id)}
+                    className="p-2 text-[#a8a198] hover:text-[#d4a843] hover:bg-white/[0.03] transition-all"
+                    aria-label="Edit"
+                  >
+                    <Pencil className="w-3.5 h-3.5" strokeWidth={1.5} />
                   </button>
-                  <button onClick={() => handleDelete(banner.id)} className="p-1.5 text-gray-400 hover:text-ace-red rounded">
-                    <Trash2 className="w-4 h-4" />
+                  <button
+                    onClick={() => handleDelete(banner.id)}
+                    className="p-2 text-[#a8a198] hover:text-[#c0392b] hover:bg-white/[0.03] transition-all"
+                    aria-label="Delete"
+                  >
+                    <Trash2 className="w-3.5 h-3.5" strokeWidth={1.5} />
                   </button>
                 </div>
               </div>
-            </div>
-          ))}
+            )
+          })
+        )}
       </div>
-
-      {/* Modal */}
-      {modalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center">
-          <div className="absolute inset-0 bg-black/30" onClick={() => setModalOpen(false)} />
-          <div className="relative bg-white rounded-2xl shadow-xl w-full max-w-lg p-6 mx-4 max-h-[90vh] overflow-y-auto">
-            <div className="flex items-center justify-between mb-6">
-              <h3 className="text-lg font-semibold text-gray-900">
-                {editingId ? "Edit Banner" : "New Banner"}
-              </h3>
-              <button onClick={() => setModalOpen(false)} className="p-1 text-gray-400 hover:text-gray-600">
-                <X className="w-5 h-5" />
-              </button>
-            </div>
-            <form onSubmit={handleSave} className="space-y-4">
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Title</label>
-                <input type="text" value={formTitle} onChange={(e) => setFormTitle(e.target.value)} placeholder="Banner title" className="w-full px-4 py-2.5 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-ace-cyan/30 focus:border-ace-cyan" />
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Subtitle</label>
-                <input type="text" value={formSubtitle} onChange={(e) => setFormSubtitle(e.target.value)} placeholder="Banner subtitle" className="w-full px-4 py-2.5 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-ace-cyan/30 focus:border-ace-cyan" />
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Image URL <span className="text-ace-red">*</span></label>
-                <input type="url" value={formImageUrl} onChange={(e) => setFormImageUrl(e.target.value)} placeholder="https://..." className="w-full px-4 py-2.5 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-ace-cyan/30 focus:border-ace-cyan" required />
-              </div>
-              <div className="grid grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">CTA Text</label>
-                  <input type="text" value={formCtaText} onChange={(e) => setFormCtaText(e.target.value)} placeholder="Shop Now" className="w-full px-4 py-2.5 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-ace-cyan/30 focus:border-ace-cyan" />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">CTA Link</label>
-                  <input type="text" value={formCtaLink} onChange={(e) => setFormCtaLink(e.target.value)} placeholder="/billiards" className="w-full px-4 py-2.5 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-ace-cyan/30 focus:border-ace-cyan" />
-                </div>
-              </div>
-              <div className="grid grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Sort Order</label>
-                  <input type="number" value={formSortOrder} onChange={(e) => setFormSortOrder(parseInt(e.target.value) || 0)} className="w-full px-4 py-2.5 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-ace-cyan/30 focus:border-ace-cyan" />
-                </div>
-                <div className="flex items-end pb-1">
-                  <label className="flex items-center gap-2 text-sm font-medium text-gray-700 cursor-pointer">
-                    <input type="checkbox" checked={formIsActive} onChange={(e) => setFormIsActive(e.target.checked)} className="w-4 h-4 rounded border-gray-300 text-ace-cyan focus:ring-ace-cyan" />
-                    Active
-                  </label>
-                </div>
-              </div>
-              <div className="flex gap-3 pt-2">
-                <button type="button" onClick={() => setModalOpen(false)} className="flex-1 px-4 py-2.5 border border-gray-200 text-gray-600 font-medium rounded-lg hover:bg-gray-50 transition-colors">Cancel</button>
-                <button type="submit" className="flex-1 px-4 py-2.5 bg-ace-cyan text-white font-medium rounded-lg hover:bg-ace-cyan/90 transition-colors">{editingId ? "Update" : "Create"}</button>
-              </div>
-            </form>
-          </div>
-        </div>
-      )}
     </div>
+  )
+}
+
+function EditRow({
+  banner,
+  onCancel,
+  onSave,
+}: {
+  banner: HeroBanner
+  onCancel: () => void
+  onSave: (b: HeroBanner) => void
+}) {
+  const [draft, setDraft] = useState(banner)
+  useEffect(() => {
+    setDraft(banner)
+  }, [banner])
+
+  return (
+    <form
+      onSubmit={(e) => {
+        e.preventDefault()
+        onSave(draft)
+      }}
+      className="bg-[#111] border border-[#d4a843]/30 p-6"
+    >
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+        <FieldInput
+          label="Title"
+          value={draft.title ?? ""}
+          onChange={(v) => setDraft({ ...draft, title: v })}
+        />
+        <FieldInput
+          label="Subtitle"
+          value={draft.subtitle ?? ""}
+          onChange={(v) => setDraft({ ...draft, subtitle: v })}
+        />
+        <FieldInput
+          label="Image URL"
+          required
+          value={draft.image_url}
+          onChange={(v) => setDraft({ ...draft, image_url: v })}
+          className="lg:col-span-2"
+        />
+        <FieldInput
+          label="CTA Text"
+          value={draft.cta_text ?? ""}
+          onChange={(v) => setDraft({ ...draft, cta_text: v })}
+        />
+        <FieldInput
+          label="CTA Link"
+          value={draft.cta_link ?? ""}
+          onChange={(v) => setDraft({ ...draft, cta_link: v })}
+        />
+        <FieldInput
+          label="Sort Order"
+          type="number"
+          value={String(draft.sort_order)}
+          onChange={(v) => setDraft({ ...draft, sort_order: Number(v) || 0 })}
+        />
+        <div className="flex items-center mt-7">
+          <label className="inline-flex items-center gap-3 cursor-pointer select-none">
+            <Toggle
+              active={draft.is_active}
+              onChange={(v) => setDraft({ ...draft, is_active: v })}
+            />
+            <span className="text-sm text-[#f5f1ea]">Active</span>
+          </label>
+        </div>
+      </div>
+      <div className="flex justify-end gap-2 mt-5">
+        <button type="button" onClick={onCancel} className="btn-secondary">
+          <X className="w-3.5 h-3.5" />
+          Cancel
+        </button>
+        <button type="submit" className="btn-primary">
+          <Save className="w-3.5 h-3.5" />
+          Save
+        </button>
+      </div>
+    </form>
+  )
+}
+
+function FieldInput({
+  label,
+  value,
+  onChange,
+  type = "text",
+  placeholder,
+  required,
+  className = "",
+}: {
+  label: string
+  value: string
+  onChange: (v: string) => void
+  type?: string
+  placeholder?: string
+  required?: boolean
+  className?: string
+}) {
+  return (
+    <div className={className}>
+      <label className="block text-[10px] tracking-[0.25em] uppercase text-[#a8a198] mb-2">
+        {label}
+      </label>
+      <input
+        type={type}
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+        placeholder={placeholder}
+        required={required}
+        className="w-full px-4 py-2.5 bg-[#0a0a0a] border border-white/10 text-[#f5f1ea] placeholder-[#6b655e] focus:border-[#d4a843] focus:outline-none transition-colors text-sm"
+      />
+    </div>
+  )
+}
+
+function Toggle({
+  active,
+  onChange,
+}: {
+  active: boolean
+  onChange: (v: boolean) => void
+}) {
+  return (
+    <span
+      className={`relative w-10 h-5 rounded-full transition-colors ${
+        active ? "bg-[#d4a843]" : "bg-white/10"
+      }`}
+    >
+      <input
+        type="checkbox"
+        checked={active}
+        onChange={(e) => onChange(e.target.checked)}
+        className="sr-only"
+      />
+      <span
+        className={`absolute top-0.5 w-4 h-4 rounded-full bg-[#0a0a0a] transition-transform ${
+          active ? "translate-x-5" : "translate-x-0.5"
+        }`}
+      />
+    </span>
   )
 }

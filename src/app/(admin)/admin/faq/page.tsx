@@ -1,193 +1,306 @@
 "use client"
 
-import { useState } from "react"
-import { Plus, Pencil, Trash2, Check, X, GripVertical } from "lucide-react"
+import { useEffect, useState } from "react"
+import { Plus, Pencil, Save, Trash2, X, HelpCircle } from "lucide-react"
+import {
+  addItem,
+  deleteItem,
+  getItems,
+  seedItems,
+  updateItem,
+  STORAGE_KEYS,
+} from "@/lib/admin-storage"
 import { ADMIN_MOCK_FAQ } from "@/lib/mock-data"
 import type { FaqEntry } from "@/lib/types"
 
+const INPUT_CLASS =
+  "w-full px-4 py-2.5 bg-[#0a0a0a] border border-white/10 text-[#f5f1ea] placeholder-[#6b655e] focus:border-[#d4a843] focus:outline-none transition-colors text-sm"
+
+const EMPTY = (): FaqEntry => ({
+  id: "",
+  question: "",
+  answer: "",
+  category: null,
+  sort_order: 99,
+  is_active: true,
+  created_at: new Date().toISOString(),
+})
+
 export default function AdminFaqPage() {
-  const [faqs, setFaqs] = useState<FaqEntry[]>(ADMIN_MOCK_FAQ)
+  const [items, setItems] = useState<FaqEntry[]>([])
+  const [draft, setDraft] = useState<FaqEntry>(EMPTY())
   const [editingId, setEditingId] = useState<string | null>(null)
-  const [toast, setToast] = useState("")
-  const [isAdding, setIsAdding] = useState(false)
+  const [loaded, setLoaded] = useState(false)
 
-  const [formQuestion, setFormQuestion] = useState("")
-  const [formAnswer, setFormAnswer] = useState("")
-  const [formSortOrder, setFormSortOrder] = useState(0)
-  const [formIsActive, setFormIsActive] = useState(true)
-
-  const showToast = (msg: string) => {
-    setToast(msg)
-    setTimeout(() => setToast(""), 3000)
-  }
-
-  const startAdd = () => {
-    setIsAdding(true)
-    setEditingId(null)
-    setFormQuestion("")
-    setFormAnswer("")
-    setFormSortOrder(faqs.length + 1)
-    setFormIsActive(true)
-  }
-
-  const startEdit = (faq: FaqEntry) => {
-    setIsAdding(false)
-    setEditingId(faq.id)
-    setFormQuestion(faq.question)
-    setFormAnswer(faq.answer)
-    setFormSortOrder(faq.sort_order)
-    setFormIsActive(faq.is_active)
-  }
-
-  const cancelEdit = () => {
-    setEditingId(null)
-    setIsAdding(false)
-  }
-
-  const handleSave = () => {
-    if (isAdding) {
-      const newFaq: FaqEntry = {
-        id: `faq-new-${Date.now()}`,
-        question: formQuestion,
-        answer: formAnswer,
-        category: null,
-        sort_order: formSortOrder,
-        is_active: formIsActive,
-        created_at: new Date().toISOString(),
-      }
-      setFaqs((prev) => [...prev, newFaq])
-      showToast("FAQ added!")
-    } else if (editingId) {
-      setFaqs((prev) =>
-        prev.map((f) =>
-          f.id === editingId
-            ? { ...f, question: formQuestion, answer: formAnswer, sort_order: formSortOrder, is_active: formIsActive }
-            : f
-        )
-      )
-      showToast("FAQ updated!")
-    }
-    cancelEdit()
-  }
-
-  const handleDelete = (id: string) => {
-    setFaqs((prev) => prev.filter((f) => f.id !== id))
-    showToast("FAQ deleted!")
-  }
-
-  const toggleActive = (id: string) => {
-    setFaqs((prev) =>
-      prev.map((f) => (f.id === id ? { ...f, is_active: !f.is_active } : f))
+  const refresh = () => {
+    setItems(
+      getItems<FaqEntry>(STORAGE_KEYS.FAQS, []).sort(
+        (a, b) => a.sort_order - b.sort_order,
+      ),
     )
   }
 
-  return (
-    <div className="space-y-6">
-      {toast && (
-        <div className="fixed top-4 right-4 z-50 bg-green-600 text-white px-6 py-3 rounded-lg shadow-lg text-sm font-medium">
-          {toast}
-        </div>
-      )}
+  useEffect(() => {
+    seedItems<FaqEntry>(STORAGE_KEYS.FAQS, ADMIN_MOCK_FAQ)
+    refresh()
+    setLoaded(true)
+  }, [])
 
-      <div className="flex items-center justify-between">
-        <div>
-          <h2 className="text-2xl font-bold text-gray-900 font-playfair">FAQ</h2>
-          <p className="text-sm text-gray-500 mt-1">Manage frequently asked questions</p>
-        </div>
-        <button
-          onClick={startAdd}
-          className="flex items-center gap-2 px-4 py-2.5 bg-ace-cyan text-white text-sm font-medium rounded-lg hover:bg-ace-cyan/90 transition-colors"
-        >
-          <Plus className="w-4 h-4" />
-          Add FAQ
-        </button>
+  const handleAdd = (e: React.FormEvent) => {
+    e.preventDefault()
+    if (!draft.question.trim() || !draft.answer.trim()) return
+    addItem(STORAGE_KEYS.FAQS, {
+      ...draft,
+      id: `faq-${Date.now()}`,
+      created_at: new Date().toISOString(),
+    })
+    setDraft(EMPTY())
+    refresh()
+  }
+
+  const handleSaveEdit = (item: FaqEntry) => {
+    updateItem(STORAGE_KEYS.FAQS, item)
+    setEditingId(null)
+    refresh()
+  }
+
+  const handleDelete = (id: string) => {
+    deleteItem(STORAGE_KEYS.FAQS, id)
+    if (editingId === id) setEditingId(null)
+    refresh()
+  }
+
+  return (
+    <div className="max-w-[1100px]">
+      <div className="mb-8">
+        <p className="eyebrow mb-3">/ Support</p>
+        <h1 className="font-playfair text-3xl lg:text-4xl text-[#f5f1ea]">
+          Frequently Asked Questions
+        </h1>
+        <p className="text-[#a8a198] mt-2">
+          {loaded ? `${items.length} entries` : "Loading…"}
+        </p>
       </div>
 
       {/* Add form */}
-      {isAdding && (
-        <div className="bg-white rounded-xl border-2 border-ace-cyan/30 p-6 space-y-4">
-          <h3 className="font-semibold text-gray-900">New FAQ Entry</h3>
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Question</label>
-            <input type="text" value={formQuestion} onChange={(e) => setFormQuestion(e.target.value)} placeholder="Enter the question..." className="w-full px-4 py-2.5 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-ace-cyan/30 focus:border-ace-cyan" />
-          </div>
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Answer</label>
-            <textarea value={formAnswer} onChange={(e) => setFormAnswer(e.target.value)} rows={4} placeholder="Enter the answer..." className="w-full px-4 py-2.5 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-ace-cyan/30 focus:border-ace-cyan resize-y" />
-          </div>
-          <div className="flex items-center gap-4">
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Sort Order</label>
-              <input type="number" value={formSortOrder} onChange={(e) => setFormSortOrder(parseInt(e.target.value) || 0)} className="w-24 px-4 py-2.5 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-ace-cyan/30 focus:border-ace-cyan" />
-            </div>
-            <label className="flex items-center gap-2 text-sm font-medium text-gray-700 cursor-pointer mt-5">
-              <input type="checkbox" checked={formIsActive} onChange={(e) => setFormIsActive(e.target.checked)} className="w-4 h-4 rounded border-gray-300 text-ace-cyan focus:ring-ace-cyan" />
-              Active
-            </label>
-          </div>
-          <div className="flex justify-end gap-2">
-            <button onClick={cancelEdit} className="px-4 py-2 border border-gray-200 text-gray-600 text-sm font-medium rounded-lg hover:bg-gray-50">Cancel</button>
-            <button onClick={handleSave} className="px-4 py-2 bg-ace-cyan text-white text-sm font-medium rounded-lg hover:bg-ace-cyan/90">Save</button>
-          </div>
+      <form
+        onSubmit={handleAdd}
+        className="bg-[#111] border border-white/5 p-7 mb-8"
+      >
+        <div className="flex items-center gap-2 mb-5">
+          <Plus className="w-4 h-4 text-[#d4a843]" strokeWidth={1.5} />
+          <h2 className="font-playfair text-lg text-[#f5f1ea]">
+            Add FAQ Entry
+          </h2>
         </div>
-      )}
+        <FaqFields value={draft} onChange={setDraft} />
+        <div className="flex justify-end mt-6">
+          <button type="submit" className="btn-primary">
+            <Plus className="w-4 h-4" />
+            <span>Add Entry</span>
+          </button>
+        </div>
+      </form>
 
-      {/* FAQ list */}
+      {/* List */}
       <div className="space-y-3">
-        {faqs
-          .sort((a, b) => a.sort_order - b.sort_order)
-          .map((faq) => (
-            <div key={faq.id} className="bg-white rounded-xl border border-gray-200 p-5">
-              {editingId === faq.id ? (
-                <div className="space-y-4">
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">Question</label>
-                    <input type="text" value={formQuestion} onChange={(e) => setFormQuestion(e.target.value)} className="w-full px-4 py-2.5 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-ace-cyan/30 focus:border-ace-cyan" />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">Answer</label>
-                    <textarea value={formAnswer} onChange={(e) => setFormAnswer(e.target.value)} rows={4} className="w-full px-4 py-2.5 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-ace-cyan/30 focus:border-ace-cyan resize-y" />
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-4">
-                      <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-1">Sort</label>
-                        <input type="number" value={formSortOrder} onChange={(e) => setFormSortOrder(parseInt(e.target.value) || 0)} className="w-20 px-3 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-ace-cyan/30 focus:border-ace-cyan" />
-                      </div>
-                      <label className="flex items-center gap-2 text-sm font-medium text-gray-700 cursor-pointer mt-5">
-                        <input type="checkbox" checked={formIsActive} onChange={(e) => setFormIsActive(e.target.checked)} className="w-4 h-4 rounded border-gray-300 text-ace-cyan focus:ring-ace-cyan" />
-                        Active
-                      </label>
-                    </div>
-                    <div className="flex gap-2">
-                      <button onClick={cancelEdit} className="p-2 text-gray-400 hover:text-gray-600 rounded"><X className="w-4 h-4" /></button>
-                      <button onClick={handleSave} className="p-2 text-ace-cyan hover:text-ace-cyan/80 rounded"><Check className="w-4 h-4" /></button>
-                    </div>
-                  </div>
-                </div>
-              ) : (
-                <div className="flex items-start gap-3">
-                  <GripVertical className="w-4 h-4 text-gray-300 mt-1 flex-shrink-0" />
-                  <div className="flex-1">
-                    <div className="flex items-center gap-2">
-                      <h4 className="font-medium text-gray-900 text-sm">{faq.question}</h4>
-                      <span className={`inline-flex px-2 py-0.5 rounded-full text-xs font-medium ${faq.is_active ? "bg-green-50 text-green-700" : "bg-gray-100 text-gray-500"}`}>
-                        {faq.is_active ? "Active" : "Inactive"}
+        {items.length === 0 ? (
+          <div className="bg-[#111] border border-white/5 p-16 text-center">
+            <HelpCircle
+              className="w-8 h-8 text-[#6b655e] mx-auto mb-3"
+              strokeWidth={1.5}
+            />
+            <p className="text-[#a8a198] text-sm">No FAQ entries yet.</p>
+          </div>
+        ) : (
+          items.map((item) =>
+            editingId === item.id ? (
+              <EditFaqRow
+                key={item.id}
+                item={item}
+                onCancel={() => setEditingId(null)}
+                onSave={handleSaveEdit}
+              />
+            ) : (
+              <div
+                key={item.id}
+                className="bg-[#111] border border-white/5 p-6"
+              >
+                <div className="flex items-start justify-between gap-4">
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center gap-3 flex-wrap mb-2">
+                      <span className="text-[10px] tracking-[0.25em] uppercase text-[#d4a843]">
+                        #{item.sort_order}
+                      </span>
+                      {item.category && (
+                        <span className="text-[10px] tracking-[0.2em] uppercase text-[#a8a198] px-2 py-0.5 bg-white/[0.03] border border-white/10">
+                          {item.category}
+                        </span>
+                      )}
+                      <span
+                        className={`inline-flex items-center gap-1 text-[10px] tracking-[0.2em] uppercase px-2 py-0.5 border ${
+                          item.is_active
+                            ? "text-[#d4a843] border-[#d4a843]/30 bg-[#d4a843]/5"
+                            : "text-[#6b655e] border-white/10"
+                        }`}
+                      >
+                        {item.is_active ? "Active" : "Inactive"}
                       </span>
                     </div>
-                    <p className="text-sm text-gray-600 mt-1 line-clamp-2">{faq.answer}</p>
+                    <h3 className="font-playfair text-lg text-[#f5f1ea] mb-2">
+                      {item.question}
+                    </h3>
+                    <p className="text-sm text-[#a8a198] leading-relaxed">
+                      {item.answer}
+                    </p>
                   </div>
                   <div className="flex items-center gap-1 flex-shrink-0">
-                    <button onClick={() => toggleActive(faq.id)} className={`px-3 py-1.5 text-xs font-medium rounded-lg transition-colors ${faq.is_active ? "bg-gray-100 text-gray-600 hover:bg-gray-200" : "bg-green-50 text-green-700 hover:bg-green-100"}`}>
-                      {faq.is_active ? "Deactivate" : "Activate"}
+                    <button
+                      onClick={() => setEditingId(item.id)}
+                      className="p-2 text-[#a8a198] hover:text-[#d4a843] hover:bg-white/[0.03] transition-all"
+                      aria-label="Edit"
+                    >
+                      <Pencil className="w-3.5 h-3.5" strokeWidth={1.5} />
                     </button>
-                    <button onClick={() => startEdit(faq)} className="p-1.5 text-gray-400 hover:text-ace-cyan rounded"><Pencil className="w-4 h-4" /></button>
-                    <button onClick={() => handleDelete(faq.id)} className="p-1.5 text-gray-400 hover:text-ace-red rounded"><Trash2 className="w-4 h-4" /></button>
+                    <button
+                      onClick={() => handleDelete(item.id)}
+                      className="p-2 text-[#a8a198] hover:text-[#c0392b] hover:bg-white/[0.03] transition-all"
+                      aria-label="Delete"
+                    >
+                      <Trash2 className="w-3.5 h-3.5" strokeWidth={1.5} />
+                    </button>
                   </div>
                 </div>
-              )}
-            </div>
-          ))}
+              </div>
+            ),
+          )
+        )}
+      </div>
+    </div>
+  )
+}
+
+function EditFaqRow({
+  item,
+  onCancel,
+  onSave,
+}: {
+  item: FaqEntry
+  onCancel: () => void
+  onSave: (i: FaqEntry) => void
+}) {
+  const [draft, setDraft] = useState(item)
+  useEffect(() => setDraft(item), [item])
+  return (
+    <form
+      onSubmit={(e) => {
+        e.preventDefault()
+        onSave(draft)
+      }}
+      className="bg-[#111] border border-[#d4a843]/30 p-6"
+    >
+      <FaqFields value={draft} onChange={setDraft} />
+      <div className="flex justify-end gap-2 mt-5">
+        <button type="button" onClick={onCancel} className="btn-secondary">
+          <X className="w-3.5 h-3.5" />
+          Cancel
+        </button>
+        <button type="submit" className="btn-primary">
+          <Save className="w-3.5 h-3.5" />
+          Save
+        </button>
+      </div>
+    </form>
+  )
+}
+
+function FaqFields({
+  value,
+  onChange,
+}: {
+  value: FaqEntry
+  onChange: (v: FaqEntry) => void
+}) {
+  return (
+    <div className="grid grid-cols-1 gap-4">
+      <div>
+        <label className="block text-[10px] tracking-[0.25em] uppercase text-[#a8a198] mb-2">
+          Question <span className="text-[#d4a843]">*</span>
+        </label>
+        <input
+          type="text"
+          value={value.question}
+          onChange={(e) => onChange({ ...value, question: e.target.value })}
+          required
+          placeholder="Do you offer financing?"
+          className={INPUT_CLASS}
+        />
+      </div>
+      <div>
+        <label className="block text-[10px] tracking-[0.25em] uppercase text-[#a8a198] mb-2">
+          Answer <span className="text-[#d4a843]">*</span>
+        </label>
+        <textarea
+          value={value.answer}
+          onChange={(e) => onChange({ ...value, answer: e.target.value })}
+          required
+          rows={3}
+          placeholder="Yes! We offer Wells Fargo financing…"
+          className={`${INPUT_CLASS} resize-y`}
+        />
+      </div>
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+        <div>
+          <label className="block text-[10px] tracking-[0.25em] uppercase text-[#a8a198] mb-2">
+            Category (optional)
+          </label>
+          <input
+            type="text"
+            value={value.category ?? ""}
+            onChange={(e) =>
+              onChange({ ...value, category: e.target.value || null })
+            }
+            placeholder="Financing, Services, Hours…"
+            className={INPUT_CLASS}
+          />
+        </div>
+        <div>
+          <label className="block text-[10px] tracking-[0.25em] uppercase text-[#a8a198] mb-2">
+            Sort Order
+          </label>
+          <input
+            type="number"
+            value={value.sort_order}
+            onChange={(e) =>
+              onChange({ ...value, sort_order: Number(e.target.value) || 0 })
+            }
+            className={INPUT_CLASS}
+          />
+        </div>
+        <div className="flex items-center mt-7">
+          <label className="inline-flex items-center gap-3 cursor-pointer select-none">
+            <span
+              className={`relative w-10 h-5 rounded-full transition-colors ${
+                value.is_active ? "bg-[#d4a843]" : "bg-white/10"
+              }`}
+            >
+              <input
+                type="checkbox"
+                checked={value.is_active}
+                onChange={(e) =>
+                  onChange({ ...value, is_active: e.target.checked })
+                }
+                className="sr-only"
+              />
+              <span
+                className={`absolute top-0.5 w-4 h-4 rounded-full bg-[#0a0a0a] transition-transform ${
+                  value.is_active ? "translate-x-5" : "translate-x-0.5"
+                }`}
+              />
+            </span>
+            <span className="text-sm text-[#f5f1ea]">Active</span>
+          </label>
+        </div>
       </div>
     </div>
   )

@@ -1,161 +1,272 @@
 "use client"
 
-import { useState } from "react"
-import { Mail, MailOpen, Download, ChevronDown, ChevronUp } from "lucide-react"
-import { ADMIN_MOCK_INQUIRIES } from "@/lib/mock-data"
-import type { Inquiry } from "@/lib/types"
+import { Fragment, useEffect, useMemo, useState } from "react"
+import { AnimatePresence, motion } from "framer-motion"
+import { ChevronDown, Download, Inbox, Trash2 } from "lucide-react"
+import {
+  deleteItem,
+  getItems,
+  seedItems,
+  STORAGE_KEYS,
+} from "@/lib/admin-storage"
+import {
+  ADMIN_MOCK_INQUIRIES,
+  ADMIN_MOCK_PRODUCTS,
+} from "@/lib/mock-data"
+import type { Inquiry, Product } from "@/lib/types"
 
 export default function AdminInquiriesPage() {
-  const [inquiries, setInquiries] = useState<Inquiry[]>(ADMIN_MOCK_INQUIRIES)
-  const [expandedId, setExpandedId] = useState<string | null>(null)
-  const [toast, setToast] = useState("")
+  const [inquiries, setInquiries] = useState<Inquiry[]>([])
+  const [products, setProducts] = useState<Product[]>([])
+  const [expanded, setExpanded] = useState<string | null>(null)
+  const [loaded, setLoaded] = useState(false)
 
-  const showToast = (msg: string) => {
-    setToast(msg)
-    setTimeout(() => setToast(""), 3000)
-  }
-
-  const toggleExpand = (id: string) => {
-    setExpandedId(expandedId === id ? null : id)
-  }
-
-  const markAsRead = (id: string) => {
-    setInquiries((prev) =>
-      prev.map((inq) => (inq.id === id ? { ...inq, is_read: true } : inq))
+  const refresh = () => {
+    setInquiries(
+      getItems<Inquiry>(STORAGE_KEYS.INQUIRIES, []).sort(
+        (a, b) =>
+          new Date(b.created_at).getTime() - new Date(a.created_at).getTime(),
+      ),
     )
-    showToast("Marked as read")
   }
 
-  const exportCSV = () => {
-    const headers = ["Date", "Name", "Email", "Phone", "Message", "Read"]
-    const rows = inquiries.map((inq) => [
-      new Date(inq.created_at).toLocaleDateString(),
-      inq.name,
-      inq.email,
-      inq.phone || "",
-      `"${inq.message.replace(/"/g, '""')}"`,
-      inq.is_read ? "Yes" : "No",
+  useEffect(() => {
+    seedItems<Inquiry>(STORAGE_KEYS.INQUIRIES, ADMIN_MOCK_INQUIRIES)
+    seedItems<Product>(STORAGE_KEYS.PRODUCTS, ADMIN_MOCK_PRODUCTS)
+    setProducts(getItems<Product>(STORAGE_KEYS.PRODUCTS, ADMIN_MOCK_PRODUCTS))
+    refresh()
+    setLoaded(true)
+  }, [])
+
+  const productLookup = useMemo(() => {
+    const map = new Map<string, string>()
+    for (const p of products) {
+      map.set(p.id, p.name)
+    }
+    return map
+  }, [products])
+
+  const getProductNames = (ids: string[]): string => {
+    const names = ids.map((id) => productLookup.get(id) || id)
+    return names.join(", ")
+  }
+
+  const handleDelete = (id: string) => {
+    deleteItem(STORAGE_KEYS.INQUIRIES, id)
+    if (expanded === id) setExpanded(null)
+    refresh()
+  }
+
+  const exportCsv = () => {
+    const headers = ["Date", "Name", "Email", "Phone", "Interested In", "Message"]
+    const rows = inquiries.map((i) => [
+      new Date(i.created_at).toISOString(),
+      i.name,
+      i.email,
+      i.phone ?? "",
+      getProductNames(i.product_ids),
+      i.message,
     ])
-    const csv = [headers.join(","), ...rows.map((r) => r.join(","))].join("\n")
-    const blob = new Blob([csv], { type: "text/csv" })
+    const escape = (v: string) => `"${v.replace(/"/g, '""')}"`
+    const csv = [headers, ...rows]
+      .map((r) => r.map((c) => escape(String(c))).join(","))
+      .join("\n")
+    const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" })
     const url = URL.createObjectURL(blob)
     const a = document.createElement("a")
     a.href = url
-    a.download = `inquiries-${new Date().toISOString().split("T")[0]}.csv`
+    a.download = `inquiries-${new Date().toISOString().slice(0, 10)}.csv`
     a.click()
     URL.revokeObjectURL(url)
-    showToast("CSV exported!")
   }
 
   return (
-    <div className="space-y-6">
-      {toast && (
-        <div className="fixed top-4 right-4 z-50 bg-green-600 text-white px-6 py-3 rounded-lg shadow-lg text-sm font-medium">
-          {toast}
-        </div>
-      )}
-
-      <div className="flex items-center justify-between">
+    <div className="max-w-[1400px]">
+      {/* Header */}
+      <div className="flex items-start justify-between mb-8 gap-4 flex-wrap">
         <div>
-          <h2 className="text-2xl font-bold text-gray-900 font-playfair">Inquiries</h2>
-          <p className="text-sm text-gray-500 mt-1">
-            {inquiries.filter((i) => !i.is_read).length} unread of {inquiries.length} total
+          <p className="eyebrow mb-3">/ Inbox</p>
+          <h1 className="font-playfair text-3xl lg:text-4xl text-[#f5f1ea]">
+            Inquiries
+          </h1>
+          <p className="text-[#a8a198] mt-2">
+            {loaded ? `${inquiries.length} total inquiries` : "Loading…"}
           </p>
         </div>
         <button
-          onClick={exportCSV}
-          className="flex items-center gap-2 px-4 py-2.5 border border-gray-200 text-gray-700 text-sm font-medium rounded-lg hover:bg-gray-50 transition-colors"
+          type="button"
+          onClick={exportCsv}
+          disabled={inquiries.length === 0}
+          className="btn-secondary disabled:opacity-40 disabled:cursor-not-allowed"
         >
           <Download className="w-4 h-4" />
-          Export CSV
+          <span>Export CSV</span>
         </button>
       </div>
 
-      {/* Inquiry list */}
-      <div className="bg-white rounded-xl border border-gray-200 overflow-hidden divide-y divide-gray-100">
-        {inquiries.map((inq) => (
-          <div key={inq.id}>
-            <div
-              onClick={() => toggleExpand(inq.id)}
-              className={`px-6 py-4 cursor-pointer hover:bg-gray-50 transition-colors ${
-                !inq.is_read ? "bg-ace-cyan/5" : ""
-              }`}
-            >
-              <div className="flex items-center gap-4">
-                <div className="flex-shrink-0">
-                  {inq.is_read ? (
-                    <MailOpen className="w-5 h-5 text-gray-300" />
-                  ) : (
-                    <Mail className="w-5 h-5 text-ace-cyan" />
-                  )}
-                </div>
-                <div className="flex-1 min-w-0">
-                  <div className="flex items-center gap-2">
-                    <span className={`text-sm ${!inq.is_read ? "font-semibold text-gray-900" : "font-medium text-gray-700"}`}>
-                      {inq.name}
-                    </span>
-                    {!inq.is_read && (
-                      <span className="inline-flex px-2 py-0.5 rounded-full text-[10px] font-bold bg-ace-cyan text-white">
-                        NEW
-                      </span>
-                    )}
-                  </div>
-                  <p className="text-sm text-gray-500">{inq.email}</p>
-                  <p className="text-sm text-gray-500 mt-1 line-clamp-1">{inq.message}</p>
-                </div>
-                <div className="flex items-center gap-3 flex-shrink-0">
-                  <span className="text-xs text-gray-400">
-                    {new Date(inq.created_at).toLocaleDateString()}
-                  </span>
-                  {expandedId === inq.id ? (
-                    <ChevronUp className="w-4 h-4 text-gray-400" />
-                  ) : (
-                    <ChevronDown className="w-4 h-4 text-gray-400" />
-                  )}
-                </div>
-              </div>
-            </div>
-
-            {/* Expanded detail */}
-            {expandedId === inq.id && (
-              <div className="px-6 pb-4 bg-gray-50 border-t border-gray-100">
-                <div className="pt-4 space-y-3">
-                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-sm">
-                    <div>
-                      <span className="text-gray-400 block">Name</span>
-                      <span className="text-gray-900">{inq.name}</span>
-                    </div>
-                    <div>
-                      <span className="text-gray-400 block">Email</span>
-                      <span className="text-gray-900">{inq.email}</span>
-                    </div>
-                    <div>
-                      <span className="text-gray-400 block">Phone</span>
-                      <span className="text-gray-900">{inq.phone || "Not provided"}</span>
-                    </div>
-                  </div>
-                  <div>
-                    <span className="text-gray-400 block text-sm mb-1">Message</span>
-                    <p className="text-sm text-gray-800 bg-white p-4 rounded-lg border border-gray-200">
-                      {inq.message}
-                    </p>
-                  </div>
-                  {!inq.is_read && (
-                    <button
-                      onClick={(e) => {
-                        e.stopPropagation()
-                        markAsRead(inq.id)
-                      }}
-                      className="px-4 py-2 bg-ace-cyan text-white text-sm font-medium rounded-lg hover:bg-ace-cyan/90 transition-colors"
-                    >
-                      Mark as Read
-                    </button>
-                  )}
-                </div>
-              </div>
-            )}
+      <div className="bg-[#111] border border-white/5">
+        {inquiries.length === 0 ? (
+          <div className="p-16 text-center">
+            <Inbox
+              className="w-8 h-8 text-[#6b655e] mx-auto mb-4"
+              strokeWidth={1.5}
+            />
+            <h3 className="font-playfair text-lg text-[#f5f1ea] mb-1">
+              No inquiries yet.
+            </h3>
+            <p className="text-sm text-[#a8a198]">
+              They&apos;ll appear here when someone submits the contact form.
+            </p>
           </div>
-        ))}
+        ) : (
+          <div className="overflow-x-auto">
+            <table className="w-full">
+              <thead>
+                <tr className="border-b border-white/5">
+                  <th className="text-left px-6 py-4 text-[10px] tracking-[0.25em] uppercase text-[#a8a198] font-normal w-32">
+                    Date
+                  </th>
+                  <th className="text-left px-6 py-4 text-[10px] tracking-[0.25em] uppercase text-[#a8a198] font-normal">
+                    Name
+                  </th>
+                  <th className="text-left px-6 py-4 text-[10px] tracking-[0.25em] uppercase text-[#a8a198] font-normal">
+                    Email
+                  </th>
+                  <th className="text-left px-6 py-4 text-[10px] tracking-[0.25em] uppercase text-[#a8a198] font-normal">
+                    Phone
+                  </th>
+                  <th className="text-left px-6 py-4 text-[10px] tracking-[0.25em] uppercase text-[#a8a198] font-normal">
+                    Interested In
+                  </th>
+                  <th className="text-left px-6 py-4 text-[10px] tracking-[0.25em] uppercase text-[#a8a198] font-normal">
+                    Message
+                  </th>
+                  <th className="text-right px-6 py-4 text-[10px] tracking-[0.25em] uppercase text-[#a8a198] font-normal w-10" />
+                </tr>
+              </thead>
+              <tbody>
+                {inquiries.map((inq) => {
+                  const isOpen = expanded === inq.id
+                  return (
+                    <Fragment key={inq.id}>
+                      <tr
+                        onClick={() => setExpanded(isOpen ? null : inq.id)}
+                        className="border-b border-white/5 last:border-0 hover:bg-white/[0.02] transition-colors cursor-pointer"
+                      >
+                        <td className="px-6 py-4 text-xs text-[#a8a198] whitespace-nowrap">
+                          {new Date(inq.created_at).toLocaleDateString()}
+                        </td>
+                        <td className="px-6 py-4 text-sm text-[#f5f1ea]">
+                          {inq.name}
+                        </td>
+                        <td className="px-6 py-4 text-sm text-[#a8a198]">
+                          <a
+                            href={`mailto:${inq.email}`}
+                            onClick={(e) => e.stopPropagation()}
+                            className="hover:text-[#d4a843] transition-colors"
+                          >
+                            {inq.email}
+                          </a>
+                        </td>
+                        <td className="px-6 py-4 text-sm text-[#a8a198]">
+                          {inq.phone ?? "—"}
+                        </td>
+                        <td className="px-6 py-4 text-sm text-[#a8a198] max-w-[200px] truncate">
+                          {inq.product_ids.length > 0
+                            ? getProductNames(inq.product_ids)
+                            : "—"}
+                        </td>
+                        <td className="px-6 py-4 text-sm text-[#a8a198] max-w-[300px] truncate">
+                          {inq.message}
+                        </td>
+                        <td className="px-6 py-4 text-right">
+                          <ChevronDown
+                            className={`w-4 h-4 text-[#6b655e] transition-transform ${
+                              isOpen ? "rotate-180 text-[#d4a843]" : ""
+                            }`}
+                            strokeWidth={1.5}
+                          />
+                        </td>
+                      </tr>
+                      <AnimatePresence initial={false}>
+                        {isOpen && (
+                          <motion.tr
+                            key={`${inq.id}-expanded`}
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            transition={{ duration: 0.15 }}
+                            className="border-b border-white/5"
+                          >
+                            <td
+                              colSpan={7}
+                              className="px-6 py-0 bg-[#0a0a0a]/60"
+                            >
+                              <motion.div
+                                initial={{ height: 0 }}
+                                animate={{ height: "auto" }}
+                                exit={{ height: 0 }}
+                                transition={{
+                                  duration: 0.25,
+                                  ease: [0.23, 1, 0.32, 1],
+                                }}
+                                className="overflow-hidden"
+                              >
+                                <div className="py-6">
+                                  <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-6 items-start">
+                                    <div>
+                                      <p className="text-[10px] tracking-[0.25em] uppercase text-[#d4a843] mb-3">
+                                        Full message
+                                      </p>
+                                      <p className="text-[#f5f1ea] text-sm leading-relaxed whitespace-pre-wrap">
+                                        {inq.message}
+                                      </p>
+                                      {inq.product_ids.length > 0 && (
+                                        <div className="mt-5">
+                                          <p className="text-[10px] tracking-[0.25em] uppercase text-[#a8a198] mb-2">
+                                            Products referenced
+                                          </p>
+                                          <div className="flex flex-wrap gap-2">
+                                            {inq.product_ids.map((pid) => (
+                                              <span
+                                                key={pid}
+                                                className="text-xs px-2.5 py-1 bg-[#111] border border-white/10 text-[#a8a198]"
+                                              >
+                                                {productLookup.get(pid) || pid}
+                                              </span>
+                                            ))}
+                                          </div>
+                                        </div>
+                                      )}
+                                    </div>
+                                    <button
+                                      type="button"
+                                      onClick={(e) => {
+                                        e.stopPropagation()
+                                        handleDelete(inq.id)
+                                      }}
+                                      className="inline-flex items-center gap-2 px-4 py-2 text-xs tracking-[0.15em] uppercase text-[#c0392b] border border-[#c0392b]/30 hover:bg-[#c0392b]/10 transition-colors"
+                                    >
+                                      <Trash2
+                                        className="w-3.5 h-3.5"
+                                        strokeWidth={1.5}
+                                      />
+                                      Delete
+                                    </button>
+                                  </div>
+                                </div>
+                              </motion.div>
+                            </td>
+                          </motion.tr>
+                        )}
+                      </AnimatePresence>
+                    </Fragment>
+                  )
+                })}
+              </tbody>
+            </table>
+          </div>
+        )}
       </div>
     </div>
   )

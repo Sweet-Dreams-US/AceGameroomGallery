@@ -1,128 +1,204 @@
 "use client"
 
-import { useState } from "react"
-import { Save, FileText } from "lucide-react"
-import { ADMIN_MOCK_CONTENT } from "@/lib/mock-data"
-import type { SiteContent } from "@/lib/types"
+import { useEffect, useState } from "react"
+import { Check, Save } from "lucide-react"
+import { STORAGE_KEYS } from "@/lib/admin-storage"
+
+interface ContentBlock {
+  key: string
+  label: string
+  description: string
+  rows?: number
+}
+
+const CONTENT_BLOCKS: ContentBlock[] = [
+  {
+    key: "hero_headline",
+    label: "Hero Headline",
+    description:
+      "Main homepage hero headline. Keep it short and memorable.",
+    rows: 2,
+  },
+  {
+    key: "hero_subheadline",
+    label: "Hero Subheadline",
+    description: "One-line supporting copy below the hero headline.",
+    rows: 2,
+  },
+  {
+    key: "about_story",
+    label: "About — Our Story",
+    description:
+      "The headline paragraph on the About page about ACE's origin.",
+    rows: 6,
+  },
+  {
+    key: "why_shop",
+    label: "Why Shop at ACE",
+    description: "The core pitch for choosing Ace Game Room Gallery.",
+    rows: 4,
+  },
+  {
+    key: "services_billiard",
+    label: "Services — Billiard",
+    description:
+      "Description of billiard services (tear-down, moving, recovering).",
+    rows: 4,
+  },
+  {
+    key: "services_pinball",
+    label: "Services — Pinball",
+    description: "Description of pinball machine maintenance & repair.",
+    rows: 4,
+  },
+  {
+    key: "services_playset",
+    label: "Services — Playset",
+    description: "Description of Rainbow Play Systems installation.",
+    rows: 4,
+  },
+  {
+    key: "showroom_cta",
+    label: "Showroom CTA Copy",
+    description:
+      "The copy invitation to visit the Fort Wayne showroom.",
+    rows: 3,
+  },
+]
+
+const DEFAULT_CONTENT: Record<string, string> = {
+  hero_headline:
+    "A pool table isn't furniture. It's the heart of a home.",
+  hero_subheadline:
+    "Fort Wayne's most curated game room showroom since 1992.",
+  about_story:
+    "Ace Game Room Gallery was established in 1992 as a coin-operated amusement supplier serving local businesses with pool tables, pinball machines, video games, and jukeboxes. Two years later, founder Bret Almashie expanded the business model to include retail sales.",
+  why_shop:
+    "ACE Game Room sells more pool tables than all of the surrounding competition combined. We're the experts! With over 25 years of experience in the industry.",
+  services_billiard:
+    "Ace Game Room Gallery offers services such as tearing down, moving, setting up, and recovering pool tables.",
+  services_pinball:
+    "Professional pinball machine maintenance and repair services.",
+  services_playset:
+    "Installation and maintenance for Rainbow Play Systems residential and commercial playsets.",
+  showroom_cta:
+    "Walk in. See it. Feel the weight of the slate. Our 10,000 sq ft showroom is open Mon–Sat.",
+}
 
 export default function AdminContentPage() {
-  const [contentBlocks, setContentBlocks] = useState<SiteContent[]>(ADMIN_MOCK_CONTENT)
-  const [toast, setToast] = useState("")
-  const [savingId, setSavingId] = useState<string | null>(null)
+  const [values, setValues] = useState<Record<string, string>>({})
+  const [saved, setSaved] = useState<Record<string, boolean>>({})
+  const [loaded, setLoaded] = useState(false)
 
-  const showToast = (msg: string) => {
-    setToast(msg)
-    setTimeout(() => setToast(""), 3000)
+  useEffect(() => {
+    if (typeof window === "undefined") return
+    let stored: Record<string, string> = {}
+    try {
+      const raw = window.localStorage.getItem(STORAGE_KEYS.CONTENT)
+      if (raw) stored = JSON.parse(raw) as Record<string, string>
+    } catch {
+      stored = {}
+    }
+    const merged: Record<string, string> = {}
+    for (const block of CONTENT_BLOCKS) {
+      merged[block.key] = stored[block.key] ?? DEFAULT_CONTENT[block.key] ?? ""
+    }
+    setValues(merged)
+    // Persist any new default keys.
+    try {
+      window.localStorage.setItem(STORAGE_KEYS.CONTENT, JSON.stringify(merged))
+    } catch {
+      // ignore
+    }
+    setLoaded(true)
+  }, [])
+
+  const handleChange = (key: string, value: string) => {
+    setValues((v) => ({ ...v, [key]: value }))
+    setSaved((s) => ({ ...s, [key]: false }))
   }
 
-  const handleTitleChange = (id: string, title: string) => {
-    setContentBlocks((prev) =>
-      prev.map((c) => (c.id === id ? { ...c, title } : c))
-    )
+  const handleSave = (key: string) => {
+    if (typeof window === "undefined") return
+    try {
+      const next = { ...values }
+      window.localStorage.setItem(STORAGE_KEYS.CONTENT, JSON.stringify(next))
+      setSaved((s) => ({ ...s, [key]: true }))
+      setTimeout(() => {
+        setSaved((s) => ({ ...s, [key]: false }))
+      }, 1800)
+    } catch {
+      // ignore in demo
+    }
   }
-
-  const handleContentChange = (id: string, content: string) => {
-    setContentBlocks((prev) =>
-      prev.map((c) => (c.id === id ? { ...c, content } : c))
-    )
-  }
-
-  const handleSave = (id: string) => {
-    setSavingId(id)
-    const block = contentBlocks.find((c) => c.id === id)
-    console.log("Saving content block:", block)
-
-    // Stub: will call supabase update when connected
-    setTimeout(() => {
-      setSavingId(null)
-      showToast("Content saved!")
-    }, 500)
-  }
-
-  const formatSectionKey = (key: string) =>
-    key
-      .split("_")
-      .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
-      .join(" ")
 
   return (
-    <div className="space-y-6">
-      {toast && (
-        <div className="fixed top-4 right-4 z-50 bg-green-600 text-white px-6 py-3 rounded-lg shadow-lg text-sm font-medium">
-          {toast}
-        </div>
-      )}
-
-      <div>
-        <h2 className="text-2xl font-bold text-gray-900 font-playfair">Site Content</h2>
-        <p className="text-sm text-gray-500 mt-1">
-          Edit text content displayed across the website
+    <div className="max-w-[1100px]">
+      <div className="mb-8">
+        <p className="eyebrow mb-3">/ Copy</p>
+        <h1 className="font-playfair text-3xl lg:text-4xl text-[#f5f1ea]">
+          Site Content
+        </h1>
+        <p className="text-[#a8a198] mt-2">
+          Edit the copy that appears across the site. Save each block
+          individually.
         </p>
       </div>
 
-      {/* Content blocks */}
-      <div className="space-y-6">
-        {contentBlocks.map((block) => (
-          <div key={block.id} className="bg-white rounded-xl border border-gray-200 overflow-hidden">
-            {/* Header */}
-            <div className="px-6 py-4 border-b border-gray-100 bg-gray-50/50 flex items-center gap-3">
-              <FileText className="w-4 h-4 text-gray-400" />
-              <div>
-                <span className="text-sm font-semibold text-gray-900">
-                  {formatSectionKey(block.section_key)}
-                </span>
-                <span className="text-xs text-gray-400 ml-2">
-                  ({block.section_key})
-                </span>
+      {!loaded ? (
+        <div className="bg-[#111] border border-white/5 p-10 text-center text-[#a8a198] text-sm">
+          Loading…
+        </div>
+      ) : (
+        <div className="space-y-6">
+          {CONTENT_BLOCKS.map((block) => (
+            <section
+              key={block.key}
+              className="bg-[#111] border border-white/5 p-7"
+            >
+              <div className="flex items-start justify-between gap-4 mb-4 flex-wrap">
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-baseline gap-3 flex-wrap">
+                    <h2 className="font-playfair text-lg text-[#f5f1ea]">
+                      {block.label}
+                    </h2>
+                    <code className="text-[10px] tracking-[0.2em] uppercase text-[#6b655e]">
+                      {block.key}
+                    </code>
+                  </div>
+                  <p className="text-xs text-[#a8a198] mt-1.5">
+                    {block.description}
+                  </p>
+                </div>
               </div>
-            </div>
 
-            {/* Content */}
-            <div className="p-6 space-y-4">
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1.5">
-                  Title
-                </label>
-                <input
-                  type="text"
-                  value={block.title || ""}
-                  onChange={(e) => handleTitleChange(block.id, e.target.value)}
-                  placeholder="Section title"
-                  className="w-full px-4 py-2.5 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-ace-cyan/30 focus:border-ace-cyan"
-                />
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1.5">
-                  Content
-                </label>
-                <textarea
-                  value={block.content}
-                  onChange={(e) => handleContentChange(block.id, e.target.value)}
-                  rows={6}
-                  className="w-full px-4 py-2.5 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-ace-cyan/30 focus:border-ace-cyan resize-y"
-                />
-              </div>
-              <div className="flex items-center justify-between">
-                <span className="text-xs text-gray-400">
-                  Last updated: {new Date(block.updated_at).toLocaleDateString()}
-                </span>
+              <textarea
+                value={values[block.key] ?? ""}
+                onChange={(e) => handleChange(block.key, e.target.value)}
+                rows={block.rows ?? 4}
+                className="w-full px-4 py-3 bg-[#0a0a0a] border border-white/10 text-[#f5f1ea] placeholder-[#6b655e] focus:border-[#d4a843] focus:outline-none transition-colors text-sm leading-relaxed resize-y"
+              />
+
+              <div className="flex items-center justify-end mt-4 gap-3">
+                {saved[block.key] && (
+                  <span className="inline-flex items-center gap-1.5 text-xs text-[#d4a843] tracking-wide">
+                    <Check className="w-3.5 h-3.5" strokeWidth={2} />
+                    Saved
+                  </span>
+                )}
                 <button
-                  onClick={() => handleSave(block.id)}
-                  disabled={savingId === block.id}
-                  className="flex items-center gap-2 px-4 py-2 bg-ace-cyan text-white text-sm font-medium rounded-lg hover:bg-ace-cyan/90 transition-colors disabled:opacity-50"
+                  type="button"
+                  onClick={() => handleSave(block.key)}
+                  className="btn-primary !py-2.5 !px-5 text-xs"
                 >
-                  {savingId === block.id ? (
-                    <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                  ) : (
-                    <Save className="w-4 h-4" />
-                  )}
+                  <Save className="w-3.5 h-3.5" />
                   Save
                 </button>
               </div>
-            </div>
-          </div>
-        ))}
-      </div>
+            </section>
+          ))}
+        </div>
+      )}
     </div>
   )
 }

@@ -2,109 +2,109 @@
 
 import { useState } from "react"
 import { useRouter } from "next/navigation"
-import { LogIn } from "lucide-react"
+import { ArrowRight, Lock } from "lucide-react"
+import { STORAGE_KEYS } from "@/lib/admin-storage"
 
 export default function AdminLoginPage() {
   const router = useRouter()
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
-  const [error, setError] = useState("")
-  const [loading, setLoading] = useState(false)
+  const [submitting, setSubmitting] = useState(false)
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    setError("")
-    setLoading(true)
-
-    // Stub: will call supabase.auth.signInWithPassword when connected
-    // For now, just redirect to admin
+    setSubmitting(true)
+    // Demo only — no real auth.
+    if (typeof window !== "undefined") {
+      window.localStorage.setItem(STORAGE_KEYS.AUTH, "true")
+    }
+    // brief delay for perceived feedback
     setTimeout(() => {
-      if (!email || !password) {
-        setError("Please enter both email and password.")
-        setLoading(false)
-        return
-      }
-      setLoading(false)
-      router.push("/admin")
-    }, 500)
+      router.replace("/admin")
+    }, 300)
   }
 
   return (
-    <div className="min-h-screen bg-gray-100 flex items-center justify-center p-4">
-      <div className="w-full max-w-md">
-        {/* Logo */}
-        <div className="text-center mb-8">
-          <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl ace-gradient-bg text-white font-bebas text-2xl mb-4">
-            ACE
-          </div>
-          <h1 className="text-2xl font-playfair font-bold text-gray-900">
-            Admin Login
-          </h1>
-          <p className="text-sm text-gray-500 mt-1">
-            Ace Game Room Gallery Dashboard
-          </p>
-        </div>
+    <div className="min-h-screen flex items-center justify-center bg-[#0a0a0a] px-6 py-16 relative overflow-hidden">
+      {/* Ambient background */}
+      <div
+        className="absolute inset-0 opacity-[0.04] pointer-events-none"
+        style={{
+          background:
+            "radial-gradient(600px circle at 30% 30%, #d4a843, transparent), radial-gradient(600px circle at 70% 70%, #c0392b, transparent)",
+        }}
+      />
+      <div className="absolute inset-0 grain-overlay pointer-events-none" />
 
-        {/* Form Card */}
-        <div className="bg-white rounded-2xl shadow-sm border border-gray-200 p-8">
+      <div className="relative w-full max-w-md">
+        {/* Card */}
+        <div className="bg-[#111] border border-white/5 p-10 lg:p-12 shadow-[0_40px_80px_-20px_rgba(0,0,0,0.8)]">
+          {/* Logo */}
+          <div className="mb-10 text-center">
+            <div className="font-display text-4xl tracking-[0.35em] text-[#f5f1ea]">
+              ACE
+            </div>
+            <div className="mt-2 text-[10px] tracking-[0.4em] uppercase text-[#d4a843]">
+              Admin Panel
+            </div>
+            <div className="gold-divider mx-auto mt-5" />
+          </div>
+
+          <h1 className="font-playfair text-2xl lg:text-3xl text-[#f5f1ea] text-center mb-2">
+            Welcome back.
+          </h1>
+          <p className="text-center text-sm text-[#a8a198] mb-8">
+            Sign in to manage the showroom.
+          </p>
+
           <form onSubmit={handleSubmit} className="space-y-5">
             <div>
-              <label
-                htmlFor="email"
-                className="block text-sm font-medium text-gray-700 mb-1.5"
-              >
+              <label className="block text-[10px] tracking-[0.25em] uppercase text-[#a8a198] mb-2">
                 Email
               </label>
               <input
-                id="email"
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="admin@acegameroom.com"
-                className="w-full px-4 py-2.5 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-ace-cyan/30 focus:border-ace-cyan"
+                placeholder="you@acegameroom.com"
                 required
+                className="w-full px-4 py-3 bg-[#0a0a0a] border border-white/10 text-[#f5f1ea] placeholder-[#6b655e] focus:border-[#d4a843] focus:outline-none transition-colors"
               />
             </div>
+
             <div>
-              <label
-                htmlFor="password"
-                className="block text-sm font-medium text-gray-700 mb-1.5"
-              >
+              <label className="block text-[10px] tracking-[0.25em] uppercase text-[#a8a198] mb-2">
                 Password
               </label>
               <input
-                id="password"
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                placeholder="Enter your password"
-                className="w-full px-4 py-2.5 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-ace-cyan/30 focus:border-ace-cyan"
+                placeholder="••••••••"
                 required
+                className="w-full px-4 py-3 bg-[#0a0a0a] border border-white/10 text-[#f5f1ea] placeholder-[#6b655e] focus:border-[#d4a843] focus:outline-none transition-colors"
               />
             </div>
 
-            {error && (
-              <div className="bg-red-50 text-ace-red text-sm px-4 py-2.5 rounded-lg">
-                {error}
-              </div>
-            )}
-
             <button
               type="submit"
-              disabled={loading}
-              className="w-full flex items-center justify-center gap-2 px-4 py-2.5 bg-ace-cyan text-white font-medium rounded-lg hover:bg-ace-cyan/90 transition-colors disabled:opacity-50"
+              disabled={submitting}
+              className="btn-primary w-full disabled:opacity-60"
             >
-              {loading ? (
-                <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-              ) : (
-                <>
-                  <LogIn className="w-4 h-4" />
-                  Sign In
-                </>
-              )}
+              <span>{submitting ? "Signing In" : "Sign In"}</span>
+              <ArrowRight className="w-4 h-4" />
             </button>
           </form>
+
+          <div className="mt-8 flex items-center gap-2 justify-center text-xs text-[#6b655e]">
+            <Lock className="w-3 h-3" strokeWidth={1.5} />
+            <span>Demo admin — any credentials will work.</span>
+          </div>
         </div>
+
+        <p className="mt-6 text-center text-[10px] tracking-[0.3em] uppercase text-[#6b655e]">
+          Ace Game Room Gallery &middot; Since 1992
+        </p>
       </div>
     </div>
   )

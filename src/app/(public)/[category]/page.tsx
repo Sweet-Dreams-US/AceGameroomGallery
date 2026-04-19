@@ -1,159 +1,159 @@
 import { notFound } from "next/navigation"
-import Image from "next/image"
 import Link from "next/link"
+import Image from "next/image"
 import type { Metadata } from "next"
-import {
-  MOCK_CATEGORIES,
-  getCategoryBySlug,
-  getProductsByCategory,
-} from "@/lib/mock-data"
-import { Breadcrumbs } from "@/components/layout/Breadcrumbs"
-import CategorySidebar from "@/components/products/CategorySidebar"
-import ProductGrid from "@/components/products/ProductGrid"
+import { ArrowUpRight } from "lucide-react"
+import { MOCK_CATEGORIES, MOCK_PRODUCTS } from "@/lib/mock-data"
 
 interface PageProps {
   params: Promise<{ category: string }>
 }
 
-export async function generateMetadata({
-  params,
-}: PageProps): Promise<Metadata> {
-  const { category: slug } = await params
-  const category = getCategoryBySlug(slug)
-  if (!category) {
-    return { title: "Category Not Found" }
-  }
+export async function generateStaticParams() {
+  return MOCK_CATEGORIES.map((cat) => ({ category: cat.slug }))
+}
+
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const { category } = await params
+  const cat = MOCK_CATEGORIES.find((c) => c.slug === category)
+  if (!cat) return { title: "Not Found" }
   return {
-    title: category.name,
-    description: category.description,
+    title: cat.name,
+    description: cat.description,
   }
 }
 
 export default async function CategoryPage({ params }: PageProps) {
-  const { category: slug } = await params
-  const category = getCategoryBySlug(slug)
+  const { category } = await params
+  const cat = MOCK_CATEGORIES.find((c) => c.slug === category)
+  if (!cat) notFound()
 
-  if (!category) {
-    notFound()
-  }
-
-  const products = getProductsByCategory(slug)
-
-  // Transform categories for the sidebar
-  const sidebarCategories = MOCK_CATEGORIES.map((c) => ({
-    name: c.name,
-    slug: c.slug,
-    children: c.children.map((child) => ({
-      name: child.name,
-      slug: child.slug,
-    })),
-  }))
+  const products = MOCK_PRODUCTS.filter((p) => p.categorySlug === category)
 
   return (
-    <div>
-      {/* Hero Banner */}
-      <div className="relative h-48 md:h-64 lg:h-72 bg-ace-charcoal overflow-hidden">
-        <Image
-          src={category.imageUrl}
-          alt={category.name}
-          fill
-          className="object-cover opacity-40"
-          sizes="100vw"
-          priority
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-ace-charcoal/80 to-ace-charcoal/40" />
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex flex-col justify-center">
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-playfair font-bold text-white mb-2">
-            {category.name}
+    <div className="bg-[#0a0a0a] min-h-screen">
+      {/* Category Hero */}
+      <section className="relative h-[60vh] min-h-[480px] flex items-end overflow-hidden">
+        <div className="absolute inset-0">
+          <Image
+            src={cat.imageUrl}
+            alt={cat.name}
+            fill
+            className="object-cover"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/70 to-transparent" />
+        </div>
+
+        <div className="relative max-w-[1600px] mx-auto px-6 lg:px-10 pb-16 lg:pb-24 w-full">
+          <div className="flex items-center gap-3 text-sm mb-6">
+            <Link href="/" className="text-[#a8a198] hover:text-[#d4a843] transition-colors">Home</Link>
+            <span className="text-[#6b655e]">/</span>
+            <span className="text-[#f5f1ea]">{cat.name}</span>
+          </div>
+
+          <p className="eyebrow mb-4">THE {cat.name.toUpperCase()} COLLECTION</p>
+          <h1 className="hero-headline text-[#f5f1ea] mb-6">
+            {cat.name}
           </h1>
-          <p className="text-white/70 text-sm md:text-base max-w-2xl">
-            {category.description}
+          <p className="text-lg lg:text-xl text-[#a8a198] font-light max-w-2xl leading-relaxed">
+            {cat.description}
           </p>
         </div>
-      </div>
+      </section>
 
-      {/* Breadcrumbs */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <Breadcrumbs items={[{ label: category.name }]} />
-      </div>
-
-      {/* Main Content */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
-        <div className="lg:grid lg:grid-cols-[260px_1fr] lg:gap-8">
-          {/* Sidebar */}
-          <div className="lg:pt-4">
-            <CategorySidebar
-              categories={sidebarCategories}
-              currentSlug={slug}
-            />
-          </div>
-
-          {/* Content Area */}
-          <div className="mt-6 lg:mt-0">
-            {/* Subcategory Cards */}
-            {category.children.length > 0 && (
-              <div className="mb-10">
-                <h2 className="font-playfair text-xl font-bold text-ace-charcoal mb-5">
-                  Browse {category.name}
-                </h2>
-                <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
-                  {category.children.map((sub) => (
-                    <Link
-                      key={sub.id}
-                      href={`/${slug}?sub=${sub.slug}`}
-                      className="group relative aspect-[4/3] rounded-xl overflow-hidden bg-gray-100 card-hover"
-                    >
-                      <Image
-                        src={sub.imageUrl}
-                        alt={sub.name}
-                        fill
-                        className="object-cover transition-transform duration-500 group-hover:scale-110"
-                        sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
-                      <div className="absolute bottom-0 left-0 right-0 p-3">
-                        <span className="text-white text-sm font-semibold">
-                          {sub.name}
-                        </span>
-                      </div>
-                    </Link>
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {/* Product Grid */}
-            {products.length > 0 ? (
-              <div>
-                <div className="flex items-center justify-between mb-6">
-                  <h2 className="font-playfair text-xl font-bold text-ace-charcoal">
-                    {category.name} Products
-                  </h2>
-                  <span className="text-sm text-ace-slate">
-                    {products.length} product{products.length !== 1 ? "s" : ""}
-                  </span>
-                </div>
-                <ProductGrid products={products} />
-              </div>
-            ) : (
-              <div className="text-center py-16 bg-gray-50 rounded-xl">
-                <p className="text-lg text-ace-slate mb-2">
-                  No products listed yet
-                </p>
-                <p className="text-sm text-gray-400">
-                  Browse our subcategories above or contact us for availability.
-                </p>
+      {/* Subcategories */}
+      {cat.children.length > 0 && (
+        <section className="py-20 lg:py-28">
+          <div className="max-w-[1600px] mx-auto px-6 lg:px-10">
+            <p className="section-number mb-4">/ BROWSE BY TYPE</p>
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-px bg-white/5">
+              {cat.children.map((sub) => (
                 <Link
-                  href="/contact"
-                  className="inline-block mt-4 btn-ace text-sm"
+                  key={sub.slug}
+                  href={`/${cat.slug}#${sub.slug}`}
+                  className="group bg-[#0a0a0a] p-6 lg:p-8 hover:bg-[#111] transition-all duration-500 text-center"
                 >
-                  Contact Us
+                  <div className="relative aspect-square mb-4 overflow-hidden">
+                    <Image
+                      src={sub.imageUrl}
+                      alt={sub.name}
+                      fill
+                      className="object-cover transition-transform duration-700 group-hover:scale-110"
+                      sizes="(max-width: 768px) 50vw, 16vw"
+                    />
+                  </div>
+                  <h3 className="text-sm lg:text-base font-medium text-[#f5f1ea] group-hover:text-[#d4a843] transition-colors">
+                    {sub.name}
+                  </h3>
                 </Link>
-              </div>
-            )}
+              ))}
+            </div>
           </div>
+        </section>
+      )}
+
+      {/* Products Grid */}
+      <section className="py-20 lg:py-28 border-t border-white/5">
+        <div className="max-w-[1600px] mx-auto px-6 lg:px-10">
+          <div className="flex items-end justify-between gap-6 flex-wrap mb-12 lg:mb-16">
+            <div>
+              <p className="section-number mb-3">/ FEATURED IN {cat.name.toUpperCase()}</p>
+              <h2 className="font-playfair text-3xl lg:text-5xl font-bold text-[#f5f1ea]">
+                {products.length > 0 ? "The Collection" : "Available in Showroom"}
+              </h2>
+            </div>
+            <p className="text-[#a8a198] text-sm">
+              {products.length} {products.length === 1 ? "product" : "products"} · Visit showroom for full inventory
+            </p>
+          </div>
+
+          {products.length > 0 ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+              {products.map((product) => (
+                <Link
+                  key={product.id}
+                  href={`/${product.categorySlug}/${product.slug}`}
+                  className="group block"
+                >
+                  <div className="relative aspect-[4/5] overflow-hidden bg-[#111] mb-5">
+                    <Image
+                      src={product.imageUrl}
+                      alt={product.name}
+                      fill
+                      className="object-cover transition-transform duration-700 group-hover:scale-105"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    />
+                    <div className="absolute top-4 left-4">
+                      <span className="scarcity-badge text-[10px] !py-1 !px-3">
+                        {product.brandName}
+                      </span>
+                    </div>
+                    <div className="absolute bottom-4 right-4 w-10 h-10 rounded-full bg-[#0a0a0a]/80 backdrop-blur-sm border border-white/10 flex items-center justify-center text-[#f5f1ea] group-hover:bg-[#d4a843] group-hover:border-[#d4a843] group-hover:text-[#0a0a0a] transition-all duration-500">
+                      <ArrowUpRight className="w-4 h-4" />
+                    </div>
+                  </div>
+                  <div>
+                    <h3 className="font-playfair text-2xl font-bold text-[#f5f1ea] group-hover:text-[#d4a843] transition-colors mb-2">
+                      {product.name}
+                    </h3>
+                    <p className="text-sm text-[#a8a198] line-clamp-2">{product.description}</p>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          ) : (
+            <div className="border border-white/5 p-16 text-center">
+              <p className="text-lg text-[#a8a198] mb-6">
+                Our full {cat.name.toLowerCase()} collection is curated in-store.
+              </p>
+              <Link href="/contact" className="btn-primary">
+                Request a Quote
+              </Link>
+            </div>
+          )}
         </div>
-      </div>
+      </section>
     </div>
   )
 }
