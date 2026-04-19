@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react"
 import Link from "next/link"
-import { Menu, X } from "lucide-react"
+import { Menu } from "lucide-react"
 import { MobileMenu } from "./MobileMenu"
 
 const NAV_LINKS = [
@@ -63,7 +63,7 @@ export function Navbar() {
       <header
         className={`fixed top-0 left-0 right-0 z-40 transition-all duration-500 ${
           isScrolled
-            ? "bg-[#0a0a0a]/90 backdrop-blur-xl border-b border-white/5"
+            ? "bg-[#faf8f3]/90 backdrop-blur-xl border-b border-[#1a1612]/8 shadow-[0_4px_20px_-8px_rgba(26,22,18,0.12)]"
             : "bg-transparent"
         }`}
       >
@@ -75,7 +75,7 @@ export function Navbar() {
                 <span className="ace-gradient-text text-3xl lg:text-4xl font-black italic font-playfair transition-transform duration-500 group-hover:scale-105">
                   ACE
                 </span>
-                <span className="text-[9px] lg:text-[10px] font-display tracking-[0.3em] text-[#a8a198] mt-0.5">
+                <span className="text-[9px] lg:text-[10px] font-display tracking-[0.3em] text-[#6b655e] mt-0.5">
                   GAME ROOM GALLERY
                 </span>
               </div>
@@ -87,7 +87,7 @@ export function Navbar() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="link-underline text-[13px] font-medium tracking-[0.15em] uppercase text-[#e8e2d5] hover:text-[#d4a843] transition-colors duration-300"
+                  className="link-underline text-[13px] font-medium tracking-[0.15em] uppercase text-[#1a1612] hover:text-[#c0392b] transition-colors duration-300"
                 >
                   {link.label}
                 </Link>
@@ -98,7 +98,7 @@ export function Navbar() {
             <div className="flex items-center gap-4">
               <a
                 href="tel:+12604323443"
-                className="hidden lg:inline-flex items-center gap-2 text-[11px] font-display tracking-[0.2em] text-[#a8a198] hover:text-[#d4a843] transition-colors"
+                className="hidden lg:inline-flex items-center gap-2 text-[11px] font-display tracking-[0.2em] text-[#6b655e] hover:text-[#c0392b] transition-colors"
               >
                 <span className="w-1.5 h-1.5 rounded-full bg-[#d4a843] animate-pulse" />
                 (260) 432-3443
@@ -111,7 +111,7 @@ export function Navbar() {
               </Link>
               <button
                 onClick={() => setMobileOpen(true)}
-                className="lg:hidden p-2 text-[#f5f1ea] hover:text-[#d4a843] transition-colors"
+                className="lg:hidden p-2 text-[#1a1612] hover:text-[#c0392b] transition-colors"
                 aria-label="Open menu"
               >
                 <Menu className="w-6 h-6" />

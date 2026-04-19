@@ -72,9 +72,9 @@ const CHAPTERS: Chapter[] = [
 
 export default function AboutPageClient() {
   return (
-    <div className="bg-[#0a0a0a]">
+    <div className="bg-[#faf8f3]">
       {/* ================= HERO ================= */}
-      <section className="relative overflow-hidden py-24 lg:py-40 border-b border-white/5">
+      <section className="relative overflow-hidden py-24 lg:py-40 border-b border-[#1a1612]/8">
         <div
           className="absolute inset-0 opacity-[0.12]"
           style={{
@@ -84,7 +84,7 @@ export default function AboutPageClient() {
             backgroundPosition: "center",
           }}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0a]/60 via-[#0a0a0a]/80 to-[#0a0a0a]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#faf8f3]/70 via-[#faf8f3]/85 to-[#faf8f3]" />
 
         <div className="relative max-w-[1600px] mx-auto px-6 lg:px-10">
           <motion.div
@@ -94,11 +94,11 @@ export default function AboutPageClient() {
             className="max-w-4xl"
           >
             <p className="section-number mb-6">/ 001 — OUR STORY</p>
-            <h1 className="hero-headline text-[#f5f1ea] mb-8">
+            <h1 className="hero-headline text-[#1a1612] mb-8">
               Since{" "}
               <span className="gold-gradient-text italic">1992.</span>
             </h1>
-            <p className="text-lg lg:text-xl text-[#a8a198] font-light leading-relaxed max-w-2xl">
+            <p className="text-lg lg:text-xl text-[#6b655e] font-light leading-relaxed max-w-2xl">
               Four chapters, one philosophy, and a showroom Fort Wayne built
               with us — one pool table, one playset, one family at a time.
             </p>
@@ -131,14 +131,14 @@ export default function AboutPageClient() {
                       className="object-cover transition-transform duration-700 group-hover:scale-105"
                       sizes="(max-width: 1024px) 100vw, 50vw"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a]/60 via-transparent to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#1a1612]/60 via-transparent to-transparent" />
                     <div className="absolute top-6 left-6 lg:top-8 lg:left-8">
-                      <span className="font-playfair italic text-7xl lg:text-9xl font-black text-[#d4a843]/60">
+                      <span className="font-playfair italic text-7xl lg:text-9xl font-black text-[#d4a843]/80">
                         {chapter.num.slice(-2)}
                       </span>
                     </div>
                     <div className="absolute bottom-6 right-6 lg:bottom-8 lg:right-8">
-                      <span className="font-display text-2xl lg:text-4xl tracking-[0.2em] text-[#f5f1ea]/90">
+                      <span className="font-display text-2xl lg:text-4xl tracking-[0.2em] text-white/95">
                         {chapter.year}
                       </span>
                     </div>
@@ -148,12 +148,12 @@ export default function AboutPageClient() {
                 {/* Content */}
                 <div className="col-span-12 lg:col-span-6">
                   <p className="section-number mb-4">/ {chapter.num} {chapter.eyebrow.toUpperCase()}</p>
-                  <h3 className="font-playfair text-3xl lg:text-5xl font-bold text-[#f5f1ea] mb-8 leading-tight">
+                  <h3 className="font-playfair text-3xl lg:text-5xl font-bold text-[#1a1612] mb-8 leading-tight">
                     {chapter.title}
                   </h3>
                   <div className="space-y-5">
                     {chapter.body.map((paragraph, i) => (
-                      <p key={i} className="text-base lg:text-lg text-[#a8a198] font-light leading-relaxed">
+                      <p key={i} className="text-base lg:text-lg text-[#6b655e] font-light leading-relaxed">
                         {paragraph}
                       </p>
                     ))}
@@ -166,9 +166,9 @@ export default function AboutPageClient() {
       </section>
 
       {/* ================= THE ACE DIFFERENCE — quote section ================= */}
-      <section className="relative py-32 lg:py-48 bg-[#080808] border-y border-white/5 overflow-hidden">
-        <div className="absolute top-10 left-10 right-10 h-px bg-gradient-to-r from-transparent via-[#d4a843]/20 to-transparent" />
-        <div className="absolute bottom-10 left-10 right-10 h-px bg-gradient-to-r from-transparent via-[#d4a843]/20 to-transparent" />
+      <section className="relative py-32 lg:py-48 bg-[#f4efe6] border-y border-[#1a1612]/8 overflow-hidden">
+        <div className="absolute top-10 left-10 right-10 h-px bg-gradient-to-r from-transparent via-[#d4a843]/40 to-transparent" />
+        <div className="absolute bottom-10 left-10 right-10 h-px bg-gradient-to-r from-transparent via-[#d4a843]/40 to-transparent" />
 
         <div className="relative max-w-[1400px] mx-auto px-6 lg:px-10">
           <motion.div
@@ -180,11 +180,11 @@ export default function AboutPageClient() {
           >
             <p className="eyebrow mb-8">The Ace Difference</p>
 
-            <span className="block gold-gradient-text font-playfair text-[10rem] leading-none opacity-30 mb-[-3rem]">
+            <span className="block gold-gradient-text font-playfair text-[10rem] leading-none opacity-40 mb-[-3rem]">
               &ldquo;
             </span>
 
-            <blockquote className="font-playfair italic text-3xl md:text-5xl lg:text-6xl text-[#f5f1ea] leading-[1.15] max-w-5xl mx-auto mb-12">
+            <blockquote className="font-playfair italic text-3xl md:text-5xl lg:text-6xl text-[#1a1612] leading-[1.15] max-w-5xl mx-auto mb-12">
               Sell only quality products at a fair price, and back them up with
               excellent customer service.{" "}
               <span className="gold-gradient-text">That&apos;s it.</span>{" "}
@@ -192,7 +192,7 @@ export default function AboutPageClient() {
             </blockquote>
 
             <div className="gold-divider mx-auto mb-6" />
-            <p className="font-display text-xs tracking-[0.3em] text-[#a8a198] uppercase">
+            <p className="font-display text-xs tracking-[0.3em] text-[#6b655e] uppercase">
               Bret Almashie &middot; Owner
             </p>
           </motion.div>
@@ -205,7 +205,7 @@ export default function AboutPageClient() {
           <div className="mb-16 lg:mb-20 grid grid-cols-12 gap-6">
             <div className="col-span-12 lg:col-span-7">
               <p className="section-number mb-4">/ 005 — BY THE NUMBERS</p>
-              <h2 className="font-playfair text-4xl lg:text-6xl font-bold text-[#f5f1ea] leading-[1.05]">
+              <h2 className="font-playfair text-4xl lg:text-6xl font-bold text-[#1a1612] leading-[1.05]">
                 Thirty-two years
                 <br />
                 <span className="gold-gradient-text italic">add up.</span>
@@ -213,7 +213,7 @@ export default function AboutPageClient() {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-white/5">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-[#1a1612]/8">
             <StatCell number="32" label="Years in business" />
             <StatCell number="27" label="Premium brands" />
             <StatCell number="#1" label="Pool tables in NE Indiana" />
@@ -223,7 +223,7 @@ export default function AboutPageClient() {
       </section>
 
       {/* ================= CTA ================= */}
-      <section className="relative py-32 lg:py-48 overflow-hidden">
+      <section className="relative py-32 lg:py-48 overflow-hidden bg-[#f4efe6]">
         <div
           className="absolute inset-0 opacity-[0.08]"
           style={{
@@ -233,7 +233,7 @@ export default function AboutPageClient() {
             backgroundPosition: "center",
           }}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0a] via-[#0a0a0a]/80 to-[#0a0a0a]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#f4efe6] via-[#f4efe6]/85 to-[#f4efe6]" />
 
         <div className="relative max-w-[1400px] mx-auto px-6 lg:px-10 text-center">
           <motion.div
@@ -243,12 +243,12 @@ export default function AboutPageClient() {
             transition={{ duration: 0.8 }}
           >
             <p className="eyebrow mb-6">Visit Us</p>
-            <h2 className="font-playfair font-black leading-[0.95] text-[#f5f1ea] mb-10 text-[clamp(2.5rem,8vw,6rem)]">
+            <h2 className="font-playfair font-black leading-[0.95] text-[#1a1612] mb-10 text-[clamp(2.5rem,8vw,6rem)]">
               Come see it
               <br />
               <span className="gold-gradient-text italic">for yourself.</span>
             </h2>
-            <p className="text-lg lg:text-xl text-[#a8a198] font-light max-w-2xl mx-auto leading-relaxed mb-12">
+            <p className="text-lg lg:text-xl text-[#6b655e] font-light max-w-2xl mx-auto leading-relaxed mb-12">
               Thirty minutes in the showroom tells you more than a hundred
               photos. Walk in — bring the kids, bring the measurements, bring the
               questions.
@@ -272,11 +272,11 @@ export default function AboutPageClient() {
 
 function StatCell({ number, label }: { number: string; label: string }) {
   return (
-    <div className="bg-[#080808] p-10 lg:p-12 text-center hover:bg-[#0f0f0f] transition-colors duration-500">
+    <div className="bg-white p-10 lg:p-12 text-center hover:bg-[#faf8f3] transition-colors duration-500">
       <span className="block font-playfair text-6xl lg:text-7xl font-black gold-gradient-text leading-none mb-4">
         {number}
       </span>
-      <span className="text-xs font-display tracking-[0.25em] text-[#a8a198] uppercase">
+      <span className="text-xs font-display tracking-[0.25em] text-[#6b655e] uppercase">
         {label}
       </span>
     </div>

@@ -58,7 +58,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       lang="en"
       className={`${playfair.variable} ${inter.variable} ${bebas.variable}`}
     >
-      <body className="min-h-screen flex flex-col bg-[#0a0a0a] text-[#f5f1ea]">
+      <body className="min-h-screen flex flex-col bg-[#faf8f3] text-[#1a1612]">
         <ConditionalShell>{children}</ConditionalShell>
       </body>
     </html>

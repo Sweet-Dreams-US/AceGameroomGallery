@@ -51,19 +51,19 @@ const FOOTER_COLS = [
 
 export function Footer() {
   return (
-    <footer className="bg-[#050505] border-t border-white/5">
+    <footer className="bg-[#ebe4d6] border-t border-[#1a1612]/8">
       {/* MANTRA MARQUEE */}
-      <div className="border-y border-white/5 py-8 lg:py-12 overflow-hidden">
+      <div className="border-y border-[#1a1612]/8 py-8 lg:py-12 overflow-hidden">
         <div className="flex whitespace-nowrap animate-marquee">
           {Array.from({ length: 6 }).map((_, i) => (
             <div key={i} className="flex items-center gap-10 px-6">
-              <span className="font-playfair italic text-4xl lg:text-6xl text-[#f5f1ea]">
+              <span className="font-playfair italic text-4xl lg:text-6xl text-[#1a1612]">
                 Rack.
               </span>
               <span className="font-playfair italic text-4xl lg:text-6xl gold-gradient-text">
                 Break.
               </span>
-              <span className="font-playfair italic text-4xl lg:text-6xl text-[#f5f1ea]">
+              <span className="font-playfair italic text-4xl lg:text-6xl text-[#1a1612]">
                 Gather.
               </span>
               <span className="font-playfair italic text-4xl lg:text-6xl gold-gradient-text">
@@ -84,11 +84,11 @@ export function Footer() {
               <span className="ace-gradient-text text-5xl font-black italic font-playfair">
                 ACE
               </span>
-              <span className="text-xs font-display tracking-[0.3em] text-[#a8a198] mt-1">
+              <span className="text-xs font-display tracking-[0.3em] text-[#6b655e] mt-1">
                 GAME ROOM GALLERY
               </span>
             </Link>
-            <p className="text-[#a8a198] text-sm leading-relaxed max-w-sm mb-8">
+            <p className="text-[#6b655e] text-sm leading-relaxed max-w-sm mb-8">
               Fort Wayne&apos;s most curated game room showroom. Over 25 years creating the places families gather, friends compete, and memories are made.
             </p>
 
@@ -98,7 +98,7 @@ export function Footer() {
                 href="https://facebook.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-[#a8a198] hover:border-[#d4a843] hover:text-[#d4a843] transition-all"
+                className="w-10 h-10 rounded-full border border-[#1a1612]/15 flex items-center justify-center text-[#6b655e] hover:border-[#d4a843] hover:text-[#b8933a] transition-all"
                 aria-label="Facebook"
               >
                 <FacebookIcon className="w-4 h-4" />
@@ -107,7 +107,7 @@ export function Footer() {
                 href="https://instagram.com/acegameroomgallery"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-[#a8a198] hover:border-[#d4a843] hover:text-[#d4a843] transition-all"
+                className="w-10 h-10 rounded-full border border-[#1a1612]/15 flex items-center justify-center text-[#6b655e] hover:border-[#d4a843] hover:text-[#b8933a] transition-all"
                 aria-label="Instagram"
               >
                 <InstagramIcon className="w-4 h-4" />
@@ -118,7 +118,7 @@ export function Footer() {
           {/* Link Columns */}
           {FOOTER_COLS.map((col) => (
             <div key={col.title}>
-              <h4 className="font-display text-[11px] tracking-[0.25em] text-[#d4a843] uppercase mb-5">
+              <h4 className="font-display text-[11px] tracking-[0.25em] text-[#b8933a] uppercase mb-5">
                 {col.title}
               </h4>
               <ul className="space-y-3">
@@ -126,7 +126,7 @@ export function Footer() {
                   <li key={link.label}>
                     <Link
                       href={link.href}
-                      className="text-sm text-[#a8a198] hover:text-[#f5f1ea] transition-colors link-underline"
+                      className="text-sm text-[#3d3834] hover:text-[#c0392b] transition-colors link-underline"
                     >
                       {link.label}
                     </Link>
@@ -138,19 +138,19 @@ export function Footer() {
         </div>
 
         {/* CONTACT BAND */}
-        <div className="mt-16 pt-10 border-t border-white/5 grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="mt-16 pt-10 border-t border-[#1a1612]/8 grid grid-cols-1 md:grid-cols-3 gap-8">
           <div>
             <p className="eyebrow mb-3">Visit</p>
             <a
               href="https://maps.google.com/?q=2525+W+Jefferson+Blvd,+Fort+Wayne,+IN+46802"
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex items-start gap-3 text-[#e8e2d5] hover:text-[#d4a843] transition-colors"
+              className="group flex items-start gap-3 text-[#1a1612] hover:text-[#c0392b] transition-colors"
             >
               <MapPin className="w-5 h-5 mt-0.5 text-[#d4a843] flex-shrink-0" />
               <div>
                 <div className="font-medium">2525 W Jefferson Blvd</div>
-                <div className="text-sm text-[#a8a198]">Fort Wayne, IN 46802</div>
+                <div className="text-sm text-[#6b655e]">Fort Wayne, IN 46802</div>
               </div>
             </a>
           </div>
@@ -159,10 +159,10 @@ export function Footer() {
             <div className="flex items-start gap-3">
               <Phone className="w-5 h-5 mt-0.5 text-[#d4a843] flex-shrink-0" />
               <div>
-                <a href="tel:+12604323443" className="block font-medium text-[#e8e2d5] hover:text-[#d4a843] transition-colors">
+                <a href="tel:+12604323443" className="block font-medium text-[#1a1612] hover:text-[#c0392b] transition-colors">
                   (260) 432-3443
                 </a>
-                <div className="text-sm text-[#a8a198]">Fax: (260) 436-2507</div>
+                <div className="text-sm text-[#6b655e]">Fax: (260) 436-2507</div>
               </div>
             </div>
           </div>
@@ -171,9 +171,9 @@ export function Footer() {
             <div className="flex items-start gap-3">
               <Clock className="w-5 h-5 mt-0.5 text-[#d4a843] flex-shrink-0" />
               <div>
-                <div className="font-medium text-[#e8e2d5]">Monday — Saturday</div>
-                <div className="text-sm text-[#a8a198]">10:00 AM — 6:00 PM</div>
-                <div className="text-xs text-[#6b655e] mt-1">Sunday — Closed</div>
+                <div className="font-medium text-[#1a1612]">Monday — Saturday</div>
+                <div className="text-sm text-[#6b655e]">10:00 AM — 6:00 PM</div>
+                <div className="text-xs text-[#a8a198] mt-1">Sunday — Closed</div>
               </div>
             </div>
           </div>
@@ -181,15 +181,15 @@ export function Footer() {
       </div>
 
       {/* BOTTOM BAR */}
-      <div className="border-t border-white/5 py-6">
+      <div className="border-t border-[#1a1612]/8 py-6">
         <div className="max-w-[1600px] mx-auto px-6 lg:px-10 flex flex-col md:flex-row items-center justify-between gap-3">
           <p className="text-xs text-[#6b655e]">
             © {new Date().getFullYear()} Ace Game Room Gallery. Family owned since 1992.
           </p>
           <div className="flex items-center gap-6 text-xs text-[#6b655e]">
-            <Link href="/admin" className="hover:text-[#d4a843] transition-colors">Admin</Link>
-            <Link href="/faq" className="hover:text-[#d4a843] transition-colors">FAQ</Link>
-            <Link href="/contact" className="hover:text-[#d4a843] transition-colors">Contact</Link>
+            <Link href="/admin" className="hover:text-[#c0392b] transition-colors">Admin</Link>
+            <Link href="/faq" className="hover:text-[#c0392b] transition-colors">FAQ</Link>
+            <Link href="/contact" className="hover:text-[#c0392b] transition-colors">Contact</Link>
           </div>
         </div>
       </div>

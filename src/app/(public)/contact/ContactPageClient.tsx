@@ -134,9 +134,9 @@ export default function ContactPageClient() {
   }
 
   return (
-    <div className="bg-[#0a0a0a]">
+    <div className="bg-[#faf8f3]">
       {/* ================= HERO ================= */}
-      <section className="relative overflow-hidden py-24 lg:py-40 border-b border-white/5">
+      <section className="relative overflow-hidden py-24 lg:py-40 border-b border-[#1a1612]/8">
         <div
           className="absolute inset-0 opacity-[0.08]"
           style={{
@@ -146,7 +146,7 @@ export default function ContactPageClient() {
             backgroundPosition: "center",
           }}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0a]/70 via-[#0a0a0a]/80 to-[#0a0a0a]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#faf8f3]/70 via-[#faf8f3]/85 to-[#faf8f3]" />
 
         <div className="relative max-w-[1600px] mx-auto px-6 lg:px-10">
           <motion.div
@@ -156,11 +156,11 @@ export default function ContactPageClient() {
             className="max-w-4xl"
           >
             <p className="section-number mb-6">/ 001 — CONTACT</p>
-            <h1 className="hero-headline text-[#f5f1ea] mb-8">
+            <h1 className="hero-headline text-[#1a1612] mb-8">
               Let&apos;s build<br />
               <span className="gold-gradient-text italic">your room.</span>
             </h1>
-            <p className="text-lg lg:text-xl text-[#a8a198] font-light leading-relaxed max-w-2xl">
+            <p className="text-lg lg:text-xl text-[#6b655e] font-light leading-relaxed max-w-2xl">
               Every room starts with a conversation. Walk into the showroom, pick up
               the phone, or leave a note below — one business day is all it takes
               for a real answer from a real person.
@@ -182,7 +182,7 @@ export default function ContactPageClient() {
               className="col-span-12 lg:col-span-7"
             >
               <p className="eyebrow mb-4">Send a note</p>
-              <h2 className="font-playfair text-3xl lg:text-5xl font-bold text-[#f5f1ea] mb-10 leading-tight">
+              <h2 className="font-playfair text-3xl lg:text-5xl font-bold text-[#1a1612] mb-10 leading-tight">
                 Tell us about
                 <br />
                 <span className="gold-gradient-text italic">the room you&apos;re building.</span>
@@ -202,15 +202,15 @@ export default function ContactPageClient() {
                       initial={{ scale: 0, rotate: -30 }}
                       animate={{ scale: 1, rotate: 0 }}
                       transition={{ delay: 0.15, type: "spring", stiffness: 180, damping: 14 }}
-                      className="w-20 h-20 mx-auto mb-8 rounded-full bg-[#d4a843]/10 border border-[#d4a843]/40 flex items-center justify-center"
+                      className="w-20 h-20 mx-auto mb-8 rounded-full bg-[#1a6b3c]/10 border border-[#1a6b3c]/30 flex items-center justify-center"
                     >
-                      <CheckCircle2 className="w-10 h-10 text-[#d4a843]" />
+                      <CheckCircle2 className="w-10 h-10 text-[#1a6b3c]" />
                     </motion.div>
                     <motion.h3
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: 0.35 }}
-                      className="font-playfair text-3xl lg:text-4xl font-bold text-[#f5f1ea] mb-4"
+                      className="font-playfair text-3xl lg:text-4xl font-bold text-[#1a1612] mb-4"
                     >
                       Thanks.
                     </motion.h3>
@@ -218,7 +218,7 @@ export default function ContactPageClient() {
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: 0.45 }}
-                      className="text-lg text-[#a8a198] max-w-md mx-auto mb-8 leading-relaxed"
+                      className="text-lg text-[#6b655e] max-w-md mx-auto mb-8 leading-relaxed"
                     >
                       We&apos;ll be in touch within one business day.
                     </motion.p>
@@ -290,12 +290,12 @@ export default function ContactPageClient() {
                             className={`${inputClass(false)} appearance-none pr-10 cursor-pointer`}
                           >
                             {INTEREST_OPTIONS.map((opt) => (
-                              <option key={opt} value={opt} className="bg-[#121212] text-[#f5f1ea]">
+                              <option key={opt} value={opt} className="bg-white text-[#1a1612]">
                                 {opt}
                               </option>
                             ))}
                           </select>
-                          <div className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-[#a8a198]">
+                          <div className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-[#6b655e]">
                             <svg width="10" height="6" viewBox="0 0 10 6" fill="none">
                               <path d="M1 1L5 5L9 1" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
                             </svg>
@@ -332,8 +332,8 @@ export default function ContactPageClient() {
                           </>
                         )}
                       </button>
-                      <p className="mt-4 text-xs text-[#6b655e] tracking-wide">
-                        Prefer to call? <a href="tel:+12604323443" className="text-[#d4a843] hover:underline">(260) 432-3443</a>
+                      <p className="mt-4 text-xs text-[#a8a198] tracking-wide">
+                        Prefer to call? <a href="tel:+12604323443" className="text-[#b8933a] hover:underline">(260) 432-3443</a>
                       </p>
                     </div>
                   </motion.form>
@@ -350,12 +350,12 @@ export default function ContactPageClient() {
               className="col-span-12 lg:col-span-5 space-y-6"
             >
               {/* Map */}
-              <div className="relative overflow-hidden border border-white/5 bg-[#0f0f0f]">
+              <div className="relative overflow-hidden border border-[#1a1612]/8 bg-white">
                 <iframe
                   src={GOOGLE_MAPS_EMBED_SRC}
                   width="100%"
                   height="320"
-                  style={{ border: 0, filter: "grayscale(0.6) invert(0.92) hue-rotate(180deg)" }}
+                  style={{ border: 0 }}
                   allowFullScreen
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
@@ -367,7 +367,7 @@ export default function ContactPageClient() {
               {/* Info card */}
               <div className="card-luxe p-8 lg:p-10">
                 <p className="eyebrow mb-6">The Showroom</p>
-                <h3 className="font-playfair text-2xl lg:text-3xl font-bold text-[#f5f1ea] mb-2">
+                <h3 className="font-playfair text-2xl lg:text-3xl font-bold text-[#1a1612] mb-2">
                   Come see it.
                 </h3>
                 <p className="gold-gradient-text font-playfair italic text-lg mb-8">
@@ -379,14 +379,14 @@ export default function ContactPageClient() {
                     icon={<MapPin className="w-4 h-4" />}
                     title="Address"
                   >
-                    <span className="text-[#e8e2d5]">
+                    <span className="text-[#1a1612]">
                       2525 W Jefferson Blvd
                       <br />
                       Fort Wayne, IN 46802
                     </span>
                   </InfoRow>
 
-                  <div className="h-px bg-white/5" />
+                  <div className="h-px bg-[#1a1612]/8" />
 
                   <InfoRow
                     icon={<Phone className="w-4 h-4" />}
@@ -394,22 +394,22 @@ export default function ContactPageClient() {
                   >
                     <a
                       href="tel:+12604323443"
-                      className="text-[#e8e2d5] hover:text-[#d4a843] transition-colors"
+                      className="text-[#1a1612] hover:text-[#c0392b] transition-colors"
                     >
                       (260) 432-3443
                     </a>
                   </InfoRow>
 
-                  <div className="h-px bg-white/5" />
+                  <div className="h-px bg-[#1a1612]/8" />
 
                   <InfoRow
                     icon={<Printer className="w-4 h-4" />}
                     title="Fax"
                   >
-                    <span className="text-[#e8e2d5]">(260) 436-2507</span>
+                    <span className="text-[#1a1612]">(260) 436-2507</span>
                   </InfoRow>
 
-                  <div className="h-px bg-white/5" />
+                  <div className="h-px bg-[#1a1612]/8" />
 
                   <InfoRow
                     icon={<Clock className="w-4 h-4" />}
@@ -417,17 +417,17 @@ export default function ContactPageClient() {
                   >
                     <div className="space-y-1 text-sm">
                       <div className="flex justify-between gap-8">
-                        <span className="text-[#a8a198]">Mon &ndash; Sat</span>
-                        <span className="text-[#e8e2d5]">10 AM &ndash; 6 PM</span>
+                        <span className="text-[#6b655e]">Mon &ndash; Sat</span>
+                        <span className="text-[#1a1612]">10 AM &ndash; 6 PM</span>
                       </div>
                       <div className="flex justify-between gap-8">
-                        <span className="text-[#a8a198]">Sunday</span>
-                        <span className="text-[#6b655e]">Closed</span>
+                        <span className="text-[#6b655e]">Sunday</span>
+                        <span className="text-[#a8a198]">Closed</span>
                       </div>
                     </div>
                   </InfoRow>
 
-                  <div className="h-px bg-white/5" />
+                  <div className="h-px bg-[#1a1612]/8" />
 
                   <InfoRow
                     icon={<Mail className="w-4 h-4" />}
@@ -435,14 +435,14 @@ export default function ContactPageClient() {
                   >
                     <a
                       href="mailto:info@acegameroom.com"
-                      className="text-[#e8e2d5] hover:text-[#d4a843] transition-colors"
+                      className="text-[#1a1612] hover:text-[#c0392b] transition-colors"
                     >
                       info@acegameroom.com
                     </a>
                   </InfoRow>
                 </div>
 
-                <div className="mt-10 pt-6 border-t border-white/5">
+                <div className="mt-10 pt-6 border-t border-[#1a1612]/8">
                   <Link
                     href={GOOGLE_MAPS_DIRECTIONS}
                     target="_blank"
@@ -465,10 +465,10 @@ export default function ContactPageClient() {
 // ---------- helpers ----------
 
 function inputClass(hasError: boolean) {
-  return `w-full px-5 py-4 bg-[#0f0f0f] border text-[#f5f1ea] placeholder:text-[#6b655e] focus:outline-none transition-all duration-300 font-light ${
+  return `w-full px-5 py-4 bg-white border text-[#1a1612] placeholder:text-[#a8a198] focus:outline-none transition-all duration-300 font-light ${
     hasError
       ? "border-[#c0392b] focus:border-[#c0392b]"
-      : "border-white/10 focus:border-[#d4a843] focus:ring-1 focus:ring-[#d4a843]/30"
+      : "border-[#1a1612]/15 focus:border-[#d4a843] focus:ring-1 focus:ring-[#d4a843]/30"
   }`
 }
 
@@ -487,10 +487,10 @@ function FieldWrap({
 }) {
   return (
     <div>
-      <label className="flex items-center gap-2 mb-2 font-display text-xs tracking-[0.25em] text-[#a8a198] uppercase">
+      <label className="flex items-center gap-2 mb-2 font-display text-xs tracking-[0.25em] text-[#6b655e] uppercase">
         {label}
-        {required && <span className="text-[#d4a843]">*</span>}
-        {optional && <span className="text-[#6b655e] normal-case tracking-normal font-sans text-[10px]">optional</span>}
+        {required && <span className="text-[#b8933a]">*</span>}
+        {optional && <span className="text-[#a8a198] normal-case tracking-normal font-sans text-[10px]">optional</span>}
       </label>
       {children}
       <AnimatePresence>
@@ -520,11 +520,11 @@ function InfoRow({
 }) {
   return (
     <div className="flex items-start gap-4">
-      <div className="mt-0.5 w-9 h-9 shrink-0 border border-[#d4a843]/30 flex items-center justify-center text-[#d4a843]">
+      <div className="mt-0.5 w-9 h-9 shrink-0 border border-[#d4a843]/40 flex items-center justify-center text-[#b8933a]">
         {icon}
       </div>
       <div className="flex-1 min-w-0">
-        <p className="font-display text-[10px] tracking-[0.3em] uppercase text-[#6b655e] mb-1">
+        <p className="font-display text-[10px] tracking-[0.3em] uppercase text-[#a8a198] mb-1">
           {title}
         </p>
         <div className="leading-relaxed">{children}</div>

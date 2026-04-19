@@ -44,19 +44,19 @@ export function MobileMenu({ isOpen, onClose, navLinks, categories }: MobileMenu
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.3 }}
-          className="fixed inset-0 z-[100] bg-[#0a0a0a] lg:hidden overflow-y-auto"
+          className="fixed inset-0 z-[100] bg-[#faf8f3] lg:hidden overflow-y-auto"
         >
           {/* Header */}
-          <div className="flex items-center justify-between px-6 py-6 border-b border-white/5">
+          <div className="flex items-center justify-between px-6 py-6 border-b border-[#1a1612]/8">
             <Link href="/" onClick={handleClose} className="flex flex-col items-start leading-[0.9]">
               <span className="ace-gradient-text text-3xl font-black italic font-playfair">ACE</span>
-              <span className="text-[10px] font-display tracking-[0.3em] text-[#a8a198] mt-0.5">
+              <span className="text-[10px] font-display tracking-[0.3em] text-[#6b655e] mt-0.5">
                 GAME ROOM GALLERY
               </span>
             </Link>
             <button
               onClick={handleClose}
-              className="p-2 text-[#f5f1ea] hover:text-[#d4a843] transition-colors"
+              className="p-2 text-[#1a1612] hover:text-[#c0392b] transition-colors"
               aria-label="Close menu"
             >
               <X className="w-6 h-6" />
@@ -64,11 +64,11 @@ export function MobileMenu({ isOpen, onClose, navLinks, categories }: MobileMenu
           </div>
 
           {/* Tabs */}
-          <div className="flex border-b border-white/5">
+          <div className="flex border-b border-[#1a1612]/8">
             <button
               onClick={() => setActiveTab("main")}
               className={`flex-1 py-4 text-xs tracking-[0.2em] uppercase font-display transition-colors ${
-                activeTab === "main" ? "text-[#d4a843] border-b-2 border-[#d4a843]" : "text-[#a8a198]"
+                activeTab === "main" ? "text-[#b8933a] border-b-2 border-[#d4a843]" : "text-[#6b655e]"
               }`}
             >
               Main
@@ -76,7 +76,7 @@ export function MobileMenu({ isOpen, onClose, navLinks, categories }: MobileMenu
             <button
               onClick={() => setActiveTab("shop")}
               className={`flex-1 py-4 text-xs tracking-[0.2em] uppercase font-display transition-colors ${
-                activeTab === "shop" ? "text-[#d4a843] border-b-2 border-[#d4a843]" : "text-[#a8a198]"
+                activeTab === "shop" ? "text-[#b8933a] border-b-2 border-[#d4a843]" : "text-[#6b655e]"
               }`}
             >
               Shop
@@ -105,15 +105,15 @@ export function MobileMenu({ isOpen, onClose, navLinks, categories }: MobileMenu
                       <Link
                         href={link.href}
                         onClick={handleClose}
-                        className="group flex items-baseline gap-4 py-4 border-b border-white/5"
+                        className="group flex items-baseline gap-4 py-4 border-b border-[#1a1612]/8"
                       >
-                        <span className="text-[10px] font-display tracking-[0.25em] text-[#6b655e]">
+                        <span className="text-[10px] font-display tracking-[0.25em] text-[#a8a198]">
                           {String(i + 1).padStart(2, "0")}
                         </span>
-                        <span className="flex-1 font-playfair text-3xl text-[#f5f1ea] group-hover:text-[#d4a843] transition-colors">
+                        <span className="flex-1 font-playfair text-3xl text-[#1a1612] group-hover:text-[#c0392b] transition-colors">
                           {link.label}
                         </span>
-                        <ChevronRight className="w-4 h-4 text-[#6b655e] group-hover:text-[#d4a843] transition-colors" />
+                        <ChevronRight className="w-4 h-4 text-[#a8a198] group-hover:text-[#c0392b] transition-colors" />
                       </Link>
                     </motion.li>
                   ))}
@@ -139,18 +139,18 @@ export function MobileMenu({ isOpen, onClose, navLinks, categories }: MobileMenu
                       <Link
                         href={`/${cat.slug}`}
                         onClick={handleClose}
-                        className="block font-playfair text-2xl text-[#f5f1ea] hover:text-[#d4a843] transition-colors mb-2"
+                        className="block font-playfair text-2xl text-[#1a1612] hover:text-[#c0392b] transition-colors mb-2"
                       >
                         {cat.name}
                       </Link>
                       {cat.children.length > 0 && (
-                        <ul className="pl-4 border-l border-white/10 space-y-2">
+                        <ul className="pl-4 border-l border-[#1a1612]/12 space-y-2">
                           {cat.children.map((child) => (
                             <li key={child.slug}>
                               <Link
                                 href={`/${cat.slug}/${child.slug}`}
                                 onClick={handleClose}
-                                className="block py-1 text-sm text-[#a8a198] hover:text-[#d4a843] transition-colors"
+                                className="block py-1 text-sm text-[#6b655e] hover:text-[#c0392b] transition-colors"
                               >
                                 {child.name}
                               </Link>
@@ -166,19 +166,19 @@ export function MobileMenu({ isOpen, onClose, navLinks, categories }: MobileMenu
           </div>
 
           {/* Footer */}
-          <div className="px-6 py-8 border-t border-white/5 space-y-4">
+          <div className="px-6 py-8 border-t border-[#1a1612]/8 space-y-4">
             <a
               href="tel:+12604323443"
-              className="flex items-center gap-3 text-[#e8e2d5] hover:text-[#d4a843] transition-colors"
+              className="flex items-center gap-3 text-[#1a1612] hover:text-[#c0392b] transition-colors"
             >
               <Phone className="w-4 h-4 text-[#d4a843]" />
               <span className="text-sm tracking-wide">(260) 432-3443</span>
             </a>
-            <div className="flex items-center gap-3 text-[#a8a198]">
+            <div className="flex items-center gap-3 text-[#6b655e]">
               <Clock className="w-4 h-4 text-[#d4a843]" />
               <span className="text-sm">Mon-Sat · 10AM - 6PM</span>
             </div>
-            <div className="flex items-center gap-3 text-[#a8a198]">
+            <div className="flex items-center gap-3 text-[#6b655e]">
               <MapPin className="w-4 h-4 text-[#d4a843]" />
               <span className="text-sm">2525 W Jefferson Blvd, Fort Wayne</span>
             </div>

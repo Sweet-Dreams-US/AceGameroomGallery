@@ -2,38 +2,38 @@
 @config "../../tailwind.config.ts";
 
 /* ============================================================
-   ACE GAME ROOM GALLERY — Premium Luxury Design System
-   Inspired by REVIVE aesthetic: dark cinematic, bold typography,
-   warm ACE brand accents (red/orange/gold gradient).
+   ACE GAME ROOM GALLERY — Light Editorial Design System
+   Warm neutrals, bold typography, ACE gradient accents.
+   Premium, airy, approachable — not clinical, not cartoony.
    ============================================================ */
 
 @layer base {
   :root {
-    /* Primary brand — warm luxury palette */
+    /* ACE brand gradient (unchanged — the signature) */
     --ace-red: #c0392b;
     --ace-orange: #e67e22;
     --ace-gold: #d4a843;
-    --ace-amber: #e8c068;
-    --ace-cream: #f5efe6;
+    --ace-amber: #b8933a;
 
-    /* Dark premium base */
-    --ace-black: #0a0a0a;
-    --ace-carbon: #121212;
-    --ace-graphite: #1a1a1a;
-    --ace-slate: #242424;
-    --ace-steel: #2d2d2d;
-    --ace-ash: #3a3a3a;
+    /* Light backgrounds — warm paper tones */
+    --page: #faf8f3;          /* primary page bg — warm off-white */
+    --surface: #ffffff;       /* cards, elevated surfaces */
+    --surface-2: #f4efe6;     /* alternating sections */
+    --surface-3: #ebe4d6;     /* deeper accent */
 
-    /* Text on dark */
-    --ace-bone: #f5f1ea;
-    --ace-linen: #e8e2d5;
-    --ace-stone: #a8a198;
-    --ace-shadow: #6b655e;
+    /* Text */
+    --ink: #1a1612;           /* primary text, near-black warm */
+    --ink-soft: #3d3834;      /* softer heading/body */
+    --ink-muted: #6b655e;     /* secondary copy */
+    --ink-subtle: #a8a198;    /* tertiary / captions */
 
-    /* Accent */
+    /* Supporting accents */
     --felt-green: #1a6b3c;
+    --felt-deep: #0d3f1e;
     --walnut: #5c3d2e;
     --walnut-light: #8b6543;
+    --hairline: rgba(26, 22, 18, 0.08);
+    --hairline-strong: rgba(26, 22, 18, 0.16);
   }
 
   * {
@@ -42,20 +42,21 @@
   }
 
   html {
-    background-color: var(--ace-black);
+    background-color: var(--page);
     scroll-behavior: smooth;
   }
 
   body {
     font-family: var(--font-inter), system-ui, -apple-system, sans-serif;
-    background-color: var(--ace-black);
-    color: var(--ace-bone);
+    background-color: var(--page);
+    color: var(--ink);
     overflow-x: hidden;
   }
 
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-playfair), Georgia, serif;
     letter-spacing: -0.02em;
+    color: var(--ink);
   }
 
   .font-display {
@@ -65,18 +66,19 @@
 
   ::selection {
     background-color: var(--ace-gold);
-    color: var(--ace-black);
+    color: #1a1612;
   }
 
   ::-webkit-scrollbar {
-    width: 8px;
+    width: 10px;
   }
   ::-webkit-scrollbar-track {
-    background: var(--ace-carbon);
+    background: var(--surface-2);
   }
   ::-webkit-scrollbar-thumb {
-    background: var(--ace-ash);
-    border-radius: 4px;
+    background: var(--ink-subtle);
+    border-radius: 5px;
+    border: 2px solid var(--surface-2);
   }
   ::-webkit-scrollbar-thumb:hover {
     background: var(--ace-gold);
@@ -98,7 +100,7 @@
   }
 
   .gold-gradient-text {
-    background: linear-gradient(135deg, #d4a843 0%, #e8c068 50%, #f5d48f 100%);
+    background: linear-gradient(135deg, #b8933a 0%, #d4a843 50%, #e8c068 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -111,14 +113,14 @@
     font-size: 0.75rem;
     letter-spacing: 0.3em;
     text-transform: uppercase;
-    color: var(--ace-gold);
+    color: var(--ace-amber);
   }
 
   .section-number {
     font-family: var(--font-bebas), Impact, sans-serif;
     font-size: 0.875rem;
     letter-spacing: 0.25em;
-    color: var(--ace-stone);
+    color: var(--ink-muted);
   }
 
   /* ===== BUTTONS ===== */
@@ -139,6 +141,7 @@
     transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
     position: relative;
     overflow: hidden;
+    box-shadow: 0 4px 12px rgba(192, 57, 43, 0.15);
   }
 
   .btn-primary::before {
@@ -156,7 +159,7 @@
 
   .btn-primary:hover {
     transform: translateY(-2px);
-    box-shadow: 0 20px 40px -10px rgba(212, 168, 67, 0.4);
+    box-shadow: 0 12px 28px rgba(212, 168, 67, 0.35);
   }
 
   .btn-secondary {
@@ -166,27 +169,26 @@
     gap: 0.625rem;
     padding: 1rem 2rem;
     background: transparent;
-    color: var(--ace-bone);
+    color: var(--ink);
     font-weight: 600;
     font-size: 0.875rem;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    border: 1px solid rgba(245, 241, 234, 0.3);
+    border: 1px solid var(--ink);
     cursor: pointer;
     transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
   }
 
   .btn-secondary:hover {
-    border-color: var(--ace-gold);
-    color: var(--ace-gold);
-    background: rgba(212, 168, 67, 0.05);
+    background: var(--ink);
+    color: var(--page);
   }
 
   .btn-ghost {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    color: var(--ace-bone);
+    color: var(--ink);
     font-weight: 500;
     font-size: 0.875rem;
     letter-spacing: 0.08em;
@@ -197,14 +199,21 @@
   }
 
   .btn-ghost:hover {
-    color: var(--ace-gold);
+    color: var(--ace-red);
     border-bottom-color: var(--ace-gold);
   }
 
-  /* ===== FELT BACKGROUNDS ===== */
+  /* ===== BACKGROUNDS ===== */
   .felt-texture {
     background-color: var(--felt-green);
     background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+
+  .paper-texture {
+    background-color: var(--page);
+    background-image:
+      radial-gradient(at 20% 20%, rgba(212, 168, 67, 0.04) 0px, transparent 50%),
+      radial-gradient(at 80% 80%, rgba(192, 57, 43, 0.03) 0px, transparent 50%);
   }
 
   .grain-overlay {
@@ -215,22 +224,21 @@
     position: absolute;
     inset: 0;
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.4'/%3E%3C/svg%3E");
-    opacity: 0.08;
+    opacity: 0.04;
     pointer-events: none;
-    mix-blend-mode: overlay;
   }
 
   /* ===== CARDS ===== */
   .card-luxe {
-    background: var(--ace-graphite);
-    border: 1px solid rgba(245, 241, 234, 0.06);
+    background: var(--surface);
+    border: 1px solid var(--hairline);
     transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
   }
 
   .card-luxe:hover {
-    border-color: rgba(212, 168, 67, 0.3);
+    border-color: var(--ace-gold);
     transform: translateY(-4px);
-    box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.8);
+    box-shadow: 0 20px 50px -20px rgba(92, 61, 46, 0.2);
   }
 
   /* ===== DIVIDERS ===== */
@@ -252,7 +260,7 @@
     left: 0;
     width: 0;
     height: 1px;
-    background: var(--ace-gold);
+    background: var(--ace-red);
     transition: width 0.4s cubic-bezier(0.23, 1, 0.32, 1);
   }
   .link-underline:hover::after {
@@ -274,18 +282,19 @@
     font-weight: 900;
     line-height: 0.95;
     letter-spacing: -0.03em;
+    color: var(--ink);
   }
 
-  /* ===== SCARCITY BADGE ===== */
+  /* ===== SCARCITY / BADGE ===== */
   .scarcity-badge {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
     padding: 0.5rem 1rem;
-    background: rgba(212, 168, 67, 0.1);
-    border: 1px solid rgba(212, 168, 67, 0.3);
+    background: rgba(212, 168, 67, 0.12);
+    border: 1px solid rgba(212, 168, 67, 0.4);
     border-radius: 50px;
-    color: var(--ace-gold);
+    color: var(--ace-amber);
     font-family: var(--font-bebas), Impact, sans-serif;
     font-size: 0.75rem;
     letter-spacing: 0.2em;
@@ -299,12 +308,24 @@
     border-radius: 50%;
     animation: pulse-dot 2s ease-in-out infinite;
   }
+
+  /* ===== DARK INVERT (for admin, for contrast sections) ===== */
+  .dark-section {
+    background: #121212;
+    color: #f5f1ea;
+  }
+  .dark-section h1,
+  .dark-section h2,
+  .dark-section h3,
+  .dark-section h4 {
+    color: #f5f1ea;
+  }
 }
 
 /* ===== ANIMATIONS ===== */
 
 @keyframes pulse-dot {
-  0%, 100% { opacity: 1; transform: scale(1); box-shadow: 0 0 0 0 rgba(212, 168, 67, 0.7); }
+  0%, 100% { opacity: 1; transform: scale(1); box-shadow: 0 0 0 0 rgba(212, 168, 67, 0.6); }
   50% { opacity: 0.6; transform: scale(1.2); box-shadow: 0 0 0 8px rgba(212, 168, 67, 0); }
 }
 

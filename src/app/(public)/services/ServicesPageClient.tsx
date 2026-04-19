@@ -96,9 +96,9 @@ export default function ServicesPageClient() {
   const [openId, setOpenId] = useState<string | null>("billiards")
 
   return (
-    <div className="bg-[#0a0a0a]">
+    <div className="bg-[#faf8f3]">
       {/* ================= HERO ================= */}
-      <section className="relative overflow-hidden py-24 lg:py-40 border-b border-white/5">
+      <section className="relative overflow-hidden py-24 lg:py-40 border-b border-[#1a1612]/8">
         <div
           className="absolute inset-0 opacity-[0.10]"
           style={{
@@ -108,7 +108,7 @@ export default function ServicesPageClient() {
             backgroundPosition: "center",
           }}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0a]/60 via-[#0a0a0a]/80 to-[#0a0a0a]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#faf8f3]/70 via-[#faf8f3]/85 to-[#faf8f3]" />
 
         <div className="relative max-w-[1600px] mx-auto px-6 lg:px-10">
           <motion.div
@@ -118,7 +118,7 @@ export default function ServicesPageClient() {
             className="max-w-4xl"
           >
             <p className="section-number mb-6">/ 001 — SERVICES</p>
-            <h1 className="hero-headline text-[#f5f1ea] mb-8">
+            <h1 className="hero-headline text-[#1a1612] mb-8">
               We don&apos;t just sell it.
               <br />
               We{" "}
@@ -127,7 +127,7 @@ export default function ServicesPageClient() {
               <br />
               and keep it playing right.
             </h1>
-            <p className="text-lg lg:text-xl text-[#a8a198] font-light leading-relaxed max-w-2xl">
+            <p className="text-lg lg:text-xl text-[#6b655e] font-light leading-relaxed max-w-2xl">
               A table worth buying is worth installing correctly. Our service
               team is the same crew that&apos;s been doing it since 1992 — no
               subcontractors, no franchise labor, no guesswork.
@@ -142,14 +142,14 @@ export default function ServicesPageClient() {
           <div className="mb-16 lg:mb-20 grid grid-cols-12 gap-6">
             <div className="col-span-12 lg:col-span-7">
               <p className="section-number mb-4">/ 002 — WHAT WE DO</p>
-              <h2 className="font-playfair text-4xl lg:text-6xl font-bold text-[#f5f1ea] leading-[1.05]">
+              <h2 className="font-playfair text-4xl lg:text-6xl font-bold text-[#1a1612] leading-[1.05]">
                 Three services,
                 <br />
                 <span className="gold-gradient-text italic">one standard.</span>
               </h2>
             </div>
             <div className="col-span-12 lg:col-span-4 lg:col-start-9 flex items-end">
-              <p className="text-[#a8a198] leading-relaxed">
+              <p className="text-[#6b655e] leading-relaxed">
                 Click each service to see everything included. No packages,
                 no upsells — just the work, done right.
               </p>
@@ -177,26 +177,26 @@ export default function ServicesPageClient() {
       </section>
 
       {/* ================= WE DON'T ================= */}
-      <section className="py-24 lg:py-32 bg-[#080808] border-y border-white/5">
+      <section className="py-24 lg:py-32 bg-[#f4efe6] border-y border-[#1a1612]/8">
         <div className="max-w-[1600px] mx-auto px-6 lg:px-10">
           <div className="mb-16 lg:mb-20 grid grid-cols-12 gap-6">
             <div className="col-span-12 lg:col-span-7">
               <p className="section-number mb-4">/ 003 — HONESTY</p>
-              <h2 className="font-playfair text-4xl lg:text-6xl font-bold text-[#f5f1ea] leading-[1.05]">
+              <h2 className="font-playfair text-4xl lg:text-6xl font-bold text-[#1a1612] leading-[1.05]">
                 And what we
                 <br />
                 <span className="gold-gradient-text italic">don&apos;t do.</span>
               </h2>
             </div>
             <div className="col-span-12 lg:col-span-4 lg:col-start-9 flex items-end">
-              <p className="text-[#a8a198] leading-relaxed">
+              <p className="text-[#6b655e] leading-relaxed">
                 Saying &ldquo;no&rdquo; is part of the job. Here&apos;s where we
                 send you somewhere better.
               </p>
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-white/5">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-[#1a1612]/8">
             {WE_DONT.map((item, i) => (
               <motion.div
                 key={item.title}
@@ -204,17 +204,17 @@ export default function ServicesPageClient() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.1 }}
                 transition={{ duration: 0.5, delay: i * 0.05 }}
-                className="bg-[#080808] p-8 lg:p-10 hover:bg-[#0f0f0f] transition-colors duration-500"
+                className="bg-white p-8 lg:p-10 hover:bg-[#faf8f3] transition-colors duration-500"
               >
                 <div className="flex items-start gap-4">
                   <div className="mt-1 w-8 h-8 shrink-0 border border-[#c0392b]/40 flex items-center justify-center text-[#c0392b]">
                     <X className="w-4 h-4" />
                   </div>
                   <div>
-                    <h3 className="font-playfair text-xl lg:text-2xl font-bold text-[#f5f1ea] mb-3">
+                    <h3 className="font-playfair text-xl lg:text-2xl font-bold text-[#1a1612] mb-3">
                       {item.title}
                     </h3>
-                    <p className="text-sm lg:text-base text-[#a8a198] leading-relaxed">
+                    <p className="text-sm lg:text-base text-[#6b655e] leading-relaxed">
                       {item.body}
                     </p>
                   </div>
@@ -227,8 +227,8 @@ export default function ServicesPageClient() {
 
       {/* ================= CTA ================= */}
       <section className="relative py-32 lg:py-48 overflow-hidden">
-        <div className="absolute top-10 left-10 right-10 h-px bg-gradient-to-r from-transparent via-[#d4a843]/20 to-transparent" />
-        <div className="absolute bottom-10 left-10 right-10 h-px bg-gradient-to-r from-transparent via-[#d4a843]/20 to-transparent" />
+        <div className="absolute top-10 left-10 right-10 h-px bg-gradient-to-r from-transparent via-[#d4a843]/40 to-transparent" />
+        <div className="absolute bottom-10 left-10 right-10 h-px bg-gradient-to-r from-transparent via-[#d4a843]/40 to-transparent" />
 
         <div className="relative max-w-[1400px] mx-auto px-6 lg:px-10 text-center">
           <motion.div
@@ -238,12 +238,12 @@ export default function ServicesPageClient() {
             transition={{ duration: 0.8 }}
           >
             <p className="eyebrow mb-6">Ready when you are</p>
-            <h2 className="font-playfair font-black leading-[0.95] text-[#f5f1ea] mb-10 text-[clamp(2.5rem,8vw,6rem)]">
+            <h2 className="font-playfair font-black leading-[0.95] text-[#1a1612] mb-10 text-[clamp(2.5rem,8vw,6rem)]">
               Need service?
               <br />
               <span className="gold-gradient-text italic">Let&apos;s talk.</span>
             </h2>
-            <p className="text-lg lg:text-xl text-[#a8a198] font-light max-w-2xl mx-auto leading-relaxed mb-12">
+            <p className="text-lg lg:text-xl text-[#6b655e] font-light max-w-2xl mx-auto leading-relaxed mb-12">
               Most service calls start with a short conversation and a couple of
               photos. Tell us what&apos;s going on — we&apos;ll tell you honestly
               whether it&apos;s an us-job.
@@ -278,7 +278,7 @@ function ServiceCard({
   return (
     <div
       className={`card-luxe overflow-hidden transition-all duration-500 ${
-        isOpen ? "border-[#d4a843]/40" : ""
+        isOpen ? "border-[#d4a843]/60" : ""
       }`}
     >
       <button
@@ -293,8 +293,8 @@ function ServiceCard({
         <div
           className={`shrink-0 w-12 h-12 lg:w-16 lg:h-16 border flex items-center justify-center transition-colors duration-500 ${
             isOpen
-              ? "border-[#d4a843] text-[#d4a843]"
-              : "border-white/20 text-[#a8a198] group-hover:border-[#d4a843]/60 group-hover:text-[#d4a843]"
+              ? "border-[#d4a843] text-[#b8933a]"
+              : "border-[#1a1612]/20 text-[#6b655e] group-hover:border-[#d4a843]/60 group-hover:text-[#b8933a]"
           }`}
         >
           <Icon className="w-5 h-5 lg:w-7 lg:h-7" />
@@ -303,12 +303,12 @@ function ServiceCard({
         <div className="flex-1 min-w-0">
           <h3
             className={`font-playfair text-2xl lg:text-4xl font-bold mb-1 transition-colors duration-500 ${
-              isOpen ? "text-[#d4a843]" : "text-[#f5f1ea]"
+              isOpen ? "text-[#b8933a]" : "text-[#1a1612]"
             }`}
           >
             {service.title}
           </h3>
-          <p className="text-sm lg:text-base text-[#a8a198] italic font-playfair hidden sm:block">
+          <p className="text-sm lg:text-base text-[#6b655e] italic font-playfair hidden sm:block">
             {service.tagline}
           </p>
         </div>
@@ -320,7 +320,7 @@ function ServiceCard({
         >
           <ChevronDown
             className={`w-6 h-6 transition-colors duration-500 ${
-              isOpen ? "text-[#d4a843]" : "text-[#a8a198]"
+              isOpen ? "text-[#b8933a]" : "text-[#6b655e]"
             }`}
           />
         </motion.div>
@@ -336,9 +336,9 @@ function ServiceCard({
             className="overflow-hidden"
           >
             <div className="px-6 lg:px-10 pb-8 lg:pb-10">
-              <div className="pt-6 border-t border-white/5 grid grid-cols-12 gap-6 lg:gap-10">
+              <div className="pt-6 border-t border-[#1a1612]/8 grid grid-cols-12 gap-6 lg:gap-10">
                 <div className="col-span-12 lg:col-span-5">
-                  <p className="text-base lg:text-lg text-[#e8e2d5] font-light leading-relaxed">
+                  <p className="text-base lg:text-lg text-[#1a1612] font-light leading-relaxed">
                     {service.blurb}
                   </p>
                 </div>
@@ -346,7 +346,7 @@ function ServiceCard({
                   <p className="eyebrow mb-5">What&apos;s included</p>
                   <ul className="space-y-3">
                     {service.includes.map((item) => (
-                      <li key={item} className="flex items-start gap-3 text-[#e8e2d5]">
+                      <li key={item} className="flex items-start gap-3 text-[#1a1612]">
                         <span className="mt-2 w-1 h-1 rounded-full bg-[#d4a843] shrink-0" />
                         <span className="text-sm lg:text-base leading-relaxed">
                           {item}
