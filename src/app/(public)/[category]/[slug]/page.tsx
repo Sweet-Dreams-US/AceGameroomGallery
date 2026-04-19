@@ -39,17 +39,17 @@ export default async function ProductPage({ params }: PageProps) {
   const specEntries = Object.entries(product.specifications)
 
   return (
-    <div className="bg-[#0a0a0a] min-h-screen">
+    <div className="bg-[#faf8f3] min-h-screen">
       {/* Breadcrumbs */}
       <div className="max-w-[1600px] mx-auto px-6 lg:px-10 pt-8 pb-4">
         <div className="flex items-center gap-2 text-sm">
-          <Link href="/" className="text-[#a8a198] hover:text-[#d4a843] transition-colors">Home</Link>
-          <span className="text-[#6b655e]">/</span>
-          <Link href={`/${product.categorySlug}`} className="text-[#a8a198] hover:text-[#d4a843] transition-colors">
+          <Link href="/" className="text-[#6b655e] hover:text-[#b8933a] transition-colors">Home</Link>
+          <span className="text-[#a8a198]">/</span>
+          <Link href={`/${product.categorySlug}`} className="text-[#6b655e] hover:text-[#b8933a] transition-colors">
             {cat?.name ?? "Category"}
           </Link>
-          <span className="text-[#6b655e]">/</span>
-          <span className="text-[#f5f1ea] truncate">{product.name}</span>
+          <span className="text-[#a8a198]">/</span>
+          <span className="text-[#1a1612] truncate">{product.name}</span>
         </div>
       </div>
 
@@ -59,7 +59,7 @@ export default async function ProductPage({ params }: PageProps) {
           <div className="grid grid-cols-12 gap-6 lg:gap-12">
             {/* Gallery */}
             <div className="col-span-12 lg:col-span-7">
-              <div className="relative aspect-[4/3] lg:aspect-square overflow-hidden bg-[#111] mb-4">
+              <div className="relative aspect-[4/3] lg:aspect-square overflow-hidden bg-white mb-4 shadow-sm">
                 <Image
                   src={product.imageUrl}
                   alt={product.name}
@@ -74,7 +74,7 @@ export default async function ProductPage({ params }: PageProps) {
                   {product.images.slice(0, 4).map((img, i) => (
                     <div
                       key={i}
-                      className="relative aspect-square overflow-hidden bg-[#111] border border-white/5"
+                      className="relative aspect-square overflow-hidden bg-white border border-[#1a1612]/8"
                     >
                       <Image
                         src={img.url}
@@ -93,23 +93,28 @@ export default async function ProductPage({ params }: PageProps) {
             <div className="col-span-12 lg:col-span-5">
               <div className="scarcity-badge mb-6">{product.brandName.toUpperCase()}</div>
 
-              <h1 className="font-playfair text-4xl lg:text-5xl font-bold text-[#f5f1ea] leading-tight mb-6">
+              <h1 className="font-playfair text-4xl lg:text-5xl font-bold text-[#1a1612] leading-tight mb-6">
                 {product.name}
               </h1>
 
-              <p className="text-lg text-[#a8a198] font-light leading-relaxed mb-10">
+              <p className="text-lg text-[#6b655e] font-light leading-relaxed mb-10">
                 {product.description}
               </p>
 
               {/* Specs */}
               {specEntries.length > 0 && (
-                <div className="border-t border-white/5 py-8 mb-10">
+                <div className="border-t border-[#1a1612]/8 py-8 mb-10">
                   <p className="eyebrow mb-6">Specifications</p>
-                  <dl className="space-y-4">
-                    {specEntries.map(([key, value]) => (
-                      <div key={key} className="flex justify-between gap-4 pb-3 border-b border-white/5 last:border-b-0">
-                        <dt className="text-sm text-[#a8a198] capitalize">{key}</dt>
-                        <dd className="text-sm text-[#f5f1ea] font-medium text-right">{value}</dd>
+                  <dl className="overflow-hidden border border-[#1a1612]/8">
+                    {specEntries.map(([key, value], idx) => (
+                      <div
+                        key={key}
+                        className={`flex justify-between gap-4 px-4 py-3 ${
+                          idx % 2 === 0 ? "bg-white" : "bg-[#faf8f3]"
+                        }`}
+                      >
+                        <dt className="text-sm text-[#6b655e] capitalize">{key}</dt>
+                        <dd className="text-sm text-[#1a1612] font-medium text-right">{value}</dd>
                       </div>
                     ))}
                   </dl>
@@ -131,18 +136,18 @@ export default async function ProductPage({ params }: PageProps) {
               </div>
 
               {/* Trust strip */}
-              <div className="mt-10 pt-8 border-t border-white/5 grid grid-cols-2 gap-4 text-sm">
-                <div className="flex items-center gap-2 text-[#a8a198]">
-                  <Check className="w-4 h-4 text-[#d4a843]" /> Free delivery
+              <div className="mt-10 pt-8 border-t border-[#1a1612]/8 grid grid-cols-2 gap-4 text-sm">
+                <div className="flex items-center gap-2 text-[#6b655e]">
+                  <Check className="w-4 h-4 text-[#b8933a]" /> Free delivery
                 </div>
-                <div className="flex items-center gap-2 text-[#a8a198]">
-                  <Check className="w-4 h-4 text-[#d4a843]" /> Free installation
+                <div className="flex items-center gap-2 text-[#6b655e]">
+                  <Check className="w-4 h-4 text-[#b8933a]" /> Free installation
                 </div>
-                <div className="flex items-center gap-2 text-[#a8a198]">
-                  <Check className="w-4 h-4 text-[#d4a843]" /> Financing available
+                <div className="flex items-center gap-2 text-[#6b655e]">
+                  <Check className="w-4 h-4 text-[#b8933a]" /> Financing available
                 </div>
-                <div className="flex items-center gap-2 text-[#a8a198]">
-                  <Check className="w-4 h-4 text-[#d4a843]" /> Price match guarantee
+                <div className="flex items-center gap-2 text-[#6b655e]">
+                  <Check className="w-4 h-4 text-[#b8933a]" /> Price match guarantee
                 </div>
               </div>
             </div>
@@ -152,17 +157,17 @@ export default async function ProductPage({ params }: PageProps) {
 
       {/* Related */}
       {related.length > 0 && (
-        <section className="py-20 lg:py-28 border-t border-white/5">
+        <section className="py-20 lg:py-28 border-t border-[#1a1612]/8">
           <div className="max-w-[1600px] mx-auto px-6 lg:px-10">
             <p className="section-number mb-3">/ YOU MAY ALSO LIKE</p>
-            <h2 className="font-playfair text-3xl lg:text-5xl font-bold text-[#f5f1ea] mb-12">
+            <h2 className="font-playfair text-3xl lg:text-5xl font-bold text-[#1a1612] mb-12">
               More from <span className="gold-gradient-text italic">{cat?.name}</span>
             </h2>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
               {related.map((r) => (
                 <Link key={r.id} href={`/${r.categorySlug}/${r.slug}`} className="group block">
-                  <div className="relative aspect-[4/5] overflow-hidden bg-[#111] mb-5">
+                  <div className="relative aspect-[4/5] overflow-hidden bg-white mb-5 shadow-sm group-hover:shadow-lg transition-shadow duration-500">
                     <Image
                       src={r.imageUrl}
                       alt={r.name}
@@ -171,10 +176,10 @@ export default async function ProductPage({ params }: PageProps) {
                       sizes="(max-width: 768px) 100vw, 33vw"
                     />
                   </div>
-                  <h3 className="font-playfair text-xl font-bold text-[#f5f1ea] group-hover:text-[#d4a843] transition-colors">
+                  <h3 className="font-playfair text-xl font-bold text-[#1a1612] group-hover:text-[#b8933a] transition-colors">
                     {r.name}
                   </h3>
-                  <p className="text-xs text-[#a8a198] mt-1">{r.brandName}</p>
+                  <p className="text-xs text-[#6b655e] mt-1">{r.brandName}</p>
                 </Link>
               ))}
             </div>

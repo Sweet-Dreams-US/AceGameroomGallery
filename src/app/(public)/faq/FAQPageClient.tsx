@@ -107,9 +107,9 @@ export default function FAQPageClient() {
   }, [query, category])
 
   return (
-    <div className="bg-[#0a0a0a]">
+    <div className="bg-[#faf8f3]">
       {/* ================= HERO ================= */}
-      <section className="relative overflow-hidden py-24 lg:py-40 border-b border-white/5">
+      <section className="relative overflow-hidden py-24 lg:py-40 border-b border-[#1a1612]/8">
         <div
           className="absolute inset-0 opacity-[0.08]"
           style={{
@@ -119,7 +119,7 @@ export default function FAQPageClient() {
             backgroundPosition: "center",
           }}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0a]/60 via-[#0a0a0a]/80 to-[#0a0a0a]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#faf8f3]/70 via-[#faf8f3]/85 to-[#faf8f3]" />
 
         <div className="relative max-w-[1600px] mx-auto px-6 lg:px-10">
           <motion.div
@@ -129,12 +129,12 @@ export default function FAQPageClient() {
             className="max-w-4xl"
           >
             <p className="section-number mb-6">/ 001 — FAQ</p>
-            <h1 className="hero-headline text-[#f5f1ea] mb-8">
+            <h1 className="hero-headline text-[#1a1612] mb-8">
               Questions.
               <br />
               <span className="gold-gradient-text italic">Answered.</span>
             </h1>
-            <p className="text-lg lg:text-xl text-[#a8a198] font-light leading-relaxed max-w-2xl">
+            <p className="text-lg lg:text-xl text-[#6b655e] font-light leading-relaxed max-w-2xl">
               Shortcuts to the things Fort Wayne families ask most. If you
               don&apos;t see your question, the phone&apos;s always faster.
             </p>
@@ -153,7 +153,7 @@ export default function FAQPageClient() {
             className="mb-12 space-y-5"
           >
             <div className="relative">
-              <Search className="absolute left-5 top-1/2 -translate-y-1/2 w-5 h-5 text-[#a8a198]" />
+              <Search className="absolute left-5 top-1/2 -translate-y-1/2 w-5 h-5 text-[#6b655e]" />
               <input
                 type="text"
                 value={query}
@@ -162,7 +162,7 @@ export default function FAQPageClient() {
                   setOpenIdx(null)
                 }}
                 placeholder="Search questions..."
-                className="w-full pl-14 pr-5 py-5 bg-[#0f0f0f] border border-white/10 text-[#f5f1ea] placeholder:text-[#6b655e] focus:outline-none focus:border-[#d4a843] focus:ring-1 focus:ring-[#d4a843]/30 transition-all duration-300 font-light"
+                className="w-full pl-14 pr-5 py-5 bg-white border border-[#1a1612]/15 text-[#1a1612] placeholder:text-[#a8a198] focus:outline-none focus:border-[#d4a843] focus:ring-1 focus:ring-[#d4a843]/30 transition-all duration-300 font-light"
               />
             </div>
 
@@ -176,8 +176,8 @@ export default function FAQPageClient() {
                   }}
                   className={`px-4 py-2 font-display text-xs tracking-[0.2em] uppercase border transition-all duration-300 ${
                     category === cat
-                      ? "border-[#d4a843] text-[#d4a843] bg-[#d4a843]/5"
-                      : "border-white/10 text-[#a8a198] hover:border-white/30 hover:text-[#f5f1ea]"
+                      ? "border-[#d4a843] text-[#b8933a] bg-[#d4a843]/10"
+                      : "border-[#1a1612]/12 text-[#6b655e] hover:border-[#1a1612]/30 hover:text-[#1a1612]"
                   }`}
                 >
                   {cat}
@@ -187,7 +187,7 @@ export default function FAQPageClient() {
           </motion.div>
 
           {/* FAQ list */}
-          <div className="space-y-px bg-white/5">
+          <div className="space-y-px bg-[#1a1612]/8">
             <AnimatePresence mode="popLayout">
               {filtered.length === 0 ? (
                 <motion.div
@@ -195,13 +195,13 @@ export default function FAQPageClient() {
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0 }}
-                  className="bg-[#0a0a0a] p-16 text-center"
+                  className="bg-white p-16 text-center"
                 >
-                  <Search className="w-10 h-10 text-[#6b655e] mx-auto mb-5" />
-                  <p className="font-playfair italic text-2xl text-[#f5f1ea] mb-2">
+                  <Search className="w-10 h-10 text-[#a8a198] mx-auto mb-5" />
+                  <p className="font-playfair italic text-2xl text-[#1a1612] mb-2">
                     Nothing matched.
                   </p>
-                  <p className="text-[#a8a198] text-sm mb-8">
+                  <p className="text-[#6b655e] text-sm mb-8">
                     Try a different keyword — or just call us.
                   </p>
                   <a href="tel:+12604323443" className="btn-ghost">
@@ -217,7 +217,7 @@ export default function FAQPageClient() {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0 }}
                     transition={{ duration: 0.3, delay: i * 0.02 }}
-                    className="bg-[#0a0a0a]"
+                    className="bg-white"
                   >
                     <button
                       onClick={() => setOpenIdx(openIdx === i ? null : i)}
@@ -232,7 +232,7 @@ export default function FAQPageClient() {
                           <p className="eyebrow mb-2 text-[10px]">{faq.category}</p>
                           <h3
                             className={`font-playfair text-xl lg:text-2xl font-bold transition-colors duration-500 ${
-                              openIdx === i ? "text-[#d4a843]" : "text-[#f5f1ea] group-hover:text-[#d4a843]"
+                              openIdx === i ? "text-[#b8933a]" : "text-[#1a1612] group-hover:text-[#c0392b]"
                             }`}
                           >
                             {faq.question}
@@ -246,7 +246,7 @@ export default function FAQPageClient() {
                       >
                         <ChevronDown
                           className={`w-5 h-5 transition-colors duration-500 ${
-                            openIdx === i ? "text-[#d4a843]" : "text-[#a8a198]"
+                            openIdx === i ? "text-[#b8933a]" : "text-[#6b655e]"
                           }`}
                         />
                       </motion.div>
@@ -262,7 +262,7 @@ export default function FAQPageClient() {
                           className="overflow-hidden"
                         >
                           <div className="px-6 lg:px-8 pb-8 md:pl-[calc(1.5rem+4rem+1.5rem)] lg:pl-[calc(2rem+4rem+1.5rem)]">
-                            <p className="text-base lg:text-lg text-[#a8a198] font-light leading-relaxed max-w-3xl">
+                            <p className="text-base lg:text-lg text-[#3d3834] font-light leading-relaxed max-w-3xl">
                               {faq.answer}
                             </p>
                           </div>
@@ -278,7 +278,7 @@ export default function FAQPageClient() {
       </section>
 
       {/* ================= CTA ================= */}
-      <section className="relative py-32 lg:py-48 bg-[#080808] border-t border-white/5 overflow-hidden">
+      <section className="relative py-32 lg:py-48 bg-[#f4efe6] border-t border-[#1a1612]/8 overflow-hidden">
         <div className="relative max-w-[1400px] mx-auto px-6 lg:px-10 text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -287,7 +287,7 @@ export default function FAQPageClient() {
             transition={{ duration: 0.8 }}
           >
             <p className="eyebrow mb-6">Still have questions?</p>
-            <h2 className="font-playfair font-black leading-[0.95] text-[#f5f1ea] mb-10 text-[clamp(2.5rem,8vw,6rem)]">
+            <h2 className="font-playfair font-black leading-[0.95] text-[#1a1612] mb-10 text-[clamp(2.5rem,8vw,6rem)]">
               The phone is
               <br />
               <span className="gold-gradient-text italic">always faster.</span>
