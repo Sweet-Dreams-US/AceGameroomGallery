@@ -14,6 +14,9 @@ const nextConfig: NextConfig = {
     unoptimized: true,
     remotePatterns: [
       { protocol: "https", hostname: "www.acegameroom.com" },
+      { protocol: "http", hostname: "www.acegameroom.com" },
+      { protocol: "https", hostname: "acegameroom.com" },
+      { protocol: "http", hostname: "acegameroom.com" },
       { protocol: "https", hostname: "images.unsplash.com" },
       { protocol: "https", hostname: "plus.unsplash.com" },
     ],

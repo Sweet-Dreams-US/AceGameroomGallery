@@ -1,4 +1,5 @@
-// Mock data for product pages — will be replaced with Supabase queries
+// Mock product catalog for Ace Game Room Gallery.
+// Imagery is sourced directly from acegameroom.com's public product pages.
 
 export interface MockCategory {
   id: string
@@ -29,753 +30,925 @@ export interface MockProduct {
   specifications: Record<string, string>
 }
 
+// Admin variants used by the localStorage-backed admin UI
+export interface ADMIN_MOCK_TESTIMONIAL_ITEM {
+  id: string
+  author_name: string
+  content: string
+  rating: number
+  is_active: boolean
+  created_at: string
+  role?: string
+  city?: string
+}
+
+// Short alias used by legacy mock helpers
+const ACE = "http://www.acegameroom.com/store/content/images/thumbs"
+
 export const MOCK_CATEGORIES: MockCategory[] = [
   {
-    id: "cat-1",
+    id: "cat-billiards",
     name: "Billiards",
     slug: "billiards",
     description:
-      "Premium pool tables, cues, cloth, lighting, and accessories from top brands like Olhausen, Valley, and Presidential Billiards.",
-    imageUrl:
-      "https://images.unsplash.com/photo-1611068661807-8e265276fbf4?w=600&h=400&fit=crop",
+      "Premium pool tables, cloth, cues, cases, lighting, and accessories. Olhausen, Valley, C.L. Bailey, Plank & Hide, and every major cue brand — curated, installed, guaranteed.",
+    imageUrl: `${ACE}/0003231_billiard-tables_450.png`,
     children: [
-      {
-        id: "sub-1-1",
-        name: "Billiard Tables",
-        slug: "billiard-tables",
-        imageUrl:
-          "https://images.unsplash.com/photo-1611068661807-8e265276fbf4?w=400&h=300&fit=crop",
-      },
-      {
-        id: "sub-1-2",
-        name: "Cues",
-        slug: "cues",
-        imageUrl:
-          "https://images.unsplash.com/photo-1611068661807-8e265276fbf4?w=400&h=300&fit=crop",
-      },
-      {
-        id: "sub-1-3",
-        name: "Billiard Cloth",
-        slug: "billiard-cloth",
-        imageUrl:
-          "https://images.unsplash.com/photo-1611068661807-8e265276fbf4?w=400&h=300&fit=crop",
-      },
-      {
-        id: "sub-1-4",
-        name: "Lighting",
-        slug: "lighting",
-        imageUrl:
-          "https://images.unsplash.com/photo-1611068661807-8e265276fbf4?w=400&h=300&fit=crop",
-      },
-      {
-        id: "sub-1-5",
-        name: "Accessories",
-        slug: "accessories",
-        imageUrl:
-          "https://images.unsplash.com/photo-1611068661807-8e265276fbf4?w=400&h=300&fit=crop",
-      },
+      { id: "sub-b-tables", name: "Billiard Tables", slug: "billiard-tables", imageUrl: `${ACE}/0003231_billiard-tables_450.png` },
+      { id: "sub-b-cloth", name: "Billiard Cloth", slug: "billiard-cloth", imageUrl: `${ACE}/0003230_billiard-cloth_450.jpeg` },
+      { id: "sub-b-cues", name: "Cues", slug: "cues", imageUrl: `${ACE}/0003238_cues_450.jpeg` },
+      { id: "sub-b-cases", name: "Cases", slug: "cases", imageUrl: `${ACE}/0003235_cases_450.jpeg` },
+      { id: "sub-b-light", name: "Lighting", slug: "lighting", imageUrl: `${ACE}/0003223_lighting_450.jpeg` },
+      { id: "sub-b-acc", name: "Accessories", slug: "accessories", imageUrl: `${ACE}/0003221_accessories_450.jpeg` },
     ],
   },
   {
-    id: "cat-2",
+    id: "cat-games",
     name: "Games",
     slug: "games",
     description:
-      "Pinball machines, arcade games, foosball, air hockey, darts, shuffleboard, and more for the ultimate game room.",
-    imageUrl:
-      "https://images.unsplash.com/photo-1511882150382-421056c89033?w=600&h=400&fit=crop",
+      "Pinball machines from Stern and Jersey Jack. Arcade cabinets new and classic. Foosball, air hockey, dome hockey, ping pong, darts, bumper pool, shuffleboard, jukeboxes. If it plays, we probably have it.",
+    imageUrl: `${ACE}/0003132_arcade-games_450.jpeg`,
     children: [
-      {
-        id: "sub-2-1",
-        name: "Arcade Games",
-        slug: "arcade-games",
-        imageUrl:
-          "https://images.unsplash.com/photo-1511882150382-421056c89033?w=400&h=300&fit=crop",
-      },
-      {
-        id: "sub-2-2",
-        name: "Pinball",
-        slug: "pinball",
-        imageUrl:
-          "https://images.unsplash.com/photo-1511882150382-421056c89033?w=400&h=300&fit=crop",
-      },
-      {
-        id: "sub-2-3",
-        name: "Foosball",
-        slug: "foosball",
-        imageUrl:
-          "https://images.unsplash.com/photo-1511882150382-421056c89033?w=400&h=300&fit=crop",
-      },
-      {
-        id: "sub-2-4",
-        name: "Air Hockey",
-        slug: "air-hockey",
-        imageUrl:
-          "https://images.unsplash.com/photo-1511882150382-421056c89033?w=400&h=300&fit=crop",
-      },
-      {
-        id: "sub-2-5",
-        name: "Darts and Dartboards",
-        slug: "darts",
-        imageUrl:
-          "https://images.unsplash.com/photo-1617883861744-13b534e1757a?w=400&h=300&fit=crop",
-      },
-      {
-        id: "sub-2-6",
-        name: "Shuffleboard Tables",
-        slug: "shuffleboard",
-        imageUrl:
-          "https://images.unsplash.com/photo-1596455607563-ad6193f76b17?w=400&h=300&fit=crop",
-      },
+      { id: "sub-g-pinball", name: "Pinball", slug: "pinball", imageUrl: `${ACE}/0003115_pinball-machines_450.png` },
+      { id: "sub-g-arcade", name: "Arcade Games", slug: "arcade-games", imageUrl: `${ACE}/0003132_arcade-games_450.jpeg` },
+      { id: "sub-g-foos", name: "Foosball", slug: "foosball", imageUrl: `${ACE}/0003116_foosball_450.png` },
+      { id: "sub-g-dome", name: "Dome Hockey", slug: "dome-hockey", imageUrl: `${ACE}/0003133_dome-hockey_450.jpeg` },
+      { id: "sub-g-ping", name: "Ping Pong", slug: "ping-pong", imageUrl: `${ACE}/0003273_ping-pong_450.jpeg` },
+      { id: "sub-g-darts", name: "Darts & Dartboards", slug: "darts", imageUrl: `${ACE}/0003130_darts-and-dartboards_450.jpeg` },
+      { id: "sub-g-shuffle", name: "Shuffleboard Tables", slug: "shuffleboard", imageUrl: `${ACE}/0006595_cl-bailey_450.jpeg` },
+      { id: "sub-g-jukebox", name: "Jukeboxes", slug: "jukebox", imageUrl: `${ACE}/0003132_arcade-games_450.jpeg` },
     ],
   },
   {
-    id: "cat-3",
+    id: "cat-furniture",
     name: "Furniture",
     slug: "furniture",
     description:
-      "Bars, bar stools, pub tables, game chairs, and specialty seating to complete your game room in style.",
-    imageUrl:
-      "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=600&h=400&fit=crop",
+      "Hand-rubbed wood bars, solid maple bar stools, pub tables, poker tables, and the kind of game chairs your back wishes it had. Darafeev, American Heritage, Holland Bar Stool Co., and more.",
+    imageUrl: `${ACE}/0003121_bars_450.png`,
     children: [
-      {
-        id: "sub-3-1",
-        name: "Bars",
-        slug: "bars",
-        imageUrl:
-          "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=400&h=300&fit=crop",
-      },
-      {
-        id: "sub-3-2",
-        name: "Bar Stools",
-        slug: "bar-stools",
-        imageUrl:
-          "https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=400&h=300&fit=crop",
-      },
-      {
-        id: "sub-3-3",
-        name: "Pub Tables",
-        slug: "pub-tables",
-        imageUrl:
-          "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=400&h=300&fit=crop",
-      },
-      {
-        id: "sub-3-4",
-        name: "Game Chairs",
-        slug: "game-chairs",
-        imageUrl:
-          "https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=400&h=300&fit=crop",
-      },
-      {
-        id: "sub-3-5",
-        name: "Poker Tables",
-        slug: "poker-tables",
-        imageUrl:
-          "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=400&h=300&fit=crop",
-      },
+      { id: "sub-f-bars", name: "Bars", slug: "bars", imageUrl: `${ACE}/0003121_bars_450.png` },
+      { id: "sub-f-stools", name: "Bar Stools", slug: "bar-stools", imageUrl: `${ACE}/0003122_bar-stools_450.jpeg` },
+      { id: "sub-f-pub", name: "Pub Tables", slug: "pub-tables", imageUrl: `${ACE}/0003123_pub-tables_450.png` },
+      { id: "sub-f-chairs", name: "Game Chairs", slug: "game-chairs", imageUrl: `${ACE}/0003127_game-chairs_450.jpeg` },
+      { id: "sub-f-poker", name: "Poker & Game Tables", slug: "poker-tables", imageUrl: `${ACE}/0003124_poker-and-game-tables_450.jpeg` },
+      { id: "sub-f-neons", name: "Neon Signs", slug: "neons", imageUrl: `${ACE}/0003368_neons_450.jpeg` },
     ],
   },
   {
-    id: "cat-4",
+    id: "cat-playsets",
     name: "Playsets",
     slug: "playsets",
     description:
-      "Rainbow Play Systems for residential and commercial use. Safe, durable, and fun for the whole family.",
-    imageUrl:
-      "https://images.unsplash.com/photo-1596455607563-ad6193f76b17?w=600&h=400&fit=crop",
-    children: [],
+      "Rainbow Play Systems cedar playsets — the swingsets built to outlast childhood. Residential and commercial configurations, free delivery and installation on every model.",
+    imageUrl: `${ACE}/0003196_residential-playsets_450.jpeg`,
+    children: [
+      { id: "sub-p-res", name: "Residential Playsets", slug: "residential-playsets", imageUrl: `${ACE}/0003196_residential-playsets_450.jpeg` },
+      { id: "sub-p-com", name: "Commercial Playsets", slug: "commercial-playsets", imageUrl: `${ACE}/0003198_commercial-playsets_450.jpeg` },
+      { id: "sub-p-acc", name: "Rainbow Accessories", slug: "rainbow-accessories", imageUrl: `${ACE}/0004158_rainbow-accessories_450.jpeg` },
+    ],
   },
   {
-    id: "cat-5",
+    id: "cat-outdoor",
     name: "Outdoor",
     slug: "outdoor",
     description:
-      "Basketball goals, trampolines, and outdoor games for year-round backyard fun.",
-    imageUrl:
-      "https://images.unsplash.com/photo-1596455607563-ad6193f76b17?w=600&h=400&fit=crop",
-    children: [],
+      "In-ground basketball goals, Springfree trampolines, and outdoor games that turn a backyard into the best place in the neighborhood.",
+    imageUrl: `${ACE}/0003129_basketball-goals_450.jpeg`,
+    children: [
+      { id: "sub-o-hoop", name: "Basketball Goals", slug: "basketball-goals", imageUrl: `${ACE}/0003129_basketball-goals_450.jpeg` },
+      { id: "sub-o-tramp", name: "Trampolines", slug: "trampolines", imageUrl: `${ACE}/0003196_residential-playsets_450.jpeg` },
+      { id: "sub-o-games", name: "Outdoor Games", slug: "outdoor-games", imageUrl: `${ACE}/0006528_flexrhoop_415.png` },
+    ],
   },
   {
-    id: "cat-6",
+    id: "cat-services",
     name: "Services",
     slug: "services",
     description:
-      "Professional billiard, pinball, and playset services including setup, recovery, and repair.",
-    imageUrl:
-      "https://images.unsplash.com/photo-1611068661807-8e265276fbf4?w=600&h=400&fit=crop",
+      "Delivery, installation, recovering, and repair. A $5,000 pool table deserves more than a drop-off on your driveway.",
+    imageUrl: `${ACE}/0003231_billiard-tables_450.png`,
     children: [],
   },
 ]
 
+// --- PRODUCTS ---
+// A curated sampling across every category. Images sourced from acegameroom.com.
+
 export const MOCK_PRODUCTS: MockProduct[] = [
-  // Billiards
+  // ============ BILLIARDS ============
   {
-    id: "prod-1",
-    name: 'Olhausen Americana II 8\' Pool Table',
+    id: "prod-olhausen-augusta",
+    name: "Olhausen Augusta Pool Table",
     slug: "olhausen-americana-ii",
     categorySlug: "billiards",
     subcategorySlug: "billiard-tables",
     brandName: "Olhausen",
-    imageUrl:
-      "https://images.unsplash.com/photo-1611068661807-8e265276fbf4?w=600&h=400&fit=crop",
+    imageUrl: `${ACE}/0001358_olhausen-augusta-pool-table_415.png`,
     images: [
-      {
-        url: "https://images.unsplash.com/photo-1611068661807-8e265276fbf4?w=800&h=600&fit=crop",
-        alt: "Olhausen Americana II pool table front view",
-      },
-      {
-        url: "https://images.unsplash.com/photo-1611068661807-8e265276fbf4?w=800&h=600&fit=crop&q=80",
-        alt: "Olhausen Americana II pool table side view",
-      },
-      {
-        url: "https://images.unsplash.com/photo-1611068661807-8e265276fbf4?w=800&h=600&fit=crop&q=70",
-        alt: "Olhausen Americana II pool table detail",
-      },
+      { url: `${ACE}/0001358_olhausen-augusta-pool-table_415.png`, alt: "Olhausen Augusta pool table" },
+      { url: `${ACE}/0003231_billiard-tables_450.png`, alt: "Pool table collection" },
+      { url: `${ACE}/0003230_billiard-cloth_450.jpeg`, alt: "Championship cloth detail" },
     ],
     description:
-      "The Olhausen Americana II is a beautifully crafted pool table featuring solid hardwood construction and Olhausen's exclusive Accu-Fast cushion system. This premium 8-foot table delivers professional-grade play in an elegant package that complements any game room.\n\nBuilt with precision in Portland, Oregon, the Americana II features a one-inch Italian slate bed, solid hardwood rails, and genuine leather pockets. Available in multiple finish options to match your decor.",
+      "The Augusta is a classic solid-wood Olhausen with traditional arched cabinet design, tapered legs, and router detail. Built in Portland, Tennessee with American hardwood and Olhausen's exclusive Accu-Fast cushions. The table your grandchildren will rack on.",
     specifications: {
-      "Table Size": '8 Foot (Playing Surface: 44" x 88")',
-      "Slate": '1" Italian Slate (3-piece)',
-      "Cushions": "Accu-Fast Cushion System",
-      "Frame": "Solid Hardwood",
-      "Pockets": "Genuine Leather, Shield",
-      "Finish": "Multiple Options Available",
-      "Warranty": "Lifetime Warranty",
-      "Made In": "Portland, Oregon, USA",
+      "Sizes": "7 ft, 8 ft, 8½ ft, 9 ft",
+      "Wood": "Maple, Oak, Cherry, or Walnut",
+      "Finishes": "All Olhausen finishes available",
+      "Cushions": "Accu-Fast",
+      "Slate": "Premium 1\" slate",
+      "Pockets": "Leather, shield style",
+      "Warranty": "Lifetime",
+      "Made In": "Portland, TN, USA",
     },
   },
   {
-    id: "prod-2",
-    name: 'Valley Panther ZD-11T 7\' Coin-Op Pool Table',
+    id: "prod-valley-panther",
+    name: "Valley Panther Coin-Op Pool Table",
     slug: "valley-panther-coin-op",
     categorySlug: "billiards",
     subcategorySlug: "billiard-tables",
     brandName: "Valley",
-    imageUrl:
-      "https://images.unsplash.com/photo-1611068661807-8e265276fbf4?w=600&h=400&fit=crop&q=90",
+    imageUrl: `${ACE}/0003231_billiard-tables_450.png`,
     images: [
-      {
-        url: "https://images.unsplash.com/photo-1611068661807-8e265276fbf4?w=800&h=600&fit=crop&q=90",
-        alt: "Valley Panther coin-op pool table",
-      },
+      { url: `${ACE}/0003231_billiard-tables_450.png`, alt: "Valley Panther coin-op" },
     ],
     description:
-      "The Valley Panther ZD-11T is the industry-standard coin-operated pool table trusted by bars, clubs, and recreation centers worldwide. Built for heavy commercial use with a durable laminate surface and professional-grade playfield.",
+      "The industry standard for tavern and league play. Valley's ball-return mechanism, heavy-duty rails, and bulletproof construction have made the Panther the pool league table of choice for 40+ years. Coin-operated or free-play configurations.",
     specifications: {
-      "Table Size": '7 Foot (Playing Surface: 39" x 78")',
-      "Surface": "Laminate Playfield",
-      "Coin Mechanism": "ZD-11T",
-      "Frame": "Heavy-Duty Steel",
-      "Weight": "Approx. 850 lbs",
-      "Use": "Commercial / Coin-Operated",
-    },
-  },
-  // Games
-  {
-    id: "prod-3",
-    name: "Stern Pinball Rush Premium",
-    slug: "stern-rush-premium",
-    categorySlug: "games",
-    subcategorySlug: "pinball",
-    brandName: "Stern Pinball",
-    imageUrl:
-      "https://images.unsplash.com/photo-1511882150382-421056c89033?w=600&h=400&fit=crop",
-    images: [
-      {
-        url: "https://images.unsplash.com/photo-1511882150382-421056c89033?w=800&h=600&fit=crop",
-        alt: "Stern Rush pinball machine",
-      },
-      {
-        url: "https://images.unsplash.com/photo-1511882150382-421056c89033?w=800&h=600&fit=crop&q=80",
-        alt: "Stern Rush pinball playfield",
-      },
-    ],
-    description:
-      "Experience the thrill of high-speed pinball with Stern's Rush Premium edition. Featuring an immersive playfield design, multiball action, and concert-quality sound, this machine brings the energy of a live rock show to your game room.",
-    specifications: {
-      "Type": "Premium Edition",
-      "Dimensions": '29" W x 56" D x 76" H',
-      "Weight": "Approx. 250 lbs",
-      "Display": 'LCD Backbox Display',
-      "Audio": "3-Channel Sound System",
-      "Features": "Multiball, Ramp Combos, Interactive Toys",
+      "Sizes": "6½ ft, 7 ft, 8 ft",
+      "Play": "Coin-op or Free Play",
+      "Slate": "1\" Honed Slate",
+      "Cabinet": "Heavy-duty laminate",
+      "Cloth": "Championship Tour Edition",
+      "Warranty": "Commercial-grade",
+      "Made In": "Bay City, MI, USA",
     },
   },
   {
-    id: "prod-4",
-    name: "Golden Tee PGA Tour Home Edition",
-    slug: "golden-tee-home",
-    categorySlug: "games",
-    subcategorySlug: "arcade-games",
-    brandName: "Incredible Technologies",
-    imageUrl:
-      "https://images.unsplash.com/photo-1511882150382-421056c89033?w=600&h=400&fit=crop&q=85",
-    images: [
-      {
-        url: "https://images.unsplash.com/photo-1511882150382-421056c89033?w=800&h=600&fit=crop&q=85",
-        alt: "Golden Tee home arcade cabinet",
-      },
-    ],
-    description:
-      "The Golden Tee PGA Tour Home Edition brings the beloved arcade golf experience to your home. Features stunning HD graphics, multiple courses, and online tournament play capability.",
-    specifications: {
-      "Type": "Home Edition Arcade",
-      "Display": '32" HD Monitor',
-      "Courses": "50+ Championship Courses",
-      "Online": "Wi-Fi Tournament Play",
-      "Controls": "Trackball with Custom Housing",
-    },
-  },
-  // Furniture
-  {
-    id: "prod-5",
-    name: "Darafeev Trestle Pub Table",
-    slug: "darafeev-trestle-pub-table",
-    categorySlug: "furniture",
-    subcategorySlug: "pub-tables",
-    brandName: "Darafeev",
-    imageUrl:
-      "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=600&h=400&fit=crop",
-    images: [
-      {
-        url: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=800&h=600&fit=crop",
-        alt: "Darafeev Trestle pub table in game room",
-      },
-    ],
-    description:
-      "The Darafeev Trestle Pub Table combines timeless craftsmanship with modern game room style. Solid hardwood construction with a rich finish that pairs perfectly with any bar stool collection.",
-    specifications: {
-      "Material": "Solid Hardwood",
-      "Height": "42 inches (Pub Height)",
-      "Shape": "Round",
-      "Finish": "Multiple Options Available",
-      "Seating": "Seats 4",
-      "Made In": "USA",
-    },
-  },
-  {
-    id: "prod-6",
-    name: "Holland Bar Stool Co. Swivel Counter Stool",
-    slug: "holland-swivel-counter-stool",
-    categorySlug: "furniture",
-    subcategorySlug: "bar-stools",
-    brandName: "Holland Bar Stool Co.",
-    imageUrl:
-      "https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=600&h=400&fit=crop",
-    images: [
-      {
-        url: "https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=800&h=600&fit=crop",
-        alt: "Holland Bar Stool swivel counter stool",
-      },
-    ],
-    description:
-      "Durable commercial-grade swivel bar stool from Holland Bar Stool Co. Features a 360-degree swivel, comfortable padded seat, and sturdy steel frame. Available with a wide selection of team and custom vinyl options.",
-    specifications: {
-      "Frame": "Heavy-Duty Steel",
-      "Seat": "Padded Vinyl",
-      "Swivel": "360-Degree",
-      "Height": '25" / 30" Options',
-      "Weight Capacity": "400 lbs",
-      "Warranty": "5-Year Structural",
-    },
-  },
-  // More Billiards
-  {
-    id: "prod-7",
-    name: "Presidential Billiards Hamilton",
-    slug: "presidential-hamilton",
+    id: "prod-plank-hide",
+    name: "Plank & Hide Isaac Pool Table",
+    slug: "plank-hide-isaac",
     categorySlug: "billiards",
     subcategorySlug: "billiard-tables",
-    brandName: "Presidential Billiards",
-    imageUrl:
-      "https://images.unsplash.com/photo-1611068661807-8e265276fbf4?w=600&h=400&fit=crop&q=75",
+    brandName: "Plank & Hide",
+    imageUrl: `${ACE}/0007007_plank-hide_450.jpeg`,
     images: [
-      {
-        url: "https://images.unsplash.com/photo-1611068661807-8e265276fbf4?w=800&h=600&fit=crop&q=75",
-        alt: "Presidential Hamilton pool table",
-      },
+      { url: `${ACE}/0007007_plank-hide_450.jpeg`, alt: "Plank & Hide" },
     ],
     description:
-      "The Presidential Hamilton brings classic elegance to any game room. Features solid hardwood construction, one-inch Italian slate, and premium K-66 cushion rails for tournament-level play.",
+      "Modern industrial design meets tournament-grade play. Plank & Hide's Isaac blends raw steel, solid wood, and leather into a pool table that looks at home in a converted loft, a finished basement, or the bar downtown.",
     specifications: {
-      "Table Size": "8 Foot",
-      "Slate": '1" Italian Slate (3-piece)',
-      "Cushions": "K-66 Profile Rubber",
-      "Frame": "Solid Hardwood",
-      "Legs": "Turned Leg Design",
-      "Finish": "Chestnut, Espresso, Weathered Oak",
+      "Size": "8 ft",
+      "Frame": "Solid hardwood + steel",
+      "Slate": "1\" 3-piece slate",
+      "Cushions": "K-66 profile",
+      "Pockets": "Leather drop pockets",
+      "Finishes": "Raw steel, blackened, weathered",
     },
   },
-  // More Games
   {
-    id: "prod-8",
-    name: 'Tornado Classic Foosball Table',
-    slug: "tornado-classic-foosball",
+    id: "prod-simonis-860",
+    name: "Simonis 860 Championship Cloth",
+    slug: "simonis-860-cloth",
+    categorySlug: "billiards",
+    subcategorySlug: "billiard-cloth",
+    brandName: "Simonis",
+    imageUrl: `${ACE}/0003230_billiard-cloth_450.jpeg`,
+    images: [
+      { url: `${ACE}/0003230_billiard-cloth_450.jpeg`, alt: "Billiard cloth" },
+    ],
+    description:
+      "The cloth every BCA pro tournament plays on. Simonis 860 worsted weave delivers consistent speed, minimal ball burn, and a lifespan that shames cheap felts. Available in 20+ colors.",
+    specifications: {
+      "Weave": "Worsted",
+      "Weight": "21 oz",
+      "Width": "66\" or 76\"",
+      "Best For": "Tournament play, serious home setups",
+      "Colors": "Simonis Green, Tournament Blue, Burgundy, 17 more",
+      "Made In": "Belgium",
+    },
+  },
+  {
+    id: "prod-mcdermott-g-series",
+    name: "McDermott G-Series Cue",
+    slug: "mcdermott-g-series",
+    categorySlug: "billiards",
+    subcategorySlug: "cues",
+    brandName: "McDermott",
+    imageUrl: `${ACE}/0003238_cues_450.jpeg`,
+    images: [
+      { url: `${ACE}/0003238_cues_450.jpeg`, alt: "McDermott cues" },
+    ],
+    description:
+      "American-made cues with a lifetime warranty on the shaft. The G-Series features genuine exotic woods, stainless steel joints, and McDermott's industry-leading G-Core shaft technology. A cue you hand down.",
+    specifications: {
+      "Shaft": "G-Core low-deflection",
+      "Joint": "5/16 x 18 steel",
+      "Weight": "18-21 oz adjustable",
+      "Wrap": "Irish linen or leather",
+      "Warranty": "Lifetime on shaft",
+      "Made In": "Menomonee Falls, WI, USA",
+    },
+  },
+
+  // ============ GAMES ============
+  {
+    id: "prod-multicade-upright",
+    name: "Arcade Classics Multicade — Upright",
+    slug: "arcade-classics-multicade-upright",
     categorySlug: "games",
-    subcategorySlug: "foosball",
-    brandName: "Tornado",
-    imageUrl:
-      "https://images.unsplash.com/photo-1511882150382-421056c89033?w=600&h=400&fit=crop&q=75",
+    subcategorySlug: "arcade-games",
+    brandName: "Arcade Classics",
+    imageUrl: `${ACE}/0002829_arcade-classics-multicade-upright_415.jpeg`,
     images: [
-      {
-        url: "https://images.unsplash.com/photo-1511882150382-421056c89033?w=800&h=600&fit=crop&q=75",
-        alt: "Tornado Classic foosball table",
-      },
+      { url: `${ACE}/0002829_arcade-classics-multicade-upright_415.jpeg`, alt: "Multicade upright" },
     ],
     description:
-      "The Tornado Classic is the tournament standard foosball table trusted by professional players worldwide. Solid cabinet construction, patented counterbalanced men, and super-fast play surface.",
+      "412 classic arcade games in one cabinet. Pac-Man, Galaga, Donkey Kong, Defender, Centipede — every game you lost your quarters to, now playing for free in your basement.",
     specifications: {
-      "Type": "Tournament Grade",
-      "Dimensions": '56" L x 30" W x 36" H',
-      "Players": "Counterbalanced, Patented Design",
-      "Surface": "Smooth Playfield",
-      "Goal": "3-Man Goalie",
-      "Frame": "Heavy-Duty Cabinet",
+      "Games": "412 classic titles",
+      "Cabinet": "Full-size upright",
+      "Display": "19\" LCD",
+      "Controls": "Arcade-grade joystick + 6 buttons per player",
+      "Players": "2-player",
+      "Dimensions": "67\" H × 26\" W × 30\" D",
     },
   },
   {
-    id: "prod-9",
-    name: "Viper Shot King Bristle Dartboard",
-    slug: "viper-shot-king-dartboard",
+    id: "prod-multicade-cocktail",
+    name: "Arcade Classics Multicade — Cocktail Table",
+    slug: "arcade-classics-multicade-cocktail",
+    categorySlug: "games",
+    subcategorySlug: "arcade-games",
+    brandName: "Arcade Classics",
+    imageUrl: `${ACE}/0002828_arcade-classics-multicade-cocktail_415.jpeg`,
+    images: [
+      { url: `${ACE}/0002828_arcade-classics-multicade-cocktail_415.jpeg`, alt: "Cocktail arcade" },
+    ],
+    description:
+      "The classic sit-down cocktail cabinet, fully loaded. Glass top doubles as a coffee table when not in play. Perfect for game rooms, man caves, and anywhere you want a conversation piece that happens to play Ms. Pac-Man.",
+    specifications: {
+      "Games": "412 classic titles",
+      "Cabinet": "Cocktail / coffee table style",
+      "Display": "19\" LCD under glass",
+      "Seating": "2-4 players around table",
+      "Dimensions": "31\" H × 33\" W × 26\" D",
+    },
+  },
+  {
+    id: "prod-big-buck-hunter",
+    name: "Big Buck Hunter Reloaded",
+    slug: "big-buck-hunter",
+    categorySlug: "games",
+    subcategorySlug: "arcade-games",
+    brandName: "Raw Thrills",
+    imageUrl: `${ACE}/0006515_big-buck-hunter_415.jpeg`,
+    images: [
+      { url: `${ACE}/0006515_big-buck-hunter_415.jpeg`, alt: "Big Buck Hunter" },
+    ],
+    description:
+      "The arcade shooter that made the bar. 40+ hunting locations, bonus games, and two lever-action gun rigs. Commercial-grade cabinet, home-friendly volume control.",
+    specifications: {
+      "Genre": "Shooting / Hunting",
+      "Players": "2-player",
+      "Display": "42\" HD LCD",
+      "Guns": "Pump-action lever guns × 2",
+      "Modes": "Tournament, arcade, free play",
+      "Dimensions": "82\" H × 49\" W × 42\" D",
+    },
+  },
+  {
+    id: "prod-nfl-blitz",
+    name: "NFL Blitz Gold Edition",
+    slug: "nfl-blitz-gold-edition",
+    categorySlug: "games",
+    subcategorySlug: "arcade-games",
+    brandName: "Raw Thrills",
+    imageUrl: `${ACE}/0006516_nfl-blitz-gold-edition_415.jpeg`,
+    images: [
+      { url: `${ACE}/0006516_nfl-blitz-gold-edition_415.jpeg`, alt: "NFL Blitz arcade" },
+    ],
+    description:
+      "The fastest football game ever made, officially licensed with every NFL team. 2-player cabinet, steel pedestal, arcade trackball controls. Pure 90s mayhem.",
+    specifications: {
+      "Genre": "Sports / Football",
+      "Players": "2-player",
+      "Display": "42\" HD LCD",
+      "Controls": "Trackball + buttons",
+      "Teams": "Full NFL license",
+    },
+  },
+  {
+    id: "prod-spider-2000",
+    name: "Spider 2000 Dart Board",
+    slug: "spider-2000-dart-board",
     categorySlug: "games",
     subcategorySlug: "darts",
-    brandName: "Viper",
-    imageUrl:
-      "https://images.unsplash.com/photo-1617883861744-13b534e1757a?w=600&h=400&fit=crop",
+    brandName: "Spider",
+    imageUrl: `${ACE}/0007005_spider-2000-dart-board_415.jpeg`,
     images: [
-      {
-        url: "https://images.unsplash.com/photo-1617883861744-13b534e1757a?w=800&h=600&fit=crop",
-        alt: "Viper Shot King bristle dartboard",
-      },
+      { url: `${ACE}/0007005_spider-2000-dart-board_415.jpeg`, alt: "Spider 2000 dart board" },
     ],
     description:
-      "The Viper Shot King is a premium sisal bristle dartboard featuring self-healing fibers and a staple-free bullseye. Regulation size with tournament-quality construction for serious players.",
+      "Tournament-grade electronic dartboard with soft-tip scoring for 37 games, 249 variations, and up to 16 players. Bluetooth connectivity for online league play.",
     specifications: {
-      "Type": "Bristle (Sisal Fiber)",
-      "Diameter": '18" (Regulation)',
-      "Wire": "Ultra-Thin Spider Wire",
-      "Bullseye": "Staple-Free Design",
-      "Mounting": "Standard Wall Mount Hardware",
-      "Includes": "6 Steel-Tip Darts",
+      "Type": "Electronic, soft-tip",
+      "Games": "37 games / 249 variations",
+      "Players": "Up to 16",
+      "Connectivity": "Bluetooth, online leagues",
+      "Segments": "6-sided micro-thin, self-healing",
     },
   },
   {
-    id: "prod-10",
-    name: 'Hudson Shuffleboard Grand Hudson 14\'',
-    slug: "hudson-grand-shuffleboard",
+    id: "prod-cl-bailey-shuffleboard",
+    name: "C.L. Bailey 12' Skylar Shuffleboard",
+    slug: "cl-bailey-skylar-shuffleboard",
     categorySlug: "games",
     subcategorySlug: "shuffleboard",
-    brandName: "Hudson Shuffleboard",
-    imageUrl:
-      "https://images.unsplash.com/photo-1596455607563-ad6193f76b17?w=600&h=400&fit=crop",
+    brandName: "C.L. Bailey",
+    imageUrl: `${ACE}/0006604_cl-bailey-12-skylar-shuffleboard_415.jpeg`,
     images: [
-      {
-        url: "https://images.unsplash.com/photo-1596455607563-ad6193f76b17?w=800&h=600&fit=crop",
-        alt: "Hudson Grand shuffleboard table",
-      },
+      { url: `${ACE}/0006604_cl-bailey-12-skylar-shuffleboard_415.jpeg`, alt: "Skylar shuffleboard" },
+      { url: `${ACE}/0006597_cl-bailey-12-viking-shuffleboard_415.jpeg`, alt: "Viking shuffleboard" },
     ],
     description:
-      "The Grand Hudson is a stunning 14-foot shuffleboard table that commands attention in any game room. Handcrafted hardwood cabinet with a polymer-coated playing surface for consistent puck speed.",
+      "Solid hardwood shuffleboard with a polymer playing surface that never warps. C.L. Bailey builds the Skylar in Ohio with butcher-block birch, hand-rubbed finish, and climate-adjuster rail system.",
     specifications: {
-      "Length": "14 Feet",
-      "Surface": "Polymer-Coated Hardwood",
-      "Cabinet": "Solid Hardwood",
-      "Climatic Adjusters": "Yes",
-      "Finish": "Espresso, Rustic, Natural",
-      "Includes": "8 Pucks, Wax, Brush",
+      "Length": "12 feet",
+      "Playing Surface": "Polymer-sealed butcher block",
+      "Wood": "Solid birch + hardwood veneer",
+      "Finish": "Hand-rubbed satin",
+      "Climate System": "Stainless adjusters included",
+      "Warranty": "Lifetime on playing surface",
+      "Made In": "Ohio, USA",
     },
   },
-  // Furniture
   {
-    id: "prod-11",
-    name: "RAM Game Room 84\" Home Bar",
-    slug: "ram-home-bar",
+    id: "prod-level-best-shuffleboard",
+    name: "C.L. 9' & 12' Level Best Shuffleboard",
+    slug: "cl-level-best-shuffleboard",
+    categorySlug: "games",
+    subcategorySlug: "shuffleboard",
+    brandName: "C.L. Bailey",
+    imageUrl: `${ACE}/0006617_cl-9-12-level-best-shuffleboards_415.jpeg`,
+    images: [
+      { url: `${ACE}/0006617_cl-9-12-level-best-shuffleboards_415.jpeg`, alt: "Level Best shuffleboard" },
+    ],
+    description:
+      "The entry into tournament-grade shuffleboard. 9' for tighter rooms, 12' for the real deal. Butcher-block playing surface, solid wood legs, and the same climate-adjuster system C.L. uses on their premium models.",
+    specifications: {
+      "Lengths": "9 ft or 12 ft",
+      "Surface": "Butcher-block polymer",
+      "Frame": "Solid hardwood",
+      "Climate Adjusters": "Included",
+      "Pucks": "8 pucks + wax included",
+    },
+  },
+  {
+    id: "prod-turnbridge-shuffleboard",
+    name: "C.L. Bailey 12' & 14' Turnbridge Shuffleboard",
+    slug: "cl-bailey-turnbridge",
+    categorySlug: "games",
+    subcategorySlug: "shuffleboard",
+    brandName: "C.L. Bailey",
+    imageUrl: `${ACE}/0006611_cl-bailey-12-14-turnbridge-shuffleboard_415.jpeg`,
+    images: [
+      { url: `${ACE}/0006611_cl-bailey-12-14-turnbridge-shuffleboard_415.jpeg`, alt: "Turnbridge shuffleboard" },
+    ],
+    description:
+      "The flagship. Hand-turned legs, raised cabinet panels, and custom inlay work. If you're building a room around the shuffleboard, this is the one.",
+    specifications: {
+      "Lengths": "12 ft or 14 ft",
+      "Leg Style": "Hand-turned solid hardwood",
+      "Surface": "Butcher-block polymer",
+      "Finish": "Multiple premium options",
+      "Climate Adjusters": "Stainless, included",
+    },
+  },
+
+  // ============ FURNITURE ============
+  {
+    id: "prod-arabella-bar",
+    name: "Arabella Bar",
+    slug: "arabella-bar",
     categorySlug: "furniture",
     subcategorySlug: "bars",
-    brandName: "RAM Game Room",
-    imageUrl:
-      "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=600&h=400&fit=crop&q=85",
+    brandName: "Darafeev",
+    imageUrl: `${ACE}/0005693_arabella-bar_415.jpeg`,
     images: [
-      {
-        url: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=800&h=600&fit=crop&q=85",
-        alt: "RAM Game Room home bar",
-      },
+      { url: `${ACE}/0005693_arabella-bar_415.jpeg`, alt: "Arabella Bar" },
     ],
     description:
-      "The RAM Game Room 84-inch Home Bar transforms your space into the ultimate entertainment zone. Features built-in stemware rack, speed rail, and ample storage. Solid hardwood construction with a durable finish.",
+      "A Darafeev signature. Hand-rubbed solid hardwood, corbel accents, brass foot rail, and a top that seats four. Built in Illinois for the home bar that looks like it's always been there.",
     specifications: {
-      "Width": "84 inches",
-      "Material": "Solid Hardwood",
-      "Features": "Stemware Rack, Speed Rail, Shelves",
-      "Finish": "Chestnut, Cappuccino",
-      "Assembly": "Some Assembly Required",
-      "Bar Top": "Padded Arm Rest",
+      "Length": "72\"",
+      "Wood": "Solid maple or cherry",
+      "Finish": "Hand-rubbed — 18 options",
+      "Top": "Raised laminate surface",
+      "Features": "Brass foot rail, stemware rack",
+      "Made In": "Illinois, USA",
     },
   },
   {
-    id: "prod-12",
-    name: "Callee Bailey Spectator Chair",
-    slug: "callee-bailey-spectator-chair",
+    id: "prod-blacksmith-bar",
+    name: "Blacksmith Bar",
+    slug: "blacksmith-bar",
     categorySlug: "furniture",
-    subcategorySlug: "game-chairs",
-    brandName: "Callee",
-    imageUrl:
-      "https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=600&h=400&fit=crop&q=85",
+    subcategorySlug: "bars",
+    brandName: "Darafeev",
+    imageUrl: `${ACE}/0005683_blacksmith-bar_415.jpeg`,
     images: [
-      {
-        url: "https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=800&h=600&fit=crop&q=85",
-        alt: "Callee Bailey spectator game chair",
-      },
+      { url: `${ACE}/0005683_blacksmith-bar_415.jpeg`, alt: "Blacksmith Bar" },
     ],
     description:
-      "The Callee Bailey Spectator Chair is designed specifically for game room viewing. Extra-tall seat height puts you at the perfect vantage point for watching pool or other games. Built with premium materials for lasting comfort.",
+      "Industrial-meets-craftsman. Forged iron accents, reclaimed-look wood finish, and a front panel with exposed rivets. Built to anchor a game room.",
     specifications: {
-      "Seat Height": "34 inches (Spectator Height)",
-      "Frame": "Heavy-Gauge Steel",
-      "Upholstery": "Premium Fabric or Vinyl",
-      "Swivel": "360-Degree",
-      "Casters": "Optional",
-      "Made In": "USA",
+      "Length": "84\"",
+      "Wood": "Solid hardwood with iron accents",
+      "Finish": "Weathered / reclaimed styling",
+      "Top": "Solid hardwood",
+      "Foot Rail": "Black iron",
+    },
+  },
+  {
+    id: "prod-bristol-bar",
+    name: "Bristol Bar",
+    slug: "bristol-bar",
+    categorySlug: "furniture",
+    subcategorySlug: "bars",
+    brandName: "Darafeev",
+    imageUrl: `${ACE}/0005770_bristol-bar_415.jpeg`,
+    images: [
+      { url: `${ACE}/0005770_bristol-bar_415.jpeg`, alt: "Bristol Bar" },
+    ],
+    description:
+      "Classic transitional design. Paneled front, crown molding top, integrated wine rack and stemware storage. Works in traditional homes and modern great rooms alike.",
+    specifications: {
+      "Length": "72\"",
+      "Features": "Wine rack, stemware, foot rail",
+      "Wood": "Solid maple",
+      "Finish": "Choice of 15 finishes",
+    },
+  },
+  {
+    id: "prod-caliente-bar",
+    name: "Caliente Bar",
+    slug: "caliente-bar",
+    categorySlug: "furniture",
+    subcategorySlug: "bars",
+    brandName: "Darafeev",
+    imageUrl: `${ACE}/0005711_caliente-bar_415.jpeg`,
+    images: [
+      { url: `${ACE}/0005711_caliente-bar_415.jpeg`, alt: "Caliente Bar" },
+    ],
+    description:
+      "Southwestern-inspired bar with copper inlay, distressed finish, and a back that doubles as a display shelf. One of Darafeev's bestsellers.",
+    specifications: {
+      "Length": "84\"",
+      "Inlay": "Copper accents",
+      "Style": "Southwestern / Rustic",
+      "Features": "Display back shelf, foot rail",
+    },
+  },
+  {
+    id: "prod-angelina-wine-cabinet",
+    name: "Angelina Wine Cabinet",
+    slug: "angelina-wine-cabinet",
+    categorySlug: "furniture",
+    subcategorySlug: "bars",
+    brandName: "Darafeev",
+    imageUrl: `${ACE}/0005728_angelina-wine-cabinet_415.jpeg`,
+    images: [
+      { url: `${ACE}/0005728_angelina-wine-cabinet_415.jpeg`, alt: "Angelina Wine Cabinet" },
+    ],
+    description:
+      "Not a bar — a statement. The Angelina stores 36 bottles behind leaded-glass doors, with drop-down serving shelf, stemware storage, and a felted drawer for tools. Finished in your choice of 18 hand-rubbed tones.",
+    specifications: {
+      "Capacity": "36 bottles",
+      "Features": "Drop-down shelf, stemware, tool drawer",
+      "Doors": "Leaded glass",
+      "Wood": "Solid cherry or maple",
+    },
+  },
+
+  // ============ PLAYSETS ============
+  {
+    id: "prod-rainbow-residential",
+    name: "Rainbow Play Systems Residential Playset",
+    slug: "rainbow-residential-playset",
+    categorySlug: "playsets",
+    subcategorySlug: "residential-playsets",
+    brandName: "Rainbow Play Systems",
+    imageUrl: `${ACE}/0003196_residential-playsets_450.jpeg`,
+    images: [
+      { url: `${ACE}/0003196_residential-playsets_450.jpeg`, alt: "Rainbow residential" },
+      { url: `${ACE}/0004223_10-wave-slide_415.jpeg`, alt: "Wave slide" },
+      { url: `${ACE}/0005639_10-scoop-slide_415.jpeg`, alt: "Scoop slide" },
+    ],
+    description:
+      "Rainbow's residential swingsets are built from 100% redwood or cedar — no pine, no pressure-treated shortcuts. Every beam, post, and swing is engineered to last through three kids and two neighborhoods. Free delivery + installation across NE Indiana.",
+    specifications: {
+      "Wood": "100% redwood or cedar",
+      "Hardware": "Stainless steel, lag-bolted",
+      "Warranty": "Lifetime on wood, 5-yr on hardware",
+      "Installation": "Free with purchase",
+      "Customization": "100+ accessory options",
+      "Made In": "South Dakota, USA",
+    },
+  },
+  {
+    id: "prod-rainbow-commercial",
+    name: "Rainbow Commercial Playset",
+    slug: "rainbow-commercial-playset",
+    categorySlug: "playsets",
+    subcategorySlug: "commercial-playsets",
+    brandName: "Rainbow Play Systems",
+    imageUrl: `${ACE}/0003198_commercial-playsets_450.jpeg`,
+    images: [
+      { url: `${ACE}/0003198_commercial-playsets_450.jpeg`, alt: "Commercial playset" },
+    ],
+    description:
+      "Public-grade playsets for parks, churches, daycares, and neighborhood common areas. Meets ASTM, CPSC, and IPEMA safety standards. Custom layouts, commercial-grade hardware, and engineered shock-absorbing bases.",
+    specifications: {
+      "Certification": "ASTM, CPSC, IPEMA",
+      "Wood": "Commercial-grade cedar",
+      "Warranty": "Extended commercial coverage",
+      "Custom Design": "Site plans + CAD drawings",
+    },
+  },
+  {
+    id: "prod-billy-goat-bridge",
+    name: "10' Billy Goat Bridge",
+    slug: "billy-goat-bridge",
+    categorySlug: "playsets",
+    subcategorySlug: "rainbow-accessories",
+    brandName: "Rainbow Play Systems",
+    imageUrl: `${ACE}/0004293_10-billy-goat-bridge_415.jpeg`,
+    images: [
+      { url: `${ACE}/0004293_10-billy-goat-bridge_415.jpeg`, alt: "Billy Goat bridge" },
+    ],
+    description:
+      "Connect two playset towers with this rope-and-plank bridge. Hand grips, non-slip treads, and the thrill your kids didn't know they needed.",
+    specifications: {
+      "Length": "10 feet",
+      "Material": "Cedar planks, marine rope",
+      "Capacity": "2 kids at once",
+      "Weight Limit": "150 lbs",
+    },
+  },
+  {
+    id: "prod-wave-slide",
+    name: "10' Wave Slide",
+    slug: "wave-slide",
+    categorySlug: "playsets",
+    subcategorySlug: "rainbow-accessories",
+    brandName: "Rainbow Play Systems",
+    imageUrl: `${ACE}/0004223_10-wave-slide_415.jpeg`,
+    images: [
+      { url: `${ACE}/0004223_10-wave-slide_415.jpeg`, alt: "Wave slide" },
+    ],
+    description:
+      "UV-stabilized polymer slide with the classic wave profile. Fits 4' to 6' deck heights. Available in 10 colors.",
+    specifications: {
+      "Length": "10 feet",
+      "Deck Height": "4-6 feet",
+      "Material": "UV-stabilized polymer",
+      "Colors": "10 options",
+    },
+  },
+
+  // ============ OUTDOOR ============
+  {
+    id: "prod-goalsetter-allstar",
+    name: "Goalsetter All-Star 54\" In-Ground Basketball Goal",
+    slug: "goalsetter-allstar-54",
+    categorySlug: "outdoor",
+    subcategorySlug: "basketball-goals",
+    brandName: "Goalsetter",
+    imageUrl: `${ACE}/0002962_goalsetter-all-star-54-x-36-in-ground-basketball-goal_415.jpeg`,
+    images: [
+      { url: `${ACE}/0002962_goalsetter-all-star-54-x-36-in-ground-basketball-goal_415.jpeg`, alt: "Goalsetter All-Star" },
+    ],
+    description:
+      "54\" × 36\" tempered glass backboard on a steel-reinforced in-ground pole. The same American-made goal parks and driveways across the Midwest have trusted for 30 years.",
+    specifications: {
+      "Backboard": "54\" × 36\" tempered glass",
+      "Rim": "Breakaway pro flex",
+      "Pole": "Steel, in-ground",
+      "Adjustment": "6'6\" to 10' via crank",
+      "Warranty": "Lifetime",
+      "Made In": "Iowa, USA",
+    },
+  },
+  {
+    id: "prod-goalsetter-captain",
+    name: "Goalsetter Captain 60\" In-Ground Basketball Goal",
+    slug: "goalsetter-captain-60",
+    categorySlug: "outdoor",
+    subcategorySlug: "basketball-goals",
+    brandName: "Goalsetter",
+    imageUrl: `${ACE}/0002956_goalsetter-captain-60-x-38-in-ground-basketball-goal_415.jpeg`,
+    images: [
+      { url: `${ACE}/0002956_goalsetter-captain-60-x-38-in-ground-basketball-goal_415.jpeg`, alt: "Goalsetter Captain" },
+    ],
+    description:
+      "60\" × 38\" tempered glass with an even beefier pole and bracket system. The Captain is regulation-size and strong enough for dunk-heavy driveway sessions.",
+    specifications: {
+      "Backboard": "60\" × 38\" tempered glass",
+      "Rim": "Breakaway HD",
+      "Pole": "6\" square steel",
+      "Adjustment": "6'6\" to 10'",
+      "Warranty": "Lifetime",
+    },
+  },
+  {
+    id: "prod-flexrhoop",
+    name: "FlexRHoop Wall-Mount Basketball Goal",
+    slug: "flexrhoop",
+    categorySlug: "outdoor",
+    subcategorySlug: "outdoor-games",
+    brandName: "FlexR",
+    imageUrl: `${ACE}/0006528_flexrhoop_415.png`,
+    images: [
+      { url: `${ACE}/0006528_flexrhoop_415.png`, alt: "FlexRHoop" },
+    ],
+    description:
+      "Wall-mounted basketball goal with a flex-rim design. Great for pole barns, garages, and anywhere you can't sink a pole.",
+    specifications: {
+      "Mount": "Wall / Pole barn",
+      "Backboard": "Fan-shaped composite",
+      "Rim": "Flex breakaway",
+      "Adjustment": "Fixed 10'",
     },
   },
 ]
 
-/**
- * Get a category by its slug
- */
+// ---------------------------------------------------------------
+// Admin seed data — mirrors the structure used by admin-storage.ts
+// ---------------------------------------------------------------
+
+export const ADMIN_MOCK_PRODUCTS = MOCK_PRODUCTS.map((p, idx) => {
+  const cat = MOCK_CATEGORIES.find((c) => c.slug === p.categorySlug)
+  return {
+    id: p.id,
+    name: p.name,
+    slug: p.slug,
+    description: p.description,
+    category_id: cat?.id ?? "",
+    brand_id: null as string | null,
+    // Convenience fields used by the admin UI on top of the canonical schema
+    category_slug: p.categorySlug,
+    category_name: cat?.name ?? "",
+    brand_name: p.brandName,
+    image_url: p.imageUrl,
+    status: "active" as const,
+    is_featured: idx < 6,
+    specifications: p.specifications,
+    meta_title: null as string | null,
+    meta_description: null as string | null,
+    sort_order: idx,
+    created_at: new Date(Date.now() - idx * 86_400_000).toISOString(),
+    updated_at: new Date(Date.now() - idx * 3_600_000).toISOString(),
+  }
+})
+
+export const ADMIN_MOCK_INQUIRIES = [
+  {
+    id: "inq-1",
+    name: "Mike Reynolds",
+    email: "mike.r@example.com",
+    phone: "(260) 555-0142",
+    message:
+      "Looking for an 8-foot Olhausen for my new basement. Can you quote delivery to 46835?",
+    product_ids: ["prod-olhausen-augusta"],
+    product_interest: "Olhausen Augusta",
+    is_read: false,
+    is_archived: false,
+    created_at: new Date(Date.now() - 2 * 3_600_000).toISOString(),
+  },
+  {
+    id: "inq-2",
+    name: "Sarah Thompson",
+    email: "sarah.t@example.com",
+    phone: "(260) 555-0199",
+    message:
+      "Hi! Interested in the Arabella bar + 6 stools. Do you do bundle pricing?",
+    product_ids: ["prod-arabella-bar"],
+    product_interest: "Arabella Bar",
+    is_read: false,
+    is_archived: false,
+    created_at: new Date(Date.now() - 14 * 3_600_000).toISOString(),
+  },
+  {
+    id: "inq-3",
+    name: "Dave Lehman",
+    email: "dave@example.com",
+    phone: "(260) 555-0167",
+    message:
+      "Have a 25-year-old Brunswick that needs recovering. Can you come take a look?",
+    product_ids: [],
+    product_interest: "Services",
+    is_read: true,
+    is_archived: false,
+    created_at: new Date(Date.now() - 3 * 86_400_000).toISOString(),
+  },
+]
+
+export const ADMIN_MOCK_BANNERS = [
+  {
+    id: "ban-1",
+    title: "Free Delivery & Install",
+    subtitle: "On qualifying Springfree trampolines",
+    image_url: `${ACE}/0003196_residential-playsets_450.jpeg`,
+    cta_text: "Shop Trampolines",
+    cta_link: "/outdoor",
+    sort_order: 1,
+    is_active: true,
+    created_at: new Date().toISOString(),
+  },
+  {
+    id: "ban-2",
+    title: "New Stern Pinball In Stock",
+    subtitle: "Rush, Led Zeppelin, Foo Fighters",
+    image_url: `${ACE}/0003115_pinball-machines_450.png`,
+    cta_text: "Browse Pinball",
+    cta_link: "/games",
+    sort_order: 2,
+    is_active: true,
+    created_at: new Date().toISOString(),
+  },
+  {
+    id: "ban-3",
+    title: "Rainbow Play Systems",
+    subtitle: "Built to outlast childhood",
+    image_url: `${ACE}/0003196_residential-playsets_450.jpeg`,
+    cta_text: "Shop Playsets",
+    cta_link: "/playsets",
+    sort_order: 3,
+    is_active: true,
+    created_at: new Date().toISOString(),
+  },
+]
+
+export const ADMIN_MOCK_TESTIMONIALS: ADMIN_MOCK_TESTIMONIAL_ITEM[] = [
+  {
+    id: "tes-1",
+    author_name: "Mike R.",
+    content:
+      "I spent six months shopping online before I walked into ACE. Bret took an hour with me, showed me the difference between slate grades, and I left knowing exactly what I wanted.",
+    rating: 5,
+    is_active: true,
+    role: "Bought a 9ft Olhausen Augusta",
+    city: "Fort Wayne, IN",
+    created_at: new Date().toISOString(),
+  },
+  {
+    id: "tes-2",
+    author_name: "Sarah T.",
+    content:
+      "We bought a shuffleboard, a bar, six stools, and a neon — all in one afternoon. Free delivery, free install. These guys are who Fort Wayne should be buying from.",
+    rating: 5,
+    is_active: true,
+    role: "Full game room build",
+    city: "Fort Wayne, IN",
+    created_at: new Date().toISOString(),
+  },
+  {
+    id: "tes-3",
+    author_name: "David L.",
+    content:
+      "I had a 25-year-old Brunswick that needed everything. I thought I'd spend $3,000. I spent $800. Table looks better than when I bought it.",
+    rating: 5,
+    is_active: true,
+    role: "Re-felt & refurb",
+    city: "Huntington, IN",
+    created_at: new Date().toISOString(),
+  },
+]
+
+export const ADMIN_MOCK_FAQS = [
+  {
+    id: "faq-1",
+    question: "Does Ace Game Room do services on pool tables?",
+    answer:
+      "Yes — teardown, moving, setup, and recovering. We also replace broken pockets and rail rubbers. We do not repair damaged wood.",
+    category: "Services",
+    sort_order: 1,
+    is_active: true,
+    created_at: new Date().toISOString(),
+  },
+  {
+    id: "faq-2",
+    question: "What brands of pool tables do you carry?",
+    answer:
+      "Olhausen, Valley, C.L. Bailey, Plank and Hide, and Presidential Billiards. All American-made premium brands.",
+    category: "Billiards",
+    sort_order: 2,
+    is_active: true,
+    created_at: new Date().toISOString(),
+  },
+  {
+    id: "faq-3",
+    question: "Do you offer financing?",
+    answer:
+      "Yes! We offer Wells Fargo financing. Buy today, pay over time with convenient monthly payments.",
+    category: "Purchasing",
+    sort_order: 3,
+    is_active: true,
+    created_at: new Date().toISOString(),
+  },
+  {
+    id: "faq-4",
+    question: "Do you deliver and install?",
+    answer:
+      "Yes — free delivery and installation on qualifying purchases across NE Indiana.",
+    category: "Services",
+    sort_order: 4,
+    is_active: true,
+    created_at: new Date().toISOString(),
+  },
+  {
+    id: "faq-5",
+    question: "What are your hours?",
+    answer:
+      "Monday through Saturday, 10:00 AM – 6:00 PM. Closed Sundays.",
+    category: "General",
+    sort_order: 5,
+    is_active: true,
+    created_at: new Date().toISOString(),
+  },
+]
+
+export const ADMIN_MOCK_CONTENT = {
+  hero_title: "A pool table isn't furniture. It's the heart of a home.",
+  hero_subtitle:
+    "For 32 years, Fort Wayne's families have come to ACE not to buy a game — but to build the room where their family gathers.",
+  about_story:
+    "Ace Game Room Gallery was established in 1992 as a coin-operated amusement supplier serving local businesses. Two years later, founder Bret Almashie expanded to retail sales, recognizing the community's demand for quality recreational products.",
+  why_shop:
+    "ACE Game Room sells more pool tables than all of the surrounding competition combined. With over 25 years of experience, we help you find the table that matches your style and budget.",
+  services_billiard:
+    "Teardowns, moving, setup, recovering, and pocket/rubber replacement. We do not repair damaged wood.",
+  services_pinball:
+    "Professional pinball machine maintenance and repair.",
+  services_playset:
+    "Installation and maintenance for Rainbow Play Systems residential and commercial playsets.",
+}
+
+// ---------------------------------------------------------------
+// Helper functions
+// ---------------------------------------------------------------
+
+// Legacy aliases — keep old admin page imports working
+export const ADMIN_MOCK_FAQ = ADMIN_MOCK_FAQS
+export const ADMIN_MOCK_CATEGORIES = MOCK_CATEGORIES.map((c) => ({
+  id: c.id,
+  name: c.name,
+  slug: c.slug,
+  description: c.description,
+  image_url: c.imageUrl,
+  parent_id: null as string | null,
+  sort_order: 0,
+  created_at: new Date().toISOString(),
+  updated_at: new Date().toISOString(),
+}))
+export const ADMIN_MOCK_BRANDS = [
+  "Olhausen", "Valley", "C.L. Bailey", "Plank & Hide", "Championship",
+  "Simonis", "McDermott", "Lucasi", "Viking", "Predator", "Players",
+  "Cuetec", "Jacoby", "Joss", "Valhalla", "Darafeev", "American Heritage",
+  "Callee", "Holland Bar Stool", "H.J. Scott", "RAM Game Room", "Z-Lite",
+  "Rainbow Play Systems", "Springfree", "Presidential Billiards", "Goalsetter",
+  "Arcade Classics",
+].map((name, i) => ({
+  id: `brand-${i + 1}`,
+  name,
+  slug: name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, ""),
+  logo_url: null as string | null,
+  website_url: null as string | null,
+  created_at: new Date().toISOString(),
+}))
+
 export function getCategoryBySlug(slug: string): MockCategory | undefined {
   return MOCK_CATEGORIES.find((c) => c.slug === slug)
 }
 
-/**
- * Get all products for a given category slug
- */
 export function getProductsByCategory(categorySlug: string): MockProduct[] {
   return MOCK_PRODUCTS.filter((p) => p.categorySlug === categorySlug)
 }
 
-/**
- * Get a single product by its slug
- */
 export function getProductBySlug(slug: string): MockProduct | undefined {
   return MOCK_PRODUCTS.find((p) => p.slug === slug)
 }
 
-/**
- * Get related products (same category, excluding current product)
- */
 export function getRelatedProducts(
-  product: MockProduct,
-  limit = 6
+  categorySlug: string,
+  excludeSlug?: string,
+  limit = 3,
 ): MockProduct[] {
   return MOCK_PRODUCTS.filter(
-    (p) => p.categorySlug === product.categorySlug && p.id !== product.id
+    (p) => p.categorySlug === categorySlug && p.slug !== excludeSlug,
   ).slice(0, limit)
 }
-
-// =============================================
-// Admin Mock Data
-// =============================================
-
-import type {
-  Category,
-  Brand,
-  Product,
-  ProductImage,
-  Inquiry,
-  HeroBanner,
-  Testimonial,
-  FaqEntry,
-  LeagueEvent,
-  SiteContent,
-} from "./types"
-
-export const ADMIN_MOCK_CATEGORIES: Category[] = [
-  { id: "cat-1", name: "Billiards", slug: "billiards", description: "Pool tables, cues, cloth, lighting, and accessories", image_url: null, parent_id: null, sort_order: 1, created_at: "2024-01-01T00:00:00Z", updated_at: "2024-01-01T00:00:00Z" },
-  { id: "cat-2", name: "Games", slug: "games", description: "Pinball, arcade, foosball, air hockey, darts, and more", image_url: null, parent_id: null, sort_order: 2, created_at: "2024-01-01T00:00:00Z", updated_at: "2024-01-01T00:00:00Z" },
-  { id: "cat-3", name: "Furniture", slug: "furniture", description: "Bars, bar stools, pub tables, game chairs, and neons", image_url: null, parent_id: null, sort_order: 3, created_at: "2024-01-01T00:00:00Z", updated_at: "2024-01-01T00:00:00Z" },
-  { id: "cat-4", name: "Playsets", slug: "playsets", description: "Rainbow Play Systems for residential and commercial use", image_url: null, parent_id: null, sort_order: 4, created_at: "2024-01-01T00:00:00Z", updated_at: "2024-01-01T00:00:00Z" },
-  { id: "cat-5", name: "Outdoor", slug: "outdoor", description: "Basketball goals, trampolines, and outdoor games", image_url: null, parent_id: null, sort_order: 5, created_at: "2024-01-01T00:00:00Z", updated_at: "2024-01-01T00:00:00Z" },
-  { id: "cat-6", name: "Services", slug: "services", description: "Billiard, pinball, and playset services", image_url: null, parent_id: null, sort_order: 6, created_at: "2024-01-01T00:00:00Z", updated_at: "2024-01-01T00:00:00Z" },
-  { id: "sub-1-1", name: "Billiard Tables", slug: "billiard-tables", description: null, image_url: null, parent_id: "cat-1", sort_order: 1, created_at: "2024-01-01T00:00:00Z", updated_at: "2024-01-01T00:00:00Z" },
-  { id: "sub-1-2", name: "Cues", slug: "cues", description: null, image_url: null, parent_id: "cat-1", sort_order: 2, created_at: "2024-01-01T00:00:00Z", updated_at: "2024-01-01T00:00:00Z" },
-  { id: "sub-2-1", name: "Pinball", slug: "pinball", description: null, image_url: null, parent_id: "cat-2", sort_order: 1, created_at: "2024-01-01T00:00:00Z", updated_at: "2024-01-01T00:00:00Z" },
-  { id: "sub-2-2", name: "Arcade Games", slug: "arcade-games", description: null, image_url: null, parent_id: "cat-2", sort_order: 2, created_at: "2024-01-01T00:00:00Z", updated_at: "2024-01-01T00:00:00Z" },
-  { id: "sub-3-1", name: "Bar Stools", slug: "bar-stools", description: null, image_url: null, parent_id: "cat-3", sort_order: 1, created_at: "2024-01-01T00:00:00Z", updated_at: "2024-01-01T00:00:00Z" },
-  { id: "sub-3-2", name: "Pub Tables", slug: "pub-tables", description: null, image_url: null, parent_id: "cat-3", sort_order: 2, created_at: "2024-01-01T00:00:00Z", updated_at: "2024-01-01T00:00:00Z" },
-]
-
-export const ADMIN_MOCK_BRANDS: Brand[] = [
-  { id: "brand-1", name: "Olhausen", slug: "olhausen", logo_url: null, website_url: "https://olhausenbilliards.com", created_at: "2024-01-01T00:00:00Z" },
-  { id: "brand-2", name: "Valley", slug: "valley", logo_url: null, website_url: "https://www.valley-dynamo.com", created_at: "2024-01-01T00:00:00Z" },
-  { id: "brand-3", name: "C.L. Bailey", slug: "cl-bailey", logo_url: null, website_url: null, created_at: "2024-01-01T00:00:00Z" },
-  { id: "brand-4", name: "Plank and Hide", slug: "plank-and-hide", logo_url: null, website_url: null, created_at: "2024-01-01T00:00:00Z" },
-  { id: "brand-5", name: "Presidential Billiards", slug: "presidential-billiards", logo_url: null, website_url: null, created_at: "2024-01-01T00:00:00Z" },
-  { id: "brand-6", name: "Championship", slug: "championship", logo_url: null, website_url: null, created_at: "2024-01-01T00:00:00Z" },
-  { id: "brand-7", name: "Simonis", slug: "simonis", logo_url: null, website_url: null, created_at: "2024-01-01T00:00:00Z" },
-  { id: "brand-8", name: "J. Pechauer", slug: "j-pechauer", logo_url: null, website_url: null, created_at: "2024-01-01T00:00:00Z" },
-  { id: "brand-9", name: "McDermott", slug: "mcdermott", logo_url: null, website_url: null, created_at: "2024-01-01T00:00:00Z" },
-  { id: "brand-10", name: "Lucasi", slug: "lucasi", logo_url: null, website_url: null, created_at: "2024-01-01T00:00:00Z" },
-  { id: "brand-11", name: "Viking", slug: "viking", logo_url: null, website_url: null, created_at: "2024-01-01T00:00:00Z" },
-  { id: "brand-12", name: "Predator", slug: "predator", logo_url: null, website_url: null, created_at: "2024-01-01T00:00:00Z" },
-  { id: "brand-13", name: "Darafeev", slug: "darafeev", logo_url: null, website_url: null, created_at: "2024-01-01T00:00:00Z" },
-  { id: "brand-14", name: "American Heritage", slug: "american-heritage", logo_url: null, website_url: null, created_at: "2024-01-01T00:00:00Z" },
-  { id: "brand-15", name: "Callee", slug: "callee", logo_url: null, website_url: null, created_at: "2024-01-01T00:00:00Z" },
-  { id: "brand-16", name: "Holland Bar Stool Co.", slug: "holland-bar-stool", logo_url: null, website_url: null, created_at: "2024-01-01T00:00:00Z" },
-  { id: "brand-17", name: "RAM Game Room", slug: "ram-game-room", logo_url: null, website_url: null, created_at: "2024-01-01T00:00:00Z" },
-  { id: "brand-18", name: "Rainbow Play Systems", slug: "rainbow-play-systems", logo_url: null, website_url: null, created_at: "2024-01-01T00:00:00Z" },
-  { id: "brand-19", name: "Springfree", slug: "springfree", logo_url: null, website_url: null, created_at: "2024-01-01T00:00:00Z" },
-  { id: "brand-20", name: "Stern Pinball", slug: "stern-pinball", logo_url: null, website_url: null, created_at: "2024-01-01T00:00:00Z" },
-  { id: "brand-21", name: "Tornado", slug: "tornado", logo_url: null, website_url: null, created_at: "2024-01-01T00:00:00Z" },
-  { id: "brand-22", name: "Incredible Technologies", slug: "incredible-technologies", logo_url: null, website_url: null, created_at: "2024-01-01T00:00:00Z" },
-  { id: "brand-23", name: "Viper", slug: "viper", logo_url: null, website_url: null, created_at: "2024-01-01T00:00:00Z" },
-  { id: "brand-24", name: "Hudson Shuffleboard", slug: "hudson-shuffleboard", logo_url: null, website_url: null, created_at: "2024-01-01T00:00:00Z" },
-  { id: "brand-25", name: "Cuetec", slug: "cuetec", logo_url: null, website_url: null, created_at: "2024-01-01T00:00:00Z" },
-  { id: "brand-26", name: "Jacoby", slug: "jacoby", logo_url: null, website_url: null, created_at: "2024-01-01T00:00:00Z" },
-  { id: "brand-27", name: "H.J. Scott", slug: "hj-scott", logo_url: null, website_url: null, created_at: "2024-01-01T00:00:00Z" },
-]
-
-export const ADMIN_MOCK_PRODUCTS: Product[] = [
-  {
-    id: "prod-1", name: "Olhausen Americana II 8' Pool Table", slug: "olhausen-americana-ii", description: "The Olhausen Americana II is a beautifully crafted pool table featuring solid hardwood construction.", category_id: "sub-1-1", brand_id: "brand-1",
-    specifications: { "Table Size": '8 Foot', "Slate": '1" Italian Slate', "Cushions": "Accu-Fast", "Frame": "Solid Hardwood", "Warranty": "Lifetime" },
-    is_featured: true, status: "active", meta_title: "Olhausen Americana II Pool Table", meta_description: "Premium 8-foot pool table by Olhausen.", sort_order: 1, created_at: "2024-06-01T00:00:00Z", updated_at: "2024-06-01T00:00:00Z",
-    category: { id: "sub-1-1", name: "Billiard Tables", slug: "billiard-tables", description: null, image_url: null, parent_id: "cat-1", sort_order: 1, created_at: "2024-01-01T00:00:00Z", updated_at: "2024-01-01T00:00:00Z" },
-    brand: { id: "brand-1", name: "Olhausen", slug: "olhausen", logo_url: null, website_url: null, created_at: "2024-01-01T00:00:00Z" },
-    images: [{ id: "img-1", product_id: "prod-1", image_url: "https://images.unsplash.com/photo-1611068661807-8e265276fbf4?w=600&h=400&fit=crop", alt_text: "Olhausen Americana II", is_primary: true, sort_order: 0, created_at: "2024-06-01T00:00:00Z" }],
-  },
-  {
-    id: "prod-2", name: "Valley Panther ZD-11T Coin-Op Table", slug: "valley-panther-coin-op", description: "The Valley Panther ZD-11T is the industry-standard coin-operated pool table.", category_id: "sub-1-1", brand_id: "brand-2",
-    specifications: { "Table Size": "7 Foot", "Surface": "Laminate", "Use": "Commercial" },
-    is_featured: false, status: "active", meta_title: null, meta_description: null, sort_order: 2, created_at: "2024-06-02T00:00:00Z", updated_at: "2024-06-02T00:00:00Z",
-    category: { id: "sub-1-1", name: "Billiard Tables", slug: "billiard-tables", description: null, image_url: null, parent_id: "cat-1", sort_order: 1, created_at: "2024-01-01T00:00:00Z", updated_at: "2024-01-01T00:00:00Z" },
-    brand: { id: "brand-2", name: "Valley", slug: "valley", logo_url: null, website_url: null, created_at: "2024-01-01T00:00:00Z" },
-    images: [{ id: "img-2", product_id: "prod-2", image_url: "https://images.unsplash.com/photo-1611068661807-8e265276fbf4?w=600&h=400&fit=crop&q=90", alt_text: "Valley Panther", is_primary: true, sort_order: 0, created_at: "2024-06-02T00:00:00Z" }],
-  },
-  {
-    id: "prod-3", name: "Stern Pinball Rush Premium", slug: "stern-rush-premium", description: "High-speed pinball with immersive playfield design.", category_id: "sub-2-1", brand_id: "brand-20",
-    specifications: { "Type": "Premium Edition", "Display": "LCD Backbox", "Audio": "3-Channel Sound" },
-    is_featured: true, status: "active", meta_title: null, meta_description: null, sort_order: 3, created_at: "2024-06-03T00:00:00Z", updated_at: "2024-06-03T00:00:00Z",
-    category: { id: "sub-2-1", name: "Pinball", slug: "pinball", description: null, image_url: null, parent_id: "cat-2", sort_order: 1, created_at: "2024-01-01T00:00:00Z", updated_at: "2024-01-01T00:00:00Z" },
-    brand: { id: "brand-20", name: "Stern Pinball", slug: "stern-pinball", logo_url: null, website_url: null, created_at: "2024-01-01T00:00:00Z" },
-    images: [{ id: "img-3", product_id: "prod-3", image_url: "https://images.unsplash.com/photo-1511882150382-421056c89033?w=600&h=400&fit=crop", alt_text: "Stern Rush pinball", is_primary: true, sort_order: 0, created_at: "2024-06-03T00:00:00Z" }],
-  },
-  {
-    id: "prod-4", name: "Golden Tee PGA Tour Home Edition", slug: "golden-tee-home", description: "The beloved arcade golf experience for your home.", category_id: "sub-2-2", brand_id: "brand-22",
-    specifications: { "Display": '32" HD Monitor', "Courses": "50+", "Online": "Wi-Fi" },
-    is_featured: false, status: "active", meta_title: null, meta_description: null, sort_order: 4, created_at: "2024-06-04T00:00:00Z", updated_at: "2024-06-04T00:00:00Z",
-    category: { id: "sub-2-2", name: "Arcade Games", slug: "arcade-games", description: null, image_url: null, parent_id: "cat-2", sort_order: 2, created_at: "2024-01-01T00:00:00Z", updated_at: "2024-01-01T00:00:00Z" },
-    brand: { id: "brand-22", name: "Incredible Technologies", slug: "incredible-technologies", logo_url: null, website_url: null, created_at: "2024-01-01T00:00:00Z" },
-    images: [{ id: "img-4", product_id: "prod-4", image_url: "https://images.unsplash.com/photo-1511882150382-421056c89033?w=600&h=400&fit=crop&q=85", alt_text: "Golden Tee", is_primary: true, sort_order: 0, created_at: "2024-06-04T00:00:00Z" }],
-  },
-  {
-    id: "prod-5", name: "Darafeev Trestle Pub Table", slug: "darafeev-trestle-pub-table", description: "Classic pub table with solid hardwood construction.", category_id: "sub-3-2", brand_id: "brand-13",
-    specifications: { "Material": "Solid Hardwood", "Height": "42 inches", "Shape": "Round" },
-    is_featured: false, status: "active", meta_title: null, meta_description: null, sort_order: 5, created_at: "2024-06-05T00:00:00Z", updated_at: "2024-06-05T00:00:00Z",
-    category: { id: "sub-3-2", name: "Pub Tables", slug: "pub-tables", description: null, image_url: null, parent_id: "cat-3", sort_order: 2, created_at: "2024-01-01T00:00:00Z", updated_at: "2024-01-01T00:00:00Z" },
-    brand: { id: "brand-13", name: "Darafeev", slug: "darafeev", logo_url: null, website_url: null, created_at: "2024-01-01T00:00:00Z" },
-    images: [{ id: "img-5", product_id: "prod-5", image_url: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=600&h=400&fit=crop", alt_text: "Darafeev Trestle", is_primary: true, sort_order: 0, created_at: "2024-06-05T00:00:00Z" }],
-  },
-  {
-    id: "prod-6", name: "Holland Bar Stool Swivel Counter Stool", slug: "holland-swivel-counter-stool", description: "Durable commercial-grade swivel bar stool.", category_id: "sub-3-1", brand_id: "brand-16",
-    specifications: { "Frame": "Heavy-Duty Steel", "Swivel": "360-Degree", "Weight Capacity": "400 lbs" },
-    is_featured: true, status: "active", meta_title: null, meta_description: null, sort_order: 6, created_at: "2024-06-06T00:00:00Z", updated_at: "2024-06-06T00:00:00Z",
-    category: { id: "sub-3-1", name: "Bar Stools", slug: "bar-stools", description: null, image_url: null, parent_id: "cat-3", sort_order: 1, created_at: "2024-01-01T00:00:00Z", updated_at: "2024-01-01T00:00:00Z" },
-    brand: { id: "brand-16", name: "Holland Bar Stool Co.", slug: "holland-bar-stool", logo_url: null, website_url: null, created_at: "2024-01-01T00:00:00Z" },
-    images: [{ id: "img-6", product_id: "prod-6", image_url: "https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=600&h=400&fit=crop", alt_text: "Holland Swivel Stool", is_primary: true, sort_order: 0, created_at: "2024-06-06T00:00:00Z" }],
-  },
-  {
-    id: "prod-7", name: "Presidential Billiards Hamilton", slug: "presidential-hamilton", description: "Classic elegance with solid hardwood construction.", category_id: "sub-1-1", brand_id: "brand-5",
-    specifications: { "Table Size": "8 Foot", "Slate": '1" Italian Slate', "Cushions": "K-66" },
-    is_featured: false, status: "active", meta_title: null, meta_description: null, sort_order: 7, created_at: "2024-06-07T00:00:00Z", updated_at: "2024-06-07T00:00:00Z",
-    category: { id: "sub-1-1", name: "Billiard Tables", slug: "billiard-tables", description: null, image_url: null, parent_id: "cat-1", sort_order: 1, created_at: "2024-01-01T00:00:00Z", updated_at: "2024-01-01T00:00:00Z" },
-    brand: { id: "brand-5", name: "Presidential Billiards", slug: "presidential-billiards", logo_url: null, website_url: null, created_at: "2024-01-01T00:00:00Z" },
-    images: [{ id: "img-7", product_id: "prod-7", image_url: "https://images.unsplash.com/photo-1611068661807-8e265276fbf4?w=600&h=400&fit=crop&q=75", alt_text: "Presidential Hamilton", is_primary: true, sort_order: 0, created_at: "2024-06-07T00:00:00Z" }],
-  },
-  {
-    id: "prod-8", name: "Tornado Classic Foosball Table", slug: "tornado-classic-foosball", description: "Tournament standard foosball table.", category_id: "sub-2-2", brand_id: "brand-21",
-    specifications: { "Type": "Tournament Grade", "Players": "Counterbalanced" },
-    is_featured: false, status: "active", meta_title: null, meta_description: null, sort_order: 8, created_at: "2024-06-08T00:00:00Z", updated_at: "2024-06-08T00:00:00Z",
-    category: { id: "sub-2-2", name: "Arcade Games", slug: "arcade-games", description: null, image_url: null, parent_id: "cat-2", sort_order: 2, created_at: "2024-01-01T00:00:00Z", updated_at: "2024-01-01T00:00:00Z" },
-    brand: { id: "brand-21", name: "Tornado", slug: "tornado", logo_url: null, website_url: null, created_at: "2024-01-01T00:00:00Z" },
-    images: [{ id: "img-8", product_id: "prod-8", image_url: "https://images.unsplash.com/photo-1511882150382-421056c89033?w=600&h=400&fit=crop&q=75", alt_text: "Tornado Classic", is_primary: true, sort_order: 0, created_at: "2024-06-08T00:00:00Z" }],
-  },
-  {
-    id: "prod-9", name: "Viper Shot King Bristle Dartboard", slug: "viper-shot-king-dartboard", description: "Premium sisal bristle dartboard.", category_id: "sub-2-2", brand_id: "brand-23",
-    specifications: { "Type": "Bristle (Sisal)", "Diameter": '18"' },
-    is_featured: false, status: "draft", meta_title: null, meta_description: null, sort_order: 9, created_at: "2024-06-09T00:00:00Z", updated_at: "2024-06-09T00:00:00Z",
-    category: { id: "sub-2-2", name: "Arcade Games", slug: "arcade-games", description: null, image_url: null, parent_id: "cat-2", sort_order: 2, created_at: "2024-01-01T00:00:00Z", updated_at: "2024-01-01T00:00:00Z" },
-    brand: { id: "brand-23", name: "Viper", slug: "viper", logo_url: null, website_url: null, created_at: "2024-01-01T00:00:00Z" },
-    images: [{ id: "img-9", product_id: "prod-9", image_url: "https://images.unsplash.com/photo-1617883861744-13b534e1757a?w=600&h=400&fit=crop", alt_text: "Viper Shot King", is_primary: true, sort_order: 0, created_at: "2024-06-09T00:00:00Z" }],
-  },
-  {
-    id: "prod-10", name: "Hudson Grand Shuffleboard 14'", slug: "hudson-grand-shuffleboard", description: "Stunning 14-foot shuffleboard table.", category_id: "sub-2-2", brand_id: "brand-24",
-    specifications: { "Length": "14 Feet", "Surface": "Polymer-Coated" },
-    is_featured: true, status: "active", meta_title: null, meta_description: null, sort_order: 10, created_at: "2024-06-10T00:00:00Z", updated_at: "2024-06-10T00:00:00Z",
-    category: { id: "sub-2-2", name: "Arcade Games", slug: "arcade-games", description: null, image_url: null, parent_id: "cat-2", sort_order: 2, created_at: "2024-01-01T00:00:00Z", updated_at: "2024-01-01T00:00:00Z" },
-    brand: { id: "brand-24", name: "Hudson Shuffleboard", slug: "hudson-shuffleboard", logo_url: null, website_url: null, created_at: "2024-01-01T00:00:00Z" },
-    images: [{ id: "img-10", product_id: "prod-10", image_url: "https://images.unsplash.com/photo-1596455607563-ad6193f76b17?w=600&h=400&fit=crop", alt_text: "Hudson Grand", is_primary: true, sort_order: 0, created_at: "2024-06-10T00:00:00Z" }],
-  },
-  {
-    id: "prod-11", name: 'RAM Game Room 84" Home Bar', slug: "ram-home-bar", description: "The ultimate entertainment zone bar.", category_id: "sub-3-1", brand_id: "brand-17",
-    specifications: { "Width": "84 inches", "Material": "Solid Hardwood" },
-    is_featured: false, status: "active", meta_title: null, meta_description: null, sort_order: 11, created_at: "2024-06-11T00:00:00Z", updated_at: "2024-06-11T00:00:00Z",
-    category: { id: "sub-3-1", name: "Bar Stools", slug: "bar-stools", description: null, image_url: null, parent_id: "cat-3", sort_order: 1, created_at: "2024-01-01T00:00:00Z", updated_at: "2024-01-01T00:00:00Z" },
-    brand: { id: "brand-17", name: "RAM Game Room", slug: "ram-game-room", logo_url: null, website_url: null, created_at: "2024-01-01T00:00:00Z" },
-    images: [{ id: "img-11", product_id: "prod-11", image_url: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=600&h=400&fit=crop&q=85", alt_text: "RAM Home Bar", is_primary: true, sort_order: 0, created_at: "2024-06-11T00:00:00Z" }],
-  },
-  {
-    id: "prod-12", name: "Callee Bailey Spectator Chair", slug: "callee-bailey-spectator-chair", description: "Extra-tall spectator chair for game room viewing.", category_id: "sub-3-1", brand_id: "brand-15",
-    specifications: { "Seat Height": "34 inches", "Frame": "Heavy-Gauge Steel" },
-    is_featured: false, status: "draft", meta_title: null, meta_description: null, sort_order: 12, created_at: "2024-06-12T00:00:00Z", updated_at: "2024-06-12T00:00:00Z",
-    category: { id: "sub-3-1", name: "Bar Stools", slug: "bar-stools", description: null, image_url: null, parent_id: "cat-3", sort_order: 1, created_at: "2024-01-01T00:00:00Z", updated_at: "2024-01-01T00:00:00Z" },
-    brand: { id: "brand-15", name: "Callee", slug: "callee", logo_url: null, website_url: null, created_at: "2024-01-01T00:00:00Z" },
-    images: [{ id: "img-12", product_id: "prod-12", image_url: "https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=600&h=400&fit=crop&q=85", alt_text: "Callee Bailey Chair", is_primary: true, sort_order: 0, created_at: "2024-06-12T00:00:00Z" }],
-  },
-]
-
-export const ADMIN_MOCK_INQUIRIES: Inquiry[] = [
-  { id: "inq-1", name: "John Smith", email: "john@example.com", phone: "2605551234", message: "I'm interested in the Olhausen Americana II pool table. What finishes are available and do you offer delivery to Angola, IN?", product_ids: ["prod-1"], is_read: false, is_archived: false, created_at: "2024-12-10T14:30:00Z" },
-  { id: "inq-2", name: "Sarah Johnson", email: "sarah.j@email.com", phone: "2605559876", message: "Looking for a shuffleboard table for our basement. Can you tell me about the Hudson Grand? We'd need delivery and setup.", product_ids: ["prod-10"], is_read: false, is_archived: false, created_at: "2024-12-09T10:15:00Z" },
-  { id: "inq-3", name: "Mike Davis", email: "mdavis@company.com", phone: null, message: "We're outfitting a new break room at our office and need a foosball table and a dartboard. Do you offer commercial pricing for businesses?", product_ids: ["prod-8", "prod-9"], is_read: false, is_archived: false, created_at: "2024-12-08T16:45:00Z" },
-  { id: "inq-4", name: "Lisa Chen", email: "lisa.chen@gmail.com", phone: "5745558899", message: "I want to buy a pinball machine as a birthday gift for my husband. He loves rock music - is the Stern Rush still available?", product_ids: ["prod-3"], is_read: true, is_archived: false, created_at: "2024-12-05T09:00:00Z" },
-  { id: "inq-5", name: "Robert Williams", email: "rwilliams@yahoo.com", phone: "2605553344", message: "Do you carry any pool table lights? I bought a table from you last year and need proper lighting. Also interested in a pub table.", product_ids: ["prod-5"], is_read: true, is_archived: false, created_at: "2024-12-01T11:30:00Z" },
-]
-
-export const ADMIN_MOCK_BANNERS: HeroBanner[] = [
-  { id: "banner-1", title: "Premium Pool Tables", subtitle: "Fort Wayne's #1 Selection", image_url: "https://images.unsplash.com/photo-1611068661807-8e265276fbf4?w=1200&h=500&fit=crop", cta_text: "Shop Billiards", cta_link: "/billiards", sort_order: 1, is_active: true, created_at: "2024-01-01T00:00:00Z" },
-  { id: "banner-2", title: "Game Room Furniture", subtitle: "Complete Your Space", image_url: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=1200&h=500&fit=crop", cta_text: "Shop Furniture", cta_link: "/furniture", sort_order: 2, is_active: true, created_at: "2024-01-01T00:00:00Z" },
-  { id: "banner-3", title: "Pinball & Arcade", subtitle: "Bring the Fun Home", image_url: "https://images.unsplash.com/photo-1511882150382-421056c89033?w=1200&h=500&fit=crop", cta_text: "Shop Games", cta_link: "/games", sort_order: 3, is_active: true, created_at: "2024-01-01T00:00:00Z" },
-  { id: "banner-4", title: "Holiday Specials", subtitle: "Limited Time Offers", image_url: "https://images.unsplash.com/photo-1596455607563-ad6193f76b17?w=1200&h=500&fit=crop", cta_text: "Learn More", cta_link: "/contact", sort_order: 4, is_active: true, created_at: "2024-01-01T00:00:00Z" },
-]
-
-export const ADMIN_MOCK_TESTIMONIALS: Testimonial[] = [
-  { id: "test-1", author_name: "Mike R.", content: "Best pool table selection in Fort Wayne. The staff really knows their stuff and helped us pick the perfect table for our basement.", rating: 5, is_active: true, created_at: "2024-01-01T00:00:00Z" },
-  { id: "test-2", author_name: "Sarah T.", content: "We bought a shuffleboard table and bar stools. The quality is outstanding and the delivery was free! Highly recommend.", rating: 5, is_active: true, created_at: "2024-02-01T00:00:00Z" },
-  { id: "test-3", author_name: "David L.", content: "Had our pool table recovered and it looks brand new. Great service at a fair price. Will definitely use them again.", rating: 5, is_active: true, created_at: "2024-03-01T00:00:00Z" },
-  { id: "test-4", author_name: "Jennifer K.", content: "Bought a pinball machine for our game room. Ace had the best prices and the team was so helpful with setup.", rating: 4, is_active: false, created_at: "2024-04-01T00:00:00Z" },
-]
-
-export const ADMIN_MOCK_FAQ: FaqEntry[] = [
-  { id: "faq-1", question: "Does Ace Game Room do services on pool tables?", answer: "Ace Game Room Gallery offers services such as tearing down, moving, setting up, and recovering pool tables. We also have the ability to replace broken pockets and replace dead rail rubbers.", category: null, sort_order: 1, is_active: true, created_at: "2024-01-01T00:00:00Z" },
-  { id: "faq-2", question: "What brands of pool tables do you carry?", answer: "We proudly carry Olhausen Billiards, Valley, C.L. Bailey, Plank and Hide, and Presidential Billiards pool tables.", category: null, sort_order: 2, is_active: true, created_at: "2024-01-01T00:00:00Z" },
-  { id: "faq-3", question: "Do you offer financing?", answer: "Yes! We offer Wells Fargo financing. Buy today, pay over time with convenient monthly payments.", category: null, sort_order: 3, is_active: true, created_at: "2024-01-01T00:00:00Z" },
-  { id: "faq-4", question: "Do you deliver and install?", answer: "Yes, we offer free delivery and installation on qualifying purchases.", category: null, sort_order: 4, is_active: true, created_at: "2024-01-01T00:00:00Z" },
-  { id: "faq-5", question: "What are your hours?", answer: "We are open Monday through Saturday from 10:00 AM to 6:00 PM. We are closed on Sundays.", category: null, sort_order: 5, is_active: true, created_at: "2024-01-01T00:00:00Z" },
-]
-
-export const ADMIN_MOCK_LEAGUES: LeagueEvent[] = [
-  { id: "league-1", league_type: "pool", title: "Wednesday Night 8-Ball League", event_date: "2025-01-15", event_time: "19:00", description: "Weekly 8-ball tournament. All skill levels welcome.", location: "Ace Game Room Gallery", created_at: "2024-01-01T00:00:00Z" },
-  { id: "league-2", league_type: "pool", title: "Saturday 9-Ball Open", event_date: "2025-01-18", event_time: "14:00", description: "Open 9-ball competition. Cash prizes for top 3.", location: "Ace Game Room Gallery", created_at: "2024-01-01T00:00:00Z" },
-  { id: "league-3", league_type: "dart", title: "Thursday Night Dart League", event_date: "2025-01-16", event_time: "18:30", description: "Weekly dart league. Teams of 4.", location: "Ace Game Room Gallery", created_at: "2024-01-01T00:00:00Z" },
-  { id: "league-4", league_type: "dart", title: "Monthly Cricket Championship", event_date: "2025-02-01", event_time: "13:00", description: "Monthly cricket dart tournament.", location: "Ace Game Room Gallery", created_at: "2024-01-01T00:00:00Z" },
-]
-
-export const ADMIN_MOCK_CONTENT: SiteContent[] = [
-  { id: "content-1", section_key: "about_story", title: "Our Story", content: "Ace Game Room Gallery was established in 1992 as a coin-operated amusement supplier serving local businesses with pool tables, pinball machines, video games, and jukeboxes. Two years later, founder Bret Almashie expanded the business model to include retail sales.", updated_at: "2024-01-01T00:00:00Z" },
-  { id: "content-2", section_key: "why_shop", title: "Why Shop at ACE?", content: "ACE Game Room sells more pool tables than all of the surrounding competition combined. We're the experts! With over 25 years of experience in the industry.", updated_at: "2024-01-01T00:00:00Z" },
-  { id: "content-3", section_key: "services_billiard", title: "Billiard Services", content: "Ace Game Room Gallery offers services such as tearing down, moving, setting up, and recovering pool tables.", updated_at: "2024-01-01T00:00:00Z" },
-  { id: "content-4", section_key: "services_pinball", title: "Pinball Services", content: "Professional pinball machine maintenance and repair services.", updated_at: "2024-01-01T00:00:00Z" },
-  { id: "content-5", section_key: "services_playset", title: "Playset Services", content: "Installation and maintenance for Rainbow Play Systems residential and commercial playsets.", updated_at: "2024-01-01T00:00:00Z" },
-]

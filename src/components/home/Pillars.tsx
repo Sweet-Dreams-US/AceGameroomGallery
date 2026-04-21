@@ -17,7 +17,7 @@ const PILLARS = [
       "Lifetime warranties on premium tables",
       "Price-match guarantee",
     ],
-    image: "https://images.unsplash.com/photo-1636116398581-2c85c73e4f12?w=1200&h=1400&fit=crop&q=85",
+    image: "http://www.acegameroom.com/store/content/images/thumbs/0001358_olhausen-augusta-pool-table_415.png",
     href: "/collection",
   },
   {
@@ -31,7 +31,7 @@ const PILLARS = [
       "Re-felting & re-cushioning",
       "Teardown & move services",
     ],
-    image: "https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=1200&h=1400&fit=crop&q=85",
+    image: "http://www.acegameroom.com/store/content/images/thumbs/0003230_billiard-cloth_450.jpeg",
     href: "/services",
   },
   {
@@ -45,7 +45,7 @@ const PILLARS = [
       "Expert staff — 25+ years avg tenure",
       "Pool & dart league headquarters",
     ],
-    image: "https://images.unsplash.com/photo-1604289574803-6cbe05627019?w=1200&h=1400&fit=crop&q=85",
+    image: "http://www.acegameroom.com/store/content/images/thumbs/0002829_arcade-classics-multicade-upright_415.jpeg",
     href: "/experience",
   },
 ]
