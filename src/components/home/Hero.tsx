@@ -35,14 +35,26 @@ export function Hero() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="col-span-12 lg:col-span-7"
           >
-            <div className="scarcity-badge mb-8">
-              ESTABLISHED 1992 · FORT WAYNE, INDIANA
+            <div className="flex items-center gap-4 mb-8">
+              <div className="flex items-center gap-1.5">
+                {[1, 2, 3].map((i) => (
+                  <span
+                    key={i}
+                    className="w-1.5 h-1.5 rotate-45 bg-gradient-to-br from-[#e67e22] to-[#f1c40f] shadow-[0_1px_2px_rgba(0,0,0,0.5)]"
+                  />
+                ))}
+              </div>
+              <div className="scarcity-badge">
+                ESTABLISHED 1992 · FORT WAYNE, INDIANA
+              </div>
             </div>
 
             <h1 className="hero-headline text-white mb-8">
               A pool table<br />
               isn&apos;t furniture.<br />
-              <span className="gold-gradient-text italic">It&apos;s the heart</span><br />
+              <span className="ace-gradient-text italic" style={{ filter: "drop-shadow(0 2px 0 rgba(92, 30, 12, 0.4)) drop-shadow(0 4px 14px rgba(192, 57, 43, 0.25))" }}>
+                It&apos;s the heart
+              </span><br />
               <span className="text-[#f5f1ea]">of a home.</span>
             </h1>
 

@@ -30,12 +30,30 @@ export function FinalCta() {
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.8 }}
         >
+          {/* Diamond rail ornament */}
+          <div className="flex items-center justify-center gap-3 mb-8 opacity-70">
+            {[1, 2, 3, 4, 5].map((i) => (
+              <span
+                key={i}
+                className="w-2 h-2 rotate-45 bg-gradient-to-br from-[#e67e22] to-[#f1c40f] shadow-[0_1px_2px_rgba(0,0,0,0.4)]"
+              />
+            ))}
+          </div>
+
           <p className="eyebrow mb-6">FAMILY OWNED · FORT WAYNE · EST. 1992</p>
 
           <h2 className="font-playfair font-black leading-[0.95] text-[#f5f1ea] mb-10 text-[clamp(3rem,10vw,9rem)]">
             Come build<br />
             the room your<br />
-            <span className="gold-gradient-text italic">family gathers in.</span>
+            <span
+              className="ace-gradient-text italic"
+              style={{
+                filter:
+                  "drop-shadow(0 3px 0 rgba(92, 30, 12, 0.55)) drop-shadow(0 8px 24px rgba(192, 57, 43, 0.3))",
+              }}
+            >
+              family gathers in.
+            </span>
           </h2>
 
           <p className="text-lg lg:text-xl text-[#a8a198] font-light max-w-2xl mx-auto leading-relaxed mb-12">

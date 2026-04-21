@@ -4,6 +4,7 @@ import { useState, useEffect } from "react"
 import Link from "next/link"
 import { Menu } from "lucide-react"
 import { MobileMenu } from "./MobileMenu"
+import { AceLogo } from "@/components/brand/AceLogo"
 
 const NAV_LINKS = [
   { label: "Collection", href: "/collection" },
@@ -69,16 +70,13 @@ export function Navbar() {
       >
         <div className="max-w-[1600px] mx-auto px-6 lg:px-10">
           <div className="flex items-center justify-between h-20 lg:h-24">
-            {/* Logo */}
-            <Link href="/" className="group flex items-center gap-3 z-10">
-              <div className="flex flex-col items-start leading-[0.9]">
-                <span className="ace-gradient-text text-3xl lg:text-4xl font-black italic font-playfair transition-transform duration-500 group-hover:scale-105">
-                  ACE
-                </span>
-                <span className="text-[9px] lg:text-[10px] font-display tracking-[0.3em] text-[#6b655e] mt-0.5">
-                  GAME ROOM GALLERY
-                </span>
-              </div>
+            {/* Logo — uses the official ACE artwork */}
+            <Link
+              href="/"
+              className="group flex items-center z-10 transition-transform duration-500 hover:scale-[1.03]"
+              aria-label="Ace Game Room Gallery — Home"
+            >
+              <AceLogo variant="mark" size="md" showTagline={false} />
             </Link>
 
             {/* Desktop Nav */}

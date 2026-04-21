@@ -52,12 +52,18 @@ const PILLARS = [
 
 export function Pillars() {
   return (
-    <section className="bg-[#f4efe6] py-24 lg:py-40">
+    <section className="bg-[#f4efe6] py-24 lg:py-40 relative">
+      {/* Warm cue-stripe accent — evokes the gradient on the logo */}
+      <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-transparent via-[#c0392b] via-[#e67e22] to-transparent opacity-60" />
+
       <div className="max-w-[1600px] mx-auto px-6 lg:px-10">
         {/* Header */}
         <div className="mb-20 lg:mb-32 grid grid-cols-12 gap-6">
           <div className="col-span-12 lg:col-span-6">
-            <p className="section-number mb-4">/ 002 — WHY ACE</p>
+            <div className="flex items-center gap-3 mb-4">
+              <span className="w-2 h-2 rotate-45 bg-gradient-to-br from-[#e67e22] to-[#f1c40f]" />
+              <p className="section-number">/ 002 — WHY ACE</p>
+            </div>
             <h2 className="font-playfair text-4xl lg:text-6xl font-bold text-[#1a1612] leading-[1.05]">
               Three things that
               <br />

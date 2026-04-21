@@ -1,5 +1,6 @@
 import Link from "next/link"
 import { Phone, MapPin, Clock } from "lucide-react"
+import { AceLogo } from "@/components/brand/AceLogo"
 
 function FacebookIcon({ className }: { className?: string }) {
   return (
@@ -80,13 +81,8 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
           {/* Brand */}
           <div className="lg:col-span-2">
-            <Link href="/" className="inline-flex flex-col items-start leading-[0.9] mb-6">
-              <span className="ace-gradient-text text-5xl font-black italic font-playfair">
-                ACE
-              </span>
-              <span className="text-xs font-display tracking-[0.3em] text-[#6b655e] mt-1">
-                GAME ROOM GALLERY
-              </span>
+            <Link href="/" className="inline-block mb-6" aria-label="Ace Game Room Gallery">
+              <AceLogo variant="mark" size="lg" showTagline={false} />
             </Link>
             <p className="text-[#6b655e] text-sm leading-relaxed max-w-sm mb-8">
               Fort Wayne&apos;s most curated game room showroom. Over 25 years creating the places families gather, friends compete, and memories are made.

@@ -50,7 +50,10 @@ export function Testimonials() {
       <div className="max-w-[1600px] mx-auto px-6 lg:px-10">
         <div className="mb-16 lg:mb-20 flex items-end justify-between gap-6">
           <div>
-            <p className="section-number mb-4">/ 004 — THE PEOPLE</p>
+            <div className="flex items-center gap-3 mb-4">
+              <span className="w-2 h-2 rotate-45 bg-gradient-to-br from-[#e67e22] to-[#f1c40f]" />
+              <p className="section-number">/ 004 — THE PEOPLE</p>
+            </div>
             <h2 className="font-playfair text-4xl lg:text-6xl font-bold text-[#1a1612] leading-[1.05]">
               What Fort Wayne
               <br />

@@ -72,11 +72,19 @@ export function InsideAce() {
         {/* Header */}
         <div className="mb-16 lg:mb-24 grid grid-cols-12 gap-6">
           <div className="col-span-12 lg:col-span-7">
-            <p className="section-number mb-4">/ 003 — INSIDE ACE</p>
+            <div className="flex items-center gap-3 mb-4">
+              <span className="w-2 h-2 rotate-45 bg-gradient-to-br from-[#e67e22] to-[#f1c40f]" />
+              <p className="section-number">/ 003 — INSIDE ACE</p>
+            </div>
             <h2 className="font-playfair text-4xl lg:text-6xl font-bold text-[#1a1612] leading-[1.05]">
               More than
               <br />
-              <span className="gold-gradient-text italic">pool tables.</span>
+              <span
+                className="ace-gradient-text italic"
+                style={{ filter: "drop-shadow(0 2px 0 rgba(92, 30, 12, 0.25))" }}
+              >
+                pool tables.
+              </span>
             </h2>
           </div>
           <div className="col-span-12 lg:col-span-4 lg:col-start-9 flex items-end">

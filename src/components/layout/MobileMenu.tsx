@@ -4,6 +4,7 @@ import { useState } from "react"
 import Link from "next/link"
 import { X, ChevronRight, Phone, MapPin, Clock } from "lucide-react"
 import { AnimatePresence, motion } from "framer-motion"
+import { AceLogo } from "@/components/brand/AceLogo"
 
 interface NavLink {
   label: string
@@ -48,11 +49,8 @@ export function MobileMenu({ isOpen, onClose, navLinks, categories }: MobileMenu
         >
           {/* Header */}
           <div className="flex items-center justify-between px-6 py-6 border-b border-[#1a1612]/8">
-            <Link href="/" onClick={handleClose} className="flex flex-col items-start leading-[0.9]">
-              <span className="ace-gradient-text text-3xl font-black italic font-playfair">ACE</span>
-              <span className="text-[10px] font-display tracking-[0.3em] text-[#6b655e] mt-0.5">
-                GAME ROOM GALLERY
-              </span>
+            <Link href="/" onClick={handleClose} aria-label="Ace Game Room Gallery — Home">
+              <AceLogo variant="mark" size="sm" showTagline={false} />
             </Link>
             <button
               onClick={handleClose}

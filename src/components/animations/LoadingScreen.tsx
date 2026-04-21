@@ -109,26 +109,17 @@ export default function LoadingScreen() {
           </div>
         </div>
 
-        {/* ACE logo reveal — fades in at the end, centered */}
+        {/* ACE logo reveal — the real brand artwork fades in at the end */}
         <div className="absolute inset-0 flex items-center justify-center animate-logo-reveal">
-          <div className="text-center">
-            <div
-              className="font-playfair font-black italic text-7xl md:text-8xl leading-none tracking-tight"
-              style={{
-                background:
-                  "linear-gradient(135deg, #c0392b 0%, #e67e22 50%, #d4a843 100%)",
-                WebkitBackgroundClip: "text",
-                backgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-                color: "transparent",
-              }}
-            >
-              ACE
-            </div>
-            <div className="mt-3 font-display tracking-[0.4em] text-xs md:text-sm text-[#5c5c5c]">
-              GAME ROOM GALLERY
-            </div>
-          </div>
+          <img
+            src="https://www.acegameroom.com/data/logo.png"
+            alt="Ace Game Room Gallery"
+            className="h-auto w-auto max-w-[70vw] md:max-w-[420px]"
+            style={{
+              filter:
+                "drop-shadow(0 2px 0 rgba(92, 30, 12, 0.2)) drop-shadow(0 8px 24px rgba(192, 57, 43, 0.15))",
+            }}
+          />
         </div>
       </div>
 

@@ -15,10 +15,30 @@ export function Mantra() {
   const x = useTransform(scrollYProgress, [0, 1], ["-10%", "-60%"])
 
   return (
-    <section ref={ref} className="py-24 lg:py-40 bg-[#faf8f3] overflow-hidden">
-      <div className="max-w-[1600px] mx-auto px-6 lg:px-10 mb-16 lg:mb-24">
+    <section ref={ref} className="py-24 lg:py-40 bg-[#faf8f3] overflow-hidden relative">
+      {/* Decorative rail of diamonds at top — like a pool table sight marker row */}
+      <div className="max-w-[1600px] mx-auto px-6 lg:px-10 mb-20 lg:mb-28">
+        <div className="flex items-center justify-center gap-6 mb-6">
+          <div className="flex items-center gap-3 opacity-50">
+            {[1, 2, 3].map((i) => (
+              <span
+                key={i}
+                className="w-2 h-2 rotate-45 bg-gradient-to-br from-[#e67e22] to-[#f1c40f] shadow-[0_1px_2px_rgba(92,30,12,0.3)]"
+              />
+            ))}
+          </div>
+          <p className="section-number">/ 001 — THE PHILOSOPHY</p>
+          <div className="flex items-center gap-3 opacity-50">
+            {[1, 2, 3].map((i) => (
+              <span
+                key={i}
+                className="w-2 h-2 rotate-45 bg-gradient-to-br from-[#e67e22] to-[#f1c40f] shadow-[0_1px_2px_rgba(92,30,12,0.3)]"
+              />
+            ))}
+          </div>
+        </div>
+
         <div className="max-w-3xl">
-          <p className="section-number mb-4">/ 001 — THE PHILOSOPHY</p>
           <h2 className="font-playfair text-4xl lg:text-6xl font-bold text-[#1a1612] leading-[1.05] mb-8">
             We don&apos;t sell pool tables.
             <br />
