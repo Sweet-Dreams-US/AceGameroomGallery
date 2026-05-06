@@ -6,13 +6,17 @@
  * cohesive, on-brand, and have the same warm cinematic light across every page.
  *
  * basePath note:
- *   These paths are basePath-relative (start with /images/...) so they work
- *   with `next/image`, which automatically prepends the configured basePath
- *   in production. For raw <img> tags or CSS `background-image: url(...)`,
- *   wrap with `withAssetBasePath()` so the GitHub Pages prefix is applied.
+ *   GitHub Pages serves the site at username.github.io/AceGameroomGallery/,
+ *   so every static asset URL needs the /AceGameroomGallery prefix in
+ *   production. Next.js's `<Image>` component DOES NOT auto-apply basePath
+ *   when `unoptimized: true` is set in next.config (the static export mode
+ *   we use), so we bake the basePath into the strings here. This works for
+ *   `<Image>`, raw `<img>`, and CSS `background-image: url()` alike.
  */
 
-const BASE = "/images/brand"
+const BASE_PATH =
+  process.env.NODE_ENV === "production" ? "/AceGameroomGallery" : ""
+const BASE = `${BASE_PATH}/images/brand`
 
 export const BRAND_IMAGES = {
   // Wide cinematic showroom shot — perfect for hero
@@ -41,14 +45,13 @@ export const BRAND_IMAGES = {
   poolTableBanner: `${BASE}/pool-table-banner.webp`,
 } as const
 
-const BASE_PATH =
-  process.env.NODE_ENV === "production" ? "/AceGameroomGallery" : ""
-
 /**
- * Apply the GitHub Pages basePath to an asset path.
- * Use for CSS `background-image: url(...)` and raw `<img src>`.
- * NOT needed for `next/image`, which handles basePath automatically.
+ * Pass-through helper kept for backwards compatibility. BRAND_IMAGES values
+ * already include the basePath, so this is a no-op. Use it when you want to
+ * make the basePath dependency explicit at the call site.
  */
 export function withAssetBasePath(path: string): string {
+  // If the path already starts with the base path, don't double-prefix.
+  if (path.startsWith(BASE_PATH)) return path
   return `${BASE_PATH}${path}`
 }

@@ -1,0 +1,610 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - generic [ref=e4]:
+      - img [ref=e5]
+      - generic [ref=e13]:
+        - img [ref=e14]
+        - generic [ref=e15]: GAME ROOM GALLERY
+    - button [ref=e18]: SKIP →
+  - banner [ref=e19]:
+    - generic [ref=e21]:
+      - link "Ace Game Room Gallery — Home" [ref=e22] [cursor=pointer]:
+        - /url: /AceGameroomGallery/
+        - img "Ace Game Room Gallery" [ref=e24]
+      - navigation [ref=e25]:
+        - link "Collection" [ref=e26] [cursor=pointer]:
+          - /url: /AceGameroomGallery/collection/
+        - link "Experience" [ref=e27] [cursor=pointer]:
+          - /url: /AceGameroomGallery/experience/
+        - link "Story" [ref=e28] [cursor=pointer]:
+          - /url: /AceGameroomGallery/about/
+        - link "Services" [ref=e29] [cursor=pointer]:
+          - /url: /AceGameroomGallery/services/
+        - link "Contact" [ref=e30] [cursor=pointer]:
+          - /url: /AceGameroomGallery/contact/
+      - generic [ref=e31]:
+        - link "(260) 432-3443" [ref=e32] [cursor=pointer]:
+          - /url: tel:+12604323443
+          - text: (260) 432-3443
+        - button "Open cart — 0 items" [ref=e34]:
+          - img [ref=e35]
+        - link "Request a Quote" [ref=e38] [cursor=pointer]:
+          - /url: /AceGameroomGallery/contact/
+  - main [ref=e39]:
+    - generic [ref=e45]:
+      - generic [ref=e46]:
+        - generic [ref=e47]:
+          - generic [ref=e53]: ESTABLISHED 1992 · FORT WAYNE, INDIANA
+          - heading "A pool table isn't furniture. It's the heart of a home." [level=1] [ref=e54]:
+            - text: A pool table
+            - text: isn't furniture.
+            - text: It's the heart
+            - text: of a home.
+          - paragraph [ref=e55]: For 32 years, Fort Wayne's families have come to ACE not to buy a game — but to build the room where their family gathers.
+          - generic [ref=e56]:
+            - link "Explore the Collection" [ref=e57] [cursor=pointer]:
+              - /url: /AceGameroomGallery/collection/
+              - text: Explore the Collection
+              - img [ref=e58]
+            - link "Visit the Showroom" [ref=e61] [cursor=pointer]:
+              - /url: /AceGameroomGallery/experience/
+        - generic [ref=e65]:
+          - paragraph [ref=e66]: By the Numbers
+          - generic [ref=e67]:
+            - generic [ref=e68]:
+              - generic [ref=e69]: "32"
+              - generic [ref=e70]: Years serving Fort Wayne
+            - generic [ref=e72]:
+              - generic [ref=e73]: "27"
+              - generic [ref=e74]: Premium brands curated
+            - generic [ref=e76]:
+              - generic [ref=e77]: "#1"
+              - generic [ref=e78]: Pool tables sold in NE Indiana
+          - generic [ref=e84]:
+            - paragraph [ref=e85]: Trusted by thousands
+            - paragraph [ref=e86]: of Fort Wayne families
+      - generic [ref=e87]:
+        - generic [ref=e89]: SCROLL
+        - img [ref=e91]
+    - generic [ref=e93]:
+      - generic [ref=e94]:
+        - paragraph [ref=e100]: / 001 — THE PHILOSOPHY
+        - generic [ref=e105]:
+          - heading "We don't sell pool tables. We sell the reason you'll be home on Friday night." [level=2] [ref=e106]:
+            - text: We don't sell pool tables.
+            - text: We sell the reason you'll be home on Friday night.
+          - paragraph [ref=e107]: "Every piece in our showroom was chosen for one reason: because it's the kind of thing you only buy once — and we want yours to be the one that lasts through decades, through moves, through generations."
+      - generic [ref=e108]:
+        - generic [ref=e109]:
+          - generic [ref=e111]: RACK.
+          - generic [ref=e114]: BREAK.
+          - generic [ref=e117]: GATHER.
+          - generic [ref=e120]: LIVE.
+          - generic [ref=e123]: REPEAT.
+        - generic [ref=e125]:
+          - generic [ref=e127]: RACK.
+          - generic [ref=e130]: BREAK.
+          - generic [ref=e133]: GATHER.
+          - generic [ref=e136]: LIVE.
+          - generic [ref=e139]: REPEAT.
+        - generic [ref=e141]:
+          - generic [ref=e143]: RACK.
+          - generic [ref=e146]: BREAK.
+          - generic [ref=e149]: GATHER.
+          - generic [ref=e152]: LIVE.
+          - generic [ref=e155]: REPEAT.
+    - generic [ref=e159]:
+      - generic [ref=e160]:
+        - generic [ref=e161]:
+          - paragraph [ref=e164]: / 002 — WHY ACE
+          - heading "Three things that set us apart." [level=2] [ref=e165]:
+            - text: Three things that
+            - text: set us apart.
+        - paragraph [ref=e167]: Fort Wayne has stores that sell pool tables. It has exactly one showroom that treats them like the centerpiece of a home. That's not marketing — that's what you'll feel the moment you walk in.
+      - generic [ref=e168]:
+        - generic [ref=e169]:
+          - generic [ref=e171]:
+            - img "The Collection" [ref=e172]
+            - generic [ref=e174]: "01"
+          - generic [ref=e175]:
+            - paragraph [ref=e176]: Pillar 01
+            - heading "The Collection" [level=3] [ref=e177]
+            - paragraph [ref=e178]: Every brand. Hand-selected.
+            - paragraph [ref=e179]: Olhausen slate tables. Darafeev hand-rubbed furniture. Rainbow Play Systems built to outlast childhood. If we carry it, we stake our name on it.
+            - list [ref=e180]:
+              - listitem [ref=e181]:
+                - generic [ref=e183]: 27 curated brands
+              - listitem [ref=e184]:
+                - generic [ref=e186]: American-made whenever possible
+              - listitem [ref=e187]:
+                - generic [ref=e189]: Lifetime warranties on premium tables
+              - listitem [ref=e190]:
+                - generic [ref=e192]: Price-match guarantee
+            - link "Learn more" [ref=e193] [cursor=pointer]:
+              - /url: /AceGameroomGallery/collection/
+              - text: Learn more
+              - img [ref=e194]
+        - generic [ref=e197]:
+          - generic [ref=e199]:
+            - img "The Service" [ref=e200]
+            - generic [ref=e202]: "02"
+          - generic [ref=e203]:
+            - paragraph [ref=e204]: Pillar 02
+            - heading "The Service" [level=3] [ref=e205]
+            - paragraph [ref=e206]: Delivered. Installed. Guaranteed.
+            - paragraph [ref=e207]: A pool table is 800 pounds of slate. You shouldn't install it yourself. We handle delivery, leveling, cloth installation, and setup — free on qualifying orders, always.
+            - list [ref=e208]:
+              - listitem [ref=e209]:
+                - generic [ref=e211]: Free white-glove delivery
+              - listitem [ref=e212]:
+                - generic [ref=e214]: Professional installation
+              - listitem [ref=e215]:
+                - generic [ref=e217]: Re-felting & re-cushioning
+              - listitem [ref=e218]:
+                - generic [ref=e220]: Teardown & move services
+            - link "Learn more" [ref=e221] [cursor=pointer]:
+              - /url: /AceGameroomGallery/services/
+              - text: Learn more
+              - img [ref=e222]
+        - generic [ref=e225]:
+          - generic [ref=e227]:
+            - img "The Experience" [ref=e228]
+            - generic [ref=e230]: "03"
+          - generic [ref=e231]:
+            - paragraph [ref=e232]: Pillar 03
+            - heading "The Experience" [level=3] [ref=e233]
+            - paragraph [ref=e234]: A showroom, not a store.
+            - paragraph [ref=e235]: Walk in and see it. Feel the weight of a McDermott cue. Rack on a championship cloth. We built the showroom for the decision — because a $5,000 table deserves more than a photo online.
+            - list [ref=e236]:
+              - listitem [ref=e237]:
+                - generic [ref=e239]: Fort Wayne's largest showroom
+              - listitem [ref=e240]:
+                - generic [ref=e242]: 10,000+ sq ft of product
+              - listitem [ref=e243]:
+                - generic [ref=e245]: Expert staff — 25+ years avg tenure
+              - listitem [ref=e246]:
+                - generic [ref=e248]: Pool & dart league headquarters
+            - link "Learn more" [ref=e249] [cursor=pointer]:
+              - /url: /AceGameroomGallery/experience/
+              - text: Learn more
+              - img [ref=e250]
+    - generic [ref=e254]:
+      - generic [ref=e255]:
+        - generic [ref=e256]:
+          - paragraph [ref=e259]: / 003 — INSIDE ACE
+          - heading "More than pool tables." [level=2] [ref=e260]:
+            - text: More than
+            - text: pool tables.
+        - paragraph [ref=e262]: 10,000 square feet of the most specific, best-in-class recreational goods you'll find anywhere in Indiana. Eight categories. One showroom. Walk through it in under an hour.
+      - generic [ref=e263]:
+        - link "Olhausen Tables / 01 Olhausen Tables American hardwood. Lifetime warranty. The Cadillac of pool tables, built in Tennessee since 1972." [ref=e265] [cursor=pointer]:
+          - /url: /AceGameroomGallery/billiards/
+          - generic [ref=e266]:
+            - img "Olhausen Tables" [ref=e267]
+            - generic [ref=e269]: / 01
+          - generic [ref=e270]:
+            - heading "Olhausen Tables" [level=3] [ref=e271]
+            - paragraph [ref=e272]: American hardwood. Lifetime warranty. The Cadillac of pool tables, built in Tennessee since 1972.
+        - link "Pinball Machines / 02 Pinball Machines New Stern and Jersey Jack releases. Curated classics. The machines that made your childhood." [ref=e275] [cursor=pointer]:
+          - /url: /AceGameroomGallery/games/
+          - generic [ref=e276]:
+            - img "Pinball Machines" [ref=e277]
+            - generic [ref=e279]: / 02
+          - generic [ref=e280]:
+            - heading "Pinball Machines" [level=3] [ref=e281]
+            - paragraph [ref=e282]: New Stern and Jersey Jack releases. Curated classics. The machines that made your childhood.
+        - link "Arcade Cabinets / 03 Arcade Cabinets Multicade uprights, cocktail tables, Big Buck Hunter, NFL Blitz. 400+ titles, bar-grade cabinets." [ref=e285] [cursor=pointer]:
+          - /url: /AceGameroomGallery/games/
+          - generic [ref=e286]:
+            - img "Arcade Cabinets" [ref=e287]
+            - generic [ref=e289]: / 03
+          - generic [ref=e290]:
+            - heading "Arcade Cabinets" [level=3] [ref=e291]
+            - paragraph [ref=e292]: Multicade uprights, cocktail tables, Big Buck Hunter, NFL Blitz. 400+ titles, bar-grade cabinets.
+        - link "Shuffleboard / 04 Shuffleboard C.L. Bailey butcher-block tops. 9-foot to 22-foot. Polymer surfaces that never warp." [ref=e295] [cursor=pointer]:
+          - /url: /AceGameroomGallery/games/
+          - generic [ref=e296]:
+            - img "Shuffleboard" [ref=e297]
+            - generic [ref=e299]: / 04
+          - generic [ref=e300]:
+            - heading "Shuffleboard" [level=3] [ref=e301]
+            - paragraph [ref=e302]: C.L. Bailey butcher-block tops. 9-foot to 22-foot. Polymer surfaces that never warp.
+        - link "Darafeev Bars / 05 Darafeev Bars Hand-rubbed solid wood bars and pub tables. Family-owned Illinois craftsmanship since 1946." [ref=e305] [cursor=pointer]:
+          - /url: /AceGameroomGallery/furniture/
+          - generic [ref=e306]:
+            - img "Darafeev Bars" [ref=e307]
+            - generic [ref=e309]: / 05
+          - generic [ref=e310]:
+            - heading "Darafeev Bars" [level=3] [ref=e311]
+            - paragraph [ref=e312]: Hand-rubbed solid wood bars and pub tables. Family-owned Illinois craftsmanship since 1946.
+        - link "Foosball & Hockey / 06 Foosball & Hockey Tournament-grade foosball, dome hockey, air hockey. The games that own every basement party." [ref=e315] [cursor=pointer]:
+          - /url: /AceGameroomGallery/games/
+          - generic [ref=e316]:
+            - img "Foosball & Hockey" [ref=e317]
+            - generic [ref=e319]: / 06
+          - generic [ref=e320]:
+            - heading "Foosball & Hockey" [level=3] [ref=e321]
+            - paragraph [ref=e322]: Tournament-grade foosball, dome hockey, air hockey. The games that own every basement party.
+        - link "Rainbow Playsets / 07 Rainbow Playsets Cedar swingsets built to last through three kids. Residential & commercial. Free installation." [ref=e325] [cursor=pointer]:
+          - /url: /AceGameroomGallery/playsets/
+          - generic [ref=e326]:
+            - img "Rainbow Playsets" [ref=e327]
+            - generic [ref=e329]: / 07
+          - generic [ref=e330]:
+            - heading "Rainbow Playsets" [level=3] [ref=e331]
+            - paragraph [ref=e332]: Cedar swingsets built to last through three kids. Residential & commercial. Free installation.
+        - link "Basketball Goals / 08 Basketball Goals Goalsetter in-ground systems with tempered glass backboards. Regulation-size driveways." [ref=e335] [cursor=pointer]:
+          - /url: /AceGameroomGallery/outdoor/
+          - generic [ref=e336]:
+            - img "Basketball Goals" [ref=e337]
+            - generic [ref=e339]: / 08
+          - generic [ref=e340]:
+            - heading "Basketball Goals" [level=3] [ref=e341]
+            - paragraph [ref=e342]: Goalsetter in-ground systems with tempered glass backboards. Regulation-size driveways.
+      - link "Browse the Full Collection" [ref=e345] [cursor=pointer]:
+        - /url: /AceGameroomGallery/billiards/
+    - generic [ref=e347]:
+      - generic [ref=e348]:
+        - generic [ref=e349]:
+          - paragraph [ref=e352]: / THE COLLECTION
+          - heading "Browse by category." [level=2] [ref=e353]:
+            - text: Browse by
+            - text: category.
+        - paragraph [ref=e355]: Six categories. Hundreds of products. One showroom. Find yours — then come see it in person.
+      - generic [ref=e356]:
+        - link "Billiards Billiards Olhausen. Valley. Plank & Hide. 6 collections" [ref=e358] [cursor=pointer]:
+          - /url: /AceGameroomGallery/billiards/
+          - generic [ref=e359]:
+            - img "Billiards" [ref=e360]
+            - generic [ref=e363]:
+              - heading "Billiards" [level=3] [ref=e364]
+              - paragraph [ref=e365]: Olhausen. Valley. Plank & Hide.
+              - generic [ref=e366]:
+                - generic [ref=e367]: 6 collections
+                - img [ref=e369]
+        - link "Games Games Pinball, arcade, shuffleboard. 10 collections" [ref=e373] [cursor=pointer]:
+          - /url: /AceGameroomGallery/games/
+          - generic [ref=e374]:
+            - img "Games" [ref=e375]
+            - generic [ref=e378]:
+              - heading "Games" [level=3] [ref=e379]
+              - paragraph [ref=e380]: Pinball, arcade, shuffleboard.
+              - generic [ref=e381]:
+                - generic [ref=e382]: 10 collections
+                - img [ref=e384]
+        - link "Furniture Furniture Bars. Stools. Pub tables. 7 collections" [ref=e388] [cursor=pointer]:
+          - /url: /AceGameroomGallery/furniture/
+          - generic [ref=e389]:
+            - img "Furniture" [ref=e390]
+            - generic [ref=e393]:
+              - heading "Furniture" [level=3] [ref=e394]
+              - paragraph [ref=e395]: Bars. Stools. Pub tables.
+              - generic [ref=e396]:
+                - generic [ref=e397]: 7 collections
+                - img [ref=e399]
+        - link "Playsets Playsets Rainbow Play Systems. Cedar. 2 collections" [ref=e403] [cursor=pointer]:
+          - /url: /AceGameroomGallery/playsets/
+          - generic [ref=e404]:
+            - img "Playsets" [ref=e405]
+            - generic [ref=e408]:
+              - heading "Playsets" [level=3] [ref=e409]
+              - paragraph [ref=e410]: Rainbow Play Systems. Cedar.
+              - generic [ref=e411]:
+                - generic [ref=e412]: 2 collections
+                - img [ref=e414]
+        - link "Outdoor Outdoor Basketball. Trampolines. 3 collections" [ref=e418] [cursor=pointer]:
+          - /url: /AceGameroomGallery/outdoor/
+          - generic [ref=e419]:
+            - img "Outdoor" [ref=e420]
+            - generic [ref=e423]:
+              - heading "Outdoor" [level=3] [ref=e424]
+              - paragraph [ref=e425]: Basketball. Trampolines.
+              - generic [ref=e426]:
+                - generic [ref=e427]: 3 collections
+                - img [ref=e429]
+        - link "Services Services Delivery. Install. Refurb. All tables" [ref=e433] [cursor=pointer]:
+          - /url: /AceGameroomGallery/services/
+          - generic [ref=e434]:
+            - img "Services" [ref=e435]
+            - generic [ref=e438]:
+              - heading "Services" [level=3] [ref=e439]
+              - paragraph [ref=e440]: Delivery. Install. Refurb.
+              - generic [ref=e441]:
+                - generic [ref=e442]: All tables
+                - img [ref=e444]
+    - generic [ref=e449]:
+      - generic [ref=e450]:
+        - generic [ref=e451]:
+          - paragraph [ref=e454]: / 004 — THE PEOPLE
+          - heading "What Fort Wayne families say." [level=2] [ref=e455]:
+            - text: What Fort Wayne
+            - text: families say.
+        - generic [ref=e456]:
+          - button "Previous testimonial" [ref=e457]:
+            - img [ref=e458]
+          - button "Next testimonial" [ref=e460]:
+            - img [ref=e461]
+      - generic [ref=e463]:
+        - generic [ref=e465]:
+          - img [ref=e466]
+          - img [ref=e468]
+          - img [ref=e470]
+          - img [ref=e472]
+          - img [ref=e474]
+        - generic [ref=e476]:
+          - generic [ref=e477]: “
+          - blockquote [ref=e478]: I spent six months shopping online before I walked into ACE. Bret took an hour with me, showed me the difference between slate grades, and I left knowing exactly what I wanted. The table's been in my basement for four years. Still feels like day one.
+          - generic [ref=e479]:
+            - generic [ref=e480]: M
+            - generic [ref=e481]:
+              - generic [ref=e482]: Mike R.
+              - generic [ref=e483]: Bought a 9ft Olhausen Augusta · Fort Wayne, IN
+      - generic [ref=e484]:
+        - button "Go to testimonial 1" [ref=e485]
+        - button "Go to testimonial 2" [ref=e486]
+        - button "Go to testimonial 3" [ref=e487]
+        - button "Go to testimonial 4" [ref=e488]
+    - generic [ref=e489]:
+      - generic [ref=e491]:
+        - generic [ref=e492]:
+          - paragraph [ref=e493]: / 005 — THE BRANDS
+          - heading "The names we stake our name on." [level=2] [ref=e494]:
+            - text: The names we
+            - text: stake our name on.
+        - paragraph [ref=e495]: 27 brands. All hand-selected. Most American-made. No exceptions.
+      - generic [ref=e496]:
+        - generic [ref=e497]:
+          - generic [ref=e499]: OLHAUSEN
+          - generic [ref=e502]: VALLEY
+          - generic [ref=e505]: McDERMOTT
+          - generic [ref=e508]: RAINBOW PLAY
+          - generic [ref=e511]: DARAFEEV
+          - generic [ref=e514]: CHAMPIONSHIP
+          - generic [ref=e517]: SIMONIS
+          - generic [ref=e520]: LUCASI
+          - generic [ref=e523]: VIKING
+          - generic [ref=e526]: PREDATOR
+          - generic [ref=e529]: SPRINGFREE
+          - generic [ref=e532]: C.L. BAILEY
+          - generic [ref=e535]: PLANK & HIDE
+          - generic [ref=e538]: J. PECHAUER
+          - generic [ref=e541]: HOLLAND BAR STOOL
+          - generic [ref=e544]: RAM GAME ROOM
+          - generic [ref=e547]: OLHAUSEN
+          - generic [ref=e550]: VALLEY
+          - generic [ref=e553]: McDERMOTT
+          - generic [ref=e556]: RAINBOW PLAY
+          - generic [ref=e559]: DARAFEEV
+          - generic [ref=e562]: CHAMPIONSHIP
+          - generic [ref=e565]: SIMONIS
+          - generic [ref=e568]: LUCASI
+          - generic [ref=e571]: VIKING
+          - generic [ref=e574]: PREDATOR
+          - generic [ref=e577]: SPRINGFREE
+          - generic [ref=e580]: C.L. BAILEY
+          - generic [ref=e583]: PLANK & HIDE
+          - generic [ref=e586]: J. PECHAUER
+          - generic [ref=e589]: HOLLAND BAR STOOL
+          - generic [ref=e592]: RAM GAME ROOM
+        - generic [ref=e594]:
+          - generic [ref=e596]: RAM GAME ROOM
+          - generic [ref=e599]: HOLLAND BAR STOOL
+          - generic [ref=e602]: J. PECHAUER
+          - generic [ref=e605]: PLANK & HIDE
+          - generic [ref=e608]: C.L. BAILEY
+          - generic [ref=e611]: SPRINGFREE
+          - generic [ref=e614]: PREDATOR
+          - generic [ref=e617]: VIKING
+          - generic [ref=e620]: LUCASI
+          - generic [ref=e623]: SIMONIS
+          - generic [ref=e626]: CHAMPIONSHIP
+          - generic [ref=e629]: DARAFEEV
+          - generic [ref=e632]: RAINBOW PLAY
+          - generic [ref=e635]: McDERMOTT
+          - generic [ref=e638]: VALLEY
+          - generic [ref=e641]: OLHAUSEN
+          - generic [ref=e644]: RAM GAME ROOM
+          - generic [ref=e647]: HOLLAND BAR STOOL
+          - generic [ref=e650]: J. PECHAUER
+          - generic [ref=e653]: PLANK & HIDE
+          - generic [ref=e656]: C.L. BAILEY
+          - generic [ref=e659]: SPRINGFREE
+          - generic [ref=e662]: PREDATOR
+          - generic [ref=e665]: VIKING
+          - generic [ref=e668]: LUCASI
+          - generic [ref=e671]: SIMONIS
+          - generic [ref=e674]: CHAMPIONSHIP
+          - generic [ref=e677]: DARAFEEV
+          - generic [ref=e680]: RAINBOW PLAY
+          - generic [ref=e683]: McDERMOTT
+          - generic [ref=e686]: VALLEY
+          - generic [ref=e689]: OLHAUSEN
+    - generic [ref=e693]:
+      - generic [ref=e695]:
+        - img "Inside the Ace Game Room Gallery showroom" [ref=e696]
+        - generic [ref=e698]: 10,000+ SQ FT · FORT WAYNE
+      - generic [ref=e699]:
+        - paragraph [ref=e700]: / 006 — VISIT US
+        - heading "Come rack a few." [level=2] [ref=e701]
+        - paragraph [ref=e702]: No pressure. No commission-hungry salespeople. Just a showroom where you can lean on a McDermott, feel slate under your hand, and picture the room you'll build.
+        - generic [ref=e703]:
+          - generic [ref=e704]:
+            - img [ref=e706]
+            - generic [ref=e709]:
+              - paragraph [ref=e710]: Location
+              - paragraph [ref=e711]: 2525 W Jefferson Blvd
+              - paragraph [ref=e712]: Fort Wayne, IN 46802
+          - generic [ref=e713]:
+            - img [ref=e715]
+            - generic [ref=e718]:
+              - paragraph [ref=e719]: Hours
+              - paragraph [ref=e720]: Monday — Saturday
+              - paragraph [ref=e721]: 10:00 AM — 6:00 PM · Sunday Closed
+          - generic [ref=e722]:
+            - img [ref=e724]
+            - generic [ref=e726]:
+              - paragraph [ref=e727]: Call
+              - link "(260) 432-3443" [ref=e728] [cursor=pointer]:
+                - /url: tel:+12604323443
+              - paragraph [ref=e729]: Ask for Bret.
+        - generic [ref=e730]:
+          - link "Get Directions" [ref=e731] [cursor=pointer]:
+            - /url: https://maps.google.com/?q=2525+W+Jefferson+Blvd,+Fort+Wayne,+IN+46802
+            - text: Get Directions
+            - img [ref=e732]
+          - link "Request a Quote" [ref=e735] [cursor=pointer]:
+            - /url: /AceGameroomGallery/contact/
+    - generic [ref=e736]:
+      - generic:
+        - img
+      - generic [ref=e742]:
+        - paragraph [ref=e749]: FAMILY OWNED · FORT WAYNE · EST. 1992
+        - heading "Come build the room your family gathers in." [level=2] [ref=e750]:
+          - text: Come build
+          - text: the room your
+          - text: family gathers in.
+        - paragraph [ref=e751]: A pool table is a 30-year decision. So is a swingset. So is the bar your kids will grow up watching you pour drinks behind. Make them once. Make them right.
+        - generic [ref=e752]:
+          - link "Request a Quote" [ref=e753] [cursor=pointer]:
+            - /url: /AceGameroomGallery/contact/
+            - text: Request a Quote
+            - img [ref=e754]
+          - link "Visit the Showroom" [ref=e757] [cursor=pointer]:
+            - /url: /AceGameroomGallery/experience/
+        - generic [ref=e758]:
+          - generic [ref=e759]: Free delivery & install
+          - generic [ref=e761]: Wells Fargo financing
+          - generic [ref=e763]: Lifetime warranties
+          - generic [ref=e765]: Price match guarantee
+  - contentinfo [ref=e767]:
+    - generic [ref=e769]:
+      - generic [ref=e770]:
+        - generic [ref=e771]: Rack.
+        - generic [ref=e772]: Break.
+        - generic [ref=e773]: Gather.
+        - generic [ref=e774]: Live.
+      - generic [ref=e776]:
+        - generic [ref=e777]: Rack.
+        - generic [ref=e778]: Break.
+        - generic [ref=e779]: Gather.
+        - generic [ref=e780]: Live.
+      - generic [ref=e782]:
+        - generic [ref=e783]: Rack.
+        - generic [ref=e784]: Break.
+        - generic [ref=e785]: Gather.
+        - generic [ref=e786]: Live.
+      - generic [ref=e788]:
+        - generic [ref=e789]: Rack.
+        - generic [ref=e790]: Break.
+        - generic [ref=e791]: Gather.
+        - generic [ref=e792]: Live.
+      - generic [ref=e794]:
+        - generic [ref=e795]: Rack.
+        - generic [ref=e796]: Break.
+        - generic [ref=e797]: Gather.
+        - generic [ref=e798]: Live.
+      - generic [ref=e800]:
+        - generic [ref=e801]: Rack.
+        - generic [ref=e802]: Break.
+        - generic [ref=e803]: Gather.
+        - generic [ref=e804]: Live.
+    - generic [ref=e806]:
+      - generic [ref=e807]:
+        - generic [ref=e808]:
+          - link "Ace Game Room Gallery" [ref=e809] [cursor=pointer]:
+            - /url: /AceGameroomGallery/
+            - img "Ace Game Room Gallery" [ref=e811]
+          - paragraph [ref=e812]: Fort Wayne's most curated game room showroom. Over 25 years creating the places families gather, friends compete, and memories are made.
+          - generic [ref=e813]:
+            - link "Facebook" [ref=e814] [cursor=pointer]:
+              - /url: https://facebook.com
+              - img [ref=e815]
+            - link "Instagram" [ref=e817] [cursor=pointer]:
+              - /url: https://instagram.com/acegameroomgallery
+              - img [ref=e818]
+        - generic [ref=e820]:
+          - heading "Collection" [level=4] [ref=e821]
+          - list [ref=e822]:
+            - listitem [ref=e823]:
+              - link "Billiards" [ref=e824] [cursor=pointer]:
+                - /url: /AceGameroomGallery/billiards/
+            - listitem [ref=e825]:
+              - link "Games" [ref=e826] [cursor=pointer]:
+                - /url: /AceGameroomGallery/games/
+            - listitem [ref=e827]:
+              - link "Furniture" [ref=e828] [cursor=pointer]:
+                - /url: /AceGameroomGallery/furniture/
+            - listitem [ref=e829]:
+              - link "Playsets" [ref=e830] [cursor=pointer]:
+                - /url: /AceGameroomGallery/playsets/
+            - listitem [ref=e831]:
+              - link "Outdoor" [ref=e832] [cursor=pointer]:
+                - /url: /AceGameroomGallery/outdoor/
+        - generic [ref=e833]:
+          - heading "Experience" [level=4] [ref=e834]
+          - list [ref=e835]:
+            - listitem [ref=e836]:
+              - link "Our Showroom" [ref=e837] [cursor=pointer]:
+                - /url: /AceGameroomGallery/experience/
+            - listitem [ref=e838]:
+              - link "Services" [ref=e839] [cursor=pointer]:
+                - /url: /AceGameroomGallery/services/
+            - listitem [ref=e840]:
+              - link "Our Story" [ref=e841] [cursor=pointer]:
+                - /url: /AceGameroomGallery/about/
+            - listitem [ref=e842]:
+              - link "FAQs" [ref=e843] [cursor=pointer]:
+                - /url: /AceGameroomGallery/faq/
+            - listitem [ref=e844]:
+              - link "Pool League" [ref=e845] [cursor=pointer]:
+                - /url: /AceGameroomGallery/pool-league/
+        - generic [ref=e846]:
+          - heading "Connect" [level=4] [ref=e847]
+          - list [ref=e848]:
+            - listitem [ref=e849]:
+              - link "Contact" [ref=e850] [cursor=pointer]:
+                - /url: /AceGameroomGallery/contact/
+            - listitem [ref=e851]:
+              - link "Request a Quote" [ref=e852] [cursor=pointer]:
+                - /url: /AceGameroomGallery/contact/
+            - listitem [ref=e853]:
+              - link "Dart League" [ref=e854] [cursor=pointer]:
+                - /url: /AceGameroomGallery/dart-league/
+            - listitem [ref=e855]:
+              - link "Financing" [ref=e856] [cursor=pointer]:
+                - /url: /AceGameroomGallery/contact/
+      - generic [ref=e857]:
+        - generic [ref=e858]:
+          - paragraph [ref=e859]: Visit
+          - link "2525 W Jefferson Blvd Fort Wayne, IN 46802" [ref=e860] [cursor=pointer]:
+            - /url: https://maps.google.com/?q=2525+W+Jefferson+Blvd,+Fort+Wayne,+IN+46802
+            - img [ref=e861]
+            - generic [ref=e864]:
+              - generic [ref=e865]: 2525 W Jefferson Blvd
+              - generic [ref=e866]: Fort Wayne, IN 46802
+        - generic [ref=e867]:
+          - paragraph [ref=e868]: Call
+          - generic [ref=e869]:
+            - img [ref=e870]
+            - generic [ref=e872]:
+              - link "(260) 432-3443" [ref=e873] [cursor=pointer]:
+                - /url: tel:+12604323443
+              - generic [ref=e874]: "Fax: (260) 436-2507"
+        - generic [ref=e875]:
+          - paragraph [ref=e876]: Hours
+          - generic [ref=e877]:
+            - img [ref=e878]
+            - generic [ref=e881]:
+              - generic [ref=e882]: Monday — Saturday
+              - generic [ref=e883]: 10:00 AM — 6:00 PM
+              - generic [ref=e884]: Sunday — Closed
+    - generic [ref=e886]:
+      - paragraph [ref=e887]: © 2026 Ace Game Room Gallery. Family owned since 1992.
+      - generic [ref=e888]:
+        - link "Admin" [ref=e889] [cursor=pointer]:
+          - /url: /AceGameroomGallery/admin/
+        - link "FAQ" [ref=e890] [cursor=pointer]:
+          - /url: /AceGameroomGallery/faq/
+        - link "Contact" [ref=e891] [cursor=pointer]:
+          - /url: /AceGameroomGallery/contact/
+  - alert [ref=e892]
