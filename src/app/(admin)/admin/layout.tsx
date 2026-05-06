@@ -13,17 +13,25 @@ import {
   FileText,
   LogOut,
   User,
+  Receipt,
+  Boxes,
+  PlusSquare,
+  Settings,
 } from "lucide-react"
 import { STORAGE_KEYS } from "@/lib/admin-storage"
 
 const NAV_ITEMS = [
   { label: "Dashboard", href: "/admin", icon: LayoutDashboard, exact: true },
+  { label: "Orders", href: "/admin/orders", icon: Receipt },
+  { label: "Inventory", href: "/admin/inventory", icon: Boxes },
   { label: "Products", href: "/admin/products", icon: Package },
+  { label: "Addons", href: "/admin/addons", icon: PlusSquare },
   { label: "Inquiries", href: "/admin/inquiries", icon: Inbox },
   { label: "Banners", href: "/admin/banners", icon: ImageIcon },
   { label: "Testimonials", href: "/admin/testimonials", icon: Star },
   { label: "FAQ", href: "/admin/faq", icon: HelpCircle },
   { label: "Content", href: "/admin/content", icon: FileText },
+  { label: "Shipping & Settings", href: "/admin/shipping", icon: Settings },
 ]
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {

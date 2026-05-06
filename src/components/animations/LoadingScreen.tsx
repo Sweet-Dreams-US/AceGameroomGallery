@@ -109,17 +109,20 @@ export default function LoadingScreen() {
           </div>
         </div>
 
-        {/* ACE logo reveal — the real brand artwork fades in at the end */}
-        <div className="absolute inset-0 flex items-center justify-center animate-logo-reveal">
+        {/* ACE logo reveal — hand-painted brand mark fades in at the end */}
+        <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 animate-logo-reveal">
           <img
-            src="https://www.acegameroom.com/data/logo.png"
+            src={`${process.env.NODE_ENV === "production" ? "/AceGameroomGallery" : ""}/images/brand/ace-mark.png`}
             alt="Ace Game Room Gallery"
-            className="h-auto w-auto max-w-[70vw] md:max-w-[420px]"
+            className="h-auto w-auto max-w-[60vw] md:max-w-[340px]"
             style={{
               filter:
-                "drop-shadow(0 2px 0 rgba(92, 30, 12, 0.2)) drop-shadow(0 8px 24px rgba(192, 57, 43, 0.15))",
+                "drop-shadow(0 4px 12px rgba(192, 57, 43, 0.18))",
             }}
           />
+          <div className="font-display tracking-[0.4em] text-[10px] md:text-xs text-[#5c5c5c]">
+            GAME ROOM GALLERY
+          </div>
         </div>
       </div>
 

@@ -4,7 +4,17 @@ import { useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
 import Link from "next/link"
 import Image from "next/image"
-import { Plus, Save, Trash2, X, ArrowLeft } from "lucide-react"
+import {
+  Plus,
+  Save,
+  Trash2,
+  X,
+  ArrowLeft,
+  Sparkles,
+  Truck,
+  Store,
+  Package,
+} from "lucide-react"
 import {
   addItem,
   deleteItem,
@@ -17,6 +27,21 @@ import {
 } from "@/lib/mock-data"
 import { slugify } from "@/lib/utils"
 import type { Product } from "@/lib/types"
+
+const FULFILLMENT_OPTIONS = [
+  { value: "pickup", label: "Pickup", icon: Store },
+  { value: "delivery", label: "Local Delivery", icon: Truck },
+  { value: "shipping", label: "Shipping", icon: Package },
+] as const
+
+const ADDON_GROUP_OPTIONS = [
+  { value: "cloth", label: "Cloth & Felt" },
+  { value: "install", label: "Install" },
+  { value: "cue", label: "Cues" },
+  { value: "accessory", label: "Accessory" },
+  { value: "warranty", label: "Warranty" },
+  { value: "pairing", label: "Pair It With" },
+] as const
 
 interface SpecRow {
   id: string
@@ -79,6 +104,49 @@ export function ProductForm({ mode, initial }: Props) {
     toSpecRows(initial?.specifications ?? {}),
   )
   const [confirmDelete, setConfirmDelete] = useState(false)
+
+  // ---- Commerce fields ----
+  const [priceDollars, setPriceDollars] = useState(
+    initial?.price !== undefined ? (initial.price / 100).toFixed(2) : "",
+  )
+  const [comparePriceDollars, setComparePriceDollars] = useState(
+    initial?.comparePrice !== undefined
+      ? (initial.comparePrice / 100).toFixed(2)
+      : "",
+  )
+  const [stockCount, setStockCount] = useState(
+    initial?.stock !== undefined ? String(initial.stock) : "",
+  )
+  const [sku, setSku] = useState(initial?.sku ?? "")
+  const [weightLbs, setWeightLbs] = useState(
+    initial?.weightLbs !== undefined ? String(initial.weightLbs) : "",
+  )
+  const [fulfillment, setFulfillment] = useState<string[]>(
+    initial?.fulfillment ?? ["pickup", "delivery", "shipping"],
+  )
+  const [requiresInstall, setRequiresInstall] = useState(
+    initial?.requiresInstall ?? false,
+  )
+  const [addonGroups, setAddonGroups] = useState<string[]>(
+    initial?.addonGroups ?? [],
+  )
+  const [syncToast, setSyncToast] = useState<string | null>(null)
+
+  const toggleFulfillment = (val: string) =>
+    setFulfillment((arr) =>
+      arr.includes(val) ? arr.filter((v) => v !== val) : [...arr, val],
+    )
+
+  const toggleAddonGroup = (val: string) =>
+    setAddonGroups((arr) =>
+      arr.includes(val) ? arr.filter((v) => v !== val) : [...arr, val],
+    )
+
+  const handleSyncToProcessor = () => {
+    const fakeId = `prod_demo_${Math.random().toString(36).slice(2, 10)}`
+    setSyncToast(`Synced! Demo Product ID: ${fakeId}`)
+    setTimeout(() => setSyncToast(null), 4000)
+  }
 
   // Auto-slug from name until user edits slug manually.
   useEffect(() => {
@@ -166,6 +234,32 @@ export function ProductForm({ mode, initial }: Props) {
             },
           ]
         : [],
+      // Commerce
+      price:
+        priceDollars && !isNaN(parseFloat(priceDollars))
+          ? Math.round(parseFloat(priceDollars) * 100)
+          : undefined,
+      comparePrice:
+        comparePriceDollars && !isNaN(parseFloat(comparePriceDollars))
+          ? Math.round(parseFloat(comparePriceDollars) * 100)
+          : undefined,
+      stock:
+        stockCount && !isNaN(parseInt(stockCount, 10))
+          ? parseInt(stockCount, 10)
+          : undefined,
+      sku: sku.trim() || undefined,
+      weightLbs:
+        weightLbs && !isNaN(parseFloat(weightLbs))
+          ? parseFloat(weightLbs)
+          : undefined,
+      fulfillment:
+        fulfillment.length > 0
+          ? (fulfillment as ("pickup" | "delivery" | "shipping")[])
+          : undefined,
+      requiresInstall: requiresInstall || undefined,
+      addonGroups: addonGroups.length > 0 ? addonGroups : undefined,
+      stripeProductId: initial?.stripeProductId,
+      squareCatalogId: initial?.squareCatalogId,
     }
 
     if (mode === "new") {
@@ -390,6 +484,203 @@ export function ProductForm({ mode, initial }: Props) {
           </div>
         </section>
 
+        {/* Pricing & Inventory */}
+        <section className="bg-white border border-[#1a1612]/8 p-7">
+          <h2 className="font-playfair text-lg text-[#1a1612] mb-1">
+            Pricing & Inventory
+          </h2>
+          <p className="text-sm text-[#6b655e] mb-6">
+            Leave price blank to render a &ldquo;Request a Quote&rdquo; CTA.
+          </p>
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
+            <div>
+              <label className="block text-[10px] tracking-[0.25em] uppercase text-[#6b655e] mb-2">
+                Price
+              </label>
+              <div className="relative">
+                <span className="absolute left-4 top-1/2 -translate-y-1/2 text-sm text-[#6b655e]">
+                  $
+                </span>
+                <input
+                  type="number"
+                  step="0.01"
+                  min="0"
+                  value={priceDollars}
+                  onChange={(e) => setPriceDollars(e.target.value)}
+                  placeholder="999.00"
+                  className="w-full pl-8 pr-4 py-3 bg-white border border-[#1a1612]/15 text-[#1a1612] placeholder-[#a8a198] focus:border-[#d4a843] focus:ring-1 focus:ring-[#d4a843] focus:outline-none transition-colors tabular-nums"
+                />
+              </div>
+            </div>
+            <div>
+              <label className="block text-[10px] tracking-[0.25em] uppercase text-[#6b655e] mb-2">
+                Compare-at Price (MSRP)
+              </label>
+              <div className="relative">
+                <span className="absolute left-4 top-1/2 -translate-y-1/2 text-sm text-[#6b655e]">
+                  $
+                </span>
+                <input
+                  type="number"
+                  step="0.01"
+                  min="0"
+                  value={comparePriceDollars}
+                  onChange={(e) => setComparePriceDollars(e.target.value)}
+                  placeholder="1199.00"
+                  className="w-full pl-8 pr-4 py-3 bg-white border border-[#1a1612]/15 text-[#1a1612] placeholder-[#a8a198] focus:border-[#d4a843] focus:ring-1 focus:ring-[#d4a843] focus:outline-none transition-colors tabular-nums"
+                />
+              </div>
+            </div>
+            <div>
+              <label className="block text-[10px] tracking-[0.25em] uppercase text-[#6b655e] mb-2">
+                Stock
+              </label>
+              <input
+                type="number"
+                min="0"
+                value={stockCount}
+                onChange={(e) => setStockCount(e.target.value)}
+                placeholder="3"
+                className="w-full px-4 py-3 bg-white border border-[#1a1612]/15 text-[#1a1612] placeholder-[#a8a198] focus:border-[#d4a843] focus:ring-1 focus:ring-[#d4a843] focus:outline-none transition-colors tabular-nums"
+              />
+            </div>
+            <div>
+              <label className="block text-[10px] tracking-[0.25em] uppercase text-[#6b655e] mb-2">
+                SKU
+              </label>
+              <input
+                type="text"
+                value={sku}
+                onChange={(e) => setSku(e.target.value)}
+                placeholder="OLH-AUG-8FT"
+                className="w-full px-4 py-3 bg-white border border-[#1a1612]/15 text-[#1a1612] placeholder-[#a8a198] focus:border-[#d4a843] focus:ring-1 focus:ring-[#d4a843] focus:outline-none transition-colors font-mono text-sm"
+              />
+            </div>
+            <div>
+              <label className="block text-[10px] tracking-[0.25em] uppercase text-[#6b655e] mb-2">
+                Weight (lbs)
+              </label>
+              <input
+                type="number"
+                step="0.1"
+                min="0"
+                value={weightLbs}
+                onChange={(e) => setWeightLbs(e.target.value)}
+                placeholder="850"
+                className="w-full px-4 py-3 bg-white border border-[#1a1612]/15 text-[#1a1612] placeholder-[#a8a198] focus:border-[#d4a843] focus:ring-1 focus:ring-[#d4a843] focus:outline-none transition-colors tabular-nums"
+              />
+              <p className="text-xs text-[#a8a198] mt-1.5">
+                Used for shipping calculation.
+              </p>
+            </div>
+            <div className="flex items-end">
+              <label className="inline-flex items-center gap-3 cursor-pointer select-none mt-2">
+                <span
+                  className={`relative w-10 h-5 rounded-full transition-colors ${
+                    requiresInstall ? "bg-[#d4a843]" : "bg-[#1a1612]/15"
+                  }`}
+                >
+                  <input
+                    type="checkbox"
+                    checked={requiresInstall}
+                    onChange={(e) => setRequiresInstall(e.target.checked)}
+                    className="sr-only"
+                  />
+                  <span
+                    className={`absolute top-0.5 w-4 h-4 rounded-full bg-white transition-transform shadow-sm ${
+                      requiresInstall ? "translate-x-5" : "translate-x-0.5"
+                    }`}
+                  />
+                </span>
+                <span className="text-sm text-[#1a1612] tracking-wide">
+                  Requires professional install
+                </span>
+              </label>
+            </div>
+          </div>
+        </section>
+
+        {/* Fulfillment */}
+        <section className="bg-white border border-[#1a1612]/8 p-7">
+          <h2 className="font-playfair text-lg text-[#1a1612] mb-1">
+            Fulfillment
+          </h2>
+          <p className="text-sm text-[#6b655e] mb-6">
+            How customers can receive this product.
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            {FULFILLMENT_OPTIONS.map((opt) => {
+              const Icon = opt.icon
+              const checked = fulfillment.includes(opt.value)
+              return (
+                <button
+                  key={opt.value}
+                  type="button"
+                  onClick={() => toggleFulfillment(opt.value)}
+                  className={`text-left p-4 border transition-all ${
+                    checked
+                      ? "bg-[#d4a843]/10 border-[#d4a843] text-[#1a1612]"
+                      : "bg-white border-[#1a1612]/15 text-[#6b655e] hover:border-[#d4a843]/40"
+                  }`}
+                >
+                  <div className="flex items-center justify-between mb-2">
+                    <Icon
+                      className={`w-4 h-4 ${
+                        checked ? "text-[#b8933a]" : "text-[#6b655e]"
+                      }`}
+                      strokeWidth={1.5}
+                    />
+                    <span
+                      className={`w-3 h-3 border ${
+                        checked
+                          ? "bg-[#d4a843] border-[#d4a843]"
+                          : "border-[#a8a198]"
+                      }`}
+                    />
+                  </div>
+                  <div className="text-sm tracking-wide">{opt.label}</div>
+                </button>
+              )
+            })}
+          </div>
+        </section>
+
+        {/* Addon groups */}
+        <section className="bg-white border border-[#1a1612]/8 p-7">
+          <h2 className="font-playfair text-lg text-[#1a1612] mb-1">
+            Addon Groups
+          </h2>
+          <p className="text-sm text-[#6b655e] mb-6">
+            Which addon categories appear on the product page for this item.
+          </p>
+          <div className="flex flex-wrap gap-2">
+            {ADDON_GROUP_OPTIONS.map((g) => {
+              const checked = addonGroups.includes(g.value)
+              return (
+                <button
+                  key={g.value}
+                  type="button"
+                  onClick={() => toggleAddonGroup(g.value)}
+                  className={`inline-flex items-center gap-2 px-4 py-2 text-xs tracking-[0.15em] uppercase border transition-all ${
+                    checked
+                      ? "bg-[#d4a843]/10 border-[#d4a843] text-[#b8933a]"
+                      : "bg-white border-[#1a1612]/15 text-[#6b655e] hover:border-[#d4a843]/40"
+                  }`}
+                >
+                  <span
+                    className={`w-3 h-3 border ${
+                      checked
+                        ? "bg-[#d4a843] border-[#d4a843]"
+                        : "border-[#a8a198]"
+                    }`}
+                  />
+                  {g.label}
+                </button>
+              )
+            })}
+          </div>
+        </section>
+
         {/* Specifications */}
         <section className="bg-white border border-[#1a1612]/8 p-7">
           <div className="flex items-center justify-between mb-6">
@@ -439,16 +730,34 @@ export function ProductForm({ mode, initial }: Props) {
         </section>
 
         {/* Actions */}
-        <div className="flex items-center gap-3 justify-end pt-2">
-          <Link href="/admin/products" className="btn-secondary">
-            Cancel
-          </Link>
-          <button type="submit" className="btn-primary">
-            <Save className="w-4 h-4" />
-            <span>{mode === "new" ? "Create Product" : "Save Changes"}</span>
+        <div className="flex items-center gap-3 justify-between pt-2 flex-wrap">
+          <button
+            type="button"
+            onClick={handleSyncToProcessor}
+            className="inline-flex items-center gap-2 px-5 py-2.5 text-xs tracking-[0.15em] uppercase text-[#b8933a] border border-[#d4a843]/40 hover:bg-[#d4a843]/10 transition-colors"
+          >
+            <Sparkles className="w-3.5 h-3.5" strokeWidth={1.5} />
+            Sync to Stripe / Square
           </button>
+          <div className="flex items-center gap-3">
+            <Link href="/admin/products" className="btn-secondary">
+              Cancel
+            </Link>
+            <button type="submit" className="btn-primary">
+              <Save className="w-4 h-4" />
+              <span>{mode === "new" ? "Create Product" : "Save Changes"}</span>
+            </button>
+          </div>
         </div>
       </form>
+
+      {/* Sync toast */}
+      {syncToast && (
+        <div className="fixed bottom-6 right-6 inline-flex items-center gap-2 px-4 py-3 bg-[#1a1612] text-white text-sm shadow-2xl z-50 max-w-md">
+          <Sparkles className="w-4 h-4 text-[#d4a843]" strokeWidth={1.5} />
+          <span>{syncToast}</span>
+        </div>
+      )}
 
       {/* Confirm modal */}
       {confirmDelete && (

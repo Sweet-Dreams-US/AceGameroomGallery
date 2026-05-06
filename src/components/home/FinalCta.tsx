@@ -3,21 +3,31 @@
 import { motion } from "framer-motion"
 import Link from "next/link"
 import { ArrowUpRight } from "lucide-react"
+import { BRAND_IMAGES } from "@/lib/brand-images"
 
 export function FinalCta() {
   return (
     <section className="dark-section py-32 lg:py-48 relative overflow-hidden">
-      {/* Background texture */}
+      {/* Background — Higgsfield pool table corner banner */}
       <div
-        className="absolute inset-0 opacity-[0.08]"
+        className="absolute inset-0 opacity-[0.18]"
         style={{
-          backgroundImage:
-            "url('https://images.unsplash.com/photo-1615722440048-da4fd9202194?w=2400&h=1600&fit=crop&q=85')",
+          backgroundImage: `url('${BRAND_IMAGES.poolTableBanner}')`,
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-[#121212] via-[#0d0d0d] to-[#121212]" />
+      <div className="absolute inset-0 bg-gradient-to-b from-[#121212]/95 via-[#0d0d0d]/85 to-[#121212]/95" />
+
+      {/* Hand-painted ACE wordmark watermark, large and faint behind the headline */}
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+        <img
+          src={`${process.env.NODE_ENV === "production" ? "/AceGameroomGallery" : ""}/images/brand/ace-mark.png`}
+          alt=""
+          aria-hidden="true"
+          className="w-[80%] md:w-[60%] max-w-[700px] opacity-[0.06] mix-blend-screen"
+        />
+      </div>
 
       {/* Decorative gold frame lines */}
       <div className="absolute top-10 left-10 right-10 h-px bg-gradient-to-r from-transparent via-[#d4a843]/40 to-transparent" />

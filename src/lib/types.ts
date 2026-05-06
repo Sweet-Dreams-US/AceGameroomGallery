@@ -39,6 +39,17 @@ export interface Product {
   category?: Category
   brand?: Brand
   images?: ProductImage[]
+  // Optional e-commerce fields
+  price?: number // cents
+  comparePrice?: number // cents
+  stock?: number
+  sku?: string
+  weightLbs?: number
+  fulfillment?: ("pickup" | "delivery" | "shipping")[]
+  requiresInstall?: boolean
+  addonGroups?: string[]
+  stripeProductId?: string
+  squareCatalogId?: string
 }
 
 export interface ProductImage {

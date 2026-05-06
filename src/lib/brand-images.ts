@@ -28,4 +28,10 @@ export const BRAND_IMAGES = {
   cuesDisplay: `${BASE}/cues-display.webp`,
   // Foosball + air hockey neon glow
   gamesFoosball: `${BASE}/games-foosball.webp`,
+  // Hand-painted ACE wordmark — for the loading screen reveal + decorative accents
+  aceMarkPainted: `${BASE}/ace-mark.png`,
+  // Full ACE GAME ROOM GALLERY hand-painted logo on cream
+  aceLogoFull: `${BASE}/ace-logo-full.png`,
+  // Cinematic pool-table corner banner — moody amber light, gold balls
+  poolTableBanner: `${BASE}/pool-table-banner.webp`,
 } as const
