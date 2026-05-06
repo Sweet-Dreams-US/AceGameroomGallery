@@ -150,7 +150,7 @@ export const MOCK_PRODUCTS: MockProduct[] = [
   {
     id: "prod-olhausen-augusta",
     name: "Olhausen Augusta Pool Table",
-    slug: "olhausen-americana-ii",
+    slug: "olhausen-augusta",
     categorySlug: "billiards",
     subcategorySlug: "billiard-tables",
     brandName: "Olhausen",
