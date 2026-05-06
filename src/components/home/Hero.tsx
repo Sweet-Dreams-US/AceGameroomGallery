@@ -3,6 +3,7 @@
 import { motion } from "framer-motion"
 import Link from "next/link"
 import { ArrowDown, ArrowUpRight } from "lucide-react"
+import { BRAND_IMAGES } from "@/lib/brand-images"
 
 export function Hero() {
   return (
@@ -12,8 +13,7 @@ export function Hero() {
         <div
           className="absolute inset-0 bg-cover bg-center animate-ken-burns"
           style={{
-            backgroundImage:
-              "url('https://images.unsplash.com/photo-1615722440048-da4fd9202194?w=2400&h=1600&fit=crop&q=85')",
+            backgroundImage: `url('${BRAND_IMAGES.heroShowroom}')`,
           }}
         />
         {/* Gradient overlays for depth and text legibility */}

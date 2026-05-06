@@ -4,6 +4,7 @@ import { usePathname } from "next/navigation"
 import { Navbar } from "./Navbar"
 import { Footer } from "./Footer"
 import LoadingScreen from "@/components/animations/LoadingScreen"
+import { CartDrawer } from "@/components/commerce/CartDrawer"
 
 export function ConditionalShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname()
@@ -20,6 +21,7 @@ export function ConditionalShell({ children }: { children: React.ReactNode }) {
       <Navbar />
       <main className="flex-1 pt-20 lg:pt-24">{children}</main>
       <Footer />
+      <CartDrawer />
     </>
   )
 }

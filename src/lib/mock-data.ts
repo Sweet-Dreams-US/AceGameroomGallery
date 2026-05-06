@@ -28,6 +28,15 @@ export interface MockProduct {
   images: { url: string; alt: string }[]
   description: string
   specifications: Record<string, string>
+  /** Optional commerce fields. See lib/commerce.ts for the type contract. */
+  price?: number
+  comparePrice?: number
+  stock?: number
+  sku?: string
+  fulfillment?: ("pickup" | "delivery" | "shipping")[]
+  weightLbs?: number
+  requiresInstall?: boolean
+  addonGroups?: string[]
 }
 
 // Admin variants used by the localStorage-backed admin UI

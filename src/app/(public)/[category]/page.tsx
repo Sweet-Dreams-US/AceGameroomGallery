@@ -4,6 +4,8 @@ import Image from "next/image"
 import type { Metadata } from "next"
 import { ArrowUpRight } from "lucide-react"
 import { MOCK_CATEGORIES, MOCK_PRODUCTS } from "@/lib/mock-data"
+import { withCommerce } from "@/lib/commerce-overlay"
+import { PriceTag } from "@/components/commerce/PriceTag"
 
 interface PageProps {
   params: Promise<{ category: string }>
@@ -28,7 +30,9 @@ export default async function CategoryPage({ params }: PageProps) {
   const cat = MOCK_CATEGORIES.find((c) => c.slug === category)
   if (!cat) notFound()
 
-  const products = MOCK_PRODUCTS.filter((p) => p.categorySlug === category)
+  const products = MOCK_PRODUCTS.filter((p) => p.categorySlug === category).map(
+    withCommerce,
+  )
 
   return (
     <div className="bg-[#faf8f3] min-h-screen">
@@ -47,15 +51,18 @@ export default async function CategoryPage({ params }: PageProps) {
 
         <div className="relative max-w-[1600px] mx-auto px-6 lg:px-10 pb-16 lg:pb-24 w-full">
           <div className="flex items-center gap-3 text-sm mb-6">
-            <Link href="/" className="text-white/70 hover:text-[#d4a843] transition-colors">Home</Link>
+            <Link
+              href="/"
+              className="text-white/70 hover:text-[#d4a843] transition-colors"
+            >
+              Home
+            </Link>
             <span className="text-white/40">/</span>
             <span className="text-white">{cat.name}</span>
           </div>
 
           <p className="eyebrow mb-4">THE {cat.name.toUpperCase()} COLLECTION</p>
-          <h1 className="hero-headline text-white mb-6">
-            {cat.name}
-          </h1>
+          <h1 className="hero-headline text-white mb-6">{cat.name}</h1>
           <p className="text-lg lg:text-xl text-white/80 font-light max-w-2xl leading-relaxed">
             {cat.description}
           </p>
@@ -98,13 +105,19 @@ export default async function CategoryPage({ params }: PageProps) {
         <div className="max-w-[1600px] mx-auto px-6 lg:px-10">
           <div className="flex items-end justify-between gap-6 flex-wrap mb-12 lg:mb-16">
             <div>
-              <p className="section-number mb-3">/ FEATURED IN {cat.name.toUpperCase()}</p>
+              <p className="section-number mb-3">
+                / FEATURED IN {cat.name.toUpperCase()}
+              </p>
               <h2 className="font-playfair text-3xl lg:text-5xl font-bold text-[#1a1612]">
-                {products.length > 0 ? "The Collection" : "Available in Showroom"}
+                {products.length > 0
+                  ? "Shop the Collection"
+                  : "Available in Showroom"}
               </h2>
             </div>
             <p className="text-[#6b655e] text-sm">
-              {products.length} {products.length === 1 ? "product" : "products"} · Visit showroom for full inventory
+              {products.length}{" "}
+              {products.length === 1 ? "product" : "products"} · Visit showroom
+              for full inventory
             </p>
           </div>
 
@@ -129,15 +142,32 @@ export default async function CategoryPage({ params }: PageProps) {
                         {product.brandName}
                       </span>
                     </div>
-                    <div className="absolute bottom-4 right-4 w-10 h-10 rounded-full bg-white/90 backdrop-blur-sm border border-[#1a1612]/10 flex items-center justify-center text-[#1a1612] group-hover:bg-[#d4a843] group-hover:border-[#d4a843] group-hover:text-white transition-all duration-500">
+                    {product.stock !== undefined &&
+                      product.stock > 0 &&
+                      product.stock <= 2 && (
+                        <div className="absolute top-4 right-4">
+                          <span className="text-[10px] font-display tracking-[0.2em] text-white uppercase px-2 py-1 bg-[#c0392b] shadow">
+                            Only {product.stock} left
+                          </span>
+                        </div>
+                      )}
+                    <div className="absolute bottom-4 right-4 w-10 h-10 rounded-full bg-white/95 backdrop-blur-sm border border-[#1a1612]/10 flex items-center justify-center text-[#1a1612] group-hover:bg-[#d4a843] group-hover:border-[#d4a843] group-hover:text-white transition-all duration-500">
                       <ArrowUpRight className="w-4 h-4" />
                     </div>
                   </div>
                   <div>
-                    <h3 className="font-playfair text-2xl font-bold text-[#1a1612] group-hover:text-[#b8933a] transition-colors mb-2">
+                    <h3 className="font-playfair text-2xl font-bold text-[#1a1612] group-hover:text-[#b8933a] transition-colors mb-1.5">
                       {product.name}
                     </h3>
-                    <p className="text-sm text-[#6b655e] line-clamp-2">{product.description}</p>
+                    <p className="text-sm text-[#6b655e] line-clamp-2 mb-3">
+                      {product.description}
+                    </p>
+                    <PriceTag
+                      price={product.price}
+                      comparePrice={product.comparePrice}
+                      size="md"
+                      fallback="Inquire"
+                    />
                   </div>
                 </Link>
               ))}

@@ -4,6 +4,7 @@ import { motion } from "framer-motion"
 import Link from "next/link"
 import { MapPin, Clock, Phone, ArrowUpRight } from "lucide-react"
 import Image from "next/image"
+import { BRAND_IMAGES } from "@/lib/brand-images"
 
 export function ShowroomCta() {
   return (
@@ -20,7 +21,7 @@ export function ShowroomCta() {
           >
             <div className="relative aspect-[16/11] overflow-hidden">
               <Image
-                src="https://images.unsplash.com/photo-1596455607563-ad6193f76b17?w=1600&h=1100&fit=crop&q=85"
+                src={BRAND_IMAGES.heroShowroom}
                 alt="Inside the Ace Game Room Gallery showroom"
                 fill
                 className="object-cover"

@@ -4,6 +4,7 @@ import { motion } from "framer-motion"
 import Image from "next/image"
 import { ArrowUpRight } from "lucide-react"
 import Link from "next/link"
+import { BRAND_IMAGES } from "@/lib/brand-images"
 
 const PILLARS = [
   {
@@ -17,7 +18,7 @@ const PILLARS = [
       "Lifetime warranties on premium tables",
       "Price-match guarantee",
     ],
-    image: "http://www.acegameroom.com/store/content/images/thumbs/0001358_olhausen-augusta-pool-table_415.png",
+    image: BRAND_IMAGES.poolTableDetail,
     href: "/collection",
   },
   {
@@ -31,7 +32,7 @@ const PILLARS = [
       "Re-felting & re-cushioning",
       "Teardown & move services",
     ],
-    image: "http://www.acegameroom.com/store/content/images/thumbs/0003230_billiard-cloth_450.jpeg",
+    image: BRAND_IMAGES.cuesDisplay,
     href: "/services",
   },
   {
@@ -45,7 +46,7 @@ const PILLARS = [
       "Expert staff — 25+ years avg tenure",
       "Pool & dart league headquarters",
     ],
-    image: "http://www.acegameroom.com/store/content/images/thumbs/0002829_arcade-classics-multicade-upright_415.jpeg",
+    image: BRAND_IMAGES.gamesFoosball,
     href: "/experience",
   },
 ]

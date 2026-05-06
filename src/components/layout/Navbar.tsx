@@ -5,6 +5,7 @@ import Link from "next/link"
 import { Menu } from "lucide-react"
 import { MobileMenu } from "./MobileMenu"
 import { AceLogo } from "@/components/brand/AceLogo"
+import { CartButton } from "@/components/commerce/CartButton"
 
 const NAV_LINKS = [
   { label: "Collection", href: "/collection" },
@@ -101,6 +102,7 @@ export function Navbar() {
                 <span className="w-1.5 h-1.5 rounded-full bg-[#d4a843] animate-pulse" />
                 (260) 432-3443
               </a>
+              <CartButton />
               <Link
                 href="/contact"
                 className="hidden md:inline-flex btn-primary !py-3 !px-6 text-xs"

@@ -4,8 +4,7 @@ import { motion } from "framer-motion"
 import Image from "next/image"
 import Link from "next/link"
 import { ArrowUpRight } from "lucide-react"
-
-const ACE = "http://www.acegameroom.com/store/content/images/thumbs"
+import { BRAND_IMAGES } from "@/lib/brand-images"
 
 const CATEGORIES = [
   {
@@ -13,42 +12,42 @@ const CATEGORIES = [
     slug: "billiards",
     tagline: "Olhausen. Valley. Plank & Hide.",
     count: "6 collections",
-    image: `${ACE}/0003231_billiard-tables_450.png`,
+    image: BRAND_IMAGES.poolTableDetail,
   },
   {
     name: "Games",
     slug: "games",
     tagline: "Pinball, arcade, shuffleboard.",
     count: "10 collections",
-    image: `${ACE}/0003115_pinball-machines_450.png`,
+    image: BRAND_IMAGES.pinballArcade,
   },
   {
     name: "Furniture",
     slug: "furniture",
     tagline: "Bars. Stools. Pub tables.",
     count: "7 collections",
-    image: `${ACE}/0003121_bars_450.png`,
+    image: BRAND_IMAGES.barFurniture,
   },
   {
     name: "Playsets",
     slug: "playsets",
     tagline: "Rainbow Play Systems. Cedar.",
     count: "2 collections",
-    image: `${ACE}/0003196_residential-playsets_450.jpeg`,
+    image: BRAND_IMAGES.playsetCedar,
   },
   {
     name: "Outdoor",
     slug: "outdoor",
     tagline: "Basketball. Trampolines.",
     count: "3 collections",
-    image: `${ACE}/0003129_basketball-goals_450.jpeg`,
+    image: BRAND_IMAGES.outdoorRecreation,
   },
   {
     name: "Services",
     slug: "services",
     tagline: "Delivery. Install. Refurb.",
     count: "All tables",
-    image: `${ACE}/0003230_billiard-cloth_450.jpeg`,
+    image: BRAND_IMAGES.cuesDisplay,
   },
 ]
 
