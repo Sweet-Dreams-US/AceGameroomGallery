@@ -43,6 +43,19 @@ export const BRAND_IMAGES = {
   aceLogoFull: `${BASE}/ace-logo-full.png`,
   // Cinematic pool-table corner banner — moody amber light, gold balls
   poolTableBanner: `${BASE}/pool-table-banner.webp`,
+
+  // ===== Per-category product hero shots =====
+  productPinball: `${BASE}/product-pinball.webp`,
+  productArcade: `${BASE}/product-arcade.webp`,
+  productFoosball: `${BASE}/product-foosball.webp`,
+  productAirHockey: `${BASE}/product-air-hockey.webp`,
+  productPingPong: `${BASE}/product-ping-pong.webp`,
+  productDarts: `${BASE}/product-darts.webp`,
+  productJukebox: `${BASE}/product-jukebox.webp`,
+  productBarStool: `${BASE}/product-bar-stool.webp`,
+  productPoker: `${BASE}/product-poker.webp`,
+  productNeon: `${BASE}/product-neon.webp`,
+  productBasketball: `${BASE}/product-basketball.webp`,
 } as const
 
 /**

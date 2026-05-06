@@ -144,8 +144,14 @@ export const MOCK_CATEGORIES: MockCategory[] = [
 
 // --- PRODUCTS ---
 // A curated sampling across every category. Images sourced from acegameroom.com.
+//
+// The extended catalog (mock-products-extended.ts) is spread in below — those
+// products use custom Higgsfield imagery and are fully shoppable online.
+
+import { EXTENDED_PRODUCTS } from "./mock-products-extended"
 
 export const MOCK_PRODUCTS: MockProduct[] = [
+  ...EXTENDED_PRODUCTS,
   // ============ BILLIARDS ============
   {
     id: "prod-olhausen-augusta",
