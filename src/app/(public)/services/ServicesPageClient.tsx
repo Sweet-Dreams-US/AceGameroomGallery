@@ -4,6 +4,7 @@ import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import Link from "next/link"
 import { Target, Gamepad2, TreePine, ChevronDown, ArrowUpRight, X } from "lucide-react"
+import { BRAND_IMAGES, withAssetBasePath } from "@/lib/brand-images"
 
 type Service = {
   id: string
@@ -102,8 +103,7 @@ export default function ServicesPageClient() {
         <div
           className="absolute inset-0 opacity-[0.10]"
           style={{
-            backgroundImage:
-              "url('https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=2400&h=1600&fit=crop&q=85')",
+            backgroundImage: `url('${withAssetBasePath(BRAND_IMAGES.headerServices)}')`,
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}

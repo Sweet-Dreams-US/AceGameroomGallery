@@ -4,6 +4,7 @@ import { useState, useMemo } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import Link from "next/link"
 import { ChevronDown, Search, ArrowUpRight } from "lucide-react"
+import { BRAND_IMAGES, withAssetBasePath } from "@/lib/brand-images"
 
 type FAQ = {
   category: string
@@ -113,8 +114,7 @@ export default function FAQPageClient() {
         <div
           className="absolute inset-0 opacity-[0.08]"
           style={{
-            backgroundImage:
-              "url('https://images.unsplash.com/photo-1604289574803-6cbe05627019?w=2400&h=1600&fit=crop&q=85')",
+            backgroundImage: `url('${withAssetBasePath(BRAND_IMAGES.headerFaq)}')`,
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}

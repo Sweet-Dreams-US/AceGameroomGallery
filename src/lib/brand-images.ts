@@ -50,6 +50,16 @@ export const BRAND_IMAGES = {
   // ACE wordmark on dark wood — for crimson/dark sections
   aceMarkDark: `${BASE}/ace-mark-dark.png`,
 
+  // ===== Per-page hero headers =====
+  // About — heritage / family-business / patina-of-decades feel
+  headerAbout: `${BASE}/header-about.webp`,
+  // Contact — welcoming entrance, golden-hour doorway
+  headerContact: `${BASE}/header-contact.webp`,
+  // Services — service workshop, restoration tools laid out
+  headerServices: `${BASE}/header-services.webp`,
+  // FAQ — quiet contemplative reading nook
+  headerFaq: `${BASE}/header-faq.webp`,
+
   // ===== Per-category product hero shots =====
   productPinball: `${BASE}/product-pinball.webp`,
   productArcade: `${BASE}/product-arcade.webp`,

@@ -4,6 +4,7 @@ import { motion } from "framer-motion"
 import Image from "next/image"
 import Link from "next/link"
 import { ArrowUpRight } from "lucide-react"
+import { BRAND_IMAGES, withAssetBasePath } from "@/lib/brand-images"
 
 type Chapter = {
   num: string
@@ -78,8 +79,7 @@ export default function AboutPageClient() {
         <div
           className="absolute inset-0 opacity-[0.12]"
           style={{
-            backgroundImage:
-              "url('https://images.unsplash.com/photo-1611091428036-e0211dc27757?w=2400&h=1600&fit=crop&q=85')",
+            backgroundImage: `url('${withAssetBasePath(BRAND_IMAGES.headerAbout)}')`,
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}
@@ -227,8 +227,7 @@ export default function AboutPageClient() {
         <div
           className="absolute inset-0 opacity-[0.08]"
           style={{
-            backgroundImage:
-              "url('https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=2400&h=1600&fit=crop&q=85')",
+            backgroundImage: `url('${withAssetBasePath(BRAND_IMAGES.poolTableBanner)}')`,
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}

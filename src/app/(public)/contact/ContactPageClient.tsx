@@ -4,6 +4,7 @@ import { useEffect, useState } from "react"
 import { useSearchParams } from "next/navigation"
 import { motion, AnimatePresence } from "framer-motion"
 import Link from "next/link"
+import { BRAND_IMAGES, withAssetBasePath } from "@/lib/brand-images"
 import {
   MapPin,
   Phone,
@@ -140,8 +141,7 @@ export default function ContactPageClient() {
         <div
           className="absolute inset-0 opacity-[0.08]"
           style={{
-            backgroundImage:
-              "url('https://images.unsplash.com/photo-1615722440048-da4fd9202194?w=2400&h=1600&fit=crop&q=85')",
+            backgroundImage: `url('${withAssetBasePath(BRAND_IMAGES.headerContact)}')`,
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}
