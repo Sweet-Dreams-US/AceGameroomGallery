@@ -1,0 +1,708 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e4]:
+      - link "Ace Game Room Gallery — Home" [ref=e5] [cursor=pointer]:
+        - /url: /AceGameroomGallery/
+        - img "Ace Game Room Gallery" [ref=e7]
+      - navigation [ref=e8]:
+        - link "Collection" [ref=e9] [cursor=pointer]:
+          - /url: /AceGameroomGallery/collection/
+        - link "Experience" [ref=e10] [cursor=pointer]:
+          - /url: /AceGameroomGallery/experience/
+        - link "Story" [ref=e11] [cursor=pointer]:
+          - /url: /AceGameroomGallery/about/
+        - link "Services" [ref=e12] [cursor=pointer]:
+          - /url: /AceGameroomGallery/services/
+        - link "Contact" [ref=e13] [cursor=pointer]:
+          - /url: /AceGameroomGallery/contact/
+      - generic [ref=e14]:
+        - link "(260) 432-3443" [ref=e15] [cursor=pointer]:
+          - /url: tel:+12604323443
+          - text: (260) 432-3443
+        - button "Open cart — 0 items" [ref=e17]:
+          - img [ref=e18]
+        - link "Request a Quote" [ref=e21] [cursor=pointer]:
+          - /url: /AceGameroomGallery/contact/
+  - main [ref=e22]:
+    - generic [ref=e23]:
+      - generic [ref=e24]:
+        - img "The Ace Game Room Gallery showroom" [ref=e25]
+        - generic [ref=e27]:
+          - generic [ref=e28]:
+            - link "Home" [ref=e29] [cursor=pointer]:
+              - /url: /AceGameroomGallery/
+            - generic [ref=e30]: /
+            - generic [ref=e31]: Collection
+          - paragraph [ref=e34]: / THE COLLECTION
+          - heading "Every brand, hand-selected." [level=1] [ref=e35]:
+            - text: Every brand,
+            - text: hand-selected.
+          - paragraph [ref=e36]: 6 categories. 54 products on the page. 1000+ in the showroom. If we carry it, we stake our name on it.
+      - generic [ref=e38]:
+        - generic [ref=e39]:
+          - generic [ref=e40]: "6"
+          - generic [ref=e41]: Categories
+        - generic [ref=e42]:
+          - generic [ref=e43]: "54"
+          - generic [ref=e44]: Products listed
+        - generic [ref=e45]:
+          - generic [ref=e46]: "27"
+          - generic [ref=e47]: Brands curated
+        - generic [ref=e48]:
+          - generic [ref=e49]: 32+
+          - generic [ref=e50]: Years in business
+      - navigation [ref=e52]:
+        - generic [ref=e53]: "Jump to:"
+        - link "Billiards · 5" [ref=e54] [cursor=pointer]:
+          - /url: "#billiards"
+        - link "Games · 26" [ref=e55] [cursor=pointer]:
+          - /url: "#games"
+        - link "Furniture · 12" [ref=e56] [cursor=pointer]:
+          - /url: "#furniture"
+        - link "Playsets · 4" [ref=e57] [cursor=pointer]:
+          - /url: "#playsets"
+        - link "Outdoor · 7" [ref=e58] [cursor=pointer]:
+          - /url: "#outdoor"
+        - link "Services · 0" [ref=e59] [cursor=pointer]:
+          - /url: "#services"
+      - generic [ref=e61]:
+        - generic [ref=e62]:
+          - generic [ref=e63]:
+            - paragraph [ref=e66]: / BILLIARDS
+            - heading "Slate, felt, hardwood, soul." [level=2] [ref=e67]
+          - link "View billiards →" [ref=e68] [cursor=pointer]:
+            - /url: /AceGameroomGallery/billiards/
+        - generic [ref=e69]:
+          - link "Olhausen Augusta Pool Table Olhausen Olhausen Augusta Pool Table $5,699 $6,199 Save 8%" [ref=e70] [cursor=pointer]:
+            - /url: /AceGameroomGallery/billiards/olhausen-augusta/
+            - generic [ref=e71]:
+              - img "Olhausen Augusta Pool Table" [ref=e72]
+              - generic [ref=e73]: Olhausen
+              - img [ref=e75]
+            - heading "Olhausen Augusta Pool Table" [level=3] [ref=e78]
+            - generic [ref=e79]:
+              - generic [ref=e80]: $5,699
+              - generic [ref=e81]: $6,199
+              - generic [ref=e82]: Save 8%
+          - link "Valley Panther Coin-Op Pool Table Valley Only 1 Valley Panther Coin-Op Pool Table $3,299" [ref=e83] [cursor=pointer]:
+            - /url: /AceGameroomGallery/billiards/valley-panther-coin-op/
+            - generic [ref=e84]:
+              - img "Valley Panther Coin-Op Pool Table" [ref=e85]
+              - generic [ref=e86]: Valley
+              - generic [ref=e88]: Only 1
+              - img [ref=e90]
+            - heading "Valley Panther Coin-Op Pool Table" [level=3] [ref=e93]
+            - generic [ref=e95]: $3,299
+          - link "Plank & Hide Isaac Pool Table Plank & Hide Only 2 Plank & Hide Isaac Pool Table $4,599" [ref=e96] [cursor=pointer]:
+            - /url: /AceGameroomGallery/billiards/plank-hide-isaac/
+            - generic [ref=e97]:
+              - img "Plank & Hide Isaac Pool Table" [ref=e98]
+              - generic [ref=e99]: Plank & Hide
+              - generic [ref=e101]: Only 2
+              - img [ref=e103]
+            - heading "Plank & Hide Isaac Pool Table" [level=3] [ref=e106]
+            - generic [ref=e108]: $4,599
+          - link "Simonis 860 Championship Cloth Simonis Simonis 860 Championship Cloth In showroom" [ref=e109] [cursor=pointer]:
+            - /url: /AceGameroomGallery/billiards/simonis-860-cloth/
+            - generic [ref=e110]:
+              - img "Simonis 860 Championship Cloth" [ref=e111]
+              - generic [ref=e112]: Simonis
+              - img [ref=e114]
+            - heading "Simonis 860 Championship Cloth" [level=3] [ref=e117]
+            - text: In showroom
+          - link "McDermott G-Series Cue McDermott McDermott G-Series Cue In showroom" [ref=e118] [cursor=pointer]:
+            - /url: /AceGameroomGallery/billiards/mcdermott-g-series/
+            - generic [ref=e119]:
+              - img "McDermott G-Series Cue" [ref=e120]
+              - generic [ref=e121]: McDermott
+              - img [ref=e123]
+            - heading "McDermott G-Series Cue" [level=3] [ref=e126]
+            - text: In showroom
+      - generic [ref=e128]:
+        - generic [ref=e129]:
+          - generic [ref=e130]:
+            - paragraph [ref=e133]: / GAMES
+            - heading "Every kind of fun." [level=2] [ref=e134]
+          - link "View games →" [ref=e135] [cursor=pointer]:
+            - /url: /AceGameroomGallery/games/
+        - generic [ref=e136]:
+          - link "Stern Jaws Pinball — Pro Stern Only 2 Stern Jaws Pinball — Pro $7,499" [ref=e137] [cursor=pointer]:
+            - /url: /AceGameroomGallery/games/stern-jaws-pro/
+            - generic [ref=e138]:
+              - img "Stern Jaws Pinball — Pro" [ref=e139]
+              - generic [ref=e140]: Stern
+              - generic [ref=e142]: Only 2
+              - img [ref=e144]
+            - heading "Stern Jaws Pinball — Pro" [level=3] [ref=e147]
+            - generic [ref=e149]: $7,499
+          - link "Stern Foo Fighters Pinball — Limited Edition Stern Only 1 Stern Foo Fighters Pinball — Limited Edition $11,999" [ref=e150] [cursor=pointer]:
+            - /url: /AceGameroomGallery/games/stern-foo-fighters-le/
+            - generic [ref=e151]:
+              - img "Stern Foo Fighters Pinball — Limited Edition" [ref=e152]
+              - generic [ref=e153]: Stern
+              - generic [ref=e155]: Only 1
+              - img [ref=e157]
+            - heading "Stern Foo Fighters Pinball — Limited Edition" [level=3] [ref=e160]
+            - generic [ref=e162]: $11,999
+          - link "Jersey Jack Pirates of the Caribbean Jersey Jack Pinball Only 1 Jersey Jack Pirates of the Caribbean $9,999" [ref=e163] [cursor=pointer]:
+            - /url: /AceGameroomGallery/games/jjp-pirates/
+            - generic [ref=e164]:
+              - img "Jersey Jack Pirates of the Caribbean" [ref=e165]
+              - generic [ref=e166]: Jersey Jack Pinball
+              - generic [ref=e168]: Only 1
+              - img [ref=e170]
+            - heading "Jersey Jack Pirates of the Caribbean" [level=3] [ref=e173]
+            - generic [ref=e175]: $9,999
+          - 'link "Pre-Owned: Medieval Madness Remake Chicago Gaming Only 1 Pre-Owned: Medieval Madness Remake $7,299 $8,499 Save 14%" [ref=e176] [cursor=pointer]':
+            - /url: /AceGameroomGallery/games/pre-owned-medieval-madness/
+            - generic [ref=e177]:
+              - 'img "Pre-Owned: Medieval Madness Remake" [ref=e178]'
+              - generic [ref=e179]: Chicago Gaming
+              - generic [ref=e181]: Only 1
+              - img [ref=e183]
+            - 'heading "Pre-Owned: Medieval Madness Remake" [level=3] [ref=e186]'
+            - generic [ref=e187]:
+              - generic [ref=e188]: $7,299
+              - generic [ref=e189]: $8,499
+              - generic [ref=e190]: Save 14%
+          - link "Arcade Classics Upright — 412 Games Arcade Classics Arcade Classics Upright — 412 Games $4,499" [ref=e191] [cursor=pointer]:
+            - /url: /AceGameroomGallery/games/arcade-classics-multicade-upright/
+            - generic [ref=e192]:
+              - img "Arcade Classics Upright — 412 Games" [ref=e193]
+              - generic [ref=e194]: Arcade Classics
+              - img [ref=e196]
+            - heading "Arcade Classics Upright — 412 Games" [level=3] [ref=e199]
+            - generic [ref=e201]: $4,499
+          - link "Arcade1Up Street Fighter II Big Blue Arcade1Up Arcade1Up Street Fighter II Big Blue $899" [ref=e202] [cursor=pointer]:
+            - /url: /AceGameroomGallery/games/arcade1up-sf2/
+            - generic [ref=e203]:
+              - img "Arcade1Up Street Fighter II Big Blue" [ref=e204]
+              - generic [ref=e205]: Arcade1Up
+              - img [ref=e207]
+            - heading "Arcade1Up Street Fighter II Big Blue" [level=3] [ref=e210]
+            - generic [ref=e212]: $899
+          - 'link "Pre-Owned: Galaga 1981 Original Namco Only 1 Pre-Owned: Galaga 1981 Original $3,299" [ref=e213] [cursor=pointer]':
+            - /url: /AceGameroomGallery/games/pre-owned-galaga/
+            - generic [ref=e214]:
+              - 'img "Pre-Owned: Galaga 1981 Original" [ref=e215]'
+              - generic [ref=e216]: Namco
+              - generic [ref=e218]: Only 1
+              - img [ref=e220]
+            - 'heading "Pre-Owned: Galaga 1981 Original" [level=3] [ref=e223]'
+            - generic [ref=e225]: $3,299
+          - link "Tornado Elite Tournament Foosball Tornado Tornado Elite Tournament Foosball $1,999" [ref=e226] [cursor=pointer]:
+            - /url: /AceGameroomGallery/games/tornado-elite-foosball/
+            - generic [ref=e227]:
+              - img "Tornado Elite Tournament Foosball" [ref=e228]
+              - generic [ref=e229]: Tornado
+              - img [ref=e231]
+            - heading "Tornado Elite Tournament Foosball" [level=3] [ref=e234]
+            - generic [ref=e236]: $1,999
+          - link "Warrior Pro Foosball Warrior Warrior Pro Foosball $1,599" [ref=e237] [cursor=pointer]:
+            - /url: /AceGameroomGallery/games/warrior-pro-foosball/
+            - generic [ref=e238]:
+              - img "Warrior Pro Foosball" [ref=e239]
+              - generic [ref=e240]: Warrior
+              - img [ref=e242]
+            - heading "Warrior Pro Foosball" [level=3] [ref=e245]
+            - generic [ref=e247]: $1,599
+          - link "Dynamo Pro 8' Air Hockey Dynamo Only 2 Dynamo Pro 8' Air Hockey $2,499" [ref=e248] [cursor=pointer]:
+            - /url: /AceGameroomGallery/games/dynamo-pro-air-hockey/
+            - generic [ref=e249]:
+              - img "Dynamo Pro 8' Air Hockey" [ref=e250]
+              - generic [ref=e251]: Dynamo
+              - generic [ref=e253]: Only 2
+              - img [ref=e255]
+            - heading "Dynamo Pro 8' Air Hockey" [level=3] [ref=e258]
+            - generic [ref=e260]: $2,499
+          - link "Atomic Blazer 7' Air Hockey Atomic Atomic Blazer 7' Air Hockey $1,199" [ref=e261] [cursor=pointer]:
+            - /url: /AceGameroomGallery/games/atomic-blazer-air-hockey/
+            - generic [ref=e262]:
+              - img "Atomic Blazer 7' Air Hockey" [ref=e263]
+              - generic [ref=e264]: Atomic
+              - img [ref=e266]
+            - heading "Atomic Blazer 7' Air Hockey" [level=3] [ref=e269]
+            - generic [ref=e271]: $1,199
+          - link "STIGA Pro Carbon Tournament Table STIGA STIGA Pro Carbon Tournament Table $999" [ref=e272] [cursor=pointer]:
+            - /url: /AceGameroomGallery/games/stiga-pro-carbon/
+            - generic [ref=e273]:
+              - img "STIGA Pro Carbon Tournament Table" [ref=e274]
+              - generic [ref=e275]: STIGA
+              - img [ref=e277]
+            - heading "STIGA Pro Carbon Tournament Table" [level=3] [ref=e280]
+            - generic [ref=e282]: $999
+          - link "Killerspin MyT7 Outdoor Table Killerspin Killerspin MyT7 Outdoor Table $799" [ref=e283] [cursor=pointer]:
+            - /url: /AceGameroomGallery/games/killerspin-myt7/
+            - generic [ref=e284]:
+              - img "Killerspin MyT7 Outdoor Table" [ref=e285]
+              - generic [ref=e286]: Killerspin
+              - img [ref=e288]
+            - heading "Killerspin MyT7 Outdoor Table" [level=3] [ref=e291]
+            - generic [ref=e293]: $799
+          - link "Winmau Blade 6 Bristle Set + Cabinet Winmau Winmau Blade 6 Bristle Set + Cabinet $399" [ref=e294] [cursor=pointer]:
+            - /url: /AceGameroomGallery/games/winmau-blade-set/
+            - generic [ref=e295]:
+              - img "Winmau Blade 6 Bristle Set + Cabinet" [ref=e296]
+              - generic [ref=e297]: Winmau
+              - img [ref=e299]
+            - heading "Winmau Blade 6 Bristle Set + Cabinet" [level=3] [ref=e302]
+            - generic [ref=e304]: $399
+          - link "Arachnid Cricket Pro 800 Electronic Arachnid Arachnid Cricket Pro 800 Electronic $249" [ref=e305] [cursor=pointer]:
+            - /url: /AceGameroomGallery/games/arachnid-cricket-pro-800/
+            - generic [ref=e306]:
+              - img "Arachnid Cricket Pro 800 Electronic" [ref=e307]
+              - generic [ref=e308]: Arachnid
+              - img [ref=e310]
+            - heading "Arachnid Cricket Pro 800 Electronic" [level=3] [ref=e313]
+            - generic [ref=e315]: $249
+          - link "Rock-Ola Bubbler Music Center CD Rock-Ola Only 1 Rock-Ola Bubbler Music Center CD $9,499" [ref=e316] [cursor=pointer]:
+            - /url: /AceGameroomGallery/games/rock-ola-bubbler-cd/
+            - generic [ref=e317]:
+              - img "Rock-Ola Bubbler Music Center CD" [ref=e318]
+              - generic [ref=e319]: Rock-Ola
+              - generic [ref=e321]: Only 1
+              - img [ref=e323]
+            - heading "Rock-Ola Bubbler Music Center CD" [level=3] [ref=e326]
+            - generic [ref=e328]: $9,499
+          - link "Crosley Rocket 200 Disc Jukebox Crosley Crosley Rocket 200 Disc Jukebox $1,299" [ref=e329] [cursor=pointer]:
+            - /url: /AceGameroomGallery/games/crosley-rocket-200/
+            - generic [ref=e330]:
+              - img "Crosley Rocket 200 Disc Jukebox" [ref=e331]
+              - generic [ref=e332]: Crosley
+              - img [ref=e334]
+            - heading "Crosley Rocket 200 Disc Jukebox" [level=3] [ref=e337]
+            - generic [ref=e339]: $1,299
+          - link "C.L. Bailey 7-Star Bumper Pool C.L. Bailey Only 2 C.L. Bailey 7-Star Bumper Pool $1,699" [ref=e340] [cursor=pointer]:
+            - /url: /AceGameroomGallery/games/cl-bailey-bumper-pool/
+            - generic [ref=e341]:
+              - img "C.L. Bailey 7-Star Bumper Pool" [ref=e342]
+              - generic [ref=e343]: C.L. Bailey
+              - generic [ref=e345]: Only 2
+              - img [ref=e347]
+            - heading "C.L. Bailey 7-Star Bumper Pool" [level=3] [ref=e350]
+            - generic [ref=e352]: $1,699
+          - link "Arcade Classics Multicade — Upright Arcade Classics Arcade Classics Multicade — Upright In showroom" [ref=e353] [cursor=pointer]:
+            - /url: /AceGameroomGallery/games/arcade-classics-multicade-upright/
+            - generic [ref=e354]:
+              - img "Arcade Classics Multicade — Upright" [ref=e355]
+              - generic [ref=e356]: Arcade Classics
+              - img [ref=e358]
+            - heading "Arcade Classics Multicade — Upright" [level=3] [ref=e361]
+            - text: In showroom
+          - link "Arcade Classics Multicade — Cocktail Table Arcade Classics Arcade Classics Multicade — Cocktail Table In showroom" [ref=e362] [cursor=pointer]:
+            - /url: /AceGameroomGallery/games/arcade-classics-multicade-cocktail/
+            - generic [ref=e363]:
+              - img "Arcade Classics Multicade — Cocktail Table" [ref=e364]
+              - generic [ref=e365]: Arcade Classics
+              - img [ref=e367]
+            - heading "Arcade Classics Multicade — Cocktail Table" [level=3] [ref=e370]
+            - text: In showroom
+          - link "Big Buck Hunter Reloaded Raw Thrills Big Buck Hunter Reloaded In showroom" [ref=e371] [cursor=pointer]:
+            - /url: /AceGameroomGallery/games/big-buck-hunter/
+            - generic [ref=e372]:
+              - img "Big Buck Hunter Reloaded" [ref=e373]
+              - generic [ref=e374]: Raw Thrills
+              - img [ref=e376]
+            - heading "Big Buck Hunter Reloaded" [level=3] [ref=e379]
+            - text: In showroom
+          - link "NFL Blitz Gold Edition Raw Thrills NFL Blitz Gold Edition In showroom" [ref=e380] [cursor=pointer]:
+            - /url: /AceGameroomGallery/games/nfl-blitz-gold-edition/
+            - generic [ref=e381]:
+              - img "NFL Blitz Gold Edition" [ref=e382]
+              - generic [ref=e383]: Raw Thrills
+              - img [ref=e385]
+            - heading "NFL Blitz Gold Edition" [level=3] [ref=e388]
+            - text: In showroom
+          - link "Spider 2000 Dart Board Spider Spider 2000 Dart Board In showroom" [ref=e389] [cursor=pointer]:
+            - /url: /AceGameroomGallery/games/spider-2000-dart-board/
+            - generic [ref=e390]:
+              - img "Spider 2000 Dart Board" [ref=e391]
+              - generic [ref=e392]: Spider
+              - img [ref=e394]
+            - heading "Spider 2000 Dart Board" [level=3] [ref=e397]
+            - text: In showroom
+          - link "C.L. Bailey 12' Skylar Shuffleboard C.L. Bailey C.L. Bailey 12' Skylar Shuffleboard In showroom" [ref=e398] [cursor=pointer]:
+            - /url: /AceGameroomGallery/games/cl-bailey-skylar-shuffleboard/
+            - generic [ref=e399]:
+              - img "C.L. Bailey 12' Skylar Shuffleboard" [ref=e400]
+              - generic [ref=e401]: C.L. Bailey
+              - img [ref=e403]
+            - heading "C.L. Bailey 12' Skylar Shuffleboard" [level=3] [ref=e406]
+            - text: In showroom
+          - link "C.L. 9' & 12' Level Best Shuffleboard C.L. Bailey C.L. 9' & 12' Level Best Shuffleboard In showroom" [ref=e407] [cursor=pointer]:
+            - /url: /AceGameroomGallery/games/cl-level-best-shuffleboard/
+            - generic [ref=e408]:
+              - img "C.L. 9' & 12' Level Best Shuffleboard" [ref=e409]
+              - generic [ref=e410]: C.L. Bailey
+              - img [ref=e412]
+            - heading "C.L. 9' & 12' Level Best Shuffleboard" [level=3] [ref=e415]
+            - text: In showroom
+          - link "C.L. Bailey 12' & 14' Turnbridge Shuffleboard C.L. Bailey C.L. Bailey 12' & 14' Turnbridge Shuffleboard In showroom" [ref=e416] [cursor=pointer]:
+            - /url: /AceGameroomGallery/games/cl-bailey-turnbridge/
+            - generic [ref=e417]:
+              - img "C.L. Bailey 12' & 14' Turnbridge Shuffleboard" [ref=e418]
+              - generic [ref=e419]: C.L. Bailey
+              - img [ref=e421]
+            - heading "C.L. Bailey 12' & 14' Turnbridge Shuffleboard" [level=3] [ref=e424]
+            - text: In showroom
+      - generic [ref=e426]:
+        - generic [ref=e427]:
+          - generic [ref=e428]:
+            - paragraph [ref=e431]: / FURNITURE
+            - heading "The room your guests don't want to leave." [level=2] [ref=e432]
+          - link "View furniture →" [ref=e433] [cursor=pointer]:
+            - /url: /AceGameroomGallery/furniture/
+        - generic [ref=e434]:
+          - link "Callee Cosmo Swivel Bar Stool Callee Callee Cosmo Swivel Bar Stool $899" [ref=e435] [cursor=pointer]:
+            - /url: /AceGameroomGallery/furniture/callee-cosmo-stool/
+            - generic [ref=e436]:
+              - img "Callee Cosmo Swivel Bar Stool" [ref=e437]
+              - generic [ref=e438]: Callee
+              - img [ref=e440]
+            - heading "Callee Cosmo Swivel Bar Stool" [level=3] [ref=e443]
+            - generic [ref=e445]: $899
+          - link "Darafeev Mocha Counter Stool Darafeev Darafeev Mocha Counter Stool $699" [ref=e446] [cursor=pointer]:
+            - /url: /AceGameroomGallery/furniture/darafeev-mocha-stool/
+            - generic [ref=e447]:
+              - img "Darafeev Mocha Counter Stool" [ref=e448]
+              - generic [ref=e449]: Darafeev
+              - img [ref=e451]
+            - heading "Darafeev Mocha Counter Stool" [level=3] [ref=e454]
+            - generic [ref=e456]: $699
+          - link "Holland Bar Stool Co. Classic Wood Holland Bar Stool Co. Holland Bar Stool Co. Classic Wood $399" [ref=e457] [cursor=pointer]:
+            - /url: /AceGameroomGallery/furniture/holland-classic-stool/
+            - generic [ref=e458]:
+              - img "Holland Bar Stool Co. Classic Wood" [ref=e459]
+              - generic [ref=e460]: Holland Bar Stool Co.
+              - img [ref=e462]
+            - heading "Holland Bar Stool Co. Classic Wood" [level=3] [ref=e465]
+            - generic [ref=e467]: $399
+          - link "Presidential Octagon Poker Table Presidential Billiards Only 2 Presidential Octagon Poker Table $4,899" [ref=e468] [cursor=pointer]:
+            - /url: /AceGameroomGallery/furniture/presidential-octagon-poker/
+            - generic [ref=e469]:
+              - img "Presidential Octagon Poker Table" [ref=e470]
+              - generic [ref=e471]: Presidential Billiards
+              - generic [ref=e473]: Only 2
+              - img [ref=e475]
+            - heading "Presidential Octagon Poker Table" [level=3] [ref=e478]
+            - generic [ref=e480]: $4,899
+          - link "RangerTec Folding Poker Top (8-Player) RangerTec RangerTec Folding Poker Top (8-Player) $179" [ref=e481] [cursor=pointer]:
+            - /url: /AceGameroomGallery/furniture/rangertec-folding-poker-top/
+            - generic [ref=e482]:
+              - img "RangerTec Folding Poker Top (8-Player)" [ref=e483]
+              - generic [ref=e484]: RangerTec
+              - img [ref=e486]
+            - heading "RangerTec Folding Poker Top (8-Player)" [level=3] [ref=e489]
+            - generic [ref=e491]: $179
+          - 'link "Custom Neon: Pool Hall Sign ACE Custom Custom Neon: Pool Hall Sign $499" [ref=e492] [cursor=pointer]':
+            - /url: /AceGameroomGallery/furniture/neon-pool-hall/
+            - generic [ref=e493]:
+              - 'img "Custom Neon: Pool Hall Sign" [ref=e494]'
+              - generic [ref=e495]: ACE Custom
+              - img [ref=e497]
+            - 'heading "Custom Neon: Pool Hall Sign" [level=3] [ref=e500]'
+            - generic [ref=e502]: $499
+          - 'link "Custom Neon: ''Game Room'' Script ACE Custom Custom Neon: ''Game Room'' Script $329" [ref=e503] [cursor=pointer]':
+            - /url: /AceGameroomGallery/furniture/neon-game-room/
+            - generic [ref=e504]:
+              - 'img "Custom Neon: ''Game Room'' Script" [ref=e505]'
+              - generic [ref=e506]: ACE Custom
+              - img [ref=e508]
+            - 'heading "Custom Neon: ''Game Room'' Script" [level=3] [ref=e511]'
+            - generic [ref=e513]: $329
+          - link "Arabella Bar Darafeev Arabella Bar In showroom" [ref=e514] [cursor=pointer]:
+            - /url: /AceGameroomGallery/furniture/arabella-bar/
+            - generic [ref=e515]:
+              - img "Arabella Bar" [ref=e516]
+              - generic [ref=e517]: Darafeev
+              - img [ref=e519]
+            - heading "Arabella Bar" [level=3] [ref=e522]
+            - text: In showroom
+          - link "Blacksmith Bar Darafeev Blacksmith Bar In showroom" [ref=e523] [cursor=pointer]:
+            - /url: /AceGameroomGallery/furniture/blacksmith-bar/
+            - generic [ref=e524]:
+              - img "Blacksmith Bar" [ref=e525]
+              - generic [ref=e526]: Darafeev
+              - img [ref=e528]
+            - heading "Blacksmith Bar" [level=3] [ref=e531]
+            - text: In showroom
+          - link "Bristol Bar Darafeev Bristol Bar In showroom" [ref=e532] [cursor=pointer]:
+            - /url: /AceGameroomGallery/furniture/bristol-bar/
+            - generic [ref=e533]:
+              - img "Bristol Bar" [ref=e534]
+              - generic [ref=e535]: Darafeev
+              - img [ref=e537]
+            - heading "Bristol Bar" [level=3] [ref=e540]
+            - text: In showroom
+          - link "Caliente Bar Darafeev Caliente Bar In showroom" [ref=e541] [cursor=pointer]:
+            - /url: /AceGameroomGallery/furniture/caliente-bar/
+            - generic [ref=e542]:
+              - img "Caliente Bar" [ref=e543]
+              - generic [ref=e544]: Darafeev
+              - img [ref=e546]
+            - heading "Caliente Bar" [level=3] [ref=e549]
+            - text: In showroom
+          - link "Angelina Wine Cabinet Darafeev Angelina Wine Cabinet In showroom" [ref=e550] [cursor=pointer]:
+            - /url: /AceGameroomGallery/furniture/angelina-wine-cabinet/
+            - generic [ref=e551]:
+              - img "Angelina Wine Cabinet" [ref=e552]
+              - generic [ref=e553]: Darafeev
+              - img [ref=e555]
+            - heading "Angelina Wine Cabinet" [level=3] [ref=e558]
+            - text: In showroom
+      - generic [ref=e560]:
+        - generic [ref=e561]:
+          - generic [ref=e562]:
+            - paragraph [ref=e565]: / PLAYSETS
+            - heading "Built to outlast childhood." [level=2] [ref=e566]
+          - link "View playsets →" [ref=e567] [cursor=pointer]:
+            - /url: /AceGameroomGallery/playsets/
+        - generic [ref=e568]:
+          - link "Rainbow Play Systems Residential Playset Rainbow Play Systems Rainbow Play Systems Residential Playset In showroom" [ref=e569] [cursor=pointer]:
+            - /url: /AceGameroomGallery/playsets/rainbow-residential-playset/
+            - generic [ref=e570]:
+              - img "Rainbow Play Systems Residential Playset" [ref=e571]
+              - generic [ref=e572]: Rainbow Play Systems
+              - img [ref=e574]
+            - heading "Rainbow Play Systems Residential Playset" [level=3] [ref=e577]
+            - text: In showroom
+          - link "Rainbow Commercial Playset Rainbow Play Systems Rainbow Commercial Playset In showroom" [ref=e578] [cursor=pointer]:
+            - /url: /AceGameroomGallery/playsets/rainbow-commercial-playset/
+            - generic [ref=e579]:
+              - img "Rainbow Commercial Playset" [ref=e580]
+              - generic [ref=e581]: Rainbow Play Systems
+              - img [ref=e583]
+            - heading "Rainbow Commercial Playset" [level=3] [ref=e586]
+            - text: In showroom
+          - link "10' Billy Goat Bridge Rainbow Play Systems 10' Billy Goat Bridge In showroom" [ref=e587] [cursor=pointer]:
+            - /url: /AceGameroomGallery/playsets/billy-goat-bridge/
+            - generic [ref=e588]:
+              - img "10' Billy Goat Bridge" [ref=e589]
+              - generic [ref=e590]: Rainbow Play Systems
+              - img [ref=e592]
+            - heading "10' Billy Goat Bridge" [level=3] [ref=e595]
+            - text: In showroom
+          - link "10' Wave Slide Rainbow Play Systems 10' Wave Slide In showroom" [ref=e596] [cursor=pointer]:
+            - /url: /AceGameroomGallery/playsets/wave-slide/
+            - generic [ref=e597]:
+              - img "10' Wave Slide" [ref=e598]
+              - generic [ref=e599]: Rainbow Play Systems
+              - img [ref=e601]
+            - heading "10' Wave Slide" [level=3] [ref=e604]
+            - text: In showroom
+      - generic [ref=e606]:
+        - generic [ref=e607]:
+          - generic [ref=e608]:
+            - paragraph [ref=e611]: / OUTDOOR
+            - heading "The backyard everyone shows up at." [level=2] [ref=e612]
+          - link "View outdoor →" [ref=e613] [cursor=pointer]:
+            - /url: /AceGameroomGallery/outdoor/
+        - generic [ref=e614]:
+          - link "Goalsetter MVP 72\" In-Ground Basketball Goal Goalsetter Goalsetter MVP 72\" In-Ground Basketball Goal $2,249" [ref=e615] [cursor=pointer]:
+            - /url: /AceGameroomGallery/outdoor/goalsetter-mvp-72/
+            - generic [ref=e616]:
+              - img "Goalsetter MVP 72\" In-Ground Basketball Goal" [ref=e617]
+              - generic [ref=e618]: Goalsetter
+              - img [ref=e620]
+            - heading "Goalsetter MVP 72\" In-Ground Basketball Goal" [level=3] [ref=e623]
+            - generic [ref=e625]: $2,249
+          - link "Lifetime 54\" Portable Adjustable Basketball Hoop Lifetime Lifetime 54\" Portable Adjustable Basketball Hoop $649" [ref=e626] [cursor=pointer]:
+            - /url: /AceGameroomGallery/outdoor/lifetime-portable-54/
+            - generic [ref=e627]:
+              - img "Lifetime 54\" Portable Adjustable Basketball Hoop" [ref=e628]
+              - generic [ref=e629]: Lifetime
+              - img [ref=e631]
+            - heading "Lifetime 54\" Portable Adjustable Basketball Hoop" [level=3] [ref=e634]
+            - generic [ref=e636]: $649
+          - link "Springfree Jumbo Square Trampoline Springfree Only 2 Springfree Jumbo Square Trampoline $2,699" [ref=e637] [cursor=pointer]:
+            - /url: /AceGameroomGallery/outdoor/springfree-jumbo-square/
+            - generic [ref=e638]:
+              - img "Springfree Jumbo Square Trampoline" [ref=e639]
+              - generic [ref=e640]: Springfree
+              - generic [ref=e642]: Only 2
+              - img [ref=e644]
+            - heading "Springfree Jumbo Square Trampoline" [level=3] [ref=e647]
+            - generic [ref=e649]: $2,699
+          - link "Springfree Medium Oval Trampoline Springfree Springfree Medium Oval Trampoline $1,899" [ref=e650] [cursor=pointer]:
+            - /url: /AceGameroomGallery/outdoor/springfree-medium-oval/
+            - generic [ref=e651]:
+              - img "Springfree Medium Oval Trampoline" [ref=e652]
+              - generic [ref=e653]: Springfree
+              - img [ref=e655]
+            - heading "Springfree Medium Oval Trampoline" [level=3] [ref=e658]
+            - generic [ref=e660]: $1,899
+          - link "Goalsetter All-Star 54\" In-Ground Basketball Goal Goalsetter Goalsetter All-Star 54\" In-Ground Basketball Goal In showroom" [ref=e661] [cursor=pointer]:
+            - /url: /AceGameroomGallery/outdoor/goalsetter-allstar-54/
+            - generic [ref=e662]:
+              - img "Goalsetter All-Star 54\" In-Ground Basketball Goal" [ref=e663]
+              - generic [ref=e664]: Goalsetter
+              - img [ref=e666]
+            - heading "Goalsetter All-Star 54\" In-Ground Basketball Goal" [level=3] [ref=e669]
+            - text: In showroom
+          - link "Goalsetter Captain 60\" In-Ground Basketball Goal Goalsetter Goalsetter Captain 60\" In-Ground Basketball Goal In showroom" [ref=e670] [cursor=pointer]:
+            - /url: /AceGameroomGallery/outdoor/goalsetter-captain-60/
+            - generic [ref=e671]:
+              - img "Goalsetter Captain 60\" In-Ground Basketball Goal" [ref=e672]
+              - generic [ref=e673]: Goalsetter
+              - img [ref=e675]
+            - heading "Goalsetter Captain 60\" In-Ground Basketball Goal" [level=3] [ref=e678]
+            - text: In showroom
+          - link "FlexRHoop Wall-Mount Basketball Goal FlexR FlexRHoop Wall-Mount Basketball Goal In showroom" [ref=e679] [cursor=pointer]:
+            - /url: /AceGameroomGallery/outdoor/flexrhoop/
+            - generic [ref=e680]:
+              - img "FlexRHoop Wall-Mount Basketball Goal" [ref=e681]
+              - generic [ref=e682]: FlexR
+              - img [ref=e684]
+            - heading "FlexRHoop Wall-Mount Basketball Goal" [level=3] [ref=e687]
+            - text: In showroom
+      - generic [ref=e691]:
+        - paragraph [ref=e692]: DON'T SEE IT?
+        - heading "The website is a fraction of the showroom." [level=2] [ref=e693]:
+          - text: The website is a fraction
+          - text: of the showroom.
+        - paragraph [ref=e694]: We curate 54products on this site. The 10,000 sq ft showroom in Fort Wayne has hundreds more — and the staff who can tell you which one's right for the room you're building.
+        - generic [ref=e695]:
+          - link "Request a Quote" [ref=e696] [cursor=pointer]:
+            - /url: /AceGameroomGallery/contact/
+          - link "Visit the Showroom" [ref=e697] [cursor=pointer]:
+            - /url: /AceGameroomGallery/experience/
+        - paragraph [ref=e698]:
+          - text: Or call
+          - link "(260) 432-3443" [ref=e699] [cursor=pointer]:
+            - /url: tel:+12604323443
+          - text: — Bret answers most days.
+      - generic [ref=e701]:
+        - paragraph [ref=e702]: SHOWROOM EXCLUSIVES
+        - paragraph [ref=e703]: 22 pieces priced at the showroom — typically high-configuration items where finishes, sizing, and install schedule shape the quote.
+  - contentinfo [ref=e704]:
+    - generic [ref=e706]:
+      - generic [ref=e707]:
+        - generic [ref=e708]: Rack.
+        - generic [ref=e709]: Break.
+        - generic [ref=e710]: Gather.
+        - generic [ref=e711]: Live.
+      - generic [ref=e713]:
+        - generic [ref=e714]: Rack.
+        - generic [ref=e715]: Break.
+        - generic [ref=e716]: Gather.
+        - generic [ref=e717]: Live.
+      - generic [ref=e719]:
+        - generic [ref=e720]: Rack.
+        - generic [ref=e721]: Break.
+        - generic [ref=e722]: Gather.
+        - generic [ref=e723]: Live.
+      - generic [ref=e725]:
+        - generic [ref=e726]: Rack.
+        - generic [ref=e727]: Break.
+        - generic [ref=e728]: Gather.
+        - generic [ref=e729]: Live.
+      - generic [ref=e731]:
+        - generic [ref=e732]: Rack.
+        - generic [ref=e733]: Break.
+        - generic [ref=e734]: Gather.
+        - generic [ref=e735]: Live.
+      - generic [ref=e737]:
+        - generic [ref=e738]: Rack.
+        - generic [ref=e739]: Break.
+        - generic [ref=e740]: Gather.
+        - generic [ref=e741]: Live.
+    - generic [ref=e743]:
+      - generic [ref=e744]:
+        - generic [ref=e745]:
+          - link "Ace Game Room Gallery" [ref=e746] [cursor=pointer]:
+            - /url: /AceGameroomGallery/
+            - img "Ace Game Room Gallery" [ref=e748]
+          - paragraph [ref=e749]: Fort Wayne's most curated game room showroom. Over 25 years creating the places families gather, friends compete, and memories are made.
+          - generic [ref=e750]:
+            - link "Facebook" [ref=e751] [cursor=pointer]:
+              - /url: https://facebook.com
+              - img [ref=e752]
+            - link "Instagram" [ref=e754] [cursor=pointer]:
+              - /url: https://instagram.com/acegameroomgallery
+              - img [ref=e755]
+        - generic [ref=e757]:
+          - heading "Collection" [level=4] [ref=e758]
+          - list [ref=e759]:
+            - listitem [ref=e760]:
+              - link "Billiards" [ref=e761] [cursor=pointer]:
+                - /url: /AceGameroomGallery/billiards/
+            - listitem [ref=e762]:
+              - link "Games" [ref=e763] [cursor=pointer]:
+                - /url: /AceGameroomGallery/games/
+            - listitem [ref=e764]:
+              - link "Furniture" [ref=e765] [cursor=pointer]:
+                - /url: /AceGameroomGallery/furniture/
+            - listitem [ref=e766]:
+              - link "Playsets" [ref=e767] [cursor=pointer]:
+                - /url: /AceGameroomGallery/playsets/
+            - listitem [ref=e768]:
+              - link "Outdoor" [ref=e769] [cursor=pointer]:
+                - /url: /AceGameroomGallery/outdoor/
+        - generic [ref=e770]:
+          - heading "Experience" [level=4] [ref=e771]
+          - list [ref=e772]:
+            - listitem [ref=e773]:
+              - link "Our Showroom" [ref=e774] [cursor=pointer]:
+                - /url: /AceGameroomGallery/experience/
+            - listitem [ref=e775]:
+              - link "Services" [ref=e776] [cursor=pointer]:
+                - /url: /AceGameroomGallery/services/
+            - listitem [ref=e777]:
+              - link "Our Story" [ref=e778] [cursor=pointer]:
+                - /url: /AceGameroomGallery/about/
+            - listitem [ref=e779]:
+              - link "FAQs" [ref=e780] [cursor=pointer]:
+                - /url: /AceGameroomGallery/faq/
+            - listitem [ref=e781]:
+              - link "Pool League" [ref=e782] [cursor=pointer]:
+                - /url: /AceGameroomGallery/pool-league/
+        - generic [ref=e783]:
+          - heading "Connect" [level=4] [ref=e784]
+          - list [ref=e785]:
+            - listitem [ref=e786]:
+              - link "Contact" [ref=e787] [cursor=pointer]:
+                - /url: /AceGameroomGallery/contact/
+            - listitem [ref=e788]:
+              - link "Request a Quote" [ref=e789] [cursor=pointer]:
+                - /url: /AceGameroomGallery/contact/
+            - listitem [ref=e790]:
+              - link "Dart League" [ref=e791] [cursor=pointer]:
+                - /url: /AceGameroomGallery/dart-league/
+            - listitem [ref=e792]:
+              - link "Financing" [ref=e793] [cursor=pointer]:
+                - /url: /AceGameroomGallery/contact/
+      - generic [ref=e794]:
+        - generic [ref=e795]:
+          - paragraph [ref=e796]: Visit
+          - link "2525 W Jefferson Blvd Fort Wayne, IN 46802" [ref=e797] [cursor=pointer]:
+            - /url: https://maps.google.com/?q=2525+W+Jefferson+Blvd,+Fort+Wayne,+IN+46802
+            - img [ref=e798]
+            - generic [ref=e801]:
+              - generic [ref=e802]: 2525 W Jefferson Blvd
+              - generic [ref=e803]: Fort Wayne, IN 46802
+        - generic [ref=e804]:
+          - paragraph [ref=e805]: Call
+          - generic [ref=e806]:
+            - img [ref=e807]
+            - generic [ref=e809]:
+              - link "(260) 432-3443" [ref=e810] [cursor=pointer]:
+                - /url: tel:+12604323443
+              - generic [ref=e811]: "Fax: (260) 436-2507"
+        - generic [ref=e812]:
+          - paragraph [ref=e813]: Hours
+          - generic [ref=e814]:
+            - img [ref=e815]
+            - generic [ref=e818]:
+              - generic [ref=e819]: Monday — Saturday
+              - generic [ref=e820]: 10:00 AM — 6:00 PM
+              - generic [ref=e821]: Sunday — Closed
+    - generic [ref=e823]:
+      - paragraph [ref=e824]: © 2026 Ace Game Room Gallery. Family owned since 1992.
+      - generic [ref=e825]:
+        - link "Admin" [ref=e826] [cursor=pointer]:
+          - /url: /AceGameroomGallery/admin/
+        - link "FAQ" [ref=e827] [cursor=pointer]:
+          - /url: /AceGameroomGallery/faq/
+        - link "Contact" [ref=e828] [cursor=pointer]:
+          - /url: /AceGameroomGallery/contact/
+  - alert [ref=e829]

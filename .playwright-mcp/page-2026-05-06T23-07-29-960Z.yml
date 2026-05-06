@@ -1,0 +1,291 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e4]:
+      - link "Ace Game Room Gallery — Home" [ref=e5] [cursor=pointer]:
+        - /url: /AceGameroomGallery/
+        - img "Ace Game Room Gallery" [ref=e7]
+      - navigation [ref=e8]:
+        - link "Collection" [ref=e9] [cursor=pointer]:
+          - /url: /AceGameroomGallery/collection/
+        - link "Experience" [ref=e10] [cursor=pointer]:
+          - /url: /AceGameroomGallery/experience/
+        - link "Story" [ref=e11] [cursor=pointer]:
+          - /url: /AceGameroomGallery/about/
+        - link "Services" [ref=e12] [cursor=pointer]:
+          - /url: /AceGameroomGallery/services/
+        - link "Contact" [ref=e13] [cursor=pointer]:
+          - /url: /AceGameroomGallery/contact/
+      - generic [ref=e14]:
+        - link "(260) 432-3443" [ref=e15] [cursor=pointer]:
+          - /url: tel:+12604323443
+          - text: (260) 432-3443
+        - button "Open cart — 0 items" [ref=e17]:
+          - img [ref=e18]
+        - link "Request a Quote" [ref=e21] [cursor=pointer]:
+          - /url: /AceGameroomGallery/contact/
+  - main [ref=e22]:
+    - generic [ref=e23]:
+      - generic [ref=e25]:
+        - link "Home" [ref=e26] [cursor=pointer]:
+          - /url: /AceGameroomGallery/
+        - generic [ref=e27]: /
+        - link "Games" [ref=e28] [cursor=pointer]:
+          - /url: /AceGameroomGallery/games/
+        - generic [ref=e29]: /
+        - generic [ref=e30]: Stern Jaws Pinball — Pro
+      - generic [ref=e33]:
+        - img "Stern Jaws Pinball — Pro" [ref=e36]
+        - generic [ref=e37]:
+          - generic [ref=e38]: STERN
+          - heading "Stern Jaws Pinball — Pro" [level=1] [ref=e39]
+          - paragraph [ref=e40]: The Pro edition of Stern's Jaws table — a brand-new theme with three multiball modes, a magnetic shark mech, ramp-fed action, and a backbox display that drops you straight into Amity. Built in Chicago, like every Stern.
+          - generic [ref=e41]:
+            - generic [ref=e42]:
+              - generic [ref=e44]: $7,499
+              - generic [ref=e45]: Only 2 left
+            - generic [ref=e47]:
+              - paragraph [ref=e48]: Fulfillment
+              - generic [ref=e49]:
+                - generic [ref=e50]:
+                  - img [ref=e51]
+                  - generic [ref=e55]: Pickup
+                  - generic [ref=e56]: Free at our showroom
+                - generic [ref=e57]:
+                  - img [ref=e58]
+                  - generic [ref=e63]: Local Delivery
+                  - generic [ref=e64]: Free over $1,999
+                - generic [ref=e65]:
+                  - img [ref=e66]
+                  - generic [ref=e70]: Ship Nationwide
+                  - generic [ref=e71]: Not available
+              - paragraph [ref=e72]:
+                - img [ref=e73]
+                - text: Slate item — professional install required. Add it below or we'll include it on the quote.
+            - generic [ref=e75]:
+              - generic [ref=e76]:
+                - paragraph [ref=e77]: Delivery & Install
+                - generic [ref=e79] [cursor=pointer]:
+                  - checkbox "White-Glove Delivery +$149 Inside delivery, basement-ready. Free on orders over $1,999 within 30 mi." [ref=e80]
+                  - generic [ref=e82]:
+                    - generic [ref=e83]:
+                      - generic [ref=e84]: White-Glove Delivery
+                      - generic [ref=e85]: +$149
+                    - generic [ref=e86]: Inside delivery, basement-ready. Free on orders over $1,999 within 30 mi.
+              - generic [ref=e87]:
+                - paragraph [ref=e88]: Warranty
+                - generic [ref=e90] [cursor=pointer]:
+                  - checkbox "Extended Warranty (5 yrs) +$249 Adds 5 years of full parts + labor on top of factory warranty." [ref=e91]
+                  - generic [ref=e93]:
+                    - generic [ref=e94]:
+                      - generic [ref=e95]: Extended Warranty (5 yrs)
+                      - generic [ref=e96]: +$249
+                    - generic [ref=e97]: Adds 5 years of full parts + labor on top of factory warranty.
+            - generic [ref=e98]:
+              - generic [ref=e99]:
+                - paragraph [ref=e100]: Quantity
+                - generic [ref=e101]:
+                  - button "Decrease quantity" [disabled] [ref=e102]:
+                    - img [ref=e103]
+                  - generic [ref=e104]: "1"
+                  - button "Increase quantity" [ref=e105]:
+                    - img [ref=e106]
+              - generic [ref=e107]:
+                - paragraph [ref=e108]: Total
+                - generic [ref=e110]: $7,499
+            - generic [ref=e111]:
+              - button "Add to Cart" [ref=e112] [cursor=pointer]:
+                - generic [ref=e113]:
+                  - img [ref=e114]
+                  - text: Add to Cart
+              - button "View Cart" [ref=e117] [cursor=pointer]
+            - generic [ref=e118]:
+              - generic [ref=e119]:
+                - img [ref=e120]
+                - generic [ref=e122]: Free pickup at showroom
+              - generic [ref=e123]:
+                - img [ref=e124]
+                - generic [ref=e126]: Pro install available
+              - generic [ref=e127]:
+                - img [ref=e128]
+                - generic [ref=e130]: Wells Fargo financing
+              - generic [ref=e131]:
+                - img [ref=e132]
+                - generic [ref=e134]: Price match guarantee
+          - generic [ref=e135]:
+            - paragraph [ref=e136]: Specifications
+            - generic [ref=e137]:
+              - generic [ref=e138]:
+                - term [ref=e139]: type
+                - definition [ref=e140]: Solid-state pinball
+              - generic [ref=e141]:
+                - term [ref=e142]: dimensions
+                - definition [ref=e143]: 55"L × 27"W × 75"H
+              - generic [ref=e144]:
+                - term [ref=e145]: weight
+                - definition [ref=e146]: 240 lbs
+              - generic [ref=e147]:
+                - term [ref=e148]: power
+                - definition [ref=e149]: 120V / 4 Amps
+              - generic [ref=e150]:
+                - term [ref=e151]: warranty
+                - definition [ref=e152]: 2-year manufacturer
+              - generic [ref=e153]:
+                - term [ref=e154]: made in
+                - definition [ref=e155]: Elk Grove Village, IL
+              - generic [ref=e156]:
+                - term [ref=e157]: SKU
+                - definition [ref=e158]: ST-JAWS-PRO
+      - generic [ref=e160]:
+        - paragraph [ref=e161]: / YOU MAY ALSO LIKE
+        - heading "More from Games" [level=2] [ref=e162]
+        - generic [ref=e163]:
+          - link "Stern Foo Fighters Pinball — Limited Edition Stern Stern Foo Fighters Pinball — Limited Edition $11,999" [ref=e164] [cursor=pointer]:
+            - /url: /AceGameroomGallery/games/stern-foo-fighters-le/
+            - img "Stern Foo Fighters Pinball — Limited Edition" [ref=e166]
+            - paragraph [ref=e167]: Stern
+            - heading "Stern Foo Fighters Pinball — Limited Edition" [level=3] [ref=e168]
+            - generic [ref=e170]: $11,999
+          - link "Jersey Jack Pirates of the Caribbean Jersey Jack Pinball Jersey Jack Pirates of the Caribbean $9,999" [ref=e171] [cursor=pointer]:
+            - /url: /AceGameroomGallery/games/jjp-pirates/
+            - img "Jersey Jack Pirates of the Caribbean" [ref=e173]
+            - paragraph [ref=e174]: Jersey Jack Pinball
+            - heading "Jersey Jack Pirates of the Caribbean" [level=3] [ref=e175]
+            - generic [ref=e177]: $9,999
+          - 'link "Pre-Owned: Medieval Madness Remake Chicago Gaming Pre-Owned: Medieval Madness Remake $7,299" [ref=e178] [cursor=pointer]':
+            - /url: /AceGameroomGallery/games/pre-owned-medieval-madness/
+            - 'img "Pre-Owned: Medieval Madness Remake" [ref=e180]'
+            - paragraph [ref=e181]: Chicago Gaming
+            - 'heading "Pre-Owned: Medieval Madness Remake" [level=3] [ref=e182]'
+            - generic [ref=e184]: $7,299
+  - contentinfo [ref=e185]:
+    - generic [ref=e187]:
+      - generic [ref=e188]:
+        - generic [ref=e189]: Rack.
+        - generic [ref=e190]: Break.
+        - generic [ref=e191]: Gather.
+        - generic [ref=e192]: Live.
+      - generic [ref=e194]:
+        - generic [ref=e195]: Rack.
+        - generic [ref=e196]: Break.
+        - generic [ref=e197]: Gather.
+        - generic [ref=e198]: Live.
+      - generic [ref=e200]:
+        - generic [ref=e201]: Rack.
+        - generic [ref=e202]: Break.
+        - generic [ref=e203]: Gather.
+        - generic [ref=e204]: Live.
+      - generic [ref=e206]:
+        - generic [ref=e207]: Rack.
+        - generic [ref=e208]: Break.
+        - generic [ref=e209]: Gather.
+        - generic [ref=e210]: Live.
+      - generic [ref=e212]:
+        - generic [ref=e213]: Rack.
+        - generic [ref=e214]: Break.
+        - generic [ref=e215]: Gather.
+        - generic [ref=e216]: Live.
+      - generic [ref=e218]:
+        - generic [ref=e219]: Rack.
+        - generic [ref=e220]: Break.
+        - generic [ref=e221]: Gather.
+        - generic [ref=e222]: Live.
+    - generic [ref=e224]:
+      - generic [ref=e225]:
+        - generic [ref=e226]:
+          - link "Ace Game Room Gallery" [ref=e227] [cursor=pointer]:
+            - /url: /AceGameroomGallery/
+            - img "Ace Game Room Gallery" [ref=e229]
+          - paragraph [ref=e230]: Fort Wayne's most curated game room showroom. Over 25 years creating the places families gather, friends compete, and memories are made.
+          - generic [ref=e231]:
+            - link "Facebook" [ref=e232] [cursor=pointer]:
+              - /url: https://facebook.com
+              - img [ref=e233]
+            - link "Instagram" [ref=e235] [cursor=pointer]:
+              - /url: https://instagram.com/acegameroomgallery
+              - img [ref=e236]
+        - generic [ref=e238]:
+          - heading "Collection" [level=4] [ref=e239]
+          - list [ref=e240]:
+            - listitem [ref=e241]:
+              - link "Billiards" [ref=e242] [cursor=pointer]:
+                - /url: /AceGameroomGallery/billiards/
+            - listitem [ref=e243]:
+              - link "Games" [ref=e244] [cursor=pointer]:
+                - /url: /AceGameroomGallery/games/
+            - listitem [ref=e245]:
+              - link "Furniture" [ref=e246] [cursor=pointer]:
+                - /url: /AceGameroomGallery/furniture/
+            - listitem [ref=e247]:
+              - link "Playsets" [ref=e248] [cursor=pointer]:
+                - /url: /AceGameroomGallery/playsets/
+            - listitem [ref=e249]:
+              - link "Outdoor" [ref=e250] [cursor=pointer]:
+                - /url: /AceGameroomGallery/outdoor/
+        - generic [ref=e251]:
+          - heading "Experience" [level=4] [ref=e252]
+          - list [ref=e253]:
+            - listitem [ref=e254]:
+              - link "Our Showroom" [ref=e255] [cursor=pointer]:
+                - /url: /AceGameroomGallery/experience/
+            - listitem [ref=e256]:
+              - link "Services" [ref=e257] [cursor=pointer]:
+                - /url: /AceGameroomGallery/services/
+            - listitem [ref=e258]:
+              - link "Our Story" [ref=e259] [cursor=pointer]:
+                - /url: /AceGameroomGallery/about/
+            - listitem [ref=e260]:
+              - link "FAQs" [ref=e261] [cursor=pointer]:
+                - /url: /AceGameroomGallery/faq/
+            - listitem [ref=e262]:
+              - link "Pool League" [ref=e263] [cursor=pointer]:
+                - /url: /AceGameroomGallery/pool-league/
+        - generic [ref=e264]:
+          - heading "Connect" [level=4] [ref=e265]
+          - list [ref=e266]:
+            - listitem [ref=e267]:
+              - link "Contact" [ref=e268] [cursor=pointer]:
+                - /url: /AceGameroomGallery/contact/
+            - listitem [ref=e269]:
+              - link "Request a Quote" [ref=e270] [cursor=pointer]:
+                - /url: /AceGameroomGallery/contact/
+            - listitem [ref=e271]:
+              - link "Dart League" [ref=e272] [cursor=pointer]:
+                - /url: /AceGameroomGallery/dart-league/
+            - listitem [ref=e273]:
+              - link "Financing" [ref=e274] [cursor=pointer]:
+                - /url: /AceGameroomGallery/contact/
+      - generic [ref=e275]:
+        - generic [ref=e276]:
+          - paragraph [ref=e277]: Visit
+          - link "2525 W Jefferson Blvd Fort Wayne, IN 46802" [ref=e278] [cursor=pointer]:
+            - /url: https://maps.google.com/?q=2525+W+Jefferson+Blvd,+Fort+Wayne,+IN+46802
+            - img [ref=e279]
+            - generic [ref=e282]:
+              - generic [ref=e283]: 2525 W Jefferson Blvd
+              - generic [ref=e284]: Fort Wayne, IN 46802
+        - generic [ref=e285]:
+          - paragraph [ref=e286]: Call
+          - generic [ref=e287]:
+            - img [ref=e288]
+            - generic [ref=e290]:
+              - link "(260) 432-3443" [ref=e291] [cursor=pointer]:
+                - /url: tel:+12604323443
+              - generic [ref=e292]: "Fax: (260) 436-2507"
+        - generic [ref=e293]:
+          - paragraph [ref=e294]: Hours
+          - generic [ref=e295]:
+            - img [ref=e296]
+            - generic [ref=e299]:
+              - generic [ref=e300]: Monday — Saturday
+              - generic [ref=e301]: 10:00 AM — 6:00 PM
+              - generic [ref=e302]: Sunday — Closed
+    - generic [ref=e304]:
+      - paragraph [ref=e305]: © 2026 Ace Game Room Gallery. Family owned since 1992.
+      - generic [ref=e306]:
+        - link "Admin" [ref=e307] [cursor=pointer]:
+          - /url: /AceGameroomGallery/admin/
+        - link "FAQ" [ref=e308] [cursor=pointer]:
+          - /url: /AceGameroomGallery/faq/
+        - link "Contact" [ref=e309] [cursor=pointer]:
+          - /url: /AceGameroomGallery/contact/
+  - alert [ref=e310]

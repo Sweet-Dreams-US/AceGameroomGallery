@@ -1,0 +1,14 @@
+[   13980ms] [ERROR] ErrorUtils caught an error:
+
+Failed building URI for base path: /stories/{?bucket_id}/{?card_id}/ message: Required template parameter is an empty string: bucket_id
+
+Subsequent non-fatal errors won't be logged; see https://fburl.com/debugjs. {column: 17870, clientTime: 1778109479, extra: Object, guardList: Array(1), hash: j3nkbf} @ https://static.xx.fbcdn.net/rsrc.php/v4/yv/r/x6N3CrHGYQE.js:78
+[   14145ms] [VERBOSE] [DOM] Input elements should have autocomplete attributes (suggested: "current-password"): (More info: https://goo.gl/9p2vKq) %o @ https://www.facebook.com/FortezzaCoffee/:0
+[   14360ms] [LOG] 
+%cStop! font-family:helvetica; font-size:20px; font-size:50px; font-weight:bold; color:red; -webkit-text-stroke:1px black; @ https://static.xx.fbcdn.net/rsrc.php/v4/yv/r/x6N3CrHGYQE.js:243
+[   14360ms] [LOG] 
+%cThis is a browser feature intended for developers. If someone told you to copy-paste something here to enable a Facebook feature or "hack" someone's account, it's a scam and will give them access to your Facebook account. font-family:helvetica; font-size:20px;  @ https://static.xx.fbcdn.net/rsrc.php/v4/yv/r/x6N3CrHGYQE.js:243
+[   14360ms] [LOG] 
+%cSee https://www.facebook.com/selfxss for more information. font-family:helvetica; font-size:20px;  @ https://static.xx.fbcdn.net/rsrc.php/v4/yv/r/x6N3CrHGYQE.js:243
+[   14360ms] [LOG] 
+%c  @ https://static.xx.fbcdn.net/rsrc.php/v4/yv/r/x6N3CrHGYQE.js:243

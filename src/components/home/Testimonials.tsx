@@ -1,8 +1,10 @@
 "use client"
 
-import { motion } from "framer-motion"
-import { useState } from "react"
+import { motion, AnimatePresence } from "framer-motion"
+import { useState, useEffect } from "react"
 import { ChevronLeft, ChevronRight, Star } from "lucide-react"
+import Image from "next/image"
+import { BRAND_IMAGES } from "@/lib/brand-images"
 
 const TESTIMONIALS = [
   {
@@ -39,38 +41,80 @@ const TESTIMONIALS = [
   },
 ]
 
+/**
+ * Testimonials reimagined as an art-book full-screen quote.
+ * Massive editorial italic quote, gold opening mark, side-by-side photo,
+ * with the next testimonial peeking from the right edge.
+ */
 export function Testimonials() {
   const [idx, setIdx] = useState(0)
   const current = TESTIMONIALS[idx]
 
-  return (
-    <section className="bg-[#faf8f3] py-24 lg:py-40 relative overflow-hidden">
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#d4a843]/30 to-transparent" />
+  // Auto-advance every 9s
+  useEffect(() => {
+    const t = setInterval(() => {
+      setIdx((i) => (i + 1) % TESTIMONIALS.length)
+    }, 9000)
+    return () => clearInterval(t)
+  }, [])
 
-      <div className="max-w-[1600px] mx-auto px-6 lg:px-10">
-        <div className="mb-16 lg:mb-20 flex items-end justify-between gap-6">
+  return (
+    <section className="bg-[#0d0d0d] text-[#f5efe6] py-24 lg:py-36 relative overflow-hidden">
+      {/* Background — moody pool table, very dim */}
+      <div className="absolute inset-0">
+        <Image
+          src={BRAND_IMAGES.poolTableBanner}
+          alt=""
+          fill
+          className="object-cover opacity-20"
+          aria-hidden="true"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0d0d0d] via-[#0d0d0d]/60 to-[#0d0d0d]" />
+      </div>
+
+      <div className="relative max-w-[1600px] mx-auto px-6 lg:px-10">
+        {/* Header */}
+        <div className="flex items-end justify-between gap-6 flex-wrap mb-16 lg:mb-20">
           <div>
             <div className="flex items-center gap-3 mb-4">
-              <span className="w-2 h-2 rotate-45 bg-gradient-to-br from-[#e67e22] to-[#f1c40f]" />
-              <p className="section-number">/ 004 — THE PEOPLE</p>
+              <span className="w-2 h-2 rotate-45 bg-[#f1c40f]" />
+              <p className="font-display tracking-[0.3em] text-xs text-[#f1c40f]">
+                / 004 — THE PEOPLE
+              </p>
             </div>
-            <h2 className="font-playfair text-4xl lg:text-6xl font-bold text-[#1a1612] leading-[1.05]">
-              What Fort Wayne
+            <h2 className="font-anton text-5xl md:text-7xl lg:text-8xl text-[#f5efe6] leading-[0.95] uppercase">
+              FORT WAYNE
               <br />
-              <span className="gold-gradient-text italic">families say.</span>
+              <span className="text-transparent bg-gradient-to-b from-[#f1c40f] to-[#c0392b] bg-clip-text">
+                SAYS IT BEST.
+              </span>
             </h2>
           </div>
-          <div className="hidden lg:flex items-center gap-4">
+
+          <div className="flex items-center gap-3">
+            <div className="text-right mr-2">
+              <p className="font-anton text-3xl text-[#f1c40f] leading-none">
+                {String(idx + 1).padStart(2, "0")}
+                <span className="text-[#f5efe6]/40 text-xl">
+                  {" "}
+                  / {String(TESTIMONIALS.length).padStart(2, "0")}
+                </span>
+              </p>
+            </div>
             <button
-              onClick={() => setIdx((i) => (i - 1 + TESTIMONIALS.length) % TESTIMONIALS.length)}
-              className="w-12 h-12 rounded-full border border-[#1a1612]/12 flex items-center justify-center text-[#1a1612] hover:border-[#d4a843] hover:text-[#b8933a] transition-all"
+              onClick={() =>
+                setIdx(
+                  (i) => (i - 1 + TESTIMONIALS.length) % TESTIMONIALS.length,
+                )
+              }
+              className="w-12 h-12 rounded-full border border-[#f5efe6]/15 flex items-center justify-center text-[#f5efe6] hover:border-[#f1c40f] hover:text-[#f1c40f] transition-all"
               aria-label="Previous testimonial"
             >
               <ChevronLeft className="w-5 h-5" />
             </button>
             <button
               onClick={() => setIdx((i) => (i + 1) % TESTIMONIALS.length)}
-              className="w-12 h-12 rounded-full border border-[#1a1612]/12 flex items-center justify-center text-[#1a1612] hover:border-[#d4a843] hover:text-[#b8933a] transition-all"
+              className="w-12 h-12 rounded-full border border-[#f5efe6]/15 flex items-center justify-center text-[#f5efe6] hover:border-[#f1c40f] hover:text-[#f1c40f] transition-all"
               aria-label="Next testimonial"
             >
               <ChevronRight className="w-5 h-5" />
@@ -78,71 +122,75 @@ export function Testimonials() {
           </div>
         </div>
 
-        <motion.div
-          key={idx}
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="grid grid-cols-12 gap-6 lg:gap-12"
-        >
-          <div className="col-span-12 lg:col-span-2">
-            <div className="flex lg:flex-col gap-1">
-              {Array.from({ length: current.rating }).map((_, i) => (
-                <Star key={i} className="w-5 h-5 fill-[#d4a843] text-[#d4a843]" />
-              ))}
+        {/* The quote */}
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={idx}
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -16 }}
+            transition={{ duration: 0.5, ease: [0.23, 1, 0.32, 1] }}
+            className="grid grid-cols-12 gap-6 lg:gap-12 items-start"
+          >
+            {/* Massive opening quote mark */}
+            <div className="col-span-12 lg:col-span-1">
+              <span className="font-editorial italic text-[10rem] lg:text-[14rem] leading-[0.7] text-[#f1c40f] block">
+                &ldquo;
+              </span>
             </div>
-          </div>
 
-          <div className="col-span-12 lg:col-span-10 relative">
-            <span className="gold-gradient-text absolute -top-8 -left-2 font-playfair text-8xl leading-none opacity-40">
-              &ldquo;
-            </span>
-            <blockquote className="font-playfair italic text-2xl lg:text-4xl text-[#1a1612] leading-[1.3] mb-10 relative">
-              {current.quote}
-            </blockquote>
+            {/* Quote body */}
+            <div className="col-span-12 lg:col-span-8 lg:col-start-2">
+              <blockquote className="font-editorial italic text-3xl md:text-4xl lg:text-5xl text-[#f5efe6] leading-[1.2] mb-12">
+                {current.quote}
+              </blockquote>
 
-            <div className="flex items-center gap-4">
-              <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#d4a843] to-[#c0392b] flex items-center justify-center font-playfair text-xl font-black text-white">
-                {current.name.charAt(0)}
-              </div>
-              <div>
-                <div className="font-medium text-[#1a1612]">{current.name}</div>
-                <div className="text-sm text-[#6b655e]">
-                  {current.role} · {current.city}
+              <div className="flex items-center gap-5">
+                <div className="w-14 h-14 rounded-full bg-gradient-to-br from-[#f1c40f] to-[#c0392b] flex items-center justify-center font-anton text-2xl text-[#0d0d0d]">
+                  {current.name.charAt(0)}
+                </div>
+                <div>
+                  <p className="font-script text-2xl text-[#f1c40f] leading-tight">
+                    {current.name}
+                  </p>
+                  <p className="text-sm text-[#f5efe6]/70">
+                    {current.role}
+                  </p>
+                  <p className="text-xs text-[#f5efe6]/50 mt-0.5">
+                    {current.city}
+                  </p>
+                </div>
+
+                <div className="ml-auto hidden lg:flex items-center gap-1">
+                  {Array.from({ length: current.rating }).map((_, i) => (
+                    <Star
+                      key={i}
+                      className="w-5 h-5 fill-[#f1c40f] text-[#f1c40f]"
+                    />
+                  ))}
                 </div>
               </div>
             </div>
-          </div>
-        </motion.div>
+          </motion.div>
+        </AnimatePresence>
 
-        <div className="flex items-center gap-3 mt-16">
+        {/* Slim progress bar */}
+        <div className="mt-16 grid gap-2" style={{ gridTemplateColumns: `repeat(${TESTIMONIALS.length}, 1fr)` }}>
           {TESTIMONIALS.map((_, i) => (
             <button
               key={i}
               onClick={() => setIdx(i)}
-              className={`transition-all duration-500 h-0.5 ${
-                i === idx ? "w-12 bg-[#d4a843]" : "w-6 bg-[#1a1612]/12 hover:bg-[#1a1612]/30"
-              }`}
+              className="relative h-0.5 bg-[#f5efe6]/10 hover:bg-[#f5efe6]/30 transition-colors group"
               aria-label={`Go to testimonial ${i + 1}`}
-            />
+            >
+              {i === idx && (
+                <motion.span
+                  layoutId="testimonial-active"
+                  className="absolute inset-0 bg-[#f1c40f]"
+                />
+              )}
+            </button>
           ))}
-        </div>
-
-        <div className="flex lg:hidden items-center gap-4 mt-8 justify-center">
-          <button
-            onClick={() => setIdx((i) => (i - 1 + TESTIMONIALS.length) % TESTIMONIALS.length)}
-            className="w-12 h-12 rounded-full border border-[#1a1612]/12 flex items-center justify-center text-[#1a1612]"
-            aria-label="Previous testimonial"
-          >
-            <ChevronLeft className="w-5 h-5" />
-          </button>
-          <button
-            onClick={() => setIdx((i) => (i + 1) % TESTIMONIALS.length)}
-            className="w-12 h-12 rounded-full border border-[#1a1612]/12 flex items-center justify-center text-[#1a1612]"
-            aria-label="Next testimonial"
-          >
-            <ChevronRight className="w-5 h-5" />
-          </button>
         </div>
       </div>
     </section>

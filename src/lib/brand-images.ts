@@ -43,6 +43,12 @@ export const BRAND_IMAGES = {
   aceLogoFull: `${BASE}/ace-logo-full.png`,
   // Cinematic pool-table corner banner — moody amber light, gold balls
   poolTableBanner: `${BASE}/pool-table-banner.webp`,
+  // ACE wordmark on green billiard felt — for green-section banners
+  aceLogoFelt: `${BASE}/ace-logo-felt.png`,
+  // ACE single-word mark centered on green felt — for square placements
+  aceMarkFelt: `${BASE}/ace-mark-felt.png`,
+  // ACE wordmark on dark wood — for crimson/dark sections
+  aceMarkDark: `${BASE}/ace-mark-dark.png`,
 
   // ===== Per-category product hero shots =====
   productPinball: `${BASE}/product-pinball.webp`,
