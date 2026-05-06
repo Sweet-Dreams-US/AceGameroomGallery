@@ -1,10 +1,15 @@
 /**
  * Custom-generated brand imagery for Ace Game Room Gallery.
- * Created with Higgsfield Soul Location, optimized to webp.
+ * Created with Higgsfield Soul Location + nano_banana_2, optimized to webp/png.
  *
- * Use these in preference to stock photography wherever possible —
- * they're cohesive, on-brand, and have the same warm cinematic light
- * across every page.
+ * Use these in preference to stock photography wherever possible — they're
+ * cohesive, on-brand, and have the same warm cinematic light across every page.
+ *
+ * basePath note:
+ *   These paths are basePath-relative (start with /images/...) so they work
+ *   with `next/image`, which automatically prepends the configured basePath
+ *   in production. For raw <img> tags or CSS `background-image: url(...)`,
+ *   wrap with `withAssetBasePath()` so the GitHub Pages prefix is applied.
  */
 
 const BASE = "/images/brand"
@@ -35,3 +40,15 @@ export const BRAND_IMAGES = {
   // Cinematic pool-table corner banner — moody amber light, gold balls
   poolTableBanner: `${BASE}/pool-table-banner.webp`,
 } as const
+
+const BASE_PATH =
+  process.env.NODE_ENV === "production" ? "/AceGameroomGallery" : ""
+
+/**
+ * Apply the GitHub Pages basePath to an asset path.
+ * Use for CSS `background-image: url(...)` and raw `<img src>`.
+ * NOT needed for `next/image`, which handles basePath automatically.
+ */
+export function withAssetBasePath(path: string): string {
+  return `${BASE_PATH}${path}`
+}

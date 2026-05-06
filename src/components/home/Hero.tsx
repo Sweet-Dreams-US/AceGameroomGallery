@@ -3,7 +3,7 @@
 import { motion } from "framer-motion"
 import Link from "next/link"
 import { ArrowDown, ArrowUpRight } from "lucide-react"
-import { BRAND_IMAGES } from "@/lib/brand-images"
+import { BRAND_IMAGES, withAssetBasePath } from "@/lib/brand-images"
 
 export function Hero() {
   return (
@@ -13,7 +13,7 @@ export function Hero() {
         <div
           className="absolute inset-0 bg-cover bg-center animate-ken-burns"
           style={{
-            backgroundImage: `url('${BRAND_IMAGES.heroShowroom}')`,
+            backgroundImage: `url('${withAssetBasePath(BRAND_IMAGES.heroShowroom)}')`,
           }}
         />
         {/* Gradient overlays for depth and text legibility */}

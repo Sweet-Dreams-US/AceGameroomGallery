@@ -8,6 +8,7 @@
  */
 
 import { useEffect, useState, useCallback } from "react"
+import { BRAND_IMAGES, withAssetBasePath } from "@/lib/brand-images"
 
 const DURATION_MS = 2800
 
@@ -112,7 +113,7 @@ export default function LoadingScreen() {
         {/* ACE logo reveal — hand-painted brand mark fades in at the end */}
         <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 animate-logo-reveal">
           <img
-            src={`${process.env.NODE_ENV === "production" ? "/AceGameroomGallery" : ""}/images/brand/ace-mark.png`}
+            src={withAssetBasePath(BRAND_IMAGES.aceMarkPainted)}
             alt="Ace Game Room Gallery"
             className="h-auto w-auto max-w-[60vw] md:max-w-[340px]"
             style={{

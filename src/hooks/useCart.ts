@@ -8,25 +8,47 @@ const STORAGE_KEY = "ace-cart"
 /**
  * Module-level pub/sub so multiple useCart() consumers stay in sync —
  * cart drawer, navbar badge, checkout page all share state.
+ *
+ * IMPORTANT: getSnapshot must return a STABLE reference until the underlying
+ * data actually changes. React's useSyncExternalStore calls getSnapshot on
+ * every render to detect changes; if we return a fresh array each call,
+ * React sees "infinite changes" and bails out with error #185.
+ *
+ * We cache by serialized JSON: only re-parse when the JSON string differs.
  */
 const listeners = new Set<() => void>()
+const EMPTY_ITEMS: CartLine[] = []
+let cachedJson: string | null = null
+let cachedItems: CartLine[] = EMPTY_ITEMS
 
 function readFromStorage(): CartLine[] {
-  if (typeof window === "undefined") return []
+  if (typeof window === "undefined") return EMPTY_ITEMS
   try {
     const raw = window.localStorage.getItem(STORAGE_KEY)
-    if (!raw) return []
+    if (!raw) {
+      if (cachedJson !== "") {
+        cachedJson = ""
+        cachedItems = EMPTY_ITEMS
+      }
+      return cachedItems
+    }
+    if (raw === cachedJson) return cachedItems
     const parsed = JSON.parse(raw)
-    return Array.isArray(parsed) ? parsed : []
+    cachedJson = raw
+    cachedItems = Array.isArray(parsed) ? (parsed as CartLine[]) : EMPTY_ITEMS
+    return cachedItems
   } catch {
-    return []
+    return EMPTY_ITEMS
   }
 }
 
 function writeToStorage(items: CartLine[]) {
   if (typeof window === "undefined") return
   try {
-    window.localStorage.setItem(STORAGE_KEY, JSON.stringify(items))
+    const json = JSON.stringify(items)
+    window.localStorage.setItem(STORAGE_KEY, json)
+    cachedJson = json
+    cachedItems = items
   } catch {
     /* quota or serialization */
   }
@@ -35,11 +57,13 @@ function writeToStorage(items: CartLine[]) {
 
 const subscribe = (cb: () => void) => {
   listeners.add(cb)
-  return () => listeners.delete(cb)
+  return () => {
+    listeners.delete(cb)
+  }
 }
 
 const getSnapshot = () => readFromStorage()
-const getServerSnapshot = (): CartLine[] => []
+const getServerSnapshot = (): CartLine[] => EMPTY_ITEMS
 
 export function useCart() {
   const items = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot)
@@ -66,7 +90,9 @@ export function useCart() {
       writeToStorage(current.filter((i) => i.lineId !== lineId))
       return
     }
-    writeToStorage(current.map((i) => (i.lineId === lineId ? { ...i, quantity } : i)))
+    writeToStorage(
+      current.map((i) => (i.lineId === lineId ? { ...i, quantity } : i)),
+    )
   }, [])
 
   const removeItem = useCallback((lineId: string) => {
@@ -82,18 +108,19 @@ export function useCart() {
 }
 
 /**
- * Cart drawer open state — separate hook because the drawer can be opened
- * from the navbar, from the "Add to Cart" success flash, or by deep link.
+ * Cart drawer open state. Module-level boolean + listener set keeps every
+ * consumer in sync (navbar button, drawer, success toast).
  */
 const drawerListeners = new Set<(open: boolean) => void>()
 let drawerOpen = false
 
 export function useCartDrawer() {
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(drawerOpen)
 
   useEffect(() => {
     const cb = (next: boolean) => setIsOpen(next)
     drawerListeners.add(cb)
+    // Sync to current module value in case it changed before mount
     setIsOpen(drawerOpen)
     return () => {
       drawerListeners.delete(cb)
