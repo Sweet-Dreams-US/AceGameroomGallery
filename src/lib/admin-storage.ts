@@ -59,6 +59,42 @@ export function getItemById<T extends { id: string }>(
   return items.find((i) => i.id === id)
 }
 
+// Single-object localStorage helpers (for settings, overrides, etc.)
+export function getObject<T>(key: string, fallback: T): T {
+  if (!isBrowser()) return fallback
+  try {
+    const raw = window.localStorage.getItem(key)
+    if (!raw) return fallback
+    return JSON.parse(raw) as T
+  } catch {
+    return fallback
+  }
+}
+
+export function setObject<T>(key: string, value: T): void {
+  if (!isBrowser()) return
+  try {
+    window.localStorage.setItem(key, JSON.stringify(value))
+  } catch {
+    // ignore
+  }
+}
+
+// Seed a single-object key when nothing has been stored yet.
+export function seedObject<T>(key: string, initial: T): T {
+  if (!isBrowser()) return initial
+  try {
+    const raw = window.localStorage.getItem(key)
+    if (!raw) {
+      window.localStorage.setItem(key, JSON.stringify(initial))
+      return initial
+    }
+    return JSON.parse(raw) as T
+  } catch {
+    return initial
+  }
+}
+
 // Seed a storage key with initial data only if nothing is stored yet.
 export function seedItems<T>(key: string, initial: T[]): T[] {
   if (!isBrowser()) return initial
@@ -84,4 +120,9 @@ export const STORAGE_KEYS = {
   TESTIMONIALS: "ace-testimonials",
   FAQS: "ace-faqs",
   CONTENT: "ace-content",
+  ORDERS: "ace-orders",
+  ADDONS: "ace-addons",
+  SETTINGS: "ace-settings",
+  STOCK_OVERRIDES: "ace-stock-overrides",
+  PRICE_OVERRIDES: "ace-price-overrides",
 } as const

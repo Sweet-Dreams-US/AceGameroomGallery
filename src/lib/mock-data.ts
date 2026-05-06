@@ -908,6 +908,239 @@ export const ADMIN_MOCK_CONTENT = {
 }
 
 // ---------------------------------------------------------------
+// Demo orders — seed for the admin Orders + Dashboard pages.
+// ---------------------------------------------------------------
+const daysAgo = (n: number) =>
+  new Date(Date.now() - n * 86_400_000).toISOString()
+
+export const ADMIN_MOCK_ORDERS = [
+  {
+    id: "ord-2026050601",
+    createdAt: daysAgo(0),
+    customer: {
+      name: "Ben Patterson",
+      email: "ben.p@example.com",
+      phone: "(260) 555-0188",
+      address: { line1: "1422 Maple Ave", city: "Fort Wayne", state: "IN", zip: "46805" },
+    },
+    items: [
+      {
+        lineId: "li-1",
+        productId: "prod-1",
+        productSlug: "olhausen-augusta",
+        categorySlug: "billiards",
+        productName: "Olhausen Augusta",
+        productImage: `${ACE}/0003231_billiard-tables_450.png`,
+        brandName: "Olhausen",
+        unitPrice: 569900,
+        quantity: 1,
+        addons: [
+          { id: "addon-felt-simonis", name: "Simonis 860 Cloth Upgrade", price: 39900 },
+          { id: "addon-install-pro", name: "Professional Install & Level", price: 39900 },
+        ],
+      },
+    ],
+    fulfillment: "delivery" as const,
+    fulfillmentCost: 0,
+    subtotalCents: 649700,
+    taxCents: 45479,
+    totalCents: 695179,
+    status: "paid" as const,
+    processor: "demo" as const,
+    notes: "Basement install. Stairs are wide.",
+  },
+  {
+    id: "ord-2026050402",
+    createdAt: daysAgo(2),
+    customer: {
+      name: "Stephanie Klein",
+      email: "stephanie.k@example.com",
+      phone: "(260) 555-0124",
+    },
+    items: [
+      {
+        lineId: "li-2",
+        productId: "prod-2",
+        productSlug: "mcdermott-g308",
+        categorySlug: "billiards",
+        productName: "McDermott G308",
+        productImage: `${ACE}/0003238_cues_450.jpeg`,
+        brandName: "McDermott",
+        unitPrice: 39900,
+        quantity: 2,
+        addons: [],
+      },
+    ],
+    fulfillment: "shipping" as const,
+    fulfillmentCost: 9900,
+    subtotalCents: 79800,
+    taxCents: 5586,
+    totalCents: 95286,
+    status: "fulfilled" as const,
+    processor: "demo" as const,
+  },
+  {
+    id: "ord-2026050103",
+    createdAt: daysAgo(5),
+    customer: {
+      name: "Dale Murphy",
+      email: "dale.m@example.com",
+      phone: "(260) 555-0177",
+      address: { line1: "812 Liberty St", city: "Auburn", state: "IN", zip: "46706" },
+    },
+    items: [
+      {
+        lineId: "li-3",
+        productId: "prod-3",
+        productSlug: "stern-rush-premium",
+        categorySlug: "games",
+        productName: "Stern Rush Premium",
+        productImage: `${ACE}/0003115_pinball-machines_450.png`,
+        brandName: "Stern",
+        unitPrice: 949900,
+        quantity: 1,
+        addons: [
+          { id: "addon-warranty-extended", name: "Extended Warranty (5 yrs)", price: 24900 },
+        ],
+      },
+    ],
+    fulfillment: "delivery" as const,
+    fulfillmentCost: 4900,
+    subtotalCents: 974800,
+    taxCents: 68575,
+    totalCents: 1048275,
+    status: "paid" as const,
+    processor: "demo" as const,
+  },
+  {
+    id: "ord-2026042804",
+    createdAt: daysAgo(8),
+    customer: {
+      name: "Rachel Brennan",
+      email: "rachel.b@example.com",
+      phone: "(260) 555-0193",
+    },
+    items: [
+      {
+        lineId: "li-4",
+        productId: "prod-4",
+        productSlug: "dartboard-cabinet-winmau",
+        categorySlug: "games",
+        productName: "Winmau Dartboard Cabinet",
+        productImage: `${ACE}/0003130_darts-and-dartboards_450.jpeg`,
+        brandName: "Winmau",
+        unitPrice: 27900,
+        quantity: 1,
+        addons: [
+          { id: "addon-darts-set", name: "Tournament Darts Set", price: 6900 },
+        ],
+      },
+    ],
+    fulfillment: "pickup" as const,
+    fulfillmentCost: 0,
+    subtotalCents: 34800,
+    taxCents: 2436,
+    totalCents: 37236,
+    status: "pending" as const,
+    processor: "demo" as const,
+  },
+  {
+    id: "ord-2026042205",
+    createdAt: daysAgo(14),
+    customer: {
+      name: "Gabriel Ortiz",
+      email: "gabe.o@example.com",
+      phone: "(260) 555-0144",
+      address: { line1: "55 Foster Pkwy", city: "Fort Wayne", state: "IN", zip: "46815" },
+    },
+    items: [
+      {
+        lineId: "li-5",
+        productId: "prod-5",
+        productSlug: "rainbow-summit-pkg-ii",
+        categorySlug: "playsets",
+        productName: "Rainbow Summit Package II",
+        productImage: `${ACE}/0003196_residential-playsets_450.jpeg`,
+        brandName: "Rainbow",
+        unitPrice: 549900,
+        quantity: 1,
+        addons: [
+          { id: "addon-install-playset", name: "Rainbow Playset Installation", price: 79900 },
+        ],
+      },
+    ],
+    fulfillment: "delivery" as const,
+    fulfillmentCost: 0,
+    subtotalCents: 629800,
+    taxCents: 44086,
+    totalCents: 673886,
+    status: "fulfilled" as const,
+    processor: "demo" as const,
+  },
+  {
+    id: "ord-2026041506",
+    createdAt: daysAgo(21),
+    customer: {
+      name: "Marcus Wei",
+      email: "marcus.w@example.com",
+      phone: "(260) 555-0102",
+    },
+    items: [
+      {
+        lineId: "li-6",
+        productId: "prod-6",
+        productSlug: "darafeev-bar-stool-classic",
+        categorySlug: "furniture",
+        productName: "Darafeev Bar Stool Classic",
+        productImage: `${ACE}/0003121_bars_450.png`,
+        brandName: "Darafeev",
+        unitPrice: 89900,
+        quantity: 4,
+        addons: [],
+      },
+    ],
+    fulfillment: "shipping" as const,
+    fulfillmentCost: 9900,
+    subtotalCents: 359600,
+    taxCents: 25172,
+    totalCents: 394672,
+    status: "fulfilled" as const,
+    processor: "demo" as const,
+  },
+  {
+    id: "ord-2026040907",
+    createdAt: daysAgo(27),
+    customer: {
+      name: "Elaine Kovac",
+      email: "elaine.k@example.com",
+      phone: "(260) 555-0166",
+    },
+    items: [
+      {
+        lineId: "li-7",
+        productId: "prod-7",
+        productSlug: "simonis-860-tournament",
+        categorySlug: "billiards",
+        productName: "Simonis 860 Tournament Cloth",
+        productImage: `${ACE}/0003230_billiard-cloth_450.jpeg`,
+        brandName: "Simonis",
+        unitPrice: 21900,
+        quantity: 1,
+        addons: [],
+      },
+    ],
+    fulfillment: "shipping" as const,
+    fulfillmentCost: 9900,
+    subtotalCents: 21900,
+    taxCents: 2226,
+    totalCents: 34026,
+    status: "cancelled" as const,
+    processor: "demo" as const,
+    notes: "Customer canceled within 24 hrs.",
+  },
+]
+
+// ---------------------------------------------------------------
 // Helper functions
 // ---------------------------------------------------------------
 
