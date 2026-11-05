@@ -146,7 +146,7 @@ export function MobileMenu({ isOpen, onClose, navLinks, categories }: MobileMenu
                           {cat.children.map((child) => (
                             <li key={child.slug}>
                               <Link
-                                href={`/${cat.slug}/${child.slug}`}
+                                href={`/${cat.slug}#${child.slug}`}
                                 onClick={handleClose}
                                 className="block py-1 text-sm text-[#6b655e] hover:text-[#c0392b] transition-colors"
                               >

@@ -44,7 +44,7 @@ export function ShowroomCta() {
             transition={{ duration: 0.8, ease: [0.23, 1, 0.32, 1], delay: 0.15 }}
             className="col-span-12 lg:col-span-5"
           >
-            <p className="section-number mb-4">/ 006 — VISIT US</p>
+            <p className="section-number mb-4">VISIT US</p>
             <h2 className="font-playfair text-4xl lg:text-6xl font-bold text-[#1a1612] leading-[1.05] mb-6">
               Come <span className="gold-gradient-text italic">rack a few.</span>
             </h2>

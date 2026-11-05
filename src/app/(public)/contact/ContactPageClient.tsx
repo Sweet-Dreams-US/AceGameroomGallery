@@ -70,6 +70,16 @@ export default function ContactPageClient() {
         .join(" ")
       setMessage(`I'm interested in the ${readable} — please tell me more.`)
     }
+
+    // Pre-fill from showcase pages: ?interest=Billiards&about=Cues
+    const requestedInterest = searchParams.get("interest")
+    if (requestedInterest && INTEREST_OPTIONS.includes(requestedInterest)) {
+      setInterest(requestedInterest)
+    }
+    const about = searchParams.get("about")
+    if (about) {
+      setMessage(`I'd like to know more about ${about.toLowerCase()}.`)
+    }
   }, [searchParams])
 
   function validate() {

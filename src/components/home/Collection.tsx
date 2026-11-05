@@ -1,6 +1,3 @@
-"use client"
-
-import { motion } from "framer-motion"
 import Image from "next/image"
 import Link from "next/link"
 import { ArrowUpRight } from "lucide-react"
@@ -10,114 +7,83 @@ const CATEGORIES = [
   {
     name: "Billiards",
     slug: "billiards",
-    tagline: "Olhausen. Valley. Plank & Hide.",
-    count: "6 collections",
-    image: BRAND_IMAGES.poolTableDetail,
+    tagline: "Tables, cues, cloth, and lighting.",
+    image: BRAND_IMAGES.heroShowroom,
   },
   {
     name: "Games",
     slug: "games",
-    tagline: "Pinball, arcade, shuffleboard.",
-    count: "10 collections",
+    tagline: "Pinball, arcade, shuffleboard, and more.",
     image: BRAND_IMAGES.pinballArcade,
   },
   {
     name: "Furniture",
     slug: "furniture",
-    tagline: "Bars. Stools. Pub tables.",
-    count: "7 collections",
+    tagline: "Bars, stools, and pub tables.",
     image: BRAND_IMAGES.barFurniture,
   },
   {
     name: "Playsets",
     slug: "playsets",
-    tagline: "Rainbow Play Systems. Cedar.",
-    count: "2 collections",
+    tagline: "Rainbow Play Systems.",
     image: BRAND_IMAGES.playsetCedar,
   },
   {
     name: "Outdoor",
     slug: "outdoor",
-    tagline: "Basketball. Trampolines.",
-    count: "3 collections",
+    tagline: "Basketball goals and trampolines.",
     image: BRAND_IMAGES.outdoorRecreation,
   },
   {
     name: "Services",
     slug: "services",
-    tagline: "Delivery. Install. Refurb.",
-    count: "All tables",
+    tagline: "Delivery, install, and repair.",
     image: BRAND_IMAGES.cuesDisplay,
   },
 ]
 
+/** Six category tiles sized to fit one screen, below the fixed nav. */
 export function Collection() {
   return (
-    <section className="bg-[#ebe4d6] py-24 lg:py-40">
-      <div className="max-w-[1600px] mx-auto px-6 lg:px-10">
-        {/* Header */}
-        <div className="mb-16 lg:mb-20 grid grid-cols-12 gap-6">
-          <div className="col-span-12 lg:col-span-6">
-            <div className="flex items-center gap-3 mb-4">
-              <span className="w-2 h-2 rotate-45 bg-gradient-to-br from-[#e67e22] to-[#f1c40f]" />
-              <p className="section-number">/ THE COLLECTION</p>
-            </div>
-            <h2 className="font-playfair text-4xl lg:text-6xl font-bold text-[#1a1612] leading-[1.05]">
-              Browse by
-              <br />
-              <span className="gold-gradient-text italic">category.</span>
-            </h2>
-          </div>
-          <div className="col-span-12 lg:col-span-5 lg:col-start-8 flex items-end">
-            <p className="text-lg text-[#6b655e] font-light leading-relaxed">
-              Six categories. Hundreds of products. One showroom.
-              Find yours — then come see it in person.
-            </p>
-          </div>
+    <section className="bg-[#ebe4d6] h-[calc(100svh-5rem)] lg:h-[calc(100svh-6rem)] min-h-[560px] max-h-[1000px] py-6 lg:py-8 flex flex-col">
+      <div className="max-w-[1600px] w-full mx-auto px-6 lg:px-10 flex-1 min-h-0 flex flex-col">
+        <div className="flex items-end justify-between gap-6 mb-4 lg:mb-6">
+          <h2 className="font-playfair text-3xl lg:text-5xl font-bold text-[#1a1612] leading-none">
+            Browse by <span className="gold-gradient-text italic">category.</span>
+          </h2>
+          <p className="hidden md:block text-[#6b655e] font-light">
+            Find yours, then come see it in person.
+          </p>
         </div>
 
-        {/* Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-          {CATEGORIES.map((cat, i) => (
-            <motion.div
-              key={cat.slug}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.15 }}
-              transition={{ duration: 0.6, delay: i * 0.08 }}
+        <div className="flex-1 min-h-0 grid grid-cols-2 lg:grid-cols-3 grid-rows-3 lg:grid-rows-2 gap-3 lg:gap-4">
+          {CATEGORIES.map((category) => (
+            <Link
+              key={category.slug}
+              href={`/${category.slug}`}
+              className="group relative block overflow-hidden min-h-0"
             >
-              <Link href={`/${cat.slug}`} className="group block">
-                <div className="relative aspect-[3/4] overflow-hidden mb-6">
-                  <Image
-                    src={cat.image}
-                    alt={cat.name}
-                    fill
-                    className="object-cover transition-transform duration-700 group-hover:scale-110"
-                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#1a1612]/80 via-[#1a1612]/20 to-transparent" />
+              <Image
+                src={category.image}
+                alt=""
+                fill
+                className="object-cover transition-transform duration-700 group-hover:scale-105"
+                sizes="(max-width: 1024px) 50vw, 33vw"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#1a1612]/85 via-[#1a1612]/25 to-transparent" />
 
-                  {/* Hover overlay */}
-                  <div className="absolute inset-0 bg-[#d4a843]/0 group-hover:bg-[#d4a843]/10 transition-colors duration-500" />
-
-                  {/* Category name */}
-                  <div className="absolute bottom-0 left-0 right-0 p-8">
-                    <h3 className="font-playfair text-4xl lg:text-5xl font-bold text-white mb-2">
-                      {cat.name}
-                    </h3>
-                    <p className="text-sm text-[#d4a843] mb-4 italic">{cat.tagline}</p>
-                    <div className="flex items-center justify-between">
-                      <span className="text-xs font-display tracking-[0.25em] text-white/80 uppercase">
-                        {cat.count}
-                      </span>
-                      <div className="w-10 h-10 rounded-full border border-white/60 flex items-center justify-center text-white group-hover:bg-[#d4a843] group-hover:border-[#d4a843] group-hover:text-[#1a1612] transition-all duration-500">
-                        <ArrowUpRight className="w-4 h-4" />
-                      </div>
-                    </div>
-                  </div>
+              <div className="absolute bottom-0 left-0 right-0 p-3 lg:p-6 flex items-end justify-between gap-3">
+                <div className="min-w-0">
+                  <h3 className="font-playfair text-xl lg:text-4xl font-bold text-white leading-tight">
+                    {category.name}
+                  </h3>
+                  <p className="hidden sm:block text-sm text-[#e9c46a] italic mt-1">{category.tagline}</p>
                 </div>
-              </Link>
-            </motion.div>
+                <span className="hidden sm:flex shrink-0 w-10 h-10 rounded-full border border-white/60 items-center justify-center text-white group-hover:bg-[#d4a843] group-hover:border-[#d4a843] group-hover:text-[#1a1612] transition-all duration-500">
+                  <ArrowUpRight className="w-4 h-4" aria-hidden="true" />
+                </span>
+              </div>
+            </Link>
           ))}
         </div>
       </div>

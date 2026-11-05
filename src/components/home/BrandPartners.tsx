@@ -58,7 +58,7 @@ export function BrandPartners() {
             <div className="flex items-center gap-3 mb-4">
               <span className="w-2 h-2 rotate-45 bg-[#f1c40f]" />
               <p className="font-display tracking-[0.3em] text-xs text-[#f1c40f]">
-                / 005 — THE BRANDS
+                THE BRANDS
               </p>
             </div>
             <h2 className="font-anton text-5xl md:text-7xl text-[#f5efe6] leading-[0.95] uppercase">

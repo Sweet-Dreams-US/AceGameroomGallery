@@ -6,6 +6,8 @@ import { ArrowUpRight } from "lucide-react"
 import { MOCK_CATEGORIES, MOCK_PRODUCTS } from "@/lib/mock-data"
 import { withCommerce } from "@/lib/commerce-overlay"
 import { PriceTag } from "@/components/commerce/PriceTag"
+import { CategoryShowcasePage } from "@/components/products/CategoryShowcasePage"
+import { CATEGORY_SHOWCASES } from "@/lib/showcase"
 
 interface PageProps {
   params: Promise<{ category: string }>
@@ -21,7 +23,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   if (!cat) return { title: "Not Found" }
   return {
     title: cat.name,
-    description: cat.description,
+    description: CATEGORY_SHOWCASES[category]?.intro ?? cat.description,
   }
 }
 
@@ -29,6 +31,9 @@ export default async function CategoryPage({ params }: PageProps) {
   const { category } = await params
   const cat = MOCK_CATEGORIES.find((c) => c.slug === category)
   if (!cat) notFound()
+
+  const showcase = CATEGORY_SHOWCASES[category]
+  if (showcase) return <CategoryShowcasePage name={cat.name} showcase={showcase} />
 
   const products = MOCK_PRODUCTS.filter((p) => p.categorySlug === category).map(
     withCommerce,
